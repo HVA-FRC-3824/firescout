@@ -32,23 +32,31 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/dbb5df409e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div id="topnav" class="topnav">
-        <script>
-            window.onload = addNav();
-        </script>
-    </div>
-    <div>
-        <p id="countDown">279: </p>
-    </div>
-
-    <footer>
-        <p id="load">Firebase SDK Loading&hellip;</p>
-    </footer>
-
+    <section class="hero">
+        <header id="navbar">
+            <h1>Firescout</h1>
+            <li class="logo"><a href='index.html'>Firescout</a></li>
+            <img src="./pics/whiteArrow.png" onclick="navDropdown()">
+            <nav>
+                <ul class="menu">
+                    <li class="dropdown"></li>
+                    <li class="item"><a href='schedule.html'>Match Scouting</a></li>
+                    <li class="item"><a href='pit.html'>Pit Scouting</a></li>
+                    <li class="item"><a href='analytics.html'>Analytics</a></li>
+                    <li class="item"><a href='preview.html'>Match Preview</a></li>
+                    <li class="item"><a href='settings.html'>Settings</a></li>
+                    <li class="item"><a href='login.html' id='loginButton'>Login</a></li>
+                </ul>
+            </nav>
+        </header>
+    </section>
+    <section>
+        <h1 id="countDown"></h1>
+    </section>
 </body>
 </html>

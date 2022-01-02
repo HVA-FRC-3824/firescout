@@ -1,170 +1,89 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body {
-    background: white;
-    color: rgba(0, 0, 0, 0.87);
-    font-family: 'Oswald', sans-serif;
-    margin: 0;
-    padding: 0;
-    /*border-top: 75px solid #7722cc;*/
+    font-family: "Montserrat";
+    cursor: url(../pics/cursorSmall.png), auto;
 }
 
-h1 {
-    text-align: center;
-    font-size: 4em;
-    margin: 0;
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style-type: none;
 }
 
-.teamSelector {
-    height: 100px;
-    overflow: hidden;
-}
-
-.chevLeft {
-    width: 15%;
-    display: inline-block;
-}
-
-.chevRight {
-    width: 14%;
-    float: inline-end;
-}
-
-.currTeam {
-    width: 70%;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    display: inline-block;
-}
-
-.topnav {
-    overflow: hidden;
-    background-color: #333;
-    position: relative;
-}
-
-
-.topnav img {
-    height: 85px; 
-    width: 85px; 
-    margin-left: 15px;
-}
-
-
-.topnav #myLinks {
-    display: none;
-}
-
-.topnav a {
-    color: white;
-    padding: 15px 30px;
-    padding-top: 19px;
-    padding-bottom: 18px;
+.menu a{
     text-decoration: none;
-    display: block;
+    color:white;
 }
 
-.topnav a.icon {
-    background: #333;
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
+.menu .logo{
     font-size: 36px;
+    font-weight: 700;
+    padding-top: 9px;
+    padding-left: 25px;
+    padding-bottom: 12px;
 }
 
-.topnav a:hover {
-    background-color: #ddd;
-    color: black;
+.menu .item {
+    margin-left: 65%;
+    width: 35%;
+    padding: 15px;
+    text-align: center;
+    background-color: rgba(128, 128, 128, 0.384);
 }
 
-.active {
-    background-color: #04AA6D;
+
+.hero {
+    background-image: url(../pics/heroImage.jpg);
+    width: 100%;
+    min-height: 100vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+header {
+    height: 65px;
+    overflow-y: hidden;
+    background-color: rgba(128, 128, 128, 0.384);
+}
+
+header h1 {
     color: white;
+    font-size: 36px;
+    font-weight: 700;
+    padding-top: 9px;
+    padding-left: 25px;
+    display: inline-block;
 }
 
-button {
-    background-color: #003366;
-    color: white;
-    text-align: center;
-    display: block;
-    font-size: 40px;
-    margin:auto auto 15px;
-    padding: 5px;
-    border-radius: 5px;
-    width:300px;
+header img {
+    height: 50px;
+    width: auto;
+    padding-top: 12px;
+    padding-right: 25px;
+    float: right;
 }
 
-.homeButton{
-    float: left;
-    width: 150px;
-}
-
-div #countDown{
-    font-size: 24px;
-    color: rgb(255, 0, 0);
-    text-shadow:1px 1px  black ; 
-    text-align: center;
-}
-
-#load {
-    color: rgba(0, 0, 0, 0.4);
-    text-align: center;
-    font-size: 13px;
-}
-
-.matchButton {
-    float: center;
-}
-
-@media (min-width: 800px) {
-    .topnav {
-        background-color: red;
+@media all and (min-width: 800px) {
+    .dropdown {
+        display: none;
     }
 
-    .topnav a.icon {
-        background: red;
+    .menu {
+        flex-direction:column ;
+    }
+    
+    .menu .item{
+        margin: 0;
+        width: auto;
+        background-color: rgba(255, 0, 0, 0);
     }
 
-    .matchButton {
-        display: center;
-        float: center;
-    }
-
-    button{
-        display:inline-block;
-        margin: 10px 10px 10px;
-        width:auto;
-    }
-
-    .matchDiv {
-        padding-left: 5%;
-        padding-right: 5%;
-    }
-
-    .homeButton{
-        margin: 0px 0px 0px 0px;
-    }
-
-    #buttons{
-        text-align: center;
-    }
-}
-
-@media (min-width: 1440px) {
-    .topnav {
-        background-color: #7722cc;
-    }
-
-    .topnav a.icon {
-        background: #7722cc;
-    }
-
-    button {
-        margin: 10px 10px 10px;
-    }
-
-    .matchButton {
-        display: center;
-        float: center;
-    }
 }
