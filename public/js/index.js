@@ -17,8 +17,8 @@ var x = setInterval(function() {
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 // Output the result in an element with id="demo"
-    document.getElementById("countDown").innerHTML = "Time until Kickoff: " + days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
+    //document.getElementById("countDown").innerHTML = "Time until Kickoff: " + days + "d " + hours + "h "
+    //+ minutes + "m " + seconds + "s ";
 
 // If the count down is over, write some text 
     if (distance < 0) {
@@ -26,4 +26,14 @@ var x = setInterval(function() {
         document.getElementById("countDown").innerHTML = "ITS TIME";
     }
 }, 1000);
+
+window.onload = function() {
+    const mobile_bars = document.querySelector('.dropdown');
+    const mobile_menu = document.querySelector('.nav-mobile');
+
+    mobile_bars.addEventListener('click', function () {
+        mobile_bars.classList.toggle('is-active');
+        mobile_menu.classList.toggle('is-active');
+    });
+}
 
