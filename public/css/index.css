@@ -12,7 +12,7 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    color: white;
+    color: #fff;
     width: 100%;
     z-index: 100;
 }
@@ -105,10 +105,10 @@ header .container nav {
 }
 
 .hero {
-    background-image: url(../pics/heroImage.jpg);
+    background-image: url(../pics/sathero.jpg);
     width: 100%;
     min-height: 100vh;
-    background-position: center;
+    background-position: left;
     background-size: cover;
     position: relative;
     overflow: hidden;
@@ -120,7 +120,6 @@ header .container nav {
     padding: 0px 30px;
     position: relative;
     width: 100%;
-    
 }
 
 .nav-login-bars .login {
@@ -145,6 +144,52 @@ header .container nav {
     background-color: rgba(111, 111, 111, 0);
     text-decoration: none;
     color: #fff;
+}
+
+.containter {
+    width: 100%;
+}
+
+main .hero .container h1 {
+    color: #fff;
+    font-weight: 700;
+    font-size: 45px;
+    padding: 45px 0px;
+}
+
+main .hero .container h3 {
+    color: rgb(0, 0, 0);
+    margin: 0px 0px 50px 0px;
+}
+
+main .hero .container button {
+    width: 130px;
+    height: 60px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 22px;
+    font-family: 'Montserrat';
+    background-color: rgba(28, 157, 218, 1);
+    border: none;
+}
+
+main .features .container {
+    text-align: center;
+    align-items: center;
+}
+
+main .features .container h1 {
+    margin: 30px 0px 0px 0px;
+    font-size: 34px;
+}
+
+main .features .container .featone {
+    width: 75%;
+    margin: 25px 12.5% 0px auto;
+    padding: 8% 8%;
+    background-color: rgb(177, 177, 177);
+    height: 300px;
+    border-radius: 8px;
 }
 
 @media all and (min-width: 500px) {
