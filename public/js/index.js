@@ -1,5 +1,5 @@
 // Set the date we're counting down to
-var countDownDate = new Date("Jan 8, 2022 11:30:00").getTime();
+var countDownDate = new Date("Jan 8, 2022 10:00:00").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -16,9 +16,11 @@ var x = setInterval(function() {
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-// Output the result in an element with id="demo"
-    //document.getElementById("countDown").innerHTML = "Time until Kickoff: " + days + "d " + hours + "h "
-    //+ minutes + "m " + seconds + "s ";
+// Output the result in an element with id="countDown"
+    document.getElementById("cDays").innerHTML = days;
+    document.getElementById("cHours").innerHTML = hours;
+    document.getElementById("cMins").innerHTML = minutes
+    document.getElementById("cSecs").innerHTML = seconds;
 
 // If the count down is over, write some text 
     if (distance < 0) {

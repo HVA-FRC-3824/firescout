@@ -37,6 +37,16 @@
 </head>
 
 <body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {  
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        }); 
+
+        window.onbeforeunload = function(e) {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
+    </script>
     <header id="navbar">
         <div class="container">
             <h2 class="logo">Firescout</h2>
@@ -46,10 +56,8 @@
                     <a href="./schedule.html">Match Scouting</a>
                     <a href="">Pit Scouting</a>
                     <a href="">Analytics</a>
-                    <a href="">Login</a>
                 </nav>
-                <a href="" class="login" id="loginButton">Current User: Test</a>
-                <a href="" class="login"><i class="fas fa-user"></i> Test</a>
+                <a href="./login.html" class="login" id="loginButton"><i class="fas fa-user"></i> Login</a>
                 <button class="dropdown">
                     <div class="bars"></div>
                 </button>
@@ -57,42 +65,60 @@
         </div>
     </header>
     <nav class="nav-mobile">
-        <!-- <a href="" class="login">Login</a> -->
-        <a href="">Match Scouting</a>
+        <a href="./schedule.html">Match Scouting</a>
         <a href="">Pit Scouting</a>
         <a href="">Analytics</a>
-        <a href="" class="login-mobile">Current User: Test</a>
     </nav>
     <main>
         <section class="hero">
             <div class="container">
                 <h1>Scouting for First Events</h1>
                 <h3>Understanding teams around us</h3>
-                <button>Scout</button>
+                <button onclick="location.replace('./schedule.html')">Scout</button>
+            </div>
+        </section>
+        <section class="countdown">
+            <div class="container">
+                <div class="countdownWrapper">
+                    <h1>Time until Kickoff</h1>
+                    <p id="cDays">99</p><p id="cHours">99</p><p id="cMins">99</p><p id="cSecs">99</p>
+                    <p class="cd">days</p><p class="cd">hours</p><p class="cd">mins</p><p class="cd">secs</p>
+                </div>
             </div>
         </section>
         <section class="features">
             <div class="container">
                 <h1>Features</h1>
-                <div class="featone">
-                    <h3>Test</h3>
-                </div>
-                <div class="featone">
-                    <h3>Test</h3>
-                </div>
-                <div class="featone">
-                    <h3>Test</h3>
+                <div class="ft-grid">
+                    <div class="feature">
+                        <h2>Ligheight</h2>
+                        <p>Lorem ipsum dolor siqua. Pretium nibh ipsum consequat nisl. Id interdum velit laoreet id donec ultrices tincidunt arcu. Ligula ullamcorper malesuada proin libero nunc consequat interdum.</p>
+                    </div>
+                    <div class="feature">
+                        <h2>Lightwht</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adip sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pretium nibh ipsum consequat nisl. Id interdum velit laoreet id donec ultrices tincidunt arcu. Ligula ullamcorper malesuada proin libero nunc consequat interdum.</p>
+                    </div>
+                    <div class="feature">
+                        <h2>Ligt</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pretium nibh ipsum consequat nisl. Id interdum velit laoreet id donec ultrices tincidunt arcu. Ligula ullamcorper malesuada proin libero nunc consequat interdum.</p>
+                    </div>
+                    <div class="feature">
+                        <h2>Lit</h2>
+                        <p>Lorem iptempor incididunt ut labore et dolore magna aliqua. Pretium nibh ipsum consequat nisl. Id interdum velit laoreet id donec ultrices tincidunt arcu. Ligula ullamcorper malesuada proin libero nunc consequat interdum.</p>
+                    </div> 
                 </div>
             </div>
         </section>
-        <section class="countdown">
-            <div class="container">
-
-            </div>
-        </section>
+        
         <section class="about">
             <div class="container">
-
+                <h1>About Us</h1>
+            </div>
+        </section>
+        
+        <section class="footer">
+            <div class="container">
+                <h1 id="load"><i>footer</i></h1>
             </div>
         </section>
     </main>

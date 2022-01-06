@@ -10,16 +10,60 @@
     <script src="js/global.js"></script>
     <script defer src="js/schedule.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/schedule.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/dbb5df409e.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="matchDiv">
-        <button id="matchButton" onclick="location.replace('scouting.html')">Test Match</button>
-    </div>
+    <header id="navbar">
+        <div class="container">
+            <h2 class="logo" onclick="location.replace('./index.html')">Firescout</h2>
+
+            <div class="nav-login-bars">
+                <nav>
+                    <a href="./schedule.html">Match Scouting</a>
+                    <a href="">Pit Scouting</a>
+                    <a href="">Analytics</a>
+                </nav>
+                <a href="./login.html" class="login" id="loginButton"><i class="fas fa-user"></i> Login</a>
+                <button class="dropdown">
+                    <div class="bars"></div>
+                </button>
+            </div>
+        </div>
+    </header>
+    <nav class="nav-mobile">
+        <!-- <a href="" class="login">Login</a> -->
+        <a href="">Match Scouting</a>
+        <a href="">Pit Scouting</a>
+        <a href="">Analytics</a>
+    </nav>
+    <main>
+        <section>
+            <div class="container">
+                <div class="match-select">
+                    <select name="match num" class="match-selector" id="match">
+                        <option value="1">Match 1</option>
+                        <option value="2">Match 2</option>
+                        <option value="3">Match 3</option>
+                        <option value="4">Match 4</option>
+                    </select>
+                    <p id="redTeam1">red team 1</p>
+                    <p id="redTeam2">red team 2</p>
+                    <p id="redTeam3">red team 3</p>
+                    <p class="vs">vs</p>
+                    <p id="blueTeam1">blue team 1</p>
+                    <p id="blueTeam2">blue team 2</p>
+                    <p id="blueTeam3">blue team 3</p>
+                </div>
+                <div class="scout-match">
+                    <button onclick="location.replace('./scouting.html')">Begin Scouting</button>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>

@@ -41,15 +41,11 @@ const app = initializeApp(firebaseConfig);
     try {
         let app = firebase.app();
         let features = ['auth', 'database'].filter(feature => typeof app[feature] === 'function');
-        if (document.URL.includes("index.html")) {
-            document.getElementById('load').innerHTML = `Created by Evan Boswell, Nick Broyles, Max Howell, Grant Johnson, Weston Agreda, Graham Boswell. Firebase SDK loaded with ${features.join(', ')}`;
-        }
+        
 
     } catch (e) {
         console.error(e);
-        if (document.URL.includes("index.html")) {
-            document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-        }
+        
     }
 //================ Auth =============
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -128,13 +124,16 @@ onAuthStateChanged(auth, (user) => {
 setTimeout(function(){
   try{
     console.log(firebase.auth().currentUser.displayName);
-    document.getElementById("loginButton").innerHTML = "Welcome Back: " + firebase.auth().currentUser.displayName;
+    document.getElementById("loginButton").innerHTML = "<i class='fas fa-user'></i> " + firebase.auth().currentUser.displayName;
+    document.getElementById("loginButton").href = "";
   }catch(e){
     console.log(e);
   }
 }, 2300)
 
-
+function doNothing(){
+  console.log("already logged in");
+}
 
 // ===========Initialize Firebase
 import { getDatabase, ref, set, child, update, remove, onValue} from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";

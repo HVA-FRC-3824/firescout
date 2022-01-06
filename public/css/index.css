@@ -29,12 +29,15 @@ header .container {
 header .container h2 {
     color: inherit;
     font-size: 32px;
-    font-weight: 900;
+    font-weight: 400;
+    cursor:pointer;
 }
 
 header .container nav {
     display: none;
 }
+
+/* ==================================================Nav Mobile Section================================================== */
 
 .dropdown {
     position: relative;
@@ -80,6 +83,8 @@ header .container nav {
     background-color: rgba(168, 168, 168, 0.267);
     padding: 100px 0px 0px 0px;
     transition: all 0.4s ease 0s;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 }
 
 .nav-mobile a {
@@ -104,32 +109,13 @@ header .container nav {
     left: 0;
 }
 
-.hero {
-    background-image: url(../pics/sathero.jpg);
-    width: 100%;
-    min-height: 100vh;
-    background-position: left;
-    background-size: cover;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-}
-
-.hero .container {
-    padding: 0px 30px;
-    position: relative;
-    width: 100%;
-}
-
 .nav-login-bars .login {
-    display: none;
     float: left;
     padding: 8px 20px 0px 0px;
     color: inherit;
     text-decoration: none;
     font-size: 18px;
-    font-weight: 900;
+    font-weight: 400;
 }
 
 .nav-mobile .login-mobile {
@@ -146,7 +132,27 @@ header .container nav {
     color: #fff;
 }
 
-.containter {
+.container {
+    width: 100%;
+}
+
+/* ==================================================Hero Section================================================== */
+
+.hero {
+    background-image: url(../pics/sathero.jpg);
+    width: 100%;
+    min-height: 100vh;
+    background-position: left;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.hero .container {
+    padding: 0px 30px;
+    position: relative;
     width: 100%;
 }
 
@@ -173,27 +179,124 @@ main .hero .container button {
     border: none;
 }
 
+/* ==================================================Features Section================================================== */
+
+main .features{
+    background-color: rgb(184, 181, 181);
+}
+
 main .features .container {
-    text-align: center;
-    align-items: center;
+    padding: 64px 64px;
+    max-width: 1600px;
+    margin: 0 auto;
 }
 
 main .features .container h1 {
-    margin: 30px 0px 0px 0px;
+    margin-bottom: 64px;
     font-size: 34px;
+    text-align: center;
 }
 
-main .features .container .featone {
-    width: 75%;
-    margin: 25px 12.5% 0px auto;
-    padding: 8% 8%;
-    background-color: rgb(177, 177, 177);
-    height: 300px;
-    border-radius: 8px;
+.ft-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: 25px;
 }
+
+.feature {
+    padding: 50px 50px;
+}
+
+.feature h2 {
+    margin-bottom: 20px;
+}
+
+main .features .container .ft-grid .feature {
+    text-align: center;
+    background-color: rgb(128, 175, 238);
+}
+
+main .features .container .ft-grid .feature:nth-of-type(1) {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+}
+
+main .features .container .ft-grid .feature:nth-of-type(2) {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+}
+
+main .features .container .ft-grid .feature:nth-of-type(3) {
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+}
+
+main .features .container .ft-grid .feature:nth-of-type(4) {
+    grid-row: 4 / 5;
+    grid-column: 1 / 2;
+}
+
+/* ==================================================Countdown Section================================================== */
+
+main .countdown{
+    text-align: center;
+}
+
+main .countdown .container .countdownWrapper{
+    align-self: center;
+    padding:100px 15vw;
+    display:grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+main .countdown .container #countDown{
+    grid-column: 1/5;
+    display:grid;
+}
+
+main .countdown .container h1 {
+    font-weight: 400;
+    padding-bottom: 30px;
+    font-size: 24px;
+    grid-column: 1/5;
+}
+
+main .countdown .container p {
+    font-size: 50px;
+}
+
+main .countdown .container .cd{
+    font-size: 12px;
+}
+
+main .countdown .container p:nth-of-type(1),p:nth-of-type(5) {
+    grid-column: 1/2;
+}
+main .countdown .container p:nth-of-type(2),p:nth-of-type(6) {
+    grid-column: 2/3;
+}
+main .countdown .container p:nth-of-type(3),p:nth-of-type(7) {
+    grid-column: 3/4;
+}
+main .countdown .container p:nth-of-type(4),p:nth-of-type(8) {
+    grid-column: 4/5;
+}
+
+/* ==================================================About Us Section================================================== */
+
+main .about .container{
+    text-align: center;
+    padding:100px;
+}
+
+/* ==================================================Tablet Sizes================================================== */
 
 @media all and (min-width: 500px) {
-    .nav-mobile .login-mobile {
+    .nav-mobile .login-mobile {color: inherit;
+        font-size: 32px;
+        font-weight: 400;
         display: none;
     }
 
@@ -202,13 +305,29 @@ main .features .container .featone {
     }
 }
 
+/* ==================================================Desktop Size================================================== */
+
 @media all and (min-width: 850px) {
+    /* ==================================================Nav Desktop Section================================================== */
+    
+    main .hero .container {
+        padding: 0px 80px;
+    }
+
+    main .hero .container h1 {
+        font-size: 50px;
+    }
+
+    main .hero .container h3 {
+        font-size: 30px;
+    }
+
     header .container .nav-login-bars nav {
         display: block;
         float: left;
         padding: 8px 5px 0px 0px;
         font-size: 18px;
-        font-weight: 900;
+        font-weight: 400;
     }
 
     .nav-login-bars nav a {
@@ -224,10 +343,81 @@ main .features .container .featone {
         color: inherit;
         text-decoration: none;
         font-size: 18px;
-        font-weight: 900;
+        font-weight: 400;
     }
 
     .dropdown {
         display: none;
     }
+
+    /* ==================================================Features Desktop Section======================================== */
+
+    .ft-grid {
+        grid-template-columns: auto;
+    }
+    
+    
+    main .features .container .ft-grid .feature:nth-of-type(1) {
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+    }
+    
+    main .features .container .ft-grid .feature:nth-of-type(2) {
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
+    }
+    
+    main .features .container .ft-grid .feature:nth-of-type(3) {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+    }
+    
+    main .features .container .ft-grid .feature:nth-of-type(4) {
+        grid-row: 2 / 3;
+        grid-column: 2 / 3;
+    }
+
+    /* ==================================================Countdown Desktop Section================================================== */
+
+    main .countdown .container .countdownWrapper{
+        padding:100px 35vw;
+    }
+    
+}
+
+/* ==================================================Ultrawide Size================================================== */
+
+@media all and (min-width: 1250px) {
+    main .hero .container {
+        padding: 0px 120px;
+    }
+
+    main .hero .container h1 {
+        font-size: 70px;
+    }
+
+    main .hero .container h3 {
+        font-size: 40px;
+    }
+
+    main .features .container .ft-grid .feature:nth-of-type(1) {
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+    }
+    
+    main .features .container .ft-grid .feature:nth-of-type(2) {
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
+    }
+    
+    main .features .container .ft-grid .feature:nth-of-type(3) {
+        grid-row: 1 / 2;
+        grid-column: 3 / 4;
+    }
+    
+    main .features .container .ft-grid .feature:nth-of-type(4) {
+        grid-row: 1 / 2;
+        grid-column: 4 / 5;
+    }
+
 }
