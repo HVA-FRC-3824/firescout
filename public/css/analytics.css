@@ -1,0 +1,306 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Montserrat";
+    overflow-x: hidden;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    z-index: 100;
+}
+
+header .container {
+    padding: 32px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-box-align: center;
+}
+
+header .container h2 {
+    color: inherit;
+    font-size: 32px;
+    font-weight: 400;
+    cursor:pointer;
+}
+
+header .container nav {
+    display: none;
+}
+
+/* ==================================================Nav Mobile Section================================================== */
+
+.dropdown {
+    position: relative;
+    display: block;
+    width: 35px;
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.dropdown .bars, .dropdown::before, .dropdown::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: rgb(0, 0, 0);
+    margin: 6px 0px;
+    transition: all 0.4s ease 0s;
+}
+
+.dropdown.is-active::before {
+    transform: rotate(-45deg) translate(-8px, 6px);
+}
+
+.dropdown.is-active::after {
+    transform: rotate(45deg) translate(-9px, -8px);
+}
+
+.dropdown.is-active .bars {
+    opacity: 0;
+}
+
+.nav-mobile {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    min-height: 100vh;
+    display: block;
+    z-index: 98;
+    background-color: rgba(168, 168, 168, 0.267);
+    padding: 100px 0px 0px 0px;
+    transition: all 0.4s ease 0s;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.nav-mobile a {
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 0px auto 16px;
+    text-align: center;
+    padding: 20px 25px;
+    border-radius: 6px;
+    background-color: rgba(28, 157, 218, 1);
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.nav-mobile .login {
+    background-color: rgba(111, 111, 111, 0);
+}
+
+.nav-mobile.is-active {
+    left: 0;
+}
+
+.nav-login-bars .login {
+    float: left;
+    padding: 8px 20px 0px 0px;
+    color: inherit;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.nav-mobile .login-mobile {
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0px auto 16px;
+    text-align: center;
+    padding: 20px 25px;
+    border-radius: 6px;
+    background-color: rgba(111, 111, 111, 0);
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+/*==================================================Info Wheel Section==================================================*/
+
+main .infoWheel .container{
+    display:inline-block;
+    padding-top:100px;
+    width:400vw;
+}
+
+main .infoWheel .container header{
+    text-align: center;
+    position: relative;
+    width:100vw;
+    z-index: 1;
+}
+
+main .infoWheel .container p{
+    font-size: 28px;
+    font-weight: 600;
+    display: inline-block;
+    margin:0;
+    width: auto;
+    cursor: pointer;
+}
+
+main .infoWheel .container .dataTable{
+    margin:10vw;
+    padding:50px;
+    width:80vw;
+    background-color: rgb(231, 231, 231);
+    display: inline-block;
+    transform: translate(-000vw);
+}
+
+main .infoWheel .container .dataTable{
+    transition: all 0.5s;
+}
+
+main .infoWheel .container .dataTable .innerData{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+main .infoWheel .container .dataTable .innerData #t1{
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+}
+main .infoWheel .container .dataTable .innerData #t2{
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+}
+main .infoWheel .container .dataTable .innerData #t3{
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+}
+main .infoWheel .container .dataTable .innerData #d1{
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+}
+main .infoWheel .container .dataTable .innerData #d2{
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+}
+main .infoWheel .container .dataTable .innerData #d3{
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+}
+
+/* ==================================================Team Insights Section================================================== */
+
+main .teamInsights .container{
+    text-align: center;
+}
+
+main .teamInsights .container h1{
+    padding: 75px 0px;
+}
+
+main .teamInsights .container p{
+    
+}
+
+main .teamInsights .quickLook{
+    margin:0px 90px 50px;
+    padding:25px;
+    background-color: rgb(221, 221, 221);
+    display: grid;
+}
+
+/* ==================================================Graphs Section================================================== */
+
+main .graphs .container{
+    text-align: center;
+    margin:100px;
+}
+
+/* ==================================================Raw Data Section================================================== */
+
+main .rawData .container{
+    text-align: center;
+    margin:100px;
+}
+
+/* ==================================================Tablet Sizes================================================== */
+
+@media all and (min-width: 500px) {
+    .nav-mobile .login-mobile {color: inherit;
+        font-size: 32px;
+        font-weight: 400;
+        display: none;
+    }
+
+    .nav-login-bars .login {
+        display: block;
+    }
+}
+
+/* ==================================================Desktop Size================================================== */
+
+@media all and (min-width: 850px) {
+    /* ==================================================Nav Desktop Section================================================== */
+    
+    main .hero .container {
+        padding: 0px 80px;
+    }
+
+    main .hero .container h1 {
+        font-size: 50px;
+    }
+
+    main .hero .container h3 {
+        font-size: 30px;
+    }
+
+    header .container .nav-login-bars nav {
+        display: block;
+        float: left;
+        padding: 8px 5px 0px 0px;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .nav-login-bars nav a {
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        padding: 0px 10px 0px 0px;
+    }
+
+    .nav-login-bars .login {
+        display: block;
+        float: right;
+        padding: 8px 0px 0px 0px;
+        color: inherit;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .dropdown {
+        display: none;
+    }
+}

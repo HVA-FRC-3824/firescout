@@ -47,15 +47,15 @@
             localStorage.setItem('scrollpos', window.scrollY);
         };
     </script>
-    <header id="navbar">
+    <header id="navbar" class="navbar">
         <div class="container">
-            <h2 class="logo">Firescout</h2>
+            <h2 class="logo" onclick="location.replace('./index.html')">Firescout</h2>
 
             <div class="nav-login-bars">
                 <nav>
                     <a href="./schedule.html">Match Scouting</a>
-                    <a href="">Pit Scouting</a>
-                    <a href="">Analytics</a>
+                    <a href="./pit.html">Pit Scouting</a>
+                    <a href="./analytics.html">Analytics</a>
                 </nav>
                 <a href="./login.html" class="login" id="loginButton"><i class="fas fa-user"></i> Login</a>
                 <button class="dropdown">
@@ -66,8 +66,8 @@
     </header>
     <nav class="nav-mobile">
         <a href="./schedule.html">Match Scouting</a>
-        <a href="">Pit Scouting</a>
-        <a href="">Analytics</a>
+        <a href="./pit.html">Pit Scouting</a>
+        <a href="./analytics.html">Analytics</a>
     </nav>
     <main>
         <section class="hero">
@@ -79,7 +79,7 @@
         </section>
         <section class="countdown">
             <div class="container">
-                <div class="countdownWrapper">
+                <div class="countdownWrapper" id="countdownWrapper">
                     <h1>Time until Kickoff</h1>
                     <p id="cDays">99</p><p id="cHours">99</p><p id="cMins">99</p><p id="cSecs">99</p>
                     <p class="cd">days</p><p class="cd">hours</p><p class="cd">mins</p><p class="cd">secs</p>
@@ -91,19 +91,19 @@
                 <h1>Features</h1>
                 <div class="ft-grid">
                     <div class="feature">
-                        <h2>Ligheight</h2>
+                        <h2>Match Scouting</h2>
                         <p>Lorem ipsum dolor siqua. Pretium nibh ipsum consequat nisl. Id interdum velit laoreet id donec ultrices tincidunt arcu. Ligula ullamcorper malesuada proin libero nunc consequat interdum.</p>
                     </div>
                     <div class="feature">
-                        <h2>Lightwht</h2>
+                        <h2>Pit Scouting</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adip sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pretium nibh ipsum consequat nisl. Id interdum velit laoreet id donec ultrices tincidunt arcu. Ligula ullamcorper malesuada proin libero nunc consequat interdum.</p>
                     </div>
                     <div class="feature">
-                        <h2>Ligt</h2>
+                        <h2>Data Visualization</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pretium nibh ipsum consequat nisl. Id interdum velit laoreet id donec ultrices tincidunt arcu. Ligula ullamcorper malesuada proin libero nunc consequat interdum.</p>
                     </div>
                     <div class="feature">
-                        <h2>Lit</h2>
+                        <h2>Realtime Database</h2>
                         <p>Lorem iptempor incididunt ut labore et dolore magna aliqua. Pretium nibh ipsum consequat nisl. Id interdum velit laoreet id donec ultrices tincidunt arcu. Ligula ullamcorper malesuada proin libero nunc consequat interdum.</p>
                     </div> 
                 </div>
@@ -113,12 +113,14 @@
         <section class="about">
             <div class="container">
                 <h1>About Us</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Condimentum vitae sapien pellentesque habitant morbi tristique senectus et netus. We are scouting. We see you. Good day sir. Venenatis cras sed felis eget. Quis lectus nulla at volutpat diam ut. Nunc sed augue lacus viverra vitae congue eu. Mattis molestie a iaculis at erat pellentesque adipiscing commodo elit. Ac tincidunt vitae semper quis lectus nulla at. Massa massa ultricies mi quis hendrerit dolor. Tortor vitae purus faucibus ornare suspendisse sed nisi lacus sed.</p>
+                <img src="pics/Logo-Small-Square.png">
             </div>
         </section>
         
         <section class="footer">
             <div class="container">
-                <h1 id="load"><i>footer</i></h1>
+                <p id="load"><i>Created by: Weston Agreda, Grant Johnson, Graham Boswell, Leon Truong, Evan Boswell, Nick Broyles</i></p>
             </div>
         </section>
     </main>

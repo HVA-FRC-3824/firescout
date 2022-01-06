@@ -141,7 +141,7 @@ main section {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(../pics/space-tree.jpg);
+    background-image: url(../pics/sky.jpg);
     background-size: cover;
 }
 
@@ -235,11 +235,30 @@ main section .container .scout-match button:hover {
     color: #fff;
 }
 
+@media all and ( min-width: 501px ) {
+    main section .container {
+        width: 410px;
+    }
+
+    main section .container .match-select {
+        width: 410px;
+    }
+
+    main section .container .scout-match button{
+        width: 300px;
+    }
+    
+}
+
 /*==================================================Match Start Button==================================================*/
 
 
 @media all and ( min-width: 850px ) {
     /* ==================================================Nav Desktop Section================================================== */
+
+    main section {
+        background-image: url(../pics/desktopBG.jpg);
+    }
 
     header .container .nav-login-bars nav {
         display: block;
