@@ -6,7 +6,11 @@
 
 body {
     font-family: "Montserrat";
+}
+
+.bodyWrapper{
     overflow-x: hidden;
+    position: relative;
 }
 
 .unselectable {
@@ -147,7 +151,11 @@ header .container nav {
 main .infoWheel .container{
     display:inline-block;
     padding-top:100px;
-    width:400vw;
+    width:40000vw;
+}
+
+main .infoWheel .container .desktopArrows{
+    display: none;
 }
 
 main .infoWheel .container header{
@@ -158,7 +166,7 @@ main .infoWheel .container header{
 }
 
 main .infoWheel .container p{
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 600;
     display: inline-block;
     margin:0;
@@ -167,22 +175,44 @@ main .infoWheel .container p{
 }
 
 main .infoWheel .container .dataTable{
-    margin:10vw;
+    margin:5vw 10vw;
     padding:50px;
     width:80vw;
-    background-color: rgb(231, 231, 231);
     display: inline-block;
-    transform: translate(-000vw);
+}
+
+main .infoWheel .container .dataTable:nth-of-type(1){
+    background-color: rgb(231, 231, 231);
+    transform: perspective(1000px) translate3d(0vw, 0vw, 0px);
+}
+
+main .infoWheel .container .dataTable:nth-of-type(2){
+    background-color: rgba(231, 231, 231, 0.5);
+    transform: perspective(1000px) translate3d(-24vw, 0vw, -70px);
+}
+
+main .infoWheel .container .dataTable:nth-of-type(3){
+    background-color: rgba(231, 231, 231, 0.5);
+    transform: perspective(1000px) translate3d(-25vw, 0vw, -70px);
+}
+
+main .infoWheel .container .dataTable:nth-of-type(4){
+    background-color: rgba(231, 231, 231, 0.5);
+    transform: perspective(1000px) translate3d(-30vw, 0vw, -70px);
 }
 
 main .infoWheel .container .dataTable{
-    transition: all 0.5s;
+    transition: transform 0.4s;
 }
 
 main .infoWheel .container .dataTable .innerData{
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
+}
+
+main .infoWheel .container .dataTable .innerData h1{
+    display: none;
 }
 
 main .infoWheel .container .dataTable .innerData #t1{
@@ -302,5 +332,68 @@ main .rawData .container{
 
     .dropdown {
         display: none;
+    }
+
+}
+
+@media all and (min-width: 1250px) {
+    /* ==================================================Data Wheel Desktop Section================================================== */
+
+    main .infoWheel .container .dataTable .innerData h1{
+        text-align: center;
+        display: block;
+        grid-row: 1/2;
+        grid-column: 1/3;
+        transform: translate(0px, -35px);
+    }
+
+    main .infoWheel .container header{
+        display: none;
+    }
+
+    main .infoWheel .container .desktopArrows{
+        display: block;
+        position: absolute;
+        transform: translate(14vw, 175px);
+        z-index: 100;
+    }
+
+    main .infoWheel .container .desktopArrows p{
+        font-size: 100px;
+        color:rgba(100, 102, 100, 0.568);
+    }
+
+    main .infoWheel .container .desktopArrows #right{
+        transform: translate(62vw);
+    }
+
+    main .infoWheel .container .dataTable{
+        margin: 5vw 35vw;
+        padding:50px;
+        width:30vw;
+        display: inline-block;
+    }
+
+    main .infoWheel .container .dataTable:nth-of-type(1){
+        background-color: rgb(231, 231, 231);
+        transform: perspective(1000px) translate3d(0vw, 0vw, 0px);
+    }
+    
+    main .infoWheel .container .dataTable:nth-of-type(2){
+        background-color: rgba(231, 231, 231, 0.5);
+        color: rgba(0,0,0,0.7);
+        transform: perspective(1000px) translate3d(-70vw, -3.5vw, -100px);
+    }
+    
+    main .infoWheel .container .dataTable:nth-of-type(3){
+        background-color: rgba(231, 231, 231, 0.5);
+        color: rgba(0,0,0,0.7);
+        transform: perspective(1000px) translate3d(-140vw, -3.5vw, -100px);
+    }
+
+    main .infoWheel .container .dataTable:nth-of-type(4){
+        background-color: rgba(231, 231, 231, 0.5);
+        color: rgba(0,0,0,0.7);
+        transform: perspective(1000px) translate3d(-372vw, -3.5vw, -100px);
     }
 }

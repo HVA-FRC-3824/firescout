@@ -38,6 +38,7 @@
 </head>
 
 <body>
+    <div class="bodyWrapper">
     <header id="navbar">
         <div class="container">
             <h2 class="logo" onclick="location.replace('./index.html')">Firescout</h2>
@@ -66,9 +67,15 @@
                 <header>
                     <p onclick="changeDataSlide('left')" class="unselectable">&lt;&nbsp;&nbsp;</p><p id="head" class="unselectable">Climb Percent</p><p onclick="changeDataSlide('right')" class="unselectable">&nbsp;&nbsp;&gt;</p>
                 </header>
+                <arrows class="desktopArrows">
+                    <p id="left" onclick="changeDataSlide('left')" class="unselectable"><i class="fas fa-chevron-left"></i></p>
+                    <p id="right" onclick="changeDataSlide('right')" class="unselectable"><i class="fas fa-chevron-right"></i></p>
+                </arrows>
+                
                 <div id="table1" class="dataTable">
                     <div class="innerData">
-                        <p id="t1">Team 3824</p>
+                        <h1>Climb Percent</h1>
+                        <p id="t1">Team 1824</p>
                         <p id="d1">100%</p>
                         <p id="t2">Team 4020</p>
                         <p id="d2">95%</p>
@@ -84,7 +91,8 @@
                 </div>
                 <div id="table2" class="dataTable">
                     <div class="innerData">
-                        <p id="t1">Team 3824</p>
+                        <h1>Auto Accuracy</h1>
+                        <p id="t1">Team 2824</p>
                         <p id="d1">100%</p>
                         <p id="t2">Team 4020</p>
                         <p id="d2">95%</p>
@@ -100,7 +108,25 @@
                 </div>
                 <div id="table3" class="dataTable">
                     <div class="innerData">
+                        <h1>Tele Accuracy</h1>
                         <p id="t1">Team 3824</p>
+                        <p id="d1">100%</p>
+                        <p id="t2">Team 4020</p>
+                        <p id="d2">95%</p>
+                        <p id="t3">Team 254</p>
+                        <p id="d3">110%</p>
+                        <p id="t4">Team 342</p>
+                        <p id="d4">87%</p>
+                        <p id="t5">Team 4582</p>
+                        <p id="d5">70%</p>
+                        <p id="t6">Team 1466</p>
+                        <p id="d6">89%</p>
+                    </div>
+                </div>
+                <div id="table4" class="dataTable">
+                    <div class="innerData">
+                        <h1>Avg Score</h1>
+                        <p id="t1">Team 4824</p>
                         <p id="d1">100%</p>
                         <p id="t2">Team 4020</p>
                         <p id="d2">95%</p>
@@ -143,5 +169,6 @@
             <hr>
         </section>
     </main>
+</div>
 </body>
 </html>
