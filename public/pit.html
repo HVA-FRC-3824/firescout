@@ -24,34 +24,113 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
     <script type="module" src="js/firebase.js"></script>
+    <script src="js/pit.js"></script>
     <script defer src="js/data.js"></script>
     <script src="js/global.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/pit.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/dbb5df409e.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="topnav" class="topnav">
-        <script>
-            window.onload = addNav();
-        </script>
-    </div>
-    <div>
+    <header id="navbar">
+        <div class="container">
+            <h2 class="logo" onclick="location.replace('./index.html')">Firescout</h2>
 
-    <div class="teamSelector">
-        <section class="chevLeft">
-            <i class="fas fa-chevron-left"></i>
+            <div class="nav-login-bars">
+                <nav>
+                    <a href="./schedule.html">Match Scouting</a>
+                    <a href="./pit.html">Pit Scouting</a>
+                    <a href="./analytics.html">Analytics</a>
+                </nav>
+                <a href="./login.html" class="login" id="loginButton"><i class="fas fa-user"></i> Login</a>
+                <button class="dropdown">
+                    <div class="bars"></div>
+                </button>
+            </div>
+        </div>
+    </header>
+    <nav class="nav-mobile">
+        <a href="./schedule.html">Match Scouting</a>
+        <a href="./pit.html">Pit Scouting</a>
+        <a href="./analytics.html">Analytics</a>
+    </nav>
+    <main>
+        <section class="base">
+            <div class="container">
+                <div class="modal-button-group">
+                    <div class="modal-button" onclick="toggleModal(1)">
+                        <h1>Basic Specs</h1>
+                    </div>
+                    <div class="modal-button" onclick="toggleModal(2)">
+                        <h1>Drive Team Info</h1>
+                    </div>
+                    <div class="modal-button" onclick="toggleModal(3)">
+                        <h1>test 3</h1>
+                    </div>
+                    <div class="modal-button" onclick="toggleModal(4)">
+                        <h1>test 4</h1>
+                    </div>
+                    <div class="modal-button" onclick="toggleModal(5)">
+                        <h1>test 5</h1>
+                    </div>
+                    <div class="modal-button" onclick="toggleModal(6)">
+                        <h1>test 6</h1>
+                    </div>
+                    <div class="modal-button" onclick="toggleModal(7)">
+                        <h1>test 7</h1>
+                    </div>
+                    <div class="modal-button" onclick="toggleModal(8)">
+                        <h1>test 8</h1>
+                    </div>
+                </div>
+                <div class="button-container">
+
+                </div>
+            </div>
         </section>
-        <section class="currTeam">
-            <p>current team: 1</p>
+        <section class="modal-container">
+            <div class="modal modal-1">
+                <h1>Basic Stats <i class="fas fa-chevron-down" onclick="toggleModal(1)"></i></h1>
+                <p>Team Number</p>
+                <input></input>
+                <select>
+                    <option>defense</option>
+                    <option>offense</option>
+                </select>
+            </div>
+            <div class="modal modal-2">
+                <h1>test 2 <i class="fas fa-chevron-down" onclick="toggleModal(2)"></i></h1>
+                
+            </div>
+            <div class="modal modal-3">
+                <h1>test 3 <i class="fas fa-chevron-down" onclick="toggleModal(3)"></i></h1>
+                
+            </div>
+            <div class="modal modal-4">
+                <h1>test 4 <i class="fas fa-chevron-down" onclick="toggleModal(4)"></i></h1>
+                
+            </div>
+            <div class="modal modal-5">
+                <h1>test 5 <i class="fas fa-chevron-down" onclick="toggleModal(5)"></i></h1>
+                
+            </div>
+            <div class="modal modal-6">
+                <h1>test 6 <i class="fas fa-chevron-down" onclick="toggleModal(6)"></i></h1>
+                
+            </div>
+            <div class="modal modal-7">
+                <h1>test 7 <i class="fas fa-chevron-down" onclick="toggleModal(7)"></i></h1>
+                
+            </div>
+            <div class="modal modal-8">
+                <h1>test 8 <i class="fas fa-chevron-down" onclick="toggleModal(8)"></i></h1>
+                
+            </div>
         </section>
-        <section class="chevRight">
-            <i class="fas fa-chevron-right"></i>
-        </section>
-    </div>
+    </main>
 </body>
 </html>

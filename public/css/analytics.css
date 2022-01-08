@@ -29,6 +29,8 @@ header {
     color: rgb(0, 0, 0);
     width: 100%;
     z-index: 100;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 }
 
 header .container {
@@ -144,6 +146,25 @@ header .container nav {
     background-color: rgba(111, 111, 111, 0);
     text-decoration: none;
     color: rgb(0, 0, 0);
+}
+
+/*==================================================Admin Warn Section==================================================*/
+
+.loginWarn .container {
+    background-color: rgb( 255, 199, 94, 1);
+    display: inline-block;
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    width:100vw;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.loginWarn .container h1{
+    padding:5px;
+    font-size:18px;
+    font-weight: 400;
 }
 
 /*==================================================Info Wheel Section==================================================*/
@@ -262,10 +283,21 @@ main .teamInsights .quickLook{
 }
 
 /* ==================================================Graphs Section================================================== */
+main .graphs #blur{
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+}
 
 main .graphs .container{
     text-align: center;
-    margin:100px;
+}
+
+main .graphs .container canvas{
+    margin-left: auto;
+    margin-right:auto;
 }
 
 /* ==================================================Raw Data Section================================================== */

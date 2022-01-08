@@ -1,3 +1,4 @@
+//==========================================DATA WHEEL FRONTEND===================================//
 var currentTable = 1;
 var numberOfTables = 4;
 var mediaQueries = window.matchMedia('(min-width:1250px)');
@@ -40,19 +41,6 @@ function changeDataSlide(leftOrRight){
     }
     //console.log(currentTable);
     var tables = document.getElementsByClassName("dataTable");
-
-
-    /*for(var i = 1; i <= tables.length; i++){
-        if(currentTable == i){
-            console.log(currentTable);
-            table = document.getElementById("table" + i);
-            table.style.transform = "perspective(1000px) translate3d(" + x + "vw, 0vw, 0vw)";
-            table.style.backgroundColor = "rgba(231, 231, 231, 1)";
-        }else{
-            tables[i - 1].style.transform = "perspective(1000px) translate3d(" + (x) + "vw, 10vw, 0px)";
-            tables[1].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
-        }
-    }*/
     var lable = document.getElementById("head")
     switch(currentTable){
         case 1:
@@ -148,3 +136,47 @@ function changeDataSlide(leftOrRight){
     }
 }
 window.changeDataSlide = changeDataSlide;
+
+
+//======================================GRAPH STUFF==================================//
+
+var xValues = [1,5,12,13,16,19,40,46,50,52,56];
+var yValues = [7,8,12,15,23,20,19,22];
+var yValues2 = [20,23,29,25,28];
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+        label: "auto Accuracy",
+        data: yValues,
+        backgroundColor: "rgba(50,120,0,0.5)",
+        borderColor: "rgba(0,0,0,1)",
+        borderWidth: "1",
+        fill: false,
+        lineTension: 0.4,
+        pointBackgroundColor:"rgba(0,250,0,1)",
+        pointBorderColor:"rgba(255,0,255,1)",
+        pointBorderWidth: 2,
+        pointHitRadius: 20,
+        pointHoverBackgroundColor:"rbga(0,0,0,0.5)"
+    },{
+        label: "tele Accuracy",
+        data: yValues2,
+        backgroundColor: "rgba(50,120,0,0.5)",
+        borderColor: "rgba(255,0,0,1)",
+        borderWidth: "1",
+        fill: false,
+        lineTension: 0.4,
+        pointBackgroundColor:"rgba(0,250,0,1)",
+        pointBorderColor:"rgba(255,0,255,1)",
+        pointBorderWidth: 2,
+        pointHitRadius: 20,
+        pointHoverBackgroundColor:"rbga(0,0,0,0.5)"
+    }]
+    },
+    options:{
+
+    }
+});

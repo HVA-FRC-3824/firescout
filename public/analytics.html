@@ -34,6 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/dbb5df409e.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 </head>
 
@@ -42,7 +43,6 @@
     <header id="navbar">
         <div class="container">
             <h2 class="logo" onclick="location.replace('./index.html')">Firescout</h2>
-
             <div class="nav-login-bars">
                 <nav>
                     <a href="./schedule.html">Match Scouting</a>
@@ -61,6 +61,11 @@
         <a href="./pit.html">Pit Scouting</a>
         <a href="./analytics.html">Analytics</a>
     </nav>
+    <section class="loginWarn">
+        <div class="container">
+            <h1>Analytics data only available for admin to conserve Firebase Database usage</h1>
+        </div>
+    </section>
     <main>
         <section class="infoWheel">
             <div class="container unselectable">
@@ -157,8 +162,8 @@
             <hr>
         </section>
         <section class="graphs">
-            <div class="container">
-                <h1>Graphs</h1>
+            <div class="container" id="blur">
+                <div><canvas id="myChart" style="width:100%;max-width:900px"></canvas></div>
             </div>
             <hr>
         </section>
