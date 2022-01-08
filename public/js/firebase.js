@@ -123,9 +123,12 @@ onAuthStateChanged(auth, (user) => {
 
 setTimeout(function(){
   try{
-    console.log(firebase.auth().currentUser.displayName);
-    document.getElementById("loginButton").innerHTML = "<i class='fas fa-user'></i> " + firebase.auth().currentUser.displayName;
-    document.getElementById("loginButton").href = "";
+    var currUser = firebase.auth().currentUser;
+    console.log(currUser.displayName);
+    document.getElementById("loginButton").innerHTML = "<i id='lilGuy' class='fas fa-user'></i> " + firebase.auth().currentUser.displayName;
+    if(currUser.uid == 'qnlTm8LSbocnF57XDjqB6qxy7hJ2' || currUser.uid == 'ch2dqF6ZG6V6YgZoR21hzejsUC22'){
+      document.getElementById('lilGuy').style.color = "red";
+    }
   }catch(e){
     console.log(e);
   }
@@ -163,5 +166,6 @@ onValue(scoreCount, (snapshot) => {
   const data = snapshot.val();
   document.getElementById("test").innerHTML = data[username]["score"];
 });
+
 
 

@@ -1,0 +1,305 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Montserrat";
+}
+
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #fff;
+    width: 100%;
+    z-index: 100;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background-color: rgba(168, 168, 168, 0.267);
+    transition: all 0.4s ease 0s;
+}
+
+.navbar.is-active {
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    background-color: rgba(168, 168, 168, 0);
+}
+
+header .container {
+    padding: 32px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-box-align: center;
+}
+
+header .container h2 {
+    color: inherit;
+    font-size: 32px;
+    font-weight: 400;
+    cursor:pointer;
+}
+
+header .container nav {
+    display: none;
+}
+
+/* ==================================================Nav Mobile Section================================================== */
+
+.dropdown {
+    position: relative;
+    display: block;
+    width: 35px;
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.dropdown .bars, .dropdown::before, .dropdown::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: white;
+    margin: 6px 0px;
+    transition: all 0.4s ease 0s;
+}
+
+.dropdown.is-active::before {
+    transform: rotate(-45deg) translate(-8px, 6px);
+}
+
+.dropdown.is-active::after {
+    transform: rotate(45deg) translate(-9px, -8px);
+}
+
+.dropdown.is-active .bars {
+    opacity: 0;
+}
+
+.nav-mobile {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    min-height: 100vh;
+    display: block;
+    z-index: 99;
+    background-color: rgba(168, 168, 168, 0.267);
+    padding: 100px 0px 0px 0px;
+    transition: all 0.4s ease 0s;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.nav-mobile a {
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 0px auto 16px;
+    text-align: center;
+    padding: 20px 25px;
+    border-radius: 6px;
+    background-color: rgba(28, 157, 218, 1);
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-mobile .login {
+    background-color: rgba(111, 111, 111, 0);
+}
+
+.nav-mobile.is-active {
+    left: 0;
+}
+
+.nav-login-bars .login {
+    float: left;
+    padding: 8px 20px 0px 0px;
+    color: inherit;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.nav-mobile .login-mobile {
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0px auto 16px;
+    text-align: center;
+    padding: 20px 25px;
+    border-radius: 6px;
+    background-color: rgba(111, 111, 111, 0);
+    text-decoration: none;
+    color: #fff;
+}
+
+.container {
+    width: 100%;
+}
+
+/*==================================================Admin Controls Box==================================================*/
+
+main section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+}
+
+main .container{
+    text-align: center;
+}
+
+main .container h1{
+    padding:20px;
+}
+
+main section .container .match-select {
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 7px;
+    box-shadow: 5px 5px 5px rgba(95, 95, 95, 1);
+    height: 450px;
+    width: 82vw;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 50px;
+    padding: 25px 25px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+main section .container .match-select .match-selector{
+    grid-column: 1/4;
+    grid-row: 1/2;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    font-family: 'Montserrat';
+    margin-top:auto;
+    margin-bottom: auto;
+}
+
+main section .container .match-select #r1{
+    grid-row: 2/3;
+    grid-column: 1/2;
+    color: red;
+}
+
+main section .container .match-select #r2{
+    grid-row: 3/4;
+    grid-column: 1/2;
+    color: red;
+}
+
+main section .container .match-select #r3{
+    grid-row: 4/5;
+    grid-column: 1/2;
+    color: red;
+}
+
+main section .container .match-select #b1{
+    grid-row: 2/3;
+    grid-column: 2/3;
+    color: blue;
+}
+
+main section .container .match-select #b2{
+    grid-row: 3/4;
+    grid-column: 2/3;
+    color: blue;
+}
+
+main section .container .match-select #b3{
+    grid-row: 4/5;
+    grid-column: 2/3;
+    color: blue;
+}
+
+
+main section .container .scout-match button{
+    font-size: 24px;
+    font-family: "Montserrat";
+    font-weight: 400; 
+    padding:20px;
+    border: 0;
+    background-color: rgba(28, 157, 218, 1);
+    border-radius: 4px;
+    color: #fff;
+}
+
+main section .container .scout-match button:hover {
+    background-color: #4C73D8;
+    color: #fff;
+}
+
+/* ==================================================Tablet Sizes================================================== */
+
+@media all and (min-width: 500px) {
+    .nav-mobile .login-mobile {color: inherit;
+        font-size: 32px;
+        font-weight: 400;
+        display: none;
+    }
+
+    .nav-login-bars .login {
+        display: block;
+    }
+}
+
+/* ==================================================Desktop Size================================================== */
+
+@media all and (min-width: 850px) {
+    /* ==================================================Nav Desktop Section================================================== */
+
+    header .container .nav-login-bars nav {
+        display: block;
+        float: left;
+        padding: 8px 5px 0px 0px;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .nav-login-bars nav a {
+        text-decoration: none;
+        color: #fff;
+        padding: 0px 10px 0px 0px;
+    }
+
+    .nav-login-bars .login {
+        display: block;
+        float: right;
+        padding: 8px 0px 0px 0px;
+        color: inherit;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .dropdown {
+        display: none;
+    }
+    
+}
+
+/* ==================================================Ultrawide Size================================================== */
+
+@media all and (min-width: 1250px) {
+
+}
