@@ -55,9 +55,9 @@ function changeDataSlide(leftOrRight){
             tables[3].style.color = "rgba(0, 0, 0, 0.7)";
             if(isDesktop){
                 tables[0].style.transform = "perspective(1000px) translate3d(0vw, 0vw, 0vw)";
-                tables[1].style.transform = "perspective(1000px) translate3d(-70vw, -3.5vw, -100px)";
+                tables[1].style.transform = "perspective(1000px) translate3d(-75vw, -3.5vw, -100px)";
                 tables[2].style.transform = "perspective(1000px) translate3d(-140vw, -3.5vw, -100px)";
-                tables[3].style.transform = "perspective(1000px) translate3d(-372vw, -3.5vw, -100px)";
+                tables[3].style.transform = "perspective(1000px) translate3d(-172vw, -3.5vw, -100px)";
             }else{
                 tables[0].style.transform = "perspective(1000px) translate3d(0vw, 0vw, 0vw)";
                 tables[1].style.transform = "perspective(1000px) translate3d(-24vw, 0vw, -75px)";
@@ -76,9 +76,9 @@ function changeDataSlide(leftOrRight){
             tables[2].style.color = "rgba(0, 0, 0, 0.7)";
             tables[3].style.color = "rgba(0, 0, 0, 0.7)";
             if(isDesktop){
-                tables[0].style.transform = "perspective(1000px) translate3d(-40vw, -3.5vw, -100px)";
+                tables[0].style.transform = "perspective(1000px) translate3d(-35vw, -3.5vw, -100px)";
                 tables[1].style.transform = "perspective(1000px) translate3d(-100vw, 0vw, 0vw)";
-                tables[2].style.transform = "perspective(1000px) translate3d(-180vw, -3.5vw, -100px)";
+                tables[2].style.transform = "perspective(1000px) translate3d(-185vw, -3.5vw, -100px)";
                 tables[3].style.transform = "perspective(1000px) translate3d(-250vw, -3.5vw, -100px)";
             }else{
                 tables[0].style.transform = "perspective(1000px) translate3d(-83vw, 0vw, -75px)";
@@ -99,9 +99,9 @@ function changeDataSlide(leftOrRight){
             tables[3].style.color = "rgba(0, 0, 0, 0.7)";
             if(isDesktop){
                 tables[0].style.transform = "perspective(1000px) translate3d(-80vw, -3.5vw, -100px)";
-                tables[1].style.transform = "perspective(1000px) translate3d(-150vw, -3.5vw, -100px)";
+                tables[1].style.transform = "perspective(1000px) translate3d(-145vw, -3.5vw, -100px)";
                 tables[2].style.transform = "perspective(1000px) translate3d(-200vw, 0vw, 0vw)";
-                tables[3].style.transform = "perspective(1000px) translate3d(-290vw, -3.5vw, -100px)";
+                tables[3].style.transform = "perspective(1000px) translate3d(-295vw, -3.5vw, -100px)";
             }else{
                 tables[0].style.transform = "perspective(1000px) translate3d(-200vw, 0vw, -75px)";
                 tables[1].style.transform = "perspective(1000px) translate3d(-191vw, 0vw, -75px)";
@@ -120,9 +120,9 @@ function changeDataSlide(leftOrRight){
             tables[2].style.color = "rgba(0, 0, 0, 0.7)";
             tables[3].style.color = "rgba(0, 0, 0, 1)";
             if(isDesktop){
-                tables[0].style.transform = "perspective(1000px) translate3d(40vw, -3.5vw, -100px)";
+                tables[0].style.transform = "perspective(1000px) translate3d(-150vw, -3.5vw, -100px)";
                 tables[1].style.transform = "perspective(1000px) translate3d(-190vw, -3.5vw, -100px)";
-                tables[2].style.transform = "perspective(1000px) translate3d(-260.2vw, -3.5vw, -100px)";
+                tables[2].style.transform = "perspective(1000px) translate3d(-255.2vw, -3.5vw, -100px)";
                 tables[3].style.transform = "perspective(1000px) translate3d(-300vw, 0vw, 0px)";
             }else{
                 tables[0].style.transform = "perspective(1000px) translate3d(-200vw, 0vw, -75px)";
@@ -180,3 +180,19 @@ new Chart("myChart", {
 
     }
 });
+
+var graphTeamsNum = 1;
+
+function addTeam(){
+    if(graphTeamsNum < 3){
+        graphTeamsNum += 1;
+        document.getElementById("selectors").insertAdjacentHTML('beforeend',"<select class='teamSelect' id='selector" + graphTeamsNum +"'><option>3824</option><option>279</option><option>254</option><option>4020</option></select>");
+    }
+}
+
+function removeTeam(){
+    if(graphTeamsNum > 1){
+        document.getElementById("selector" + graphTeamsNum).remove();
+        graphTeamsNum -= 1;    
+    }
+}
