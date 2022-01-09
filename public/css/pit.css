@@ -175,19 +175,29 @@ main section .container .modal-button{
     cursor:pointer;
 }
 
+main section .button-container {
+    text-align: center;
+    margin-top: 15px;
+}
+
+main section .button-container button {
+    font-size: 24px;
+    font-family: "Montserrat";
+    font-weight: 600;
+    height: 50px;
+    width: 60vw;
+}
+
 main .modal-container {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 99;
-    transform: translate(0, 1000vh);
+    transform: translate(0, calc(100vh));
 }
 
 main .modal-container .modal {
     position: fixed;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
     width: 82vw;
     z-index: 98;
     color: #fff;
@@ -198,38 +208,55 @@ main .modal-container .modal {
     text-align: center;
 }
 
-main .modal-container .modal h1 {
-    font-size: 36px;
-    grid-column: 1 / 3;
+main .modal-container .modal-1 h1 {
+    padding: 10px 0px;
+}
+
+main .modal-container .modal-1 .questions {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    margin-top: 20px;
+    gap: 20px;
+    font-size: 24px;
+}
+
+main .modal-container .modal-1 .team-num {
     grid-row: 1 / 2;
-    margin-top:auto;
-    margin-bottom: auto;
-}
-
-main .modal-container .modal p {
-    font-size:24px;
     grid-column: 1 / 2;
-    grid-row: 2 / 3;
-    display:flex;
-    align-items: center;
 }
 
-main .modal-container .modal input {
+main .modal-container .modal-1 textarea {
+    resize: none;
+    width: 130px;
+    height: 30px;
+}
+
+main .modal-container .modal-1 .team-num-area {
+    grid-row: 1 / 2;
     grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    height: 100px;
-    margin-top:auto;
+    font-size: 24px;
+    margin-top: auto;
     margin-bottom: auto;
+}
+
+main .modal-container .modal-1 .bot-weight-area {
+    font-size: 24px;
+    margin-top: auto;
+    margin-bottom: auto;
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    width: 130px;
 }
 
 
 
 main .modal-container .modal.is-open {
-    transform: translate(0,-1000vh);
+    transform: translate(0, calc(100vh + 60px));
 }
 
 main .modal-container .modal {
-    transition: all .3s;
+    transition: all .45s;
 }
 
 
