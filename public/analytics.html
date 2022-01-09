@@ -61,7 +61,7 @@
         <a href="./pit.html">Pit Scouting</a>
         <a href="./analytics.html">Analytics</a>
     </nav>
-    <section class="loginWarn">
+    <section class="loginWarn" id="loginWarning">
         <div class="container">
             <h1>Analytics data only available for admin to conserve Firebase Database usage</h1>
         </div>
@@ -148,9 +148,14 @@
             </div>
             <hr>
         </section>
-        <section class="teamInsights">
+        <section class="teamInsightsMobile">
             <div class="container">
-                <h1>Specific Team Insights</h1>
+                <h1>Team Quick Look</h1>
+                <select class="teamSelect" id="teamNum">
+                    <option>3824</option>
+                    <option>279</option>
+                    <option>254</option>
+                </select>
                 <div class="quickLook">
                     <p>Climb Percent: 999</p>
                     <p>Avg Score: 999</p>
@@ -161,9 +166,20 @@
             </div>
             <hr>
         </section>
-        <section class="graphs">
-            <div class="container" id="blur">
+        <section class="graphsMobile">
+            <div id="blur" class="container">
                 <div><canvas id="myChart" style="width:100%;max-width:900px"></canvas></div>
+                <h3>add teams to compare</h3>
+                <p onclick="removeTeam()" class="unselectable">-</p>
+                <div id="selectors" class="unselectable">
+                    <select class="teamSelect" id="selector1">
+                        <option>3824</option>
+                        <option>279</option>
+                        <option>254</option>
+                        <option>4020</option>
+                    </select>
+                </div>
+                <p onclick="addTeam()" class="unselectable">+</p>
             </div>
             <hr>
         </section>

@@ -180,6 +180,7 @@ main .infoWheel .container .desktopArrows{
 }
 
 main .infoWheel .container header{
+    display: grid;
     text-align: center;
     position: relative;
     width:100vw;
@@ -193,6 +194,21 @@ main .infoWheel .container p{
     margin:0;
     width: auto;
     cursor: pointer;
+}
+
+main .infoWheel .container p:nth-of-type(1){
+    grid-column: 1/2;
+}
+
+main .infoWheel .container p:nth-of-type(2){
+    grid-column: 2/3;
+    width: 50vw;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+main .infoWheel .container p:nth-of-type(3){
+    grid-column: 3/4;
 }
 
 main .infoWheel .container .dataTable{
@@ -263,27 +279,34 @@ main .infoWheel .container .dataTable .innerData #d3{
 
 /* ==================================================Team Insights Section================================================== */
 
-main .teamInsights .container{
+main .teamInsightsMobile .container{
     text-align: center;
 }
 
-main .teamInsights .container h1{
-    padding: 75px 0px;
+main .teamInsightsMobile .container h1{
+    padding: 25px 0px 0px 0px;
 }
 
-main .teamInsights .container p{
-    
+main .teamInsightsMobile .container p{
+    padding-bottom: 10px;
 }
 
-main .teamInsights .quickLook{
-    margin:0px 90px 50px;
+main .teamInsightsMobile .quickLook{
+    width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
     padding:25px;
     background-color: rgb(221, 221, 221);
     display: grid;
 }
 
+main .teamInsightsMobile .teamSelect{
+    margin: 20px;
+}
+
 /* ==================================================Graphs Section================================================== */
-main .graphs #blur{
+main .graphsMobile #blur.container{
     -webkit-filter: blur(4px);
     -moz-filter: blur(4px);
     -o-filter: blur(4px);
@@ -291,13 +314,45 @@ main .graphs #blur{
     filter: blur(4px);
 }
 
-main .graphs .container{
+main .graphsMobile .container{
     text-align: center;
 }
 
-main .graphs .container canvas{
+main .graphsMobile .container canvas{
     margin-left: auto;
     margin-right:auto;
+}
+
+main .graphsMobile .container p{
+    display: inline-block;
+    cursor: pointer;
+    font-size: 28px;
+    padding:0px 30px;
+}
+
+main .graphsMobile .container p:nth-of-type(1){
+    float: left;
+}
+
+main .graphsMobile .container p:nth-of-type(2){
+    float: right;
+}
+
+
+main .graphsMobile .container h3{
+    padding: 10px;
+}
+
+main .graphsMobile .container #selectors{
+    display: inline-block;
+    width: fit-content;
+}
+
+main .graphsMobile .container select{
+    font-size: 18px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 12px;
 }
 
 /* ==================================================Raw Data Section================================================== */
@@ -383,6 +438,21 @@ main .rawData .container{
         display: none;
     }
 
+    main .infoWheel .container p:nth-of-type(1){
+        grid-column: none;
+    }
+    
+    main .infoWheel .container p:nth-of-type(2){
+        grid-column: none;
+        width: auto;
+        margin-left:auto;
+        margin-right: auto;
+    }
+    
+    main .infoWheel .container p:nth-of-type(3){
+        grid-column: none;
+    }
+
     main .infoWheel .container .desktopArrows{
         display: block;
         position: absolute;
@@ -414,7 +484,7 @@ main .rawData .container{
     main .infoWheel .container .dataTable:nth-of-type(2){
         background-color: rgba(231, 231, 231, 0.5);
         color: rgba(0,0,0,0.7);
-        transform: perspective(1000px) translate3d(-70vw, -3.5vw, -100px);
+        transform: perspective(1000px) translate3d(-75vw, -3.5vw, -100px);
     }
     
     main .infoWheel .container .dataTable:nth-of-type(3){
@@ -426,6 +496,17 @@ main .rawData .container{
     main .infoWheel .container .dataTable:nth-of-type(4){
         background-color: rgba(231, 231, 231, 0.5);
         color: rgba(0,0,0,0.7);
-        transform: perspective(1000px) translate3d(-372vw, -3.5vw, -100px);
+        transform: perspective(1000px) translate3d(-172vw, -3.5vw, -100px);
     }
+
+    /* ==================================================Big data Desktop Section================================================== */
+
+    main .teamInsightsMobile{
+        display: none;
+    }
+
+    main .graphsMobile{
+        display: none;
+    }
+
 }
