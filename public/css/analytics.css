@@ -277,36 +277,38 @@ main .infoWheel .container .dataTable .innerData #d3{
     grid-column: 2 / 3;
 }
 
-/* ==================================================Team Insights Section================================================== */
+/* ==================================================Team Quick Look/Insights Section================================================== */
 
-main .teamInsightsMobile .container{
+main .teamInsights .container{
     text-align: center;
 }
 
-main .teamInsightsMobile .container h1{
+main .teamInsights .container h1{
     padding: 25px 0px 0px 0px;
 }
 
-main .teamInsightsMobile .container p{
+main .teamInsights .container p{
     padding-bottom: 10px;
 }
 
-main .teamInsightsMobile .quickLook{
-    width: 50vw;
+main .teamInsights .quickLook{
+    font-size: 22px;
+    width: 320px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
     padding:25px;
-    background-color: rgb(221, 221, 221);
+    background-color: rgb(103, 151, 255);
     display: grid;
 }
 
-main .teamInsightsMobile .teamSelect{
+main .teamInsights .teamSelect{
     margin: 20px;
 }
 
 /* ==================================================Graphs Section================================================== */
-main .graphsMobile #blur.container{
+
+main .graphs #blur.container{
     -webkit-filter: blur(4px);
     -moz-filter: blur(4px);
     -o-filter: blur(4px);
@@ -314,41 +316,41 @@ main .graphsMobile #blur.container{
     filter: blur(4px);
 }
 
-main .graphsMobile .container{
+main .graphs .container{
     text-align: center;
 }
 
-main .graphsMobile .container canvas{
+main .graphs .container canvas{
     margin-left: auto;
     margin-right:auto;
 }
 
-main .graphsMobile .container p{
+main .graphs .container p{
     display: inline-block;
     cursor: pointer;
     font-size: 28px;
     padding:0px 30px;
 }
 
-main .graphsMobile .container p:nth-of-type(1){
+main .graphs .container p:nth-of-type(1){
     float: left;
 }
 
-main .graphsMobile .container p:nth-of-type(2){
+main .graphs .container p:nth-of-type(2){
     float: right;
 }
 
 
-main .graphsMobile .container h3{
+main .graphs .container h3{
     padding: 10px;
 }
 
-main .graphsMobile .container #selectors{
+main .graphs .container #selectors{
     display: inline-block;
     width: fit-content;
 }
 
-main .graphsMobile .container select{
+main .graphs .container select{
     font-size: 18px;
     margin-left:auto;
     margin-right:auto;
@@ -359,8 +361,45 @@ main .graphsMobile .container select{
 
 main .rawData .container{
     text-align: center;
-    margin:100px;
+    margin:50px 0px 200px;
 }
+
+main .rawData .container h1{
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+
+main .rawData .container .theData{
+    padding:40px 10px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 22px;
+    background-color: rgb(117, 216, 255);
+    width: 360px;
+}
+
+/* ==================================================Heatmap Section================================================== */
+
+main .heatmap .container{
+    text-align: center;
+    padding: 30px 0px;
+}
+
+main .heatmap .container img{
+    width: 80vw;
+}
+
+main .heatmap .container h1{
+    font-size: 32px;
+    padding-bottom: 20px;
+}
+
+/*==== desktop data section ====*/
+
+#desktopHR{
+    display: none;
+}
+
 
 /* ==================================================Tablet Sizes================================================== */
 
@@ -420,6 +459,48 @@ main .rawData .container{
     .dropdown {
         display: none;
     }
+
+    /* ==================================================Big data Desktop Section================================================== */
+
+    main .teamInsights{
+        display: inline-block;
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+
+    main .graphs{
+        display: inline-block;
+        grid-column: 2/3;
+        grid-row: 1/2;
+        width: 600px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    main .heatmap{
+        display: inline-block;
+        grid-column: 2/3;
+        grid-row: 2/3;
+    }
+
+    main .heatmap .container img{
+        width:550px;
+    }
+
+    main .desktopData{
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+    }
+
+    #mobileHR{
+        display: none;
+    }
+
+    #desktopHR{
+        display: block;
+    }
+
 
 }
 
@@ -497,16 +578,6 @@ main .rawData .container{
         background-color: rgba(231, 231, 231, 0.5);
         color: rgba(0,0,0,0.7);
         transform: perspective(1000px) translate3d(-172vw, -3.5vw, -100px);
-    }
-
-    /* ==================================================Big data Desktop Section================================================== */
-
-    main .teamInsightsMobile{
-        display: none;
-    }
-
-    main .graphsMobile{
-        display: none;
     }
 
 }
