@@ -2,10 +2,28 @@
 <html lang="en">
 <head>
     <title>Firescout</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="shortcut icon" type="image/jpg" href="pics/Logo-Small-Square.png"/>
+    
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.4.0/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/9.4.0/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.4.0/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.4.0/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.4.0/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.4.0/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.4.0/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.4.0/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.4.0/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.4.0/firebase-performance-compat.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
+    <script type="module" src="js/firebase.js"></script>
     <script defer src="js/data.js"></script>
     <script src="js/global.js"></script>
     <script defer src="js/schedule.js"></script>
@@ -23,7 +41,7 @@
             <h2 class="logo" onclick="location.replace('./index.html')">Firescout</h2>
 
             <div class="nav-login-bars">
-                <nav>
+                <nav id="navMenu">
                     <a href="./schedule.html">Match Scouting</a>
                     <a href="./pit.html">Pit Scouting</a>
                     <a href="./analytics.html">Analytics</a>
@@ -35,7 +53,7 @@
             </div>
         </div>
     </header>
-    <nav class="nav-mobile">
+    <nav class="nav-mobile" id="navMenuMobile">
         <!-- <a href="" class="login">Login</a> -->
         <a href="./schedule.html">Match Scouting</a>
         <a href="./pit.html">Pit Scouting</a>
