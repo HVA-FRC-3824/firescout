@@ -18,6 +18,7 @@ const firebaseConfig = {
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
 import { getAuth, getRedirectResult, createUserWithEmailAndPassword, setPersistence, signInWithEmailAndPassword, browserSessionPersistence, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
+import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-storage.js";
 const app = initializeApp(firebaseConfig);
 
 
@@ -43,7 +44,6 @@ const app = initializeApp(firebaseConfig);
         let features = ['auth', 'database'].filter(feature => typeof app[feature] === 'function');
     } catch (e) {
         console.error(e);
-        
     }
 //================ Auth =============
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -144,7 +144,8 @@ function doNothing(){
   console.log("already logged in");
 }
 
-// ===========Initialize Firebase
+// =========== Initialize Firebaseui =============== //
+
 import { getDatabase, ref, set, child, update, remove, onValue} from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
 
 const db = getDatabase();
@@ -173,5 +174,75 @@ onValue(scoreCount, (snapshot) => {
   //document.getElementById("test").innerHTML = data[username]["score"];
 });
 
+// ============================Initialize Firebase Storage=========================== //
+
+const storageRef = ref(getStorage());
+const fileInput = document.getElementById('input');
+
+var files = [];
+var reader = new FileReader();
+
+var namebox = document.getElementById('namebox');
+var extlab = document.getElementById('extlab');
+var myimg = document.getElementById('myimg');
+var proglab = document.getElementById('upprogress');
+var SelBtn = document.getElementById('selBtn');
+
+var input = document.createElement('input');
+input.type = 'file';
+
+input.onchange = e => {
+  files = e.target.files;
+  var extension = GetExtName(files[0]);
+  var name = GetFileName(files[0]);
+  reader.readAsDataURL(files[0]);
+}
+
+reader.onload = function() {
+  myimg.src = reader.result;
+}
+
+SelBtn.addEventListener('click', function () {
+  input.click();
+});
+
+function GetExtName(file) {
+  var temp = file.name.split('.');
+  var ext = temp.slice((temp.length - 1), (temp.length));
+  return '0' + ext[0];
+}
+
+function GetFileName(file) {
+  var temp = file.name.split('.');
+  var fname = temp.slice(0, -1).join('.');
+  return fname;
+}
+
+async function UploadProcess() {
+  var ImgToUpload = files[0];
+
+  var ImgName = namebox.value + extlab.innerHTML;
+
+  const metaData = {
+    contentType: ImgToUpload.type
+  }
+
+  const storageRef = sRef(storage, "robot-images/" + ImgName);
+
+  const UploadTask = uploadBytesResumable(storageRef, ImgToUpload, metaData);
+
+  UploadTask.on('state-changed'), (snapshot) => {
+      var progess = (snapshot.byteTransferred / snapshot.totalBytes) * 100;
+      console.log(downloadURL);
+  }, (error) => {
+      alert("error: image not uploaded!");
+  }, () => {
+    getDownloadURL(UploadTask.snapshot.ref).then((downloadURL) => {
+      console.log(downloadURL);
+    });
+  }
+};
 
 
+
+UpBtn.onclick = UploadProcess();
