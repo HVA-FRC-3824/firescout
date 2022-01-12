@@ -8,6 +8,10 @@ body {
     font-family: "Montserrat";
 }
 
+#adminBody{
+    display: none;
+}
+
 .navbar{
     position: fixed;
     top: 0;

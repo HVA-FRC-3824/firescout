@@ -127,16 +127,37 @@ setTimeout(function(){
     if(currUser.uid == 'qnlTm8LSbocnF57XDjqB6qxy7hJ2' || currUser.uid == 'ch2dqF6ZG6V6YgZoR21hzejsUC22'){
       try{
         document.getElementById('lilGuy').style.color = "red";
+      }catch(e){
+        console.log(e);
+      }
+      try{
         document.getElementById('blur').id = '';
         document.getElementById('loginWarning').style.display = "none";
       }catch(e){
         console.log(e);
       }
-      
+      try{
+        document.getElementById('navMenu').insertAdjacentHTML('beforeend', "<a href='./admin.html'>Admin Panel</a>");
+        document.getElementById('navMenuMobile').insertAdjacentHTML('beforeend', "<a href='./admin.html'>Admin Panel</a>");
+      }catch(e){
+        console.log(e);
+      }
+      try{
+        document.getElementById('adminBody').style.display = "block";
+      }catch(e){
 
+      }
+
+    }else{
+      if(document.getElementById('adminBody') != null){
+        location.replace('./index.html');
+      }
     }
   }catch(e){
     console.log(e);
+    if(document.getElementById('adminBody') != null){
+      location.replace('./index.html');
+    }
   }
 }, 2300)
 

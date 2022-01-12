@@ -44,7 +44,7 @@
         <div class="container">
             <h2 class="logo" onclick="location.replace('./index.html')">Firescout</h2>
             <div class="nav-login-bars">
-                <nav>
+                <nav id="navMenu">
                     <a href="./schedule.html">Match Scouting</a>
                     <a href="./pit.html">Pit Scouting</a>
                     <a href="./analytics.html">Analytics</a>
@@ -56,7 +56,7 @@
             </div>
         </div>
     </header>
-    <nav class="nav-mobile">
+    <nav class="nav-mobile" id="navMenuMobile">
         <a href="./schedule.html">Match Scouting</a>
         <a href="./pit.html">Pit Scouting</a>
         <a href="./analytics.html">Analytics</a>
@@ -81,111 +81,139 @@
                     <div class="innerData">
                         <h1>Climb Percent</h1>
                         <p id="t1">Team 1824</p>
-                        <p id="d1">100%</p>
+                        <p id="d1" class="dataCell">101%</p>
                         <p id="t2">Team 4020</p>
-                        <p id="d2">95%</p>
+                        <p id="d2" class="dataCell">95%</p>
                         <p id="t3">Team 254</p>
-                        <p id="d3">110%</p>
+                        <p id="d3" class="dataCell" class="dataCell">110%</p>
                         <p id="t4">Team 342</p>
-                        <p id="d4">87%</p>
+                        <p id="d4" class="dataCell">87%</p>
                         <p id="t5">Team 4582</p>
-                        <p id="d5">70%</p>
+                        <p id="d5" class="dataCell">70%</p>
                         <p id="t6">Team 1466</p>
-                        <p id="d6">89%</p>
+                        <p id="d6" class="dataCell">89%</p>
                     </div>
                 </div>
                 <div id="table2" class="dataTable">
                     <div class="innerData">
                         <h1>Auto Accuracy</h1>
                         <p id="t1">Team 2824</p>
-                        <p id="d1">100%</p>
+                        <p id="d1" class="dataCell">100%</p>
                         <p id="t2">Team 4020</p>
-                        <p id="d2">95%</p>
+                        <p id="d2" class="dataCell">95%</p>
                         <p id="t3">Team 254</p>
-                        <p id="d3">110%</p>
+                        <p id="d3" class="dataCell">110%</p>
                         <p id="t4">Team 342</p>
-                        <p id="d4">87%</p>
+                        <p id="d4" class="dataCell">87%</p>
                         <p id="t5">Team 4582</p>
-                        <p id="d5">70%</p>
+                        <p id="d5" class="dataCell">70%</p>
                         <p id="t6">Team 1466</p>
-                        <p id="d6">89%</p>
+                        <p id="d6" class="dataCell">89%</p>
                     </div>
                 </div>
                 <div id="table3" class="dataTable">
                     <div class="innerData">
                         <h1>Tele Accuracy</h1>
                         <p id="t1">Team 3824</p>
-                        <p id="d1">100%</p>
+                        <p id="d1" class="dataCell">100%</p>
                         <p id="t2">Team 4020</p>
-                        <p id="d2">95%</p>
+                        <p id="d2" class="dataCell">95%</p>
                         <p id="t3">Team 254</p>
-                        <p id="d3">110%</p>
+                        <p id="d3" class="dataCell">110%</p>
                         <p id="t4">Team 342</p>
-                        <p id="d4">87%</p>
+                        <p id="d4" class="dataCell">87%</p>
                         <p id="t5">Team 4582</p>
-                        <p id="d5">70%</p>
+                        <p id="d5" class="dataCell">70%</p>
                         <p id="t6">Team 1466</p>
-                        <p id="d6">89%</p>
+                        <p id="d6" class="dataCell">89%</p>
                     </div>
                 </div>
                 <div id="table4" class="dataTable">
                     <div class="innerData">
                         <h1>Avg Score</h1>
                         <p id="t1">Team 4824</p>
-                        <p id="d1">100%</p>
+                        <p id="d1" class="dataCell">100%</p>
                         <p id="t2">Team 4020</p>
-                        <p id="d2">95%</p>
+                        <p id="d2" class="dataCell">95%</p>
                         <p id="t3">Team 254</p>
-                        <p id="d3">110%</p>
+                        <p id="d3" class="dataCell">110%</p>
                         <p id="t4">Team 342</p>
-                        <p id="d4">87%</p>
+                        <p id="d4" class="dataCell">87%</p>
                         <p id="t5">Team 4582</p>
-                        <p id="d5">70%</p>
+                        <p id="d5" class="dataCell">70%</p>
                         <p id="t6">Team 1466</p>
-                        <p id="d6">89%</p>
+                        <p id="d6" class="dataCell">89%</p>
                     </div>
                 </div>
             </div>
             <hr>
         </section>
-        <section class="teamInsightsMobile">
-            <div class="container">
-                <h1>Team Quick Look</h1>
-                <select class="teamSelect" id="teamNum">
-                    <option>3824</option>
-                    <option>279</option>
-                    <option>254</option>
-                </select>
-                <div class="quickLook">
-                    <p>Climb Percent: 999</p>
-                    <p>Avg Score: 999</p>
-                    <p>Avg Auto: 999</p>
-                    <p>Type of bot: defense</p>
-                    <p>(some more pit scout data?)</p>
-                </div>
-            </div>
-            <hr>
-        </section>
-        <section class="graphsMobile">
-            <div id="blur" class="container">
-                <div><canvas id="myChart" style="width:100%;max-width:900px"></canvas></div>
-                <h3>add teams to compare</h3>
-                <p onclick="removeTeam()" class="unselectable">-</p>
-                <div id="selectors" class="unselectable">
-                    <select class="teamSelect" id="selector1">
+        <section class="desktopData">
+            <section class="teamInsights">
+                <div class="container">
+                    <h1>Team Quick Look</h1>
+                    <select class="teamSelect" id="teamNum">
                         <option>3824</option>
                         <option>279</option>
                         <option>254</option>
-                        <option>4020</option>
                     </select>
+                    <div class="quickLook">
+                        <p>Climb Percent: 999</p>
+                        <p>Avg Score: 999</p>
+                        <p>Current Rank: 1</p>
+                    </div>
                 </div>
-                <p onclick="addTeam()" class="unselectable">+</p>
-            </div>
-            <hr>
+                <hr id="mobileHR">
+            </section>
+            <section class="graphs">
+                <div id="blur" class="container">
+                    <div><canvas id="myChart" style="width:100%;max-width:900px"></canvas></div>
+                    <h3>add teams to compare</h3>
+                    <p onclick="removeTeam()" class="unselectable">-</p>
+                    <div id="selectors" class="unselectable">
+                        <select class="teamSelect" id="selector1">
+                            <option>3824</option>
+                            <option>279</option>
+                            <option>254</option>
+                            <option>4020</option>
+                        </select>
+                    </div>
+                    <p onclick="addTeam()" class="unselectable">+</p>
+                </div>
+                <hr id="mobileHR">
+            </section>
+            <section class="heatmap">
+                <div class="container">
+                    <h1>Heatmap</h1>
+                    <img src="./pics/red-image.png" alt="fieldIMG">
+                </div>
+                <hr id="mobileHR">
+            </section>
+            <section class="pitData">
+                <div class="container">
+                    <h1>Pit Scout Data</h1>
+                    <div class="pitScoutData">
+                        <p>Defense Bot</p>
+                        <p>Robot size</p>
+                        <p>Can climb</p>
+                        <p>New drive team</p>
+                        <p></p>
+                    </div>
+                </div>
+                <hr id="mobileHR">
+            </section>
         </section>
+        <hr id="desktopHR">
         <section class="rawData">
             <div class="container">
                 <h1>Raw data</h1>
+                <div class="theData">
+                    <p>Total Climbs: 4</p>
+                    <p>Total Score: 300</p>
+                    <p>Highest Scoring Match: 80</p>
+                    <p>Yellow Cards: 3</p>
+                    <p>other stuff: 279</p>
+                </div>
             </div>
             <hr>
         </section>
