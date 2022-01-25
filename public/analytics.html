@@ -153,9 +153,7 @@
                 <div class="container">
                     <h1>Team Quick Look</h1>
                     <select class="teamSelect" id="teamNum">
-                        <option>3824</option>
-                        <option>279</option>
-                        <option>254</option>
+                        
                     </select>
                     <div class="quickLook">
                         <p>Climb Percent: 999</p>
@@ -213,6 +211,22 @@
                     <p>Highest Scoring Match: 80</p>
                     <p>Yellow Cards: 3</p>
                     <p>other stuff: 279</p>
+                </div>
+            </div>
+            <hr>
+        </section>
+        <section class="TBAData">
+            <div class="container">
+                <h1>TBA Data</h1>
+                <select onchange="findTeamsMatches(document.getElementById('tbaTeamNum').value)" class="teamSelect" id="tbaTeamNum">
+                    <option>Select a Team</option>
+                </select>
+                <div class="teamsSchedule">
+                    <table id="outterTableSchedule">
+                        <tbody id="teamSchedule">
+                        
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <hr>

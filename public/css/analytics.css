@@ -419,6 +419,40 @@ main .rawData .container .theData{
     width: 360px;
 }
 
+/* ==================================================TBA Data Section================================================== */
+
+main .TBAData .container{
+    text-align: center;
+    margin:50px 0px 200px;
+}
+
+main .TBAData .container h1{
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+
+main .TBAData .container .teamsSchedule{
+    padding:40px 10px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2.2vw;
+    background-color: rgb(117, 216, 255);
+    width: 50vw;
+}
+
+main .TBAData .container table{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main .TBAData .container .teamsSchedule #red{
+    color: red;
+}
+
+main .TBAData .container .teamsSchedule #blue{
+    color: blue;
+}
+
 /* ==================================================Desktop Size================================================== */
 
 @media all and (min-width: 850px) {

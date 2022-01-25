@@ -196,3 +196,25 @@ function removeTeam(){
         graphTeamsNum -= 1;    
     }
 }
+
+//==========================================Moving TBA data to the Screen===========================================//
+function populateTeams(){
+    console.log(sortedJames);
+    for(i=0; i < sortedJames.length; i++){
+        //console.log(sortedJames[i]);
+        document.getElementById("teamNum").insertAdjacentHTML('beforeend',"<option>" + sortedJames[i] + "</option>");
+        document.getElementById("tbaTeamNum").insertAdjacentHTML('beforeend',"<option>" + sortedJames[i] + "</option>");
+    }
+}
+
+populateTeams();
+
+function makeTeamSchedule(){
+    document.getElementById("teamSchedule").remove();
+    console.log("removed");
+    document.getElementById("outterTableSchedule").insertAdjacentHTML('beforeend',"<tbody id='teamSchedule'></tbody>");
+    teamTBAData.forEach(match => {
+        //Creates the table of the matches the team is in
+        document.getElementById("teamSchedule").insertAdjacentHTML('beforeend',"<tr><td>" + match.match_number + ":</td><td id='red'>" + match.alliances.red.team_keys[0].slice(3) + "</td>" + " <td id='red'>" + match.alliances.red.team_keys[1].slice(3) + " </td><td id='red'>" + match.alliances.red.team_keys[2].slice(3) + " </td><td>vs.</td><td id='blue'>" + match.alliances.blue.team_keys[0].slice(3) + "</td>" + " <td id='blue'>" + match.alliances.blue.team_keys[1].slice(3) + " </td><td id='blue'>" + match.alliances.blue.team_keys[2].slice(3) + " </td></tr>");
+    });
+}

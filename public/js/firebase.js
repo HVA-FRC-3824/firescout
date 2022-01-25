@@ -5,6 +5,7 @@
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+//========================================= Initial Stetup Start =========================================
 const firebaseConfig = {
     apiKey: "AIzaSyAkfcVtNcyDlW0yiTH2i5rYdmBJ_z1O57M",
     authDomain: "firescout3824.firebaseapp.com",
@@ -45,7 +46,10 @@ const app = initializeApp(firebaseConfig);
     } catch (e) {
         console.error(e);
     }
-//================ Auth =============
+//========================================= Initial Setup End =========================================
+
+
+//========================================= Auth Start =========================================
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 ui.start('#firebaseui-auth-container', {
@@ -124,7 +128,7 @@ setTimeout(function(){
     var currUser = firebase.auth().currentUser;
     console.log(currUser.displayName);
     document.getElementById("loginButton").innerHTML = "<i id='lilGuy' class='fas fa-user'></i> " + firebase.auth().currentUser.displayName;
-    if(currUser.uid == 'qnlTm8LSbocnF57XDjqB6qxy7hJ2' || currUser.uid == 'ch2dqF6ZG6V6YgZoR21hzejsUC22'){
+    if(currUser.uid == 'qnlTm8LSbocnF57XDjqB6qxy7hJ2' || currUser.uid == 'ch2dqF6ZG6V6YgZoR21hzejsUC22' || currUser.uid == '7pIHSSKUgyRqXVz6MCbUMathVps1'){
       try{
         document.getElementById('lilGuy').style.color = "red";
       }catch(e){
@@ -164,6 +168,7 @@ setTimeout(function(){
 function doNothing(){
   console.log("already logged in");
 }
+//========================================= Auth End =========================================
 
 // =========== Initialize Firebaseui =============== //
 
@@ -196,7 +201,7 @@ onValue(scoreCount, (snapshot) => {
 });
 
 // ============================Initialize Firebase Storage=========================== //
-
+/*
 const storageRef = ref(getStorage());
 const fileInput = document.getElementById('input');
 
@@ -267,3 +272,5 @@ async function UploadProcess() {
 
 
 UpBtn.onclick = UploadProcess();
+
+*/
