@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/HVA-FRC-3824/firescout#readme",
   "dependencies": {
-    "firebase": "^9.1.1"
-  },
-  "devDependencies": {}
+    "firebase": "^8.10.0"
+  }
 }

@@ -63,11 +63,8 @@
         <section>
             <div class="container">
                 <div class="match-select">
-                    <select name="match num" class="match-selector" id="match">
-                        <option value="1">Match 1</option>
-                        <option value="2">Match 2</option>
-                        <option value="3">Match 3</option>
-                        <option value="4">Match 4</option>
+                    <select onChange="displayMatchTeams((document.getElementById('match').value).slice(6))" name="match num" class="match-selector" id="match">
+                        <option>Select Match</option>
                     </select>
                     <p id="redTeam1">red team 1</p>
                     <p id="redTeam2">red team 2</p>
