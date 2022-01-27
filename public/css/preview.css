@@ -1,0 +1,316 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Montserrat";
+}
+
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #000;
+    width: 100%;
+    z-index: 100;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background-color: rgba(168, 168, 168, 0.267);
+    transition: all 0.4s ease 0s;
+}
+
+.navbar.is-active {
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    background-color: rgba(168, 168, 168, 0);
+}
+
+header .container {
+    padding: 32px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-box-align: center;
+}
+
+header .container h2 {
+    color: inherit;
+    font-size: 32px;
+    font-weight: 400;
+    cursor:pointer;
+}
+
+header .container nav {
+    display: none;
+}
+
+/* ==================================================Nav Mobile Section================================================== */
+
+.dropdown {
+    position: relative;
+    display: block;
+    width: 35px;
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.dropdown .bars, .dropdown::before, .dropdown::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: rgb(0, 0, 0);
+    margin: 6px 0px;
+    transition: all 0.4s ease 0s;
+}
+
+.dropdown.is-active::before {
+    transform: rotate(-45deg) translate(-8px, 6px);
+}
+
+.dropdown.is-active::after {
+    transform: rotate(45deg) translate(-9px, -8px);
+}
+
+.dropdown.is-active .bars {
+    opacity: 0;
+}
+
+.nav-mobile {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    min-height: 100vh;
+    display: block;
+    z-index: 99;
+    background-color: rgba(168, 168, 168, 0.267);
+    padding: 100px 0px 0px 0px;
+    transition: all 0.4s ease 0s;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.nav-mobile a {
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 0px auto 16px;
+    text-align: center;
+    padding: 20px 25px;
+    border-radius: 6px;
+    background-color: rgba(28, 157, 218, 1);
+    text-decoration: none;
+    color: #000;
+}
+
+.nav-mobile .login {
+    background-color: rgba(111, 111, 111, 0);
+}
+
+.nav-mobile.is-active {
+    left: 0;
+}
+
+.nav-login-bars .login {
+    float: left;
+    padding: 8px 20px 0px 0px;
+    color: inherit;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.nav-mobile .login-mobile {
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0px auto 16px;
+    text-align: center;
+    padding: 20px 25px;
+    border-radius: 6px;
+    background-color: rgba(111, 111, 111, 0);
+    text-decoration: none;
+    color: #000;
+}
+
+.container {
+    width: 100%;
+}
+
+/*================================================== Teams Section ================================================== */
+
+main .teams{
+    margin-top: 150px;
+    text-align: center;
+}
+
+
+main  .teams .match-selector{
+    grid-column: 1/4;
+    grid-row: 1/2;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 50px;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    font-family: 'Montserrat';
+    margin: 0px 20px;
+    background-color: grey;
+}
+
+
+main td{
+    text-align: center;
+    padding:10px;
+}
+
+main th{
+    padding:10px;
+}
+
+main .blueTeam{
+    margin-top:10px;
+    margin-right:auto;
+    margin-left:auto;
+    width:200px;
+    background-color: #0166b37c;
+}
+
+main .teams table{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+main .teams .vs{
+    padding:20px;
+}
+
+main .redTeam{
+    margin-right:auto;
+    margin-left:auto;
+    width:200px;
+    background-color: #ed1c2385;
+}
+
+
+main .teams p{
+    margin:50px;
+    color: #000;
+}
+
+
+
+/* ==================================================Footer Section================================================== */
+
+main .footer .container {
+    color:white;
+    background-color: rgb(51, 51, 51);
+    text-align: center;
+    padding:20px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
+
+
+
+
+
+/* ==================================================Tablet Sizes================================================== */
+
+@media all and (min-width: 500px) {
+    .nav-mobile .login-mobile {color: inherit;
+        font-size: 32px;
+        font-weight: 400;
+        display: none;
+    }
+
+    .nav-login-bars .login {
+        display: block;
+    }
+}
+
+/* ==================================================Desktop Size================================================== */
+
+@media all and (min-width: 850px) {
+    /* ==================================================Nav Desktop Section================================================== */
+    
+    .hero {
+        background-position: bottom;
+    }
+    
+    
+    main .about .container h1 {
+        grid-column: 1 / 3;
+        padding-bottom: 30px;
+    }
+
+
+    main .about .container p {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        display: flex;
+        padding: 8% 8%;
+        align-items: center;
+    }
+
+    main .about .container img {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        width: 30vw;
+    }
+
+
+    main .hero .container {
+        padding: 0px 80px;
+    }
+
+    main .hero .container h1 {
+        font-size: 50px;
+    }
+
+    main .hero .container h3 {
+        font-size: 30px;
+    }
+
+    header .container .nav-login-bars nav {
+        display: block;
+        float: left;
+        padding: 8px 5px 0px 0px;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .nav-login-bars nav a {
+        text-decoration: none;
+        color: #000;
+        padding: 0px 10px 0px 0px;
+    }
+
+    .nav-login-bars .login {
+        display: block;
+        float: right;
+        padding: 8px 0px 0px 0px;
+        color: inherit;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .dropdown {
+        display: none;
+    }
+
+}

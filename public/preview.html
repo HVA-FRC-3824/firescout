@@ -9,32 +9,110 @@
     <link rel="shortcut icon" type="image/jpg" href="pics/Logo-Small-Square.png"/>
     
     <!-- update the version number as needed -->
-    <script defer src="/__/firebase/9.4.0/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-app-compat.js"></script>
     <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/9.4.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/9.4.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/9.4.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/9.4.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/9.4.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/9.4.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/9.4.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/9.4.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/9.4.0/firebase-performance-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-performance-compat.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
     <script type="module" src="js/firebase.js"></script>
     <script defer src="js/data.js"></script>
     <script src="js/global.js"></script>
+    <script type="module" defer src="js/preview.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/preview.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/dbb5df409e.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <header id="navbar" class="navbar">
+        <div class="container">
+            <h2 class="logo" onclick="location.replace('./index.html')">Firescout</h2>
 
+            <div class="nav-login-bars">
+                <nav id="navMenu">
+                    <a href="./schedule.html">Match Scouting</a>
+                    <a href="./pit.html">Pit Scouting</a>
+                    <a href="./analytics.html">Analytics</a>
+                    <a href="./preview.html">Preview</a>
+                </nav>
+                <a href="./login.html" class="login" id="loginButton"><i id="lilGuy" class="fas fa-user"></i> Login</a>
+                <button class="dropdown">
+                    <div class="bars"></div>
+                </button>
+            </div>
+        </div>
+    </header>
+    <nav class="nav-mobile" id="navMenuMobile">
+        <a href="./schedule.html">Match Scouting</a>
+        <a href="./pit.html">Pit Scouting</a>
+        <a href="./analytics.html">Analytics</a>
+        <a href="./preview.html">Preview</a>
+    </nav>
+    <main>
+        <section class="teams">
+                <select onChange="displayMatchTeams((document.getElementById('match').value).slice(6))" name="match num" class="match-selector" id="match">
+                    <option>Select Match</option>
+                </select>
+            <div class="blueTeam">
+                <table>
+                    </tr>
+                        <th>Team#</th>
+                        <th>Rank</th>
+                    </tr>
+                    <tr>
+                        <td>254</td>
+                        <td id="b1">2</td>
+                    </tr>
+                    <tr>
+                        <td>108</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>4020</td>
+                        <td>6</td>
+                    </tr>
+                </table>
+            </div>
+            <h1 class="vs">VS.</h1>
+            <div class="redTeam">
+                <table>
+                    </tr>
+                        <th>Team#</th>
+                        <th>Rank</th>
+                    </tr>
+                    <tr>
+                        <td>254</td>
+                        <td id="b1">2</td>
+                    </tr>
+                    <tr>
+                        <td>108</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>4020</td>
+                        <td>6</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <button >test </button>
+        <section class="footer">
+            <div class="container">
+                <p id="load"><i>Created by: Weston Agreda, Grant Johnson, Graham Boswell, Leon Truong, Evan Boswell, Nick Broyles, Luke Daniel</i></p>
+            </div>
+        </section>
+    </main>
 </body>
 </html>

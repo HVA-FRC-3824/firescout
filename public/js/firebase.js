@@ -17,11 +17,11 @@ const firebaseConfig = {
     measurementId: "G-7SBQ64VMNP"
 };
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
-import { getAuth, getRedirectResult, createUserWithEmailAndPassword, setPersistence, signInWithEmailAndPassword, browserSessionPersistence, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
-import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-storage.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js";
+import { getAuth, getRedirectResult, createUserWithEmailAndPassword, setPersistence, signInWithEmailAndPassword, browserSessionPersistence, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js";
+import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-storage.js";
 const app = initializeApp(firebaseConfig);
-
+//console.log(app);
 
     // Set the configuration for your app
     // TODO: Replace with your project's config object
@@ -42,7 +42,7 @@ const app = initializeApp(firebaseConfig);
 
     try {
         let app = firebase.app();
-        let features = ['auth', 'database'].filter(feature => typeof app[feature] === 'function');
+        let features = ['auth', 'database', 'storage'].filter(feature => typeof app[feature] === 'function');
     } catch (e) {
         console.error(e);
     }
@@ -95,8 +95,8 @@ var uiConfig = {
 
 ui.start('#firebaseui-auth-container', uiConfig);
 
-
-setPersistence(auth, browserSessionPersistence).then(() => {
+var a = getAuth();
+setPersistence(a, browserSessionPersistence).then(() => {
   // Existing and future Auth states are now persisted in the current
   // session only. Closing the window would clear any existing state even
   // if a user forgets to sign out.
@@ -172,7 +172,7 @@ function doNothing(){
 
 // =========== Initialize Firebaseui =============== //
 
-import { getDatabase, ref, set, child, update, remove, onValue} from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
+import { getDatabase, ref, set, get, child, update, remove, onValue} from "https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js";
 
 const db = getDatabase();
 
@@ -187,17 +187,31 @@ function firebaseConnected(){
 }
 firebaseConnected();
 
-export function writeData(name, score) {
-    set(ref(db, 'test/' + name), {
-        score: score
+//Writes data to a path
+export function writeData(path, data) {
+    set(ref(db, path), {
+        data: data
     });
-    username = document.getElementById("name").value;
 }
-let username = "name";
-const scoreCount = ref(db, 'test/', username, 'score');
+
+//Reads data from a path
+export function readData(path){
+  get(ref(db, path)).then((snapshot) => {
+    if (snapshot.exists()) {
+      console.log(snapshot.val());
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });
+}
+
+//Constantly reads data as it updates
+const scoreCount = ref(db, 'test/', 'name', 'data');
 onValue(scoreCount, (snapshot) => {
   const data = snapshot.val();
-  //document.getElementById("test").innerHTML = data[username]["score"];
+  document.getElementById("test").innerHTML = data["name"]["data"];
 });
 
 // ============================Initialize Firebase Storage=========================== //

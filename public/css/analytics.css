@@ -188,7 +188,7 @@ main .infoWheel .container header{
 }
 
 main .infoWheel .container p{
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     display: inline-block;
     margin:0;
@@ -431,13 +431,17 @@ main .TBAData .container h1{
     margin-bottom: 16px;
 }
 
+main .TBAData .container .teamSelect{
+    font-size: 18px;
+}
+
 main .TBAData .container .teamsSchedule{
-    padding:40px 10px;
+    padding:40px 50px;
     margin-left: auto;
     margin-right: auto;
-    font-size: 2.2vw;
+    font-size: 14px;
     background-color: rgb(117, 216, 255);
-    width: 50vw;
+    width: fit-content;
 }
 
 main .TBAData .container table{
@@ -453,9 +457,9 @@ main .TBAData .container .teamsSchedule #blue{
     color: blue;
 }
 
-/* ==================================================Desktop Size================================================== */
+/* ==================================================Tablet Size================================================== */
 
-@media all and (min-width: 850px) {
+@media all and (min-width: 800px) {
     /* ==================================================Nav Desktop Section================================================== */
     
     main .hero .container {
@@ -498,6 +502,12 @@ main .TBAData .container .teamsSchedule #blue{
         display: none;
     }
 
+    /* ==================================================Data Wheel Tablet Section================================================== */
+    main .infoWheel .container .dataTable .innerData p{
+        font-size: 32px;
+    }
+
+
     /* ==================================================Big data Desktop Section================================================== */
 
     main .teamInsights{
@@ -539,11 +549,26 @@ main .TBAData .container .teamsSchedule #blue{
         display: block;
     }
 
+    /* ==================================================Tablet TBA Data Section================================================== */
+
+    main .TBAData .container .teamsSchedule{
+        font-size: 24px;
+    }
+
+    main .TBAData .container .teamSelect{
+        font-size: 22px;
+    }
 
 }
 
+/* ==================================================Desktop Size================================================== */
+
 @media all and (min-width: 1250px) {
     /* ==================================================Data Wheel Desktop Section================================================== */
+
+    main .infoWheel .container .dataTable .innerData p{
+        font-size: 24px;
+    }
 
     main .infoWheel .container .dataTable .innerData{
         grid-template-columns: 50% 50%;
@@ -605,6 +630,16 @@ main .TBAData .container .teamsSchedule #blue{
         background-color: rgba(231, 231, 231, 0.5);
         color: rgba(0,0,0,0.7);
         transform: perspective(1000px) translate3d(-172vw, -3.5vw, -100px);
+    }
+
+    /* ==================================================Desktop TBA Data Section================================================== */
+
+    main .TBAData .container .teamsSchedule{
+        font-size: 32px;
+    }
+
+    main .TBAData .container .teamSelect{
+        font-size: 28px;
     }
 
 }
