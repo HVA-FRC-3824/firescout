@@ -170,27 +170,26 @@ main  .teams .match-selector{
 }
 
 
-main td{
+main .teams td{
     text-align: center;
     padding:20px;
     font-size: larger;
 }
 
-main th{
+main .teams th{
     padding-top:20px;
     padding-bottom:5px;
     padding-left:20px;
     padding-right:20px;
     font-size:x-large;
-    text-underline-position: above;
 }
 
 main .blueTeam{
     margin-top:10px;
-    margin-right:auto;
-    margin-left:auto;
     width:300px;
     background-color: #0166b37c;
+    margin-right:auto;
+    margin-left:auto;
 }
 
 main .teams table{
@@ -203,11 +202,11 @@ main .teams .vs{
 }
 
 main .redTeam{
-    margin-right:auto;
-    margin-left:auto;
     width:300px;
     background-color: #ed1c2385;
     margin-bottom:50px;
+    margin-right:auto;
+    margin-left:auto;
 }
 
 
@@ -216,6 +215,55 @@ main .teams p{
     color: #000;
 }
 
+
+/* ==================================================QuickAna Section================================================== */
+main  .quickAna button{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    font-family: 'Montserrat';
+    background-color: grey;
+}
+
+main .quickAna{
+    margin-top: 150px;
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+        
+}
+
+main .quickAna .listView{
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: rgba(124, 124, 124, 0.514);
+    margin-bottom:100px;
+    width:300px;
+}
+
+main .quickAna table{
+        margin-left:auto;
+        margin-right:auto;
+        width:300px;
+}
+
+main .listView td{
+    text-align: center;
+    padding:20px;
+    font-size: larger;
+}
+
+main .listView th{
+    padding-top:20px;
+    padding-bottom:5px;
+    padding-left:20px;
+    padding-right:20px;
+    font-size:x-large;
+}
 
 
 /* ==================================================Footer Section================================================== */
