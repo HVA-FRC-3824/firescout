@@ -172,18 +172,24 @@ main  .teams .match-selector{
 
 main td{
     text-align: center;
-    padding:10px;
+    padding:20px;
+    font-size: larger;
 }
 
 main th{
-    padding:10px;
+    padding-top:20px;
+    padding-bottom:5px;
+    padding-left:20px;
+    padding-right:20px;
+    font-size:x-large;
+    text-underline-position: above;
 }
 
 main .blueTeam{
     margin-top:10px;
     margin-right:auto;
     margin-left:auto;
-    width:200px;
+    width:300px;
     background-color: #0166b37c;
 }
 
@@ -193,14 +199,15 @@ main .teams table{
 }
 
 main .teams .vs{
-    padding:20px;
+    padding:25px;
 }
 
 main .redTeam{
     margin-right:auto;
     margin-left:auto;
-    width:200px;
+    width:300px;
     background-color: #ed1c2385;
+    margin-bottom:50px;
 }
 
 
