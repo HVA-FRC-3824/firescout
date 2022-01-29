@@ -26,7 +26,8 @@
     <script type="module" src="js/firebase.js"></script>
     <script defer src="js/data.js"></script>
     <script src="js/global.js"></script>
-    <script type="module" defer src="js/preview.js"></script>
+    <script defer src="js/previewMain.js"></script>
+    <script type="module" defer src="js/previewFB.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/preview.css">
 
@@ -36,6 +37,7 @@
     <script src="https://kit.fontawesome.com/dbb5df409e.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
     <header id="navbar" class="navbar">
         <div class="container">
             <h2 class="logo" onclick="location.replace('./index.html')">Firescout</h2>
@@ -76,16 +78,16 @@
                         <th><u>Rank</u></th>
                     </tr>
                     <tr>
-                        <td> 254</td> </td>
-                        <td>1</td>
+                        <td id="blueTeam1">254</td> </td>
+                        <td id="blueData1">1</td>
                     </tr>
                     <tr>
-                        <td>108</td>
-                        <td>5</td>
+                        <td id="blueTeam2">108</td>
+                        <td id="blueData2">5</td>
                     </tr>
                     <tr>
-                        <td>4020</td>
-                        <td>6</td>
+                        <td id="blueTeam3">4020</td>
+                        <td id="blueData3">6</td>
                     </tr>
                 </table>
             </div>
@@ -97,34 +99,30 @@
                     <th><u>Rank</u></th>
                     </tr>
                     <tr>
-                        <td>254</td>
-                        <td id="b1">2</td>
+                        <td id="redTeam1">254</td>
+                        <td id="redData1">2</td>
                     </tr>
                     <tr>
-                        <td>108</td>
-                        <td>5</td>
+                        <td id="redTeam2">108</td>
+                        <td id="redData2">5</td>
                     </tr>
                     <tr>
-                        <td>4020</td>
-                        <td>6</td>
+                        <td id="redTeam3">4020</td>
+                        <td id="redData3">6</td>
                     </tr>
                 </table>
  
         </section>
 
-        <section class="quickAna">
-            <table>
-               <th>
-                <button>Previous Team </button>
-                <button>Blue Aliance</button>
-                <button>Next Team</button> 
-            </th> 
-            </table>
+        <section class="quickAnalyticsMobile">
+            <div>
+                <button>Blue</button>
+            </div> 
 
             <div class="listView">
                 <table>
                     <tr>
-                        <th><u>Team x</u></th>
+                        <th><button onclick="">< </button><u>Team x</u><button onclick=""> ></button></th>
                     </tr>
                     <tr>
                         <td>data</td>
@@ -136,6 +134,58 @@
                         <td>data</td>
                     </tr>
                 </table>
+
+        </section>
+        <section class="quickAnalyticsDesktop">
+            <div class="listView">
+                <div class="teamData">
+                    <table>
+                        <tr>
+                            <th id="team1"><u>Team x</u></th>
+                        </tr>
+                        <tr>
+                            <td id="team1data1">data</td>
+                        </tr>
+                        <tr>
+                            <td id="team1data2">data</td>
+                        </tr>
+                        <tr>
+                            <td id="team1data3">data</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="teamData">
+                    <table>
+                        <tr>
+                            <th id="team2"><u>Team x</u></th>
+                        </tr>
+                        <tr>
+                            <td id="team2data1">data</td>
+                        </tr>
+                        <tr>
+                            <td id="team2data2">data</td>
+                        </tr>
+                        <tr>
+                            <td id="team2data3">data</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="teamData">
+                    <table>
+                        <tr>
+                            <th id="team3"><u>Team x</u></th>
+                        </tr>
+                        <tr>
+                            <td id="team3data1">data</td>
+                        </tr>
+                        <tr>
+                            <td id="team3data2">data</td>
+                        </tr>
+                        <tr>
+                            <td id="team3data3">data</td>
+                        </tr>
+                    </table>
+                </div>
         </section>
         <section class="footer">
             <div class="container">

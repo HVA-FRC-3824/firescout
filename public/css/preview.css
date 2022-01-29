@@ -155,25 +155,14 @@ main .teams{
 
 
 main  .teams .match-selector{
-    grid-column: 1/4;
-    grid-row: 1/2;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    height: 50px;
     font-size: 24px;
-    font-weight: 700;
-    text-align: center;
-    font-family: 'Montserrat';
-    margin: 0px 20px;
     background-color: grey;
 }
-
 
 main .teams td{
     text-align: center;
     padding:20px;
-    font-size: larger;
+    font-size: 26px;
 }
 
 main .teams th{
@@ -181,7 +170,7 @@ main .teams th{
     padding-bottom:5px;
     padding-left:20px;
     padding-right:20px;
-    font-size:x-large;
+    font-size:28px;
 }
 
 main .blueTeam{
@@ -216,36 +205,38 @@ main .teams p{
 }
 
 
-/* ==================================================QuickAna Section================================================== */
-main  .quickAna button{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    font-size: 14px;
-    font-weight: 700;
-    text-align: center;
-    font-family: 'Montserrat';
-    background-color: grey;
-}
+/* ==================================================quickAnalyticsMobile Section================================================== */
 
-main .quickAna{
-    margin-top: 150px;
+main .quickAnalyticsMobile{
+    margin-top: 100px;
     text-align: center;
     margin-left:auto;
     margin-right:auto;
-        
 }
 
-main .quickAna .listView{
+main  .quickAnalyticsMobile button{
+    text-align: center;
+    font-size: 40px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    padding: 20px;
+    color: #0166b3;
+}
+
+main .quickAnalyticsMobile .listView{
     text-align: center;
     margin-left:auto;
     margin-right:auto;
-    background-color: rgba(124, 124, 124, 0.514);
+    background-color: #7722cc77;
     margin-bottom:100px;
     width:300px;
 }
 
-main .quickAna table{
+main .quickAnalyticsMobile .listView button{
+    color:black;
+}
+
+main .quickAnalyticsMobile table{
         margin-left:auto;
         margin-right:auto;
         width:300px;
@@ -254,17 +245,22 @@ main .quickAna table{
 main .listView td{
     text-align: center;
     padding:20px;
-    font-size: larger;
+    font-size: 24px;
 }
 
 main .listView th{
-    padding-top:20px;
     padding-bottom:5px;
     padding-left:20px;
     padding-right:20px;
-    font-size:x-large;
+    font-size:28px;
+}
+main .quickAnalyticsDesktop .listView{
+    display:none;
 }
 
+main .teams .match-selector{
+    text-align: center;
+}
 
 /* ==================================================Footer Section================================================== */
 
@@ -276,12 +272,6 @@ main .footer .container {
     font-size: 12px;
     font-weight: 400;
 }
-
-
-
-
-
-
 
 /* ==================================================Tablet Sizes================================================== */
 
@@ -299,7 +289,7 @@ main .footer .container {
 
 /* ==================================================Desktop Size================================================== */
 
-@media all and (min-width: 850px) {
+@media all and (min-width: 900px) {
     /* ==================================================Nav Desktop Section================================================== */
     
     .hero {
@@ -368,4 +358,59 @@ main .footer .container {
         display: none;
     }
 
+    /*========================================Desktop teams Section=================================*/
+    main .teams .blueTeam{
+        width:400px;
+        margin-left: 0;
+        margin-right: 0;
+        display: inline-block;
+    }
+
+    main .teams .redTeam{
+        width: 400px;
+        margin-left: 0;
+        margin-right: 0;
+        display: inline-block;
+        margin-bottom: 0px;
+    }
+
+    main .teams .match-selector{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 50px;
+    }
+    
+    main .teams .vs{
+        display: inline-block;
+        transform: translate(0px,-125px);
+    }
+
+    /*========================================Quick Analytics Desktop Section=================================*/
+
+    main .quickAnalyticsMobile .listView{
+        display: none;
+    }
+
+    main .quickAnalyticsDesktop .teamData{
+        display:inline-block;
+    }
+
+    main .quickAnalyticsDesktop .listView{
+        display: block;
+        text-align: center;
+        width:900px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #7722cc77;
+        margin-bottom: 100px;
+    }
+
+    main .quickAnalyticsDesktop .listView .teamData{
+        margin-left: 75px;
+        margin-right: 75px;
+    }
+    main .quickAnalyticsDesktop .listView .teamData td,th{
+        padding:20px;
+    }
 }
