@@ -4,7 +4,7 @@
 ██   ███ ██      ██    ██ ██████  ███████ ██      ███████ 
 ██    ██ ██      ██    ██ ██   ██ ██   ██ ██           ██ 
  ██████  ███████  ██████  ██████  ██   ██ ███████ ███████
-*/
+*/ 
 
 * {
     box-sizing: border-box;
@@ -16,27 +16,23 @@ body {
     font-family: "Montserrat";
 }
 
-.bodyWrapper{
-    overflow-x: hidden;
-    position: relative;
-}
-
-.unselectable {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-header {
+.navbar{
     position: fixed;
     top: 0;
     left: 0;
     color: rgb(0, 0, 0);
     width: 100%;
-    z-index: 200;
+    z-index: 100;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background-color: rgba(168, 168, 168, 0.267);
+    transition: all 0.4s ease 0s;
+}
+
+.navbar.is-active {
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    background-color: rgba(168, 168, 168, 0);
 }
 
 header .container {
@@ -64,7 +60,7 @@ header .container nav {
 ████   ██ ██   ██ ██    ██     ████  ████ ██    ██ ██   ██ ██ ██      ██      
 ██ ██  ██ ███████ ██    ██     ██ ████ ██ ██    ██ ██████  ██ ██      █████   
 ██  ██ ██ ██   ██  ██  ██      ██  ██  ██ ██    ██ ██   ██ ██ ██      ██      
-██   ████ ██   ██   ████       ██      ██  ██████  ██████  ██ ███████ ███████
+██   ████ ██   ██   ████       ██      ██  ██████  ██████  ██ ███████ ███████ 
 */
 
 .dropdown {
@@ -83,7 +79,7 @@ header .container nav {
     display: block;
     width: 100%;
     height: 5px;
-    background-color: rgb(0, 0, 0);
+    background-color: white;
     margin: 6px 0px;
     transition: all 0.4s ease 0s;
 }
@@ -107,7 +103,7 @@ header .container nav {
     width: 100%;
     min-height: 100vh;
     display: block;
-    z-index: 170;
+    z-index: 99;
     background-color: rgba(168, 168, 168, 0.267);
     padding: 100px 0px 0px 0px;
     transition: all 0.4s ease 0s;
@@ -160,124 +156,97 @@ header .container nav {
     color: rgb(0, 0, 0);
 }
 
+.container {
+    width: 100%;
+}
+
 /*
-███    ███  ██████  ██████   █████  ██          ██████  ██    ██ ████████ ████████  ██████  ███    ██ 
-████  ████ ██    ██ ██   ██ ██   ██ ██          ██   ██ ██    ██    ██       ██    ██    ██ ████   ██ 
-██ ████ ██ ██    ██ ██   ██ ███████ ██          ██████  ██    ██    ██       ██    ██    ██ ██ ██  ██ 
-██  ██  ██ ██    ██ ██   ██ ██   ██ ██          ██   ██ ██    ██    ██       ██    ██    ██ ██  ██ ██ 
-██      ██  ██████  ██████  ██   ██ ███████     ██████   ██████     ██       ██     ██████  ██   ████
+██       ██████   ██████  ██ ███    ██     ██████   ██████  ██   ██ 
+██      ██    ██ ██       ██ ████   ██     ██   ██ ██    ██  ██ ██  
+██      ██    ██ ██   ███ ██ ██ ██  ██     ██████  ██    ██   ███   
+██      ██    ██ ██    ██ ██ ██  ██ ██     ██   ██ ██    ██  ██ ██  
+███████  ██████   ██████  ██ ██   ████     ██████   ██████  ██   ██
 */
 
-main section {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+main .login .container{
+    margin-top:130px;
+    text-align: center;
+    width:450px;
+    border-radius: 15px;
+    background-color: rgba(61, 90, 250, 0.562);
+    margin-right: auto;
+    margin-left: auto;
 }
 
-main .base .container {
-    width: 82vw;
-    z-index: 71;
+main .login .container h1{
+    font-size: 48px;
+    padding:22px;
 }
 
-main section .container .modal-button-group {
-    background-color: rgb(170, 170, 170);
-    height: 500px;
-    border-radius: 6px;
+main .login .container label{
+    font-size: 24px;
+    margin-right: 8px;
+}
+
+main .login .container p{
+    font-size: 12px;
     padding: 10px;
-    text-align: center;
-    z-index: 70;
 }
 
-main section .container .modal-button{
-    padding: 15px 10px;
-    cursor:pointer;
-}
-
-main section .button-container {
-    text-align: center;
-    margin-top: 15px;
-}
-
-main section .button-container button {
-    font-size: 24px;
-    font-family: "Montserrat";
-    font-weight: 600;
-    height: 50px;
-    width: 60vw;
-}
-
-main .modal-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    transform: translate(0, calc(100vh));
-}
-
-main .modal-container .modal {
-    position: fixed;
-    width: 82vw;
-    z-index: 98;
-    color: #fff;
+main .login .container button{
+    width: 130px;
+    height: 60px;
     border-radius: 6px;
-    padding: 30px 30px;
-    height: 500px;
-    background-color: #1c9dda;
-    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 22px;
+    background-color: rgba(28, 157, 218, 1);
+    border: none;
+    margin: 25px;
 }
 
-main .modal-container .modal-1 h1 {
-    padding: 10px 0px;
-}
-
-main .modal-container .modal-1 .questions {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    margin-top: 20px;
-    gap: 20px;
+main .login .container input{
     font-size: 24px;
 }
 
-main .modal-container .modal-1 .team-num {
-    grid-row: 1 / 2;
-    grid-column: 1 / 2;
-}
-
-main .modal-container .modal-1 textarea {
-    resize: none;
-    width: 130px;
-    height: 30px;
-}
-
-main .modal-container .modal-1 .team-num-area {
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
-    font-size: 24px;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-main .modal-container .modal-1 .bot-weight-area {
-    font-size: 24px;
-    margin-top: auto;
-    margin-bottom: auto;
-    grid-row: 2 / 3;
-    grid-column: 2 / 3;
-    width: 130px;
+main .login .container ul{
+    list-style-type: none;
 }
 
 
+@media all and (min-width: 850px) {
+    /* 
+    ███    ██  █████  ██    ██     ██████  ███████ ███████ ██   ██ ████████  ██████  ██████  
+    ████   ██ ██   ██ ██    ██     ██   ██ ██      ██      ██  ██     ██    ██    ██ ██   ██ 
+    ██ ██  ██ ███████ ██    ██     ██   ██ █████   ███████ █████      ██    ██    ██ ██████  
+    ██  ██ ██ ██   ██  ██  ██      ██   ██ ██           ██ ██  ██     ██    ██    ██ ██      
+    ██   ████ ██   ██   ████       ██████  ███████ ███████ ██   ██    ██     ██████  ██      
+    */ 
 
-main .modal-container .modal.is-open {
-    transform: translate(0, calc(100vh + 60px));
+    header .container .nav-login-bars nav {
+        display: block;
+        float: left;
+        padding: 8px 5px 0px 0px;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .nav-login-bars nav a {
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        padding: 0px 10px 0px 0px;
+    }
+
+    .nav-login-bars .login {
+        display: block;
+        float: right;
+        padding: 8px 0px 0px 0px;
+        color: inherit;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .dropdown {
+        display: none;
+    }
 }
-
-main .modal-container .modal {
-    transition: all .45s;
-}
-
-
-

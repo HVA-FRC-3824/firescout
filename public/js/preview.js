@@ -1,13 +1,3 @@
-//TODO!!!!! ++++=+= MOVE INTO THE JS PAGE ==========++++++++++++++!!!!!!!!!!// 
-document.addEventListener("DOMContentLoaded", function(event) {  
-    var scrollpos = localStorage.getItem('scrollpos');
-    if (scrollpos) window.scrollTo(0, scrollpos);
-}); 
-
-window.onbeforeunload = function(e) {
-    localStorage.setItem('scrollpos', window.scrollY);
-};
-
 function populateMatches(){
     for(i=0; i < filteredJames.length; i++){
         document.getElementById("match").insertAdjacentHTML('beforeend',"<option>Match " + filteredJames[i].match_number + "</option>");

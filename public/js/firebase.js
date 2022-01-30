@@ -1,11 +1,32 @@
-
-// Import the functions you need from the SDKs you need
-// TODO: Add SDKs for Firebase products that you want to use
+//
+//
+//
+//
+//
+//
+//
+//===========================================================================================================================
+// ALL FUNCTIONS THAT REFERENCE ANY FIREBASE SYSTEM WILL BE PLACED HERE, COMMENT YOUR CODE WELL
+//===========================================================================================================================
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-//========================================= Initial Stetup Start =========================================
+/*
+██ ███    ██ ██ ████████ ██  █████  ██          ███████ ███████ ████████ ██    ██ ██████  
+██ ████   ██ ██    ██    ██ ██   ██ ██          ██      ██         ██    ██    ██ ██   ██ 
+██ ██ ██  ██ ██    ██    ██ ███████ ██          ███████ █████      ██    ██    ██ ██████  
+██ ██  ██ ██ ██    ██    ██ ██   ██ ██               ██ ██         ██    ██    ██ ██      
+██ ██   ████ ██    ██    ██ ██   ██ ███████     ███████ ███████    ██     ██████  ██    
+*/ 
+
 const firebaseConfig = {
     apiKey: "AIzaSyAkfcVtNcyDlW0yiTH2i5rYdmBJ_z1O57M",
     authDomain: "firescout3824.firebaseapp.com",
@@ -46,54 +67,71 @@ const app = initializeApp(firebaseConfig);
     } catch (e) {
         console.error(e);
     }
-//========================================= Initial Setup End =========================================
 
 
-//========================================= Auth Start =========================================
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
+/*
+ █████  ██    ██ ████████ ██   ██ 
+██   ██ ██    ██    ██    ██   ██ 
+███████ ██    ██    ██    ███████ 
+██   ██ ██    ██    ██    ██   ██ 
+██   ██  ██████     ██    ██   ██ 
+*/
+try {
+  var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
-ui.start('#firebaseui-auth-container', {
-  signInOptions: {
-    provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    signInMethod: firebase.auth.EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD,
-    requireDisplayName: true
-  },
-  // Other config options...
-});
-
-var uiConfig = {
-  callbacks: {
-    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-      // User successfully signed in.
-      // Return type determines whether we continue the redirect automatically
-      // or whether we leave that to developer to handle.
-      return true;
+  ui.start('#firebaseui-auth-container', {
+    signInOptions: {
+      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      signInMethod: firebase.auth.EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD,
+      requireDisplayName: true
     },
-    uiShown: function() {
-      // The widget is rendered.
-      // Hide the loader.
-      document.getElementById('loader').style.display = 'none';
-    }
-  },
-  // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-  signInFlow: 'popup',
-  signInSuccessUrl: 'https://firescout3824.web.app/index.html',
-  signInOptions: [
-    // Leave the lines as is for the providers you want to offer your users.
-    //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-    //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-    //firebase.auth.GithubAuthProvider.PROVIDER_ID,
-    firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    //firebase.auth.PhoneAuthProvider.PROVIDER_ID
-  ],
-  // Terms of service url.
-  tosUrl: 'https://firescout3824.web.app/analytics.html',
-  // Privacy policy url.
-  privacyPolicyUrl: 'https://firescout3824.web.app/analytics.html'
-};
+    // Other config options...
+  });
+} catch (error) {
+  console.log(error);
+}
 
-ui.start('#firebaseui-auth-container', uiConfig);
+try {
+  var uiConfig = {
+    callbacks: {
+      signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+        // User successfully signed in.
+        // Return type determines whether we continue the redirect automatically
+        // or whether we leave that to developer to handle.
+        return true;
+      },
+      uiShown: function() {
+        // The widget is rendered.
+        // Hide the loader.
+        document.getElementById('loader').style.display = 'none';
+      }
+    },
+    // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+    signInFlow: 'popup',
+    signInSuccessUrl: 'https://firescout3824.web.app/index.html',
+    signInOptions: [
+      // Leave the lines as is for the providers you want to offer your users.
+      //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+      //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+      //firebase.auth.GithubAuthProvider.PROVIDER_ID,
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      //firebase.auth.PhoneAuthProvider.PROVIDER_ID
+    ],
+    // Terms of service url.
+    tosUrl: 'https://firescout3824.web.app/analytics.html',
+    // Privacy policy url.
+    privacyPolicyUrl: 'https://firescout3824.web.app/analytics.html'
+  };
+} catch (error) {
+  console.log(error);
+}
+
+try {
+  ui.start('#firebaseui-auth-container', uiConfig);
+} catch (error) {
+  
+}
 
 var a = getAuth();
 setPersistence(a, browserSessionPersistence).then(() => {
@@ -168,9 +206,14 @@ setTimeout(function(){
 function doNothing(){
   console.log("already logged in");
 }
-//========================================= Auth End =========================================
 
-// =========== Initialize Firebaseui =============== //
+/*
+██████   █████  ████████  █████  ██████   █████  ███████ ███████ 
+██   ██ ██   ██    ██    ██   ██ ██   ██ ██   ██ ██      ██      
+██   ██ ███████    ██    ███████ ██████  ███████ ███████ █████   
+██   ██ ██   ██    ██    ██   ██ ██   ██ ██   ██      ██ ██      
+██████  ██   ██    ██    ██   ██ ██████  ██   ██ ███████ ███████ 
+*/
 
 import { getDatabase, ref, set, get, child, update, remove, onValue} from "https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js";
 
@@ -179,7 +222,7 @@ const db = getDatabase();
 function firebaseConnected(){
     if (app != null){
         try {
-            document.getElementById("load").innerHTML = "Firebase SDK loaded";
+            console.log("firebase SDK Loaded");
         }catch (error){
             console.log(error);
         }
@@ -208,11 +251,68 @@ export function readData(path){
 }
 
 //Constantly reads data as it updates
-const scoreCount = ref(db, 'test/', 'name', 'data');
-onValue(scoreCount, (snapshot) => {
-  const data = snapshot.val();
-  document.getElementById("test").innerHTML = data["name"]["data"];
-});
+try {
+  const scoreCount = ref(db, 'test/', 'name', 'data');
+  onValue(scoreCount, (snapshot) => {
+    const data = snapshot.val();
+    try {
+      document.getElementById("test").innerHTML = data["name"]["data"];
+    } catch (error) {
+      console.log(error);
+    }
+  });
+} catch (e) {
+  console.log(e);
+}
+
+/*
+███    ███  █████  ████████  ██████ ██   ██     ██████  ██████  ███████ ██    ██ ██ ███████ ██     ██ 
+████  ████ ██   ██    ██    ██      ██   ██     ██   ██ ██   ██ ██      ██    ██ ██ ██      ██     ██ 
+██ ████ ██ ███████    ██    ██      ███████     ██████  ██████  █████   ██    ██ ██ █████   ██  █  ██ 
+██  ██  ██ ██   ██    ██    ██      ██   ██     ██      ██   ██ ██       ██  ██  ██ ██      ██ ███ ██ 
+██      ██ ██   ██    ██     ██████ ██   ██     ██      ██   ██ ███████   ████   ██ ███████  ███ ███  
+*/
+
+
+
+/*
+███    ███  █████  ████████  ██████ ██   ██     ███████  ██████  ██████  ██    ██ ████████ ██ ███    ██  ██████  
+████  ████ ██   ██    ██    ██      ██   ██     ██      ██      ██    ██ ██    ██    ██    ██ ████   ██ ██       
+██ ████ ██ ███████    ██    ██      ███████     ███████ ██      ██    ██ ██    ██    ██    ██ ██ ██  ██ ██   ███ 
+██  ██  ██ ██   ██    ██    ██      ██   ██          ██ ██      ██    ██ ██    ██    ██    ██ ██  ██ ██ ██    ██ 
+██      ██ ██   ██    ██     ██████ ██   ██     ███████  ██████  ██████   ██████     ██    ██ ██   ████  ██████  
+*/
+
+
+
+/*
+██████  ██ ████████     ███████  ██████  ██████  ██    ██ ████████ ██ ███    ██  ██████  
+██   ██ ██    ██        ██      ██      ██    ██ ██    ██    ██    ██ ████   ██ ██       
+██████  ██    ██        ███████ ██      ██    ██ ██    ██    ██    ██ ██ ██  ██ ██   ███ 
+██      ██    ██             ██ ██      ██    ██ ██    ██    ██    ██ ██  ██ ██ ██    ██ 
+██      ██    ██        ███████  ██████  ██████   ██████     ██    ██ ██   ████  ██████ 
+*/
+
+
+/*
+ █████  ███    ██  █████  ██      ██    ██ ████████ ██  ██████ ███████ 
+██   ██ ████   ██ ██   ██ ██       ██  ██     ██    ██ ██      ██      
+███████ ██ ██  ██ ███████ ██        ████      ██    ██ ██      ███████ 
+██   ██ ██  ██ ██ ██   ██ ██         ██       ██    ██ ██           ██ 
+██   ██ ██   ████ ██   ██ ███████    ██       ██    ██  ██████ ███████                                                                      
+*/
+
+
+/*
+ █████  ██████  ███    ███ ██ ███    ██     ██████   █████  ███    ██ ███████ ██      
+██   ██ ██   ██ ████  ████ ██ ████   ██     ██   ██ ██   ██ ████   ██ ██      ██      
+███████ ██   ██ ██ ████ ██ ██ ██ ██  ██     ██████  ███████ ██ ██  ██ █████   ██      
+██   ██ ██   ██ ██  ██  ██ ██ ██  ██ ██     ██      ██   ██ ██  ██ ██ ██      ██      
+██   ██ ██████  ██      ██ ██ ██   ████     ██      ██   ██ ██   ████ ███████ ███████
+*/
+
+
+
 
 // ============================Initialize Firebase Storage=========================== //
 /*
@@ -283,8 +383,8 @@ async function UploadProcess() {
   }
 };
 
-
-
 UpBtn.onclick = UploadProcess();
 
 */
+
+
