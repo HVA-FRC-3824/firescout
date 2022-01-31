@@ -358,6 +358,17 @@ main .about .container img {
     height: auto;
 }
 
+main .field .container .sketchfab-embed-wrapper{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main .field .container iframe{
+    width:75vw;
+    height:400px;
+}
+
 /* 
 ███████  ██████   ██████  ████████ ███████ ██████  
 ██      ██    ██ ██    ██    ██    ██      ██   ██ 
