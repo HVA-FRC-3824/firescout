@@ -28,6 +28,19 @@
 */ 
 
 const firebaseConfig = {
+  apiKey: "AIzaSyAkfcVtNcyDlW0yiTH2i5rYdmBJ_z1O57M",
+  authDomain: "firescout3824.firebaseapp.com",
+  databaseURL: "https://firescout3824-default-rtdb.firebaseio.com",
+  projectId: "firescout3824",
+  storageBucket: "firescout3824.appspot.com",
+  messagingSenderId: "246498824596",
+  appId: "1:246498824596:web:efc2c0cbc94999559d3f81",
+  measurementId: "G-7SBQ64VMNP"
+};
+
+// Set the configuration for your app
+// TODO: Replace with your project's config object
+var config = {
     apiKey: "AIzaSyAkfcVtNcyDlW0yiTH2i5rYdmBJ_z1O57M",
     authDomain: "firescout3824.firebaseapp.com",
     databaseURL: "https://firescout3824-default-rtdb.firebaseio.com",
@@ -37,38 +50,10 @@ const firebaseConfig = {
     appId: "1:246498824596:web:efc2c0cbc94999559d3f81",
     measurementId: "G-7SBQ64VMNP"
 };
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js";
-import { getAuth, getRedirectResult, createUserWithEmailAndPassword, setPersistence, signInWithEmailAndPassword, browserSessionPersistence, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js";
-import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-storage.js";
-const app = initializeApp(firebaseConfig);
-//console.log(app);
-
-    // Set the configuration for your app
-    // TODO: Replace with your project's config object
-    var config = {
-        apiKey: "AIzaSyAkfcVtNcyDlW0yiTH2i5rYdmBJ_z1O57M",
-        authDomain: "firescout3824.firebaseapp.com",
-        databaseURL: "https://firescout3824-default-rtdb.firebaseio.com",
-        projectId: "firescout3824",
-        storageBucket: "firescout3824.appspot.com",
-        messagingSenderId: "246498824596",
-        appId: "1:246498824596:web:efc2c0cbc94999559d3f81",
-        measurementId: "G-7SBQ64VMNP"
-    };
-    firebase.initializeApp(config);
-    // Get a reference to the database service
-    var database = firebase.database();
-    var auth = firebase.auth();
-    window.auth = auth;
-    
-    try {
-        let app = firebase.app();
-        let features = ['auth', 'database', 'storage'].filter(feature => typeof app[feature] === 'function');
-    } catch (e) {
-        console.error(e);
-    }
-
+firebase.initializeApp(config);
+// Get a reference to the database service
+var database = firebase.database();
+var auth = firebase.auth();
 
 /*
  █████  ██    ██ ████████ ██   ██ 
@@ -136,11 +121,11 @@ try {
 
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
   
-onAuthStateChanged(auth, (user) => {
+firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
+    var uid = user.uid;
     // ...
   } else {
     // User is signed out
@@ -202,9 +187,9 @@ function doNothing(){
 ██████  ██   ██    ██    ██   ██ ██████  ██   ██ ███████ ███████ 
 */
 
-import { getDatabase, ref, set, get, child, update, remove, onValue} from "https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js";
+//import { getDatabase, ref, set, get, child, update, remove, onValue} from "https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js";
 
-const db = getDatabase();
+const db = database;
 
 function firebaseConnected(){
     if (app != null){
@@ -218,36 +203,25 @@ function firebaseConnected(){
 firebaseConnected();
 
 //Writes data to a path
-export function writeData(path, data) {
-    set(ref(db, path), {
-        data: data
-    });
+function writeData(path, data) {
+  firebase.database().ref(path).set({
+    data: data
+  });
 }
-window.writeData = writeData;
 
 //Reads data from a path
-export function readData(path){
-  get(ref(db, path)).then((snapshot) => {
-    if (snapshot.exists()) {
-      console.log(snapshot.val());
-    } else {
-      console.log("No data available");
-    }
-  }).catch((error) => {
-    console.error(error);
+function readData(path){
+  return firebase.database().ref(path).once('value').then((snapshot) => {
+    console.log(snapshot.val());
   });
 }
 
 //Constantly reads data as it updates
 try {
-  const scoreCount = ref(db, 'test/', 'name', 'data');
-  onValue(scoreCount, (snapshot) => {
+  var score = firebase.database().ref('test/name');
+  score.on('value', (snapshot) => {
     const data = snapshot.val();
-    try {
-      document.getElementById("test").innerHTML = data["name"]["data"];
-    } catch (error) {
-      console.log(error);
-    }
+    console.log(data);
   });
 } catch (e) {
   console.log(e);
@@ -261,7 +235,7 @@ try {
 ██      ██ ██   ██    ██     ██████ ██   ██     ██      ██   ██ ███████   ████   ██ ███████  ███ ███  
 */
 
-export function getAllTeamInfo(){
+function getAllTeamInfo(){
   get(ref(db, 'matchScouting')).then((snapshot) => {
     if (snapshot.exists()) {
       var allTeamInfo = snapshot.val();
@@ -275,7 +249,7 @@ export function getAllTeamInfo(){
   return allTeamInfo;
 }
 
-export function getTeamInfo(team){
+function getTeamInfo(team){
   get(ref(db, 'matchScouting/' + team)).then((snapshot) => {
     if (snapshot.exists()) {
       console.log(snapshot.val());
