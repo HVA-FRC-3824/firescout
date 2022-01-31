@@ -112,13 +112,13 @@
 
         <section class="quickAnalyticsMobile">
             <div>
-                <button>Blue</button>
+                <button onclick="colorChange((document.getElementById('match').value).slice(6))" id="colorButton">Blue</button>
             </div> 
 
             <div class="listView">
                 <table>
                     <tr>
-                        <th><button onclick="">< </button><u>Team x</u><button onclick=""> ></button></th>
+                        <th><button onclick="leftArrow((document.getElementById('match').value).slice(6))">< </button><u id="teamMobile">Team x</u><button onclick="rightArrow((document.getElementById('match').value).slice(6))"> ></button></th>
                     </tr>
                     <tr>
                         <td>data</td>
