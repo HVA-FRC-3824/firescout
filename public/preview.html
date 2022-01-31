@@ -63,6 +63,10 @@
     </nav>
 
     <main>
+        <script type="module">
+            import {getAllTeamInfo} from "./js/firebase.js"
+            window.getAllTeamInfo = getAllTeamInfo;
+        </script>
         <section class="teams">
                 <select onChange="displayMatchTeams((document.getElementById('match').value).slice(6))" name="match num" class="match-selector" id="match">
                     <option>Select Match</option>
@@ -71,7 +75,7 @@
                 <table>
                     </tr>
                         <th><u>Team#</u></th>
-                        <th><u>Rank</u></th>
+                        <th><u>Avg. Score</u></th>
                     </tr>
                     <tr>
                         <td id="blueTeam1">254</td> </td>
@@ -92,7 +96,7 @@
                 <table>
                     </tr>
                     <th><u>Team#</u></th>
-                    <th><u>Rank</u></th>
+                    <th><u>Avg. Score</u></th>
                     </tr>
                     <tr>
                         <td id="redTeam1">254</td>
@@ -107,18 +111,18 @@
                         <td id="redData3">6</td>
                     </tr>
                 </table>
- 
+
         </section>
 
         <section class="quickAnalyticsMobile">
             <div>
-                <button onclick="colorChange((document.getElementById('match').value).slice(6))" id="colorButton">Blue</button>
+                <button id="teamColor" onclick="changeColor()">Blue</button>
             </div> 
 
-            <div class="listView">
-                <table>
+            <div class="listView" id="listViewMobile">
+                <table id="mobileTable">
                     <tr>
-                        <th><button onclick="leftArrow((document.getElementById('match').value).slice(6))">< </button><u id="teamMobile">Team x</u><button onclick="rightArrow((document.getElementById('match').value).slice(6))"> ></button></th>
+                        <th><button onclick="changeTeam('left')">< </button><u id="teamMobile">Team x</u><button onclick="changeTeams('right')"> ></button></th>
                     </tr>
                     <tr>
                         <td>data</td>
@@ -133,7 +137,7 @@
 
         </section>
         <section class="quickAnalyticsDesktop">
-            <div class="listView">
+            <div class="listView" id="listViewDesktop">
                 <div class="teamData">
                     <table>
                         <tr>

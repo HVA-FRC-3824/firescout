@@ -27,7 +27,7 @@ function kidnap(newUrl) {
 
 filteredJames = [];
 function filterMatches(){
-    console.log(James);
+    //console.log(James);
     James.forEach(i => {
         if(i.comp_level == 'qm'){
             filteredJames.push(i);
@@ -37,7 +37,7 @@ function filterMatches(){
         j.key = parseInt(j.key.slice(11));
     });
     filteredJames.sort((a, b) => (a.key > b.key) ? 1 : -1);
-    console.log(filteredJames);
+    //console.log(filteredJames);
 }
 
 sortedJames = [];

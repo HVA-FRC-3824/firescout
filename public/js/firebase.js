@@ -60,7 +60,8 @@ const app = initializeApp(firebaseConfig);
     // Get a reference to the database service
     var database = firebase.database();
     var auth = firebase.auth();
-
+    window.auth = auth;
+    
     try {
         let app = firebase.app();
         let features = ['auth', 'database', 'storage'].filter(feature => typeof app[feature] === 'function');
@@ -133,20 +134,6 @@ try {
   
 }
 
-var a = getAuth();
-setPersistence(a, browserSessionPersistence).then(() => {
-  // Existing and future Auth states are now persisted in the current
-  // session only. Closing the window would clear any existing state even
-  // if a user forgets to sign out.
-  // ...
-  // New sign-in will be persisted with session persistence.
-  return signInWithEmailAndPassword(auth, email, password);
-}).catch((error) => {
-  // Handle Errors here.
-  const errorCode = error.code;
-  const errorMessage = error.message;
-});
-
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
   
 onAuthStateChanged(auth, (user) => {
@@ -201,7 +188,7 @@ setTimeout(function(){
       location.replace('./index.html');
     }
   }
-}, 2300)
+}, 2700)
 
 function doNothing(){
   console.log("already logged in");
@@ -236,6 +223,7 @@ export function writeData(path, data) {
         data: data
     });
 }
+window.writeData = writeData;
 
 //Reads data from a path
 export function readData(path){
@@ -273,6 +261,31 @@ try {
 ██      ██ ██   ██    ██     ██████ ██   ██     ██      ██   ██ ███████   ████   ██ ███████  ███ ███  
 */
 
+export function getAllTeamInfo(){
+  get(ref(db, 'matchScouting')).then((snapshot) => {
+    if (snapshot.exists()) {
+      var allTeamInfo = snapshot.val();
+      console.log(allTeamInfo);
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });
+  return allTeamInfo;
+}
+
+export function getTeamInfo(team){
+  get(ref(db, 'matchScouting/' + team)).then((snapshot) => {
+    if (snapshot.exists()) {
+      console.log(snapshot.val());
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });
+}
 
 
 /*
