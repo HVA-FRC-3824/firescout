@@ -468,8 +468,8 @@ main .footer .container {
     }
 
     main .quickAnalyticsDesktop .listView .teamData{
-        margin-left: 75px;
-        margin-right: 75px;
+        margin-left: 70px;
+        margin-right: 70px;
     }
     main .quickAnalyticsDesktop .listView .teamData td,th{
         padding:20px;
