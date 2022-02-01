@@ -1,5 +1,5 @@
 function populateMatches(){
-    console.log(filteredJames);
+    //console.log(filteredJames);
     for(i=0; i < filteredJames.length; i++){
         document.getElementById("match").insertAdjacentHTML('beforeend',"<option>Match " + filteredJames[i].match_number + "</option>");
     }
@@ -20,3 +20,7 @@ function displayMatchTeams(matchNum){
     b2.innerHTML = filteredJames[matchNum-1].alliances.blue.team_keys[1].slice(3);
     b3.innerHTML = filteredJames[matchNum-1].alliances.blue.team_keys[2].slice(3);
 }
+
+setTimeout(() => {
+    getScoutPosition();
+}, 2400);

@@ -1,6 +1,14 @@
 {
   "rules": {
-    ".read": true, 
-    ".write": "auth.uid != null"  
+    "Users": {
+      "$Users": {
+        ".read": "auth.uid != null",
+        ".write": "auth.uid != null"
+      }
+    },
+    "$other":{
+      ".read": "auth.uid != null",
+      ".write": "auth.uid == 'qnlTm8LSbocnF57XDjqB6qxy7hJ2' || auth.uid == 'ch2dqF6ZG6V6YgZoR21hzejsUC22' || auth.uid == '7pIHSSKUgyRqXVz6MCbUMathVps1'"
+    }
   }
 }

@@ -84,7 +84,11 @@ try {
         // User successfully signed in.
         // Return type determines whether we continue the redirect automatically
         // or whether we leave that to developer to handle.
-        return true;
+        writeData("Users/" + firebase.auth().currentUser.uid + "/displayName/", firebase.auth().currentUser.displayName);
+        setTimeout(() => {
+          location.replace("https://firescout3824.web.app/index.html");
+        }, 2000);
+        return false;
       },
       uiShown: function() {
         // The widget is rendered.
@@ -173,7 +177,7 @@ setTimeout(function(){
       location.replace('./index.html');
     }
   }
-}, 2700)
+}, 2400)
 
 function doNothing(){
   console.log("already logged in");
@@ -191,17 +195,6 @@ function doNothing(){
 
 const db = database;
 
-function firebaseConnected(){
-    if (app != null){
-        try {
-            console.log("firebase SDK Loaded");
-        }catch (error){
-            console.log(error);
-        }
-    }
-}
-firebaseConnected();
-
 //Writes data to a path
 function writeData(path, data) {
   firebase.database().ref(path).set({
@@ -213,6 +206,11 @@ function writeData(path, data) {
 function readData(path){
   return firebase.database().ref(path).once('value').then((snapshot) => {
     console.log(snapshot.val());
+    try{
+      document.getElementById(snapshot.val()).style.fontWeight = "bold";
+    }catch(e){
+
+    }
   });
 }
 
@@ -270,6 +268,10 @@ function getTeamInfo(team){
 ██      ██ ██   ██    ██     ██████ ██   ██     ███████  ██████  ██████   ██████     ██    ██ ██   ████  ██████  
 */
 
+function getScoutPosition(){
+  scoutPosition = readData("Users/" + firebase.auth().currentUser.uid + "/scoutPosition/data");
+  return scoutPosition;
+}
 
 
 /*
@@ -298,6 +300,13 @@ function getTeamInfo(team){
 ██   ██ ██████  ██      ██ ██ ██   ████     ██      ██   ██ ██   ████ ███████ ███████
 */
 
+function sendData(){
+  setUserScoutPosition(firebase.auth().currentUser.uid, "redTeam1");
+}
+
+function setUserScoutPosition(user, position){
+  writeData("Users/" + user + "/scoutPosition", position);
+}
 
 
 
