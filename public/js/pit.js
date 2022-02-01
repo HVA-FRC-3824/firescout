@@ -1,6 +1,9 @@
+window.onload = function() {
+    const drop_one = document.getElementById('dropdown1');
+    const dropdown_stats = document.querySelector('.basic-stats');
 
-function toggleModal(modalID) {
-    const modal = document.querySelector('.modal-' + modalID);
-    modal.classList.toggle('is-open');
+    drop_one.addEventListener('click', function () {
+        dropdown_stats.classList.toggle('active');
+    });
 }
 

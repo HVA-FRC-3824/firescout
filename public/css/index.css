@@ -381,7 +381,8 @@ main .footer .container {
     color:white;
     background-color: rgb(51, 51, 51);
     text-align: center;
-    padding:20px;
+    padding: 20px;
+    margin: 50px 0 0 0;
     font-size: 12px;
     font-weight: 400;
 }
@@ -453,42 +454,6 @@ main .footer .container {
     }
 
     /* 
-    ███    ██  █████  ██    ██     ██████  ███████ ███████ ██   ██ ████████  ██████  ██████  
-    ████   ██ ██   ██ ██    ██     ██   ██ ██      ██      ██  ██     ██    ██    ██ ██   ██ 
-    ██ ██  ██ ███████ ██    ██     ██   ██ █████   ███████ █████      ██    ██    ██ ██████  
-    ██  ██ ██ ██   ██  ██  ██      ██   ██ ██           ██ ██  ██     ██    ██    ██ ██      
-    ██   ████ ██   ██   ████       ██████  ███████ ███████ ██   ██    ██     ██████  ██      
-    */ 
-
-    header .container .nav-login-bars nav {
-        display: block;
-        float: left;
-        padding: 8px 5px 0px 0px;
-        font-size: 18px;
-        font-weight: 400;
-    }
-
-    .nav-login-bars nav a {
-        text-decoration: none;
-        color: #fff;
-        padding: 0px 10px 0px 0px;
-    }
-
-    .nav-login-bars .login {
-        display: block;
-        float: right;
-        padding: 8px 0px 0px 0px;
-        color: inherit;
-        text-decoration: none;
-        font-size: 18px;
-        font-weight: 400;
-    }
-
-    .dropdown {
-        display: none;
-    }
-
-    /* 
     ███████ ███████  █████  ████████ ██    ██ ██████  ███████ ███████     ██████  ███████ ███████ ██   ██ ████████  ██████  ██████  
     ██      ██      ██   ██    ██    ██    ██ ██   ██ ██      ██          ██   ██ ██      ██      ██  ██     ██    ██    ██ ██   ██ 
     █████   █████   ███████    ██    ██    ██ ██████  █████   ███████     ██   ██ █████   ███████ █████      ██    ██    ██ ██████  
@@ -534,6 +499,51 @@ main .footer .container {
     }
     
 }
+
+    /* 
+    ███    ██  █████  ██    ██     ██████  ███████ ███████ ██   ██ ████████  ██████  ██████  
+    ████   ██ ██   ██ ██    ██     ██   ██ ██      ██      ██  ██     ██    ██    ██ ██   ██ 
+    ██ ██  ██ ███████ ██    ██     ██   ██ █████   ███████ █████      ██    ██    ██ ██████  
+    ██  ██ ██ ██   ██  ██  ██      ██   ██ ██           ██ ██  ██     ██    ██    ██ ██      
+    ██   ████ ██   ██   ████       ██████  ███████ ███████ ██   ██    ██     ██████  ██      
+    */ 
+
+@media all and (min-width: 1000px) {
+    header .container .nav-login-bars nav {
+        display: block;
+        float: left;
+        padding: 8px 5px 0px 0px;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .nav-login-bars nav a {
+        text-decoration: none;
+        color: #fff;
+        padding: 0px 10px 0px 0px;
+    }
+
+    .nav-login-bars .login {
+        display: block;
+        float: right;
+        padding: 8px 0px 0px 0px;
+        color: inherit;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .dropdown {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
 
 /* 
 ██    ██ ██      ████████ ██████   █████  ██     ██ ██ ██████  ███████ 

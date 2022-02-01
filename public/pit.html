@@ -23,7 +23,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
-    <script type="module" src="js/firebase.js"></script>
+    <!-- <script type="module" src="js/firebase.js"></script> -->
     <script src="js/pit.js"></script>
     <script defer src="js/data.js"></script>
     <script src="js/global.js"></script>
@@ -60,6 +60,50 @@
         <a href="./analytics.html">Analytics</a>
         <a href="./preview.html">Preview</a>
     </nav>
+
+    <main>
+        <div class="page-name">
+            <h1>Pit Scouting</h1>
+        </div>
+
+        <div class="container">
+            <div class="basic-stats">
+                <div class="title">
+                    <h2>Basic Stats</h2>
+                    <i class="fas fa-angle-down" id="dropdown1"></i>
+                </div>
+                <p>Team Number: </p>
+            </div>
+
+            <div class="basic-stats active">
+                <div class="title">
+                    <h2>Drive Team Experience</h2>
+                    <i class="fas fa-angle-down" id="dropdown-2"></i>
+                </div>
+                <p>Team Number: </p>
+            </div>
+
+            <div class="basic-stats">
+                <div class="title">
+                    <h2>Strategy Team Experience</h2>
+                    <i class="fas fa-angle-down" id="dropdown-3"></i>
+                </div>
+                <p>Team Number: </p>
+            </div>
+
+            <div class="basic-stats">
+                <div class="title">
+                    <h2>Basic Stats</h2>
+                    <i class="fas fa-angle-down" id="dropdown-4"></i>
+                </div>
+                <p>Team Number: </p>
+            </div>
+        </div>
+
+        
+    </main>
+
+    <!--
     <main>
         <section class="base">
             <div class="container">
@@ -76,14 +120,8 @@
                     <div class="modal-button" onclick="toggleModal(4)">
                         <h1>test 4</h1>
                     </div>
-                    <input type="text" id="namebox">
-                    <label id="extlab"></label>
-                    <img id="myimg">
-                    <label id="upprogress"></label>
-                    <button id="selBtn">test file set</button>
-                    <button id="upBtn">test file upload</button>
-                    <button id="downBtn">get image</button>
-                    <!--
+                    <input type='file' id='input' class="img-input">test file input</input>
+                    
                     <div class="modal-button" onclick="toggleModal(5)">
                         <h1>test 5</h1>
                     </div>
@@ -95,7 +133,7 @@
                     </div>
                     <div class="modal-button" onclick="toggleModal(8)">
                         <h1>test 8</h1>
-                    </div> -->
+                    </div>
                 </div>
                 <div class="button-container">
                     <button>Send Data</button>
@@ -146,5 +184,32 @@
             </div>
         </section>
     </main>
+    -->
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAkfcVtNcyDlW0yiTH2i5rYdmBJ_z1O57M",
+            authDomain: "firescout3824.firebaseapp.com",
+            databaseURL: "https://firescout3824-default-rtdb.firebaseio.com",
+            projectId: "firescout3824",
+            storageBucket: "firescout3824.appspot.com",
+            messagingSenderId: "246498824596",
+            appId: "1:246498824596:web:efc2c0cbc94999559d3f81",
+            measurementId: "G-7SBQ64VMNP"
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-storage.js";
+
+        var files = [];
+        var reader = new FileReader();
+
+        var stoarge = getStorage();
+
+        
+    </script>
 </body>
 </html>

@@ -483,7 +483,7 @@ main .rawData .container .theData{
 
 main .TBAData .container{
     text-align: center;
-    margin:50px 0px 200px;
+    margin: 50px 0px 200px;
 }
 
 main .TBAData .container h1{
@@ -496,7 +496,8 @@ main .TBAData .container .teamSelect{
 }
 
 main .TBAData .container .teamsSchedule{
-    padding:40px 50px;
+    padding: 40px 50px;
+    margin: 40px 0 0 0;
     margin-left: auto;
     margin-right: auto;
     font-size: 14px;
