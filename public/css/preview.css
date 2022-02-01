@@ -257,9 +257,11 @@ main .listView th{
 main .quickAnalyticsMobile button{
     text-align: center;
     font-size: 40px;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(168, 168, 168, 0.747);
     border-color: rgba(0, 0, 0, 0);
-    padding: 20px;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 5px;
     color: #0166b3;
 }
 
@@ -274,6 +276,7 @@ main .quickAnalyticsMobile .listView{
 
 main .quickAnalyticsMobile .listView button{
     color:black;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 main .quickAnalyticsMobile .listView table{

@@ -1,0 +1,41 @@
+replace '-' (dashes) with checkmark once 
+something has been completed ---> ✔
+(copy and paste, don't delete example character pls)
+
+admin page 
+    - increment match num button 
+    - blue alliance comp change
+heatmap
+    - work out slight issues and bugs
+    - strip out everything
+verison number (somewhere)
+    - honestly no point but it would be cool
+redo homepage
+    ✔ navbar completed
+    ✔ css scales
+    ✔ actually decent looking on all devices
+    - work on a complete theme?
+match schedule
+    ✔ actually decent looking on all devices
+    - use number saved from admin page
+analytics
+    - get base code working
+    - create wireframe for new game
+match scouting
+    - get base code working
+    - brainstorm new imementations
+    - create wireframe for new game
+pit Scouting
+    - don't have just a bunch of text boxes
+    - potentially new input methods?
+match Preview
+    ✔ strip everything from past years
+    ✔ create wireframe
+    - work on new data visualizations?
+backend things
+    - offline mode, convert json to qr code
+    - be able to scan qr code and upload to database
+        This way even if only one person at an event has cell signal, scouting can continue as normal
+
+
+    
