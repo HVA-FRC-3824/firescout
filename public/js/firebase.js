@@ -85,6 +85,7 @@ try {
         // Return type determines whether we continue the redirect automatically
         // or whether we leave that to developer to handle.
         writeData("Users/" + firebase.auth().currentUser.uid + "/displayName/", firebase.auth().currentUser.displayName);
+        writeData("Users/" + firebase.auth().currentUser.uid + "/scoutPosition/", "none");
         setTimeout(() => {
           location.replace("https://firescout3824.web.app/index.html");
         }, 2000);
@@ -191,8 +192,6 @@ function doNothing(){
 ██████  ██   ██    ██    ██   ██ ██████  ██   ██ ███████ ███████ 
 */
 
-//import { getDatabase, ref, set, get, child, update, remove, onValue} from "https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js";
-
 const db = database;
 
 //Writes data to a path
@@ -206,8 +205,11 @@ function writeData(path, data) {
 function readData(path){
   return firebase.database().ref(path).once('value').then((snapshot) => {
     console.log(snapshot.val());
+    if(path = "Users"){
+      usersObject = snapshot.val();
+    }
     try{
-      document.getElementById(snapshot.val()).style.fontWeight = "bold";
+      document.getElementById(snapshot.val()).style.fontWeight = "bold"; // FOR SCHEDULE PAGE TODO MOVE THIS SOMEWHERE ELSE
     }catch(e){
 
     }
@@ -219,7 +221,7 @@ try {
   var score = firebase.database().ref('test/name');
   score.on('value', (snapshot) => {
     const data = snapshot.val();
-    console.log(data);
+    //console.log(data);
   });
 } catch (e) {
   console.log(e);
@@ -237,7 +239,7 @@ function getAllTeamInfo(){
   get(ref(db, 'matchScouting')).then((snapshot) => {
     if (snapshot.exists()) {
       var allTeamInfo = snapshot.val();
-      console.log(allTeamInfo);
+      //console.log(allTeamInfo);
     } else {
       console.log("No data available");
     }
@@ -250,7 +252,7 @@ function getAllTeamInfo(){
 function getTeamInfo(team){
   get(ref(db, 'matchScouting/' + team)).then((snapshot) => {
     if (snapshot.exists()) {
-      console.log(snapshot.val());
+      //console.log(snapshot.val());
     } else {
       console.log("No data available");
     }
@@ -307,6 +309,7 @@ function sendData(){
 function setUserScoutPosition(user, position){
   writeData("Users/" + user + "/scoutPosition", position);
 }
+
 
 
 

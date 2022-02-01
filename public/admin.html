@@ -26,6 +26,7 @@
     <script defer src="js/firebase.js"></script>
     <script defer src="js/data.js"></script>
     <script src="js/global.js"></script>
+    <script defer src="js/admin.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/admin.css">
 
@@ -66,50 +67,35 @@
                 <h1>Admin Panel</h1>
                 <div class="match-select">
                     <select name="match num" class="match-selector" id="match">
-                        <option value="1">Match 1</option>
-                        <option value="2">Match 2</option>
-                        <option value="3">Match 3</option>
-                        <option value="4">Match 4</option>
+                        <option>Select Match</option>
                     </select>
-                    <p id="r1">r1 
-                        <select>
-                            <option>name</option>
-                            <option>name</option>
-                            <option>name</option>
+                    <p id="redTeam1">r1 
+                        <select class="namesSelector" id="r1Names" name="redTeam1">
                             <option>name</option>
                         </select>
                     </p>
-                    <p id="r2">r2 
-                        <select>
-                            <option>name</option>
-                            <option>name</option>
+                    <p id="redTeam2">r2 
+                        <select class="namesSelector" id="r2Names" name="redTeam2">
                             <option>name</option>
                         </select>
                     </p>
-                    <p id="r3">r3 
-                        <select>
-                            <option>name</option>
-                            <option>name</option>
-                        </select>
-                    </p>
-                    <p id="b1">b1 
-                        <select>
-                            <option>name</option>
-                            <option>name</option>
-                            <option>name</option>
+                    <p id="redTeam3">r3 
+                        <select class="namesSelector" id="r3Names" name="redTeam2">
                             <option>name</option>
                         </select>
                     </p>
-                    <p id="b2">b2 
-                        <select>
-                            <option>name</option>
+                    <p id="blueTeam1">b1 
+                        <select class="namesSelector" id="b1Names" name="blueTeam1">
                             <option>name</option>
                         </select>
                     </p>
-                    <p id="b3">b3 
-                        <select>
+                    <p id="blueTeam2">b2 
+                        <select class="namesSelector" id="b2Names" name="blueTeam2">
                             <option>name</option>
-                            <option>name</option>
+                        </select>
+                    </p>
+                    <p id="blueTeam3">b3 
+                        <select class="namesSelector" id="b3Names" name="blueTeam3">
                             <option>name</option>
                         </select>
                     </p>
