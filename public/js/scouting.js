@@ -23,3 +23,5 @@ window.onload = function() {
 
 openPage("Pre");
 console.log("pre");
+
+console.log(localStorage.getItem("robotToScout"));

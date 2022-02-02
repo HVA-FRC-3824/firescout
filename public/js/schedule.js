@@ -23,4 +23,10 @@ function displayMatchTeams(matchNum){
 
 setTimeout(() => {
     getScoutPosition();
-}, 2400);
+}, 2200);
+
+function startScouting(){
+    robotToScout = document.getElementById(dataRead).innerHTML;
+    localStorage.setItem('robotToScout', robotToScout);
+    location.replace("../scouting.html");
+}

@@ -203,16 +203,14 @@ function writeData(path, data) {
 }
 
 //Reads data from a path
+var dataRead;
 function readData(path){
+  dataRead = "";
   return firebase.database().ref(path).once('value').then((snapshot) => {
     console.log(snapshot.val());
-    if(path = "Users"){
+    dataRead = snapshot.val();
+    if(path == "Users"){
       usersObject = snapshot.val();
-    }
-    try{
-      document.getElementById(snapshot.val()).style.fontWeight = "bold"; // FOR SCHEDULE PAGE TODO MOVE THIS SOMEWHERE ELSE
-    }catch(e){
-
     }
   });
 }
@@ -270,10 +268,14 @@ function getTeamInfo(team){
 ██  ██  ██ ██   ██    ██    ██      ██   ██          ██ ██      ██    ██ ██    ██    ██    ██ ██  ██ ██ ██    ██ 
 ██      ██ ██   ██    ██     ██████ ██   ██     ███████  ██████  ██████   ██████     ██    ██ ██   ████  ██████  
 */
+//AND THE SCHEDULE PAGE
 
 function getScoutPosition(){
   scoutPosition = readData("Users/" + firebase.auth().currentUser.uid + "/scoutPosition/data");
-  return scoutPosition;
+  setTimeout(() => {
+    console.log(dataRead);
+    document.getElementById(dataRead).style.fontWeight = "bold";
+  }, 1000);
 }
 
 
