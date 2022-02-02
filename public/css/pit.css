@@ -213,6 +213,36 @@ main .container .basic-stats .title i {
     height: 50vh !important;
 }
 
+main .container .basic-stats section {
+    padding: 60px 80px 60px 80px;
+    display: grid;
+}
+
+main .container .basic-stats section p {
+    font-weight: 600;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 10px 0px 10px 0px;
+}
+
+main .container .basic-stats section #numberInput {
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    resize: none;
+    float: right;
+    width: 150px;
+    text-align: center;
+    overflow: hidden;
+    font-size: 30px;
+    grid-row: 1 / 2;
+    grid-column:  3 / 4;
+}
+
+#numberInput::-webkit-outer-spin-button, #numberInput::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 /*
 main section {
     width: 100%;

@@ -33,7 +33,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/dbb5df409e.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -68,12 +68,15 @@
         </div>
 
         <div class="container">
-            <div class="basic-stats" id="stats">
+            <div class="basic-stats active" id="stats">
                 <div class="title">
                     <h2>Basic Stats</h2>
                     <i class="fas fa-angle-down" onclick="dropdown(1)"></i>
                 </div>
-                <p>Team Number: </p>
+                <section>
+                    <p id="teamNum">Team Number:</p>
+                    <input id="numberInput" rows="1" type="number" max="4"></input>
+                </section>
             </div>
 
             <div class="basic-stats active" id="driveTeam">
@@ -81,23 +84,20 @@
                     <h2>Drive Team Experience</h2>
                     <i class="fas fa-angle-down" onclick="dropdown(2)"></i>
                 </div>
-                <p>Team Number: </p>
             </div>
 
-            <div class="basic-stats">
+            <div class="basic-stats active">
                 <div class="title">
                     <h2>Strategy Team Experience</h2>
                     <i class="fas fa-angle-down" id="dropdown-3"></i>
                 </div>
-                <p>Team Number: </p>
             </div>
 
-            <div class="basic-stats">
+            <div class="basic-stats active">
                 <div class="title">
                     <h2>Basic Stats</h2>
                     <i class="fas fa-angle-down" id="dropdown-4"></i>
                 </div>
-                <p>Team Number: </p>
             </div>
         </div>
 

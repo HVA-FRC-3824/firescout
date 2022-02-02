@@ -8,6 +8,12 @@ function dropdown(id) {
         case 2:
             dropdownElement = document.getElementById('driveTeam');
             break;
+        case 3:
+            dropdownElement = document.getElementById('driveTeam');
+            break;
+        case 4:
+            dropdownElement = document.getElementById('driveTeam');
+            break;
         default:
             console.log("hit default");
             break;
