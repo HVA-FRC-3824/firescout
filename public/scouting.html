@@ -33,7 +33,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/dbb5df409e.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -49,7 +49,6 @@
             <button class="tablink" onclick="openPage('Auto','white'), updateBallsHeld()">Auto</button>
             <button class="tablink" onclick="openPage('Teleop','white'), updateBallsHeld()"> Teleop </button>
             <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
-            <button class="tablink" onclick="openPage('Post','white')"> Post-Match Info </button>
             <button class="tablink" onclick="location.replace('./schedule.html')"> Back to Schedule </button>
             <button class="tablink" id="space"></button>
         </div>
@@ -64,77 +63,15 @@
     
         <div id="Pre" class="tabcontent">
             <div class="preMatch">
-                <h2 id="matchNumber" class="matchNumber">Match Number</h2>
-                <div class="scouterName">
-                    <h2>Scouter Name:</h2>
-                    <input type="text" id="scouterName" value="">
-                </div>
-                <div class="robotRadio">
-                    <form id="driveStation">
-                        <label class="radio" id="blue_1" style="color:#2945e2">
-                        <input type="radio" id="blue1" onclick="chooseDriveStation('B1')" name="name" value="B1"> Blue 1, 
-                    </label><br>
-                        <label class="radio" id="blue_2" style="color:#2945e2">
-                        <input type="radio" id="blue2" onclick="chooseDriveStation('B2')" name="name" value="B2"> Blue 2, 
-                    </label><br>
-                        <label class="radio" id="blue_3" style="color:#2945e2">
-                        <input type="radio" id="blue3" onclick="chooseDriveStation('B3')" name="name" value="B3"> Blue 3, 
-                    </label><br>
-                        <label class="radio" id="red_1" style="color:#ff0044">
-                        <input type="radio" id="red1" onclick="chooseDriveStation('R1')" name="name" value="R1"> Red 1, 
-                    </label><br>
-                        <label class="radio" id="red_2" style="color:#ff0044">
-                        <input type="radio" id="red2" onclick="chooseDriveStation('R2')" name="name" value="R2"> Red 2, 
-                    </label><br>
-                        <label class="radio" id="red_3" style="color:#ff0044">
-                        <input type="radio" id="red3" onclick="chooseDriveStation('R3')" name="name" value="R3"> Red 3, 
-                    </label>
-                    </form>
-                    </input>
-                </div>
-                <div class=preMatchInfo>
-                    <script>
-                        //Display team numbers alongside position
-                        var alliances = JSON.parse(localStorage.getItem("alliances"))
-                            //console.log(alliances);
-                        document.getElementById("blue_1").innerHTML += alliances.blue.team_keys[0].slice(3);
-                        document.getElementById("blue_2").innerHTML += alliances.blue.team_keys[1].slice(3);
-                        document.getElementById("blue_3").innerHTML += alliances.blue.team_keys[2].slice(3);
-                        document.getElementById("red_1").innerHTML += alliances.red.team_keys[0].slice(3);
-                        document.getElementById("red_2").innerHTML += alliances.red.team_keys[1].slice(3);
-                        document.getElementById("red_3").innerHTML += alliances.red.team_keys[2].slice(3);
-                        var match = localStorage.getItem("num");
-                        document.getElementById("matchNumber").innerHTML = "Match Number: " + match;
-                    </script>
-    
-                    <h2>Field Start Position</h2>
-                    <form id=startPosition>
-                        <label class="radio" id="startTop">
-                    <input type="radio"  onclick="chooseRobotPostition(1)" name="name" value="1"> Left
-                </label><br>
-                        <label class="radio" id="startTop">
-                    <input type="radio"  onclick="chooseRobotPostition(2)" name="name" value="2"> Middle 
-                </label><br>
-                        <label class="radio" id="startTop">
-                    <input type="radio"  onclick="chooseRobotPostition(3)" name="name" value="3"> Right
-                </label><br><br>
-                    </form>
-    
-                    <h2>Balls started with</h2>
-                    <form id=startingBalls>
-                        <label class="radio" id="startTop">
-                    <input type="radio"  onclick="setBallsHeld(0)" name="name" value="1"> 0 Balls
-                </label><br>
-                        <label class="radio" id="startTop">
-                    <input type="radio"  onclick="setBallsHeld(1)" name="name" value="2"> 1 Ball
-                </label><br>
-                        <label class="radio" id="startTop">
-                    <input type="radio"  onclick="setBallsHeld(2)" name="name" value="3"> 2 Balls
-                </label><br>
-                        <label class="radio" id="startTop">
-                    <input type="radio"  onclick="setBallsHeld(3)" name="name" value="3"> 3 Balls
-                </label><br>
-                    </form>
+                <!--<h2 id="matchNumber" class="matchNumber">Match Number</h2>-->
+                <h2>Field Start Position</h2>
+                <img src="/public/pics/tarmacIMG.png" class="tarmac"> 
+                <p class="preMatchScoutText">You are Scouting:</p>        
+                <p id="teamNumber">3824</p>
+                <div class="cargodiv">
+                    <p class="cargo"> Has a cargo to start? </p>
+                    <button>Yes</button>
+                    <button>No</button>
                 </div>
             </div>
         </div>
@@ -217,57 +154,6 @@
                 </div>
             </div> 
         </div>
-
-
-        <!--
-    ============================================
-        This is Post Match
-    ============================================
-        -->
-    
-        <div id="Post" class="tabcontent">
-        <div id="wrapper">
-    
-            <div class=postMatchInfo>
-                <br> Color Wheel: <br>
-                <label class="radio">
-                    <input type="radio" onclick="wheel(0)" name="wheel" >Did not use color wheel<br>
-                <label>
-                <label class="radio">
-                    <input type="radio" onclick="wheel(1)" name="wheel" >Selected color on color wheel<br>
-                <label>
-                <label class="radio">
-                    <input type="radio" onclick="wheel(2)" name="wheel" >Spun wheel 3 times<br>
-                <label>
-                <label class="radio">
-                    <input type="radio" onclick="wheel(4)" name="wheel" >Spun three times and chose color<br>
-                <label>
-                <label class="radio">
-                    <input type="radio" onclick="wheel(3)" name="wheel" >Attempted color wheel and failed<br>
-                <label>
-            </div>
-            <div class="nextMatch">
-                <button  id="button" onclick="createMatchArray()">Next Match</button>
-            </div>
-            <div class=cardsInfo>
-                <div id="yellowCard">
-                Yellow Card:
-                <label class="switch">
-                    <input type="checkbox" id="yellowCheck">
-                    <span class="slider"></span>
-                    </label><br><br>
-                </div>
-                <div id="redCard">
-                Red Card: 
-                <label class="switch">
-                    <input type="checkbox" id="redCheck">
-                    <span class="slider"></span>
-                    </label>
-                </div>
-        </div>
-    </div>
-    </div>
-    
     </body>
     
     <!-- 

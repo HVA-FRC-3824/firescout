@@ -26,7 +26,11 @@ setTimeout(() => {
 }, 2200);
 
 function startScouting(){
-    robotToScout = document.getElementById(dataRead).innerHTML;
-    localStorage.setItem('robotToScout', robotToScout);
-    location.replace("../scouting.html");
+    try{
+        robotToScout = document.getElementById(dataRead).innerHTML;
+        localStorage.setItem('robotToScout', robotToScout);
+    }catch(e){
+
+    }
+    location.replace("./scouting.html");
 }

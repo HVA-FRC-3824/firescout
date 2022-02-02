@@ -5,22 +5,30 @@
 ██    ██ ██      ██    ██ ██   ██ ██   ██ ██           ██ 
  ██████  ███████  ██████  ██████  ██   ██ ███████ ███████
 */
+body {
+    background-color: black;
+    font-family: 'Montserrat';
+}
 
-body,
-html {
+body, html {
     height: 100%;
     margin: 0;
     overflow-x: hidden;
 }
 
 button {
-    background-color: #782656;
-    color: #fff;
-    border-radius: 1em;
-    font-size: 2em;
+    background-color: #4fbdba;
+    color: rgb(0, 0, 0);
+    font-size: 22px;
     text-align: center;
-    border: 0%;
-    border-style: outset;
+    padding: 20px 40px 20px 40px;
+    margin: 25px 25px 25px 25px;
+    border: 0;
+    border-radius: 15px;
+}
+
+button:hover {
+    background-color: #aefeff;
 }
 
 h1 {
@@ -107,23 +115,25 @@ h3 {
    ██    ██   ██ ██████      ██   ████ ██   ██   ████   
 */
 
-.navBar{
-    display:flex;
+.navBar {
+    display: flex;
     grid-row: 1/2;
-    width:100vw;
+    width: 100vw;
+    height: 7.5vw;
 }
 
-.navBar.is-active{
-    transform: translate(0px, -6.5vw);
+.navBar.is-active {
+    transform: translate(0px, -7.5vw);
 }
 
-.navBar{
+.navBar {
     transition: all 0.5s ease 0s;
 }
 
 .tablink {
-    width: 16.66666%;
+    width: 20%;
     font-size: 2vw;
+    height: 7.5vw;
     background-color: #3E3E3E;
     border-radius: 0;
     border: none;
@@ -166,21 +176,68 @@ h3 {
 ██      ██   ██ ███████       ██      ██ ██   ██    ██     ██████ ██   ██     ██ ██   ████ ██       ██████  
 */
 
-.preMatch{
+
+
+.tarmac {
+    height: 35vw;
+    align-items: center;
+    grid-column: 1 / 2;
+    grid-row: 2 / 5;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tabcontent .preMatch .matchNumber {
+    grid-column: 2 / 4;
+}
+
+
+.tabcontent .preMatch .preMatchScoutText {
+    grid-column: 2 / 4;
+    grid-row: 1 / 3;
+    margin: 15px 0px 0px 0px;
+    font-size: 50px;
+}
+
+.tabcontent .preMatch .cargo {
+    font-size: 35px;
+}
+
+.tabcontent .preMatch .cargodiv {
+    font-size: 35px;
+    grid-column: 2 / 4;
+    grid-row: 4 / 5;
+}
+
+.tabcontent .preMatch .cargodiv button{
+    padding: 20px 40px 20px 40px;
+    margin: 25px 25px 25px 25px;
+    font-size: 22px;
+    border-radius: 15px
+}
+
+.tabcontent .preMatch #teamNumber {
+    margin-top: 0px;
+    grid-column: 2 / 4;
+    text-align: center;
+    font-size: 50px;
+}
+
+.tabcontent .preMatch .nextButton{
+    grid-row: 4 / 5;
+    grid-column: 3 / 4;
+    font-size:3vw;
+    padding:0px;
+    margin: auto;
+    width: 75%;
+    height: 50%;
+}
+
+.preMatch {
+    text-align: center;
     display:grid;
     grid-template-rows: auto;
     grid-template-columns: auto;
-}
-
-.scouterName h2 {
-    display: inline-block;
-    grid-column: 1 / 2;
-}
-
-.scouterName input {
-    font-size: 2vw;
-    margin-left:auto;
-    margin-right:auto;
 }
 
 .preMatch h2 {
@@ -206,7 +263,7 @@ h3 {
     grid-column: 3 / 4;
     grid-row: 1 / 2;
     text-align: center;
-    padding: 1vh;
+    padding: 1vw;
 }
 
 
@@ -218,13 +275,13 @@ h3 {
 ██   ██  ██████     ██     ██████ 
 */
 
-.autoWrapper{
+.autoWrapper {
     display:grid;
     grid-template-columns: 70vw auto;
     grid-template-rows: auto;
 }
 
-.autoWrapper img{
+.autoWrapper img {
     width:90%;
 }
 
@@ -233,14 +290,14 @@ h3 {
     grid-column: 2 / 3;
     text-align: center;
 }
-.autoInteraction button{
+
+.autoInteraction button {
     padding:1em;
     width:100%;
     font-size: 3.2vw;
 }
 
-.autoDropdown:hover,
-.autoDropdown:focus {
+.autoDropdown:hover, .autoDropdown:focus {
     background-color: #E45D38;
 }
 
