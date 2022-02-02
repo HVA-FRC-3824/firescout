@@ -7,10 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <link rel="shortcut icon" type="image/jpg" href="pics/Logo-Small-Square.png"/>
+
+    <script src="js/pit.js"></script>
     
-    <!-- update the version number as needed -->
+    <!-- update the version number as needed
     <script defer src="/__/firebase/9.6.4/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
+    <!-- include only the Firebase features as you need
     <script defer src="/__/firebase/9.6.4/firebase-auth-compat.js"></script>
     <script defer src="/__/firebase/9.6.4/firebase-database-compat.js"></script>
     <script defer src="/__/firebase/9.6.4/firebase-firestore-compat.js"></script>
@@ -23,10 +25,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
-    <!-- <script type="module" src="js/firebase.js"></script> -->
-    <script src="js/pit.js"></script>
-    <script defer src="js/data.js"></script>
-    <script src="js/global.js"></script>
+    <!-- <script src="js/firebase.js"></script> -->
+    <!-- <script defer src="js/data.js"></script>
+    <script src="js/global.js"></script> -->
 
     <link rel="stylesheet" type="text/css" href="css/pit.css">
 
@@ -67,18 +68,18 @@
         </div>
 
         <div class="container">
-            <div class="basic-stats">
+            <div class="basic-stats" id="stats">
                 <div class="title">
                     <h2>Basic Stats</h2>
-                    <i class="fas fa-angle-down" id="dropdown1"></i>
+                    <i class="fas fa-angle-down" onclick="dropdown(1)"></i>
                 </div>
                 <p>Team Number: </p>
             </div>
 
-            <div class="basic-stats active">
+            <div class="basic-stats active" id="driveTeam">
                 <div class="title">
                     <h2>Drive Team Experience</h2>
-                    <i class="fas fa-angle-down" id="dropdown-2"></i>
+                    <i class="fas fa-angle-down" onclick="dropdown(2)"></i>
                 </div>
                 <p>Team Number: </p>
             </div>

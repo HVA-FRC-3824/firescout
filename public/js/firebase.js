@@ -54,6 +54,7 @@ firebase.initializeApp(config);
 // Get a reference to the database service
 var database = firebase.database();
 var auth = firebase.auth();
+var storage = firebase.storage();
 
 /*
  █████  ██    ██ ████████ ██   ██ 
@@ -283,6 +284,7 @@ function getScoutPosition(){
 ██      ██    ██             ██ ██      ██    ██ ██    ██    ██    ██ ██  ██ ██ ██    ██ 
 ██      ██    ██        ███████  ██████  ██████   ██████     ██    ██ ██   ████  ██████ 
 */
+
 
 
 /*

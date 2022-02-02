@@ -1,9 +1,16 @@
-window.onload = function() {
-    const drop_one = document.getElementById('dropdown1');
-    const dropdown_stats = document.querySelector('.basic-stats');
+function dropdown(id) {
+    var dropdownElement;
 
-    drop_one.addEventListener('click', function () {
-        dropdown_stats.classList.toggle('active');
-    });
+    switch (id) {
+        case 1:
+            dropdownElement = document.getElementById('stats');
+            break;
+        case 2:
+            dropdownElement = document.getElementById('driveTeam');
+            break;
+        default:
+            console.log("hit default");
+            break;
+    }
+    dropdownElement.classList.toggle('active');
 }
-
