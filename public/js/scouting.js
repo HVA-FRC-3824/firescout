@@ -1,3 +1,5 @@
+var x;
+var y;
 function openPage(pageName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -25,14 +27,15 @@ openPage("Pre");
 
 console.log(localStorage.getItem("robotToScout"));
 
-function getMousePosition(){
-    //get the users mouse position :)
+function getMousePosition(event){
+    x = event.clientX;     // Get the horizontal coordinate
+    y = event.clientY;     // Get the vertical coordinate
 }
+
 
 var popupOpen = false;
 var mousePosition;
 function togglePopup(page){
-    //mousePosition = getMousePosition    //TODO make this function :)
     if(page == "auto"){
         if(popupOpen){
             document.getElementById("autoDropdown").style.display = "none";
@@ -40,6 +43,9 @@ function togglePopup(page){
         }else{
             //TODO MOVE autoDropdown to the mousePosition
             document.getElementById("autoDropdown").style.display = "block";
+            console.log(x);
+            console.log(y);
+            document.getElementById("autoDropdown").style.transform = "translate(" + x + "px," +  y + "px)";
             popupOpen = true;
         }
     }else{

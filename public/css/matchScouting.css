@@ -336,9 +336,8 @@ Cause they are literally the same lmao
     text-align: center;
     box-shadow: 0px 16px 32px 0px rgba(0, 0, 0, 0.651);
     z-index: 1;
-    left: 20%;
-    top: 10%;
     width: 30%;
+    position: absolute;
 }
 
 .teleopDropdown-content a,
