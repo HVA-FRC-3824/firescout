@@ -13,10 +13,18 @@ window.onload = function() {
     const navbar = document.querySelector('.navBar');
     const arrow = document.querySelector('.arrow');
     const content = document.getElementsByClassName("tabcontent");
+    const preMatch = document.querySelector('.preMatch');
+    const autoWrapper = document.querySelector('.autoWrapper');
+    const teleWrapper = document.querySelector('.teleWrapper');
+    const endWrapper = document.querySelector('.endgameWrapper');
 
     nav.addEventListener('click', function () {
         arrow.classList.toggle('is-active');
         navbar.classList.toggle('is-active');
+        preMatch.classList.toggle('is-active');
+        autoWrapper.classList.toggle('is-active');
+        teleWrapper.classList.toggle('is-active');
+        endWrapper.classList.toggle('is-active');
         for (i = 0; i < content.length; i++) {
             content[i].classList.toggle('is-active');
         };

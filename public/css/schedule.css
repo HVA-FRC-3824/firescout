@@ -161,7 +161,7 @@ main section {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(../pics/sky.jpg);
+    background-image: url(https://i.ibb.co/YRCxKNW/sky.jpg);
     background-size: cover;
 }
 
@@ -295,7 +295,7 @@ main section .container .scout-match button:hover {
     ██   ████ ██   ██   ████       ██████  ███████ ███████ ██   ██    ██     ██████  ██     
     */
     main section {
-        background-image: url(../pics/desktopBG.jpg);
+        background-image: url(https://i.ibb.co/K5yTWjK/desktop-BG.jpg);
     }
 
     header .container .nav-login-bars nav {

@@ -6,7 +6,7 @@
  ██████  ███████  ██████  ██████  ██   ██ ███████ ███████
 */
 body {
-    background-color: black;
+    background-color: #fff;
     font-family: 'Montserrat';
 }
 
@@ -14,6 +14,7 @@ body, html {
     height: 100%;
     margin: 0;
     overflow-x: hidden;
+    background-color: #fff;
 }
 
 button {
@@ -59,41 +60,36 @@ h1 {
 .tabcontent.is-active, .Pre.is-active{
     transform: translate(0, -6.5vw);
 }
+
 .Auto.is-active{
     transform: translate(-100vw, -6.5vw);
 }
+
 .Teleop.is-active{
     transform: translate(-200vw, -6.5vw);
 }
+
 .Endgame.is-active{
     transform: translate(-300vw, -6.5vw);
 }
-.Post.is-active{
-    transform: translate(-400vw, -6.5vw);
-}
 
-.Pre{
+.Pre {
     transform: translate(0vw);
 }
 
-.Auto{
+.Auto {
     transform: translate(-100vw);
 }
 
-.Teleop{
+.Teleop {
     transform: translate(-200vw);
 }
 
-.Endgame{
+.Endgame {
     transform: translate(-300vw);
 }
 
-.Post{
-    transform: translate(-400vw);
-}
-
-
-.tabcontent{
+.tabcontent {
     transition: all 0.5s ease 0s;
 }
 
@@ -132,8 +128,8 @@ h1 {
     margin:0;
 }
 
-#space{
-    width:5%;
+#space {
+    width: 10%;
 }
 
 .navArrow{
@@ -144,7 +140,7 @@ h1 {
     z-index: 100;
     position: absolute;
     width:5.75vw;
-    margin-top: 1vw;
+    margin: 1vw 1.7vw 0vw 0vw;
     padding:0.25vw;
     right: 0;
     top:0;
@@ -152,6 +148,7 @@ h1 {
 
 .arrow.is-active{
     transform: rotateZ(-180deg);
+    filter: invert(100%);
 }
 
 .arrow{
@@ -166,6 +163,11 @@ h1 {
 ██      ██   ██ ███████       ██      ██ ██   ██    ██     ██████ ██   ██     ██ ██   ████ ██       ██████  
 */
 
+.tabcontent .preMatch h2 {
+    font-weight: 400;
+    padding-top: 20px;
+}
+
 .tabcontent .preMatch .tarmac {
     height: 33vw;
     align-items: center;
@@ -174,6 +176,7 @@ h1 {
     margin-left: auto;
     margin-right: auto;
     border: 1px solid rgb(104, 104, 104);
+    border-radius: 50px;
 }
 
 .tabcontent .preMatch .teamToScoutDiv {
@@ -212,7 +215,11 @@ h1 {
     text-align: center;
     display:grid;
     grid-template-rows: auto;
-    grid-template-columns: auto;
+    grid-template-columns: 50vw 50vw;
+}
+
+.preMatch.is-active {
+    margin-top: 2.5vw;
 }
 
 .preMatch h2 {
@@ -352,88 +359,122 @@ Cause they are literally the same lmao
 }
 
 /*
-██████   ██████  ███████ ████████       ███    ███  █████  ████████  ██████ ██   ██     ██ ███    ██ ███████  ██████  
-██   ██ ██    ██ ██         ██          ████  ████ ██   ██    ██    ██      ██   ██     ██ ████   ██ ██      ██    ██ 
-██████  ██    ██ ███████    ██    █████ ██ ████ ██ ███████    ██    ██      ███████     ██ ██ ██  ██ █████   ██    ██ 
-██      ██    ██      ██    ██          ██  ██  ██ ██   ██    ██    ██      ██   ██     ██ ██  ██ ██ ██      ██    ██ 
-██       ██████  ███████    ██          ██      ██ ██   ██    ██     ██████ ██   ██     ██ ██   ████ ██       ██████  
+███████ ███    ██ ██████   ██████   █████  ███    ███ ███████ 
+██      ████   ██ ██   ██ ██       ██   ██ ████  ████ ██      
+█████   ██ ██  ██ ██   ██ ██   ███ ███████ ██ ████ ██ █████   
+██      ██  ██ ██ ██   ██ ██    ██ ██   ██ ██  ██  ██ ██      
+███████ ██   ████ ██████   ██████  ██   ██ ██      ██ ███████                                                             
 */
 
-.postMatchInfo {
-    font-size: 3.5vw;
-    grid-row: 1 / 4;
-    grid-column: 1 / 2;
-}
-
-.nextMatch {
-    font-size:1.5vw;
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
-    margin-left: auto;
-    margin-right:0;
-}
-
-.nextMatch button{
-    padding: 2vw;
-}
-
-.cardsInfo {
+.tabcontent .endgameWrapper {
     text-align: center;
-    font-size:4vw;
-    grid-row: 2 / 4;
-    grid-column: 2 / 3;
+    display:grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
 }
 
-.switch {
-    position: relative;
+.endgameWrapper.is-active {
+    margin-top: 2.5vw;
+}
+
+.tabcontent .endgameWrapper .attemptClimb {
+    font-size: 4vw;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.tabcontent .endgameWrapper .attemptClimb p {
+    color: black;
+}
+
+.tabcontent .endgameWrapper .playedDefense {
+    font-size: 4vw;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.tabcontent .endgameWrapper .playedDefense p {
+    color: black;
+}
+
+.tabcontent .endgameWrapper .cardCards {
+    font-size: 4vw;
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+
+.tabcontent .endgameWrapper .cardCards p {
+    color: black;
+}
+
+.tabcontent .endgameWrapper .switch {
     display: inline-block;
-    width: 1.5em;
-    height: 1.5em;
+    width: 30px;
+    height: 15px;
+    margin-left:auto;
+    margin-right:auto;
+    grid-column: 1/2 ;
+    grid-row: 4/5 ;
+    bottom: 0;
+    z-index: 100;
 }
 
-.slider {
-    position: absolute;
+.tabcontent .endgameWrapper .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.tabcontent .endgameWrapper .slider {
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
+    border-radius: 34px;
+    background-color: #0342b8;
     -webkit-transition: .4s;
     transition: .4s;
 }
 
-input:checked+.slider {
-    background-color: red;
+.tabcontent .endgameWrapper .slider:before {
+    position: absolute;
+    content: "";
+    height: 2.75vw;
+    width: 2.75vw;
+    border-radius: 34px;
+    background-image: radial-gradient(rgb(30, 122, 243), rgb(12, 14, 182));
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
-#yellowCard input:checked+.slider {
-    background-color: yellow;
+.tabcontent .endgameWrapper input:checked + .slider {
+    background-image: linear-gradient(green, yellow);
 }
 
-input[type=radio] {
-    border: 0%;
-    width: 0.5em;
-    height: 0.5em;
-    font-size: 100%;
+.tabcontent .endgameWrapper input:focus + .slider {
+    box-shadow: 0 0 0px #48ff00;
+}
+
+.tabcontent .endgameWrapper input:checked + .slider:before {
+    -webkit-transform: translateX(2.75vw);
+    -ms-transform: translateX(2.75vw);
+    transform: translateX(2.75vw);
 }
 
 #Auto {
-    background-color: black;
+    background-color: #fff;
 }
 
 #Pre {
-    background-color: black;
+    background-color: #fff;
+    color: #000;
 }
 
 #Teleop {
-    background-color: black;
+    background-color: #fff;
 }
 
 #Endgame {
-    background-color: black;
+    background-color: #fff;
 }
 
 #Post {
-    background-color: black;
+    background-color: #fff;
 }

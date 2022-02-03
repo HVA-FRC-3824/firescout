@@ -16,7 +16,7 @@ body {
     font-family: "Montserrat";
 }
 
-.navbar{
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -169,7 +169,7 @@ header .container nav {
 */
 
 .hero {
-    background-image: url(../pics/sathero.jpg);
+    background-image: url(https://i.ibb.co/zJtfcxG/sathero.jpg);
     width: 100%;
     min-height: 100vh;
     background-position: left;
@@ -220,7 +220,7 @@ main .hero .container button {
 
 
 main .features {
-    background-image: url(../pics/heroImage.jpg);
+    background-image: url(https://i.ibb.co/RPz0Yq4/hero-Image.jpg);
     background-position: top;
 }
 

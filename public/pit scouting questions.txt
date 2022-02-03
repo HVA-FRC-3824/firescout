@@ -1,8 +1,12 @@
--Team Number
--Robot Weight
--Coding Language
+✔Team Number
+✔Robot Weight
+✔Coding Language
+✔Drive train
+    -Mecanum
+    -Swerve
+    -Tank
+    -West Coast
 -Drive Team Experience	
--drive train
 -robot-height
 -robot-width
 -chamber size

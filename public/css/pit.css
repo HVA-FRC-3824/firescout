@@ -37,6 +37,8 @@ header {
     color: rgb(0, 0, 0);
     width: 100%;
     z-index: 200;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 }
 
 header .container {
@@ -180,7 +182,7 @@ main .page-name h1 {
     padding: 15vh 0px 5vh 0px;
 }
 
-main .container .basic-stats {
+main .container .window {
     background-color: #fff;
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 5px;
@@ -194,7 +196,7 @@ main .container .basic-stats {
     transition: all 0.6s ease 0s;
 }
 
-main .container .basic-stats .title {
+main .container .window .title {
     height: 55px;
     background-color: #f3f3f3;
     display: flex;
@@ -204,7 +206,7 @@ main .container .basic-stats .title {
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);;
 }
 
-main .container .basic-stats .title i {
+main .container .window .title i {
     font-size: 2em;
     padding-right: 6px;
 }
@@ -213,19 +215,50 @@ main .container .basic-stats .title i {
     height: 50vh !important;
 }
 
-main .container .basic-stats section {
+main .container .window section {
     padding: 60px 80px 60px 80px;
     display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+    grid-gap: 20px;
 }
 
-main .container .basic-stats section p {
+main .container .window section p {
     font-weight: 600;
     font-size: 20px;
     font-family: 'Montserrat', sans-serif;
     padding: 10px 0px 10px 0px;
 }
 
-main .container .basic-stats section #numberInput {
+main .container .window section #teamNum {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+main .container .window section #botMass {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+main .container .window section #botLang {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+main .container .window section #botDrive {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+main .container .window section #teamInput {
     font-weight: 600;
     font-family: 'Montserrat', sans-serif;
     resize: none;
@@ -235,127 +268,61 @@ main .container .basic-stats section #numberInput {
     overflow: hidden;
     font-size: 30px;
     grid-row: 1 / 2;
-    grid-column:  3 / 4;
+    grid-column:  2 / 3;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-#numberInput::-webkit-outer-spin-button, #numberInput::-webkit-inner-spin-button {
+main .container .window section #massInput {
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    resize: none;
+    float: right;
+    width: 150px;
+    text-align: center;
+    overflow: hidden;
+    font-size: 30px;
+    grid-row: 2 / 3;
+    grid-column:  2 / 3;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+main .container .window section #langInput {
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    resize: none;
+    float: right;
+    width: 150px;
+    text-align: center;
+    overflow: hidden;
+    font-size: 30px;
+    grid-row: 3 / 4;
+    grid-column:  2 / 3;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+main .container .window section #driveSelect {
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    width: 150px;
+    text-align: center;
+    overflow: hidden;
+    font-size: 22px;
+    grid-row: 4 / 5;
+    grid-column:  2 / 3;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#teamInput::-webkit-outer-spin-button, #teamInput::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-/*
-main section {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#massInput::-webkit-outer-spin-button, #massInput::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
-
-main .base .container {
-    width: 82vw;
-    z-index: 71;
-}
-
-main section .container .modal-button-group {
-    background-color: rgb(170, 170, 170);
-    height: 500px;
-    border-radius: 6px;
-    padding: 10px;
-    text-align: center;
-    z-index: 70;
-}
-
-main section .container .modal-button{
-    padding: 15px 10px;
-    cursor:pointer;
-}
-
-main section .button-container {
-    text-align: center;
-    margin-top: 15px;
-}
-
-main section .button-container button {
-    font-size: 24px;
-    font-family: "Montserrat";
-    font-weight: 600;
-    height: 50px;
-    width: 60vw;
-}
-
-main .modal-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    transform: translate(0, calc(100vh));
-}
-
-main .modal-container .modal {
-    position: fixed;
-    width: 82vw;
-    z-index: 98;
-    color: #fff;
-    border-radius: 6px;
-    padding: 30px 30px;
-    height: 500px;
-    background-color: #1c9dda;
-    text-align: center;
-}
-
-main .modal-container .modal-1 h1 {
-    padding: 10px 0px;
-}
-
-main .modal-container .modal-1 .questions {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    margin-top: 20px;
-    gap: 20px;
-    font-size: 24px;
-}
-
-main .modal-container .modal-1 .team-num {
-    grid-row: 1 / 2;
-    grid-column: 1 / 2;
-}
-
-main .modal-container .modal-1 textarea {
-    resize: none;
-    width: 130px;
-    height: 30px;
-}
-
-main .modal-container .modal-1 .team-num-area {
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
-    font-size: 24px;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-main .modal-container .modal-1 .bot-weight-area {
-    font-size: 24px;
-    margin-top: auto;
-    margin-bottom: auto;
-    grid-row: 2 / 3;
-    grid-column: 2 / 3;
-    width: 130px;
-}
-
-
-
-main .modal-container .modal.is-open {
-    transform: translate(0, calc(100vh + 60px));
-}
-
-main .modal-container .modal {
-    transition: all .45s;
-}
-
-*/
-
-
 
