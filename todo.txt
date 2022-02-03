@@ -2,6 +2,10 @@ replace '-' (dashes) with checkmark once
 something has been completed ---> ✔
 (copy and paste, don't delete example character pls)
 
+link for big boi text
+https://patorjk.com/software/taag/#p=display&f=ANSI%20Regular&t=text
+
+
 admin page 
     - increment match num button 
     - blue alliance comp change

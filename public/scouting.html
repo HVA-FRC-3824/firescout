@@ -45,11 +45,12 @@
     -->
     <div id="wrapper">
         <div class="navBar" id="navbar">
-            <button class="tablink" onclick="openPage('Pre', 'white')" id="defaultOpen">Pre-Match Info</button>
-            <button class="tablink" onclick="openPage('Auto','white'), updateBallsHeld()">Auto</button>
-            <button class="tablink" onclick="openPage('Teleop','white'), updateBallsHeld()"> Teleop </button>
-            <button class="tablink" onclick="openPage('Endgame','white')"> Endgame </button>
-            <button class="tablink" onclick="location.replace('./schedule.html')"> Back to Schedule </button>
+            <button class="tablink"><i id="lilGuy" class="fas fa-user"></i> 3824</button>
+            <button class="tablink" onclick="openPage('Pre')" id="defaultOpen">Pre-Match Info</button>
+            <button class="tablink" onclick="openPage('Auto')">Auto</button>
+            <button class="tablink" onclick="openPage('Teleop')"> Teleop </button>
+            <button class="tablink" onclick="openPage('Endgame')"> Endgame </button>
+            <button class="tablink" onclick="location.replace('./schedule.html')"> Next Match </button>
             <button class="tablink" id="space"></button>
         </div>
         <div class="navarrow"><img src="./pics/whiteArrow.png" class="arrow"></div>
@@ -65,9 +66,12 @@
             <div class="preMatch">
                 <!--<h2 id="matchNumber" class="matchNumber">Match Number</h2>-->
                 <h2>Field Start Position</h2>
-                <img src="/public/pics/tarmacIMG.png" class="tarmac"> 
-                <p class="preMatchScoutText">You are Scouting:</p>        
-                <p id="teamNumber">3824</p>
+                <img src="./pics/tarmacIMG.png" class="tarmac"> 
+                <div class="teamToScoutDiv">
+                    <p class="preMatchScoutText">You are Scouting:</p>        
+                    <p id="teamNumber">3824</p>   
+                </div>
+                
                 <div class="cargodiv">
                     <p class="cargo"> Has a cargo to start? </p>
                     <button>Yes</button>
@@ -83,29 +87,19 @@
         -->
     
         <div id="Auto" class="tabcontent">
-        <div class="autoWrapper">
-            <img onclick="fieldInput(), getShootSpot(false)" src="pics/fieldIMG.png" alt="auto field" id="autoField"></img>
-            <div class=autoInteraction>
-                <button class="interact" onclick="incrementBallsHeld(1, true,false,false);">Picked Up From Floor</button>
-                <button class="interact" onclick="incrementBallsHeld(1,false,false,true);">Dropped Ball</button>
-                <h3 id="ballsHeld"></h3>
-            </div>
-    
-            <div id="autoDropdown" class="autoDropdown-content">
-                <a href="#innerPort" onclick="fieldInput2(), hideDropdown()">Circle</a>
-                <a href="#outterPort" onclick="fieldInput2(), hideDropdown()">Hexagon</a>
-                <a href="#lowerPort" onclick="fieldInput2(), hideDropdown()">Rectangle</a>
-                <a href="#miss" onclick="fieldInput2(), hideDropdown()">Miss</a>
-            </div>
-            <!--The dropdown after the first dropdown -->
-            <div id="autoDropdown2" class="autoDropdown-content">
-                <a href="#innerPort" onclick="hideDropdown2(),incrementBallsHeld(5,false,false)">5 Balls</a>
-                <a href="#outerPort" onclick="hideDropdown2(),incrementBallsHeld(4,false,false)">4 Balls</a>
-                <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(3,false,false)">3 Balls</a>
-                <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(2,false,false)">2 Balls</a>
-                <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(1,false,false)">1 Ball</a>
-                <a href="#lowerPort" onclick="hideDropdown2()">Cancel</a>
-            </div>
+            <div class="autoWrapper">
+                <p id="currentCargo">1</p>
+                <img onclick="togglePopup('auto')" src="pics/fieldIMG.png" alt="auto field" id="autoField"></img>
+                <label class="switch" name="movedOffTarmac">
+                    <input id="movedOffTarmac" type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                <div id="autoDropdown" class="autoDropdown-content unselectable">
+                    <a onclick="launchedCargo(4, 'auto')">Upper Hub</a>
+                    <a onclick="launchedCargo(2, 'auto')">Lower Hub</a>
+                    <a onclick="pickupCargo('auto')">Pickup Cargo</a>
+                    <a onclick="launchedCargo(0, 'auto')">Miss</a>
+                </div>
             </div>
         </div>
     
@@ -117,30 +111,16 @@
     
         <div id="Teleop" class="tabcontent">
             <div class="teleWrapper">
-            <img onclick="fieldInput(), getShootSpot(true)" src="pics/fieldIMG.png" alt="Teleop field" id="teleopField"></img>
-            <div class="teleInteraction">
-    
-                <button class="interact" onclick="incrementBallsHeld(1, true);">Picked Up From Floor</button>
-                <button class="interact" onclick="incrementBallsHeld(1, true);">Picked Up From Loading Zone</button>
-                <button class="interact" onclick="incrementBallsHeld(1, false,true,true);">Dropped Ball</button>
-                <h3 id="ballsHeldTele"> </h3>
-            </div>
-            <div id="teleopDropdown" class="teleopDropdown-content">
-                <a href="#innerPort" onclick="hideDropdown(),fieldInput2()">Circle</a>
-                <a href="#outerPort" onclick="hideDropdown(),fieldInput2()">Hexagon</a>
-                <a href="#lowerPort" onclick="hideDropdown(),fieldInput2()">Rectangle</a>
-                <a href="#miss" onclick="hideDropdown(),fieldInput2()">Miss</a>
-            </div>
-            <div id="teleopDropdown2" class="teleopDropdown-content">
-                <a href="#innerPort" onclick="hideDropdown2(),incrementBallsHeld(5,false,true)">5 Balls</a>
-                <a href="#outerPort" onclick="hideDropdown2(),incrementBallsHeld(4,false,true)">4 Balls</a>
-                <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(3,false,true)">3 Balls</a>
-                <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(2,false,true)">2 Balls</a>
-                <a href="#lowerPort" onclick="hideDropdown2(),incrementBallsHeld(1,false,true)">1 Ball</a>
-                <a href="#lowerPort" onclick="hideDropdown2()">Cancel</a>
+                <p id="currentCargo">1</p>
+                <img onclick="togglePopup('tele')" src="pics/fieldIMG.png" alt="Teleop field" id="teleopField"></img>
+                <div id="teleopDropdown" class="teleopDropdown-content unselectable">
+                    <a onclick="launchedCargo(2, 'teleop')">Upper Hub</a>
+                    <a onclick="launchedCargo(1, 'teleop')">Lower Hub</a>
+                    <a onclick="pickupCargo('teleop')">Pickup Cargo</a>
+                    <a onclick="launchedCargo(0,'teleop')">Miss</a>
+                </div>
             </div>
         </div>
-    </div>
     
         <!--
     ============================================

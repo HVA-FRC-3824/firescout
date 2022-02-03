@@ -19,39 +19,29 @@ body, html {
 button {
     background-color: #4fbdba;
     color: rgb(0, 0, 0);
-    font-size: 22px;
+    font-size: 3.2vw;
     text-align: center;
-    padding: 20px 40px 20px 40px;
-    margin: 25px 25px 25px 25px;
+    padding: 2vw 3vw;
+    margin: 1vw;
     border: 0;
     border-radius: 15px;
 }
 
-button:hover {
-    background-color: #aefeff;
-}
-
 h1 {
     color: #3824cc;
-    font-size: 10vmin;
+    font-size: 10vw;
     text-align: center;
     position: relative;
     display: inline-block;
 }
 
-h3 {
-    background-color: #7722cc;
-    font-size: 2.5vw;
-    position: relative;
-    display: inline-block;
-    margin: 0%;
-    padding: 0.7em;
-    color: white;
-    border-radius: 1em;
-    border-style: outset;
-    border-color: #782656;
-    border-width: 2px;
-}
+.unselectable {
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+} 
 
 #wrapper{
     display:grid;
@@ -134,7 +124,7 @@ h3 {
     width: 20%;
     font-size: 2vw;
     height: 7.5vw;
-    background-color: #3E3E3E;
+    background-color: #0342b8;
     border-radius: 0;
     border: none;
     color: white;
@@ -143,7 +133,7 @@ h3 {
 }
 
 #space{
-    width:6%;
+    width:5%;
 }
 
 .navArrow{
@@ -154,8 +144,8 @@ h3 {
     z-index: 100;
     position: absolute;
     width:5.75vw;
-    padding-right:1vw;
-    padding-top:1vw;
+    margin-top: 1vw;
+    padding:0.25vw;
     right: 0;
     top:0;
 }
@@ -176,61 +166,46 @@ h3 {
 ██      ██   ██ ███████       ██      ██ ██   ██    ██     ██████ ██   ██     ██ ██   ████ ██       ██████  
 */
 
-
-
-.tarmac {
-    height: 35vw;
+.tabcontent .preMatch .tarmac {
+    height: 33vw;
     align-items: center;
     grid-column: 1 / 2;
     grid-row: 2 / 5;
     margin-left: auto;
     margin-right: auto;
+    border: 1px solid rgb(104, 104, 104);
 }
 
-.tabcontent .preMatch .matchNumber {
+.tabcontent .preMatch .teamToScoutDiv {
     grid-column: 2 / 4;
+    grid-row: 1 / 4;
 }
-
 
 .tabcontent .preMatch .preMatchScoutText {
-    grid-column: 2 / 4;
-    grid-row: 1 / 3;
-    margin: 15px 0px 0px 0px;
-    font-size: 50px;
+    margin-top: 3.2vw;
+    font-size: 4vw;
 }
 
 .tabcontent .preMatch .cargo {
-    font-size: 35px;
+    font-size: 3vw;
 }
 
 .tabcontent .preMatch .cargodiv {
-    font-size: 35px;
+    font-size: 4vw;
     grid-column: 2 / 4;
     grid-row: 4 / 5;
 }
 
 .tabcontent .preMatch .cargodiv button{
-    padding: 20px 40px 20px 40px;
-    margin: 25px 25px 25px 25px;
-    font-size: 22px;
-    border-radius: 15px
+    padding: 2.6vw 3.4vw;
+    margin: 2vw 3vw;
 }
 
 .tabcontent .preMatch #teamNumber {
-    margin-top: 0px;
+    margin-top: 0;
     grid-column: 2 / 4;
     text-align: center;
-    font-size: 50px;
-}
-
-.tabcontent .preMatch .nextButton{
-    grid-row: 4 / 5;
-    grid-column: 3 / 4;
-    font-size:3vw;
-    padding:0px;
-    margin: auto;
-    width: 75%;
-    height: 50%;
+    font-size: 5vw;
 }
 
 .preMatch {
@@ -246,67 +221,119 @@ h3 {
     margin: 0;
 }
 
-.robotRadio {
-    grid-column: 1 / 2;
-    grid-row: 2 / 4;
-    font-size: 4.5vw;
-}
-
-.preMatchInfo {
-    grid-column: 2 / 4;
-    grid-row: 2 / 4;
-    font-size: 2.8vw;
-    text-align: center;
-}
-
-.matchNumber {
-    grid-column: 3 / 4;
-    grid-row: 1 / 2;
-    text-align: center;
-    padding: 1vw;
-}
-
 
 /*
- █████  ██    ██ ████████  ██████  
-██   ██ ██    ██    ██    ██    ██ 
-███████ ██    ██    ██    ██    ██ 
-██   ██ ██    ██    ██    ██    ██ 
-██   ██  ██████     ██     ██████ 
+ █████  ██    ██ ████████  ██████       █████  ███    ██ ██████      ████████ ███████ ██      ███████ 
+██   ██ ██    ██    ██    ██    ██     ██   ██ ████   ██ ██   ██        ██    ██      ██      ██      
+███████ ██    ██    ██    ██    ██     ███████ ██ ██  ██ ██   ██        ██    █████   ██      █████   
+██   ██ ██    ██    ██    ██    ██     ██   ██ ██  ██ ██ ██   ██        ██    ██      ██      ██      
+██   ██  ██████     ██     ██████      ██   ██ ██   ████ ██████         ██    ███████ ███████ ███████ 
+Cause they are literally the same lmao    
 */
 
-.autoWrapper {
+.tabcontent .autoWrapper,
+.tabcontent .teleWrapper {
     display:grid;
-    grid-template-columns: 70vw auto;
+    grid-template-columns: auto;
     grid-template-rows: auto;
+    width:75vw;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
 }
 
-.autoWrapper img {
-    width:90%;
-}
-
-.autoInteraction {
+.tabcontent .autoWrapper img,
+.tabcontent .teleWrapper img {
+    margin-left: auto;
+    margin-right: auto;
+    width:75vw;
+    grid-column: 1 / 2;
     grid-row: 1 / 2;
-    grid-column: 2 / 3;
-    text-align: center;
 }
 
-.autoInteraction button {
-    padding:1em;
-    width:100%;
-    font-size: 3.2vw;
+/* ======================================== MOVED OFF TARMAC SWITCH ======================================== */
+.tabcontent .autoWrapper .switch {
+    position: absolute;
+    display: inline-block;
+    width: 7vw;
+    height: 4vw;
+    margin-bottom: 2vw;
+    margin-left: 1vw;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    bottom: 0;
+    z-index: 100;
 }
 
-.autoDropdown:hover, .autoDropdown:focus {
-    background-color: #E45D38;
+.tabcontent .autoWrapper .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
+
+.tabcontent .autoWrapper .slider {
+    cursor: pointer;
+    border-radius: 34px;
+    background-image: linear-gradient(red,orange);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.tabcontent .autoWrapper .slider:before {
+    position: absolute;
+    content: "";
+    height: 2.75vw;
+    width: 2.75vw;
+    margin-top: 0.625vw;
+    left:0.75vw;
+    border-radius: 34px;
+    background-image: radial-gradient(rgb(30, 122, 243), rgb(12, 14, 182));
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.tabcontent .autoWrapper input:checked + .slider {
+    background-image: linear-gradient(green, yellow);
+}
+
+.tabcontent .autoWrapper input:focus + .slider {
+    box-shadow: 0 0 0px #48ff00;
+}
+
+.tabcontent .autoWrapper input:checked + .slider:before {
+    -webkit-transform: translateX(2.75vw);
+    -ms-transform: translateX(2.75vw);
+    transform: translateX(2.75vw);
+}
+
+/* ======================================== MOVED OFF TARMAC SWITCH END ======================================== */
+
+/* ======================================== CURRENT CARGO HELD ======================================== */
+
+
+#currentCargo{
+    font-size: 4vw;
+    background-color: #0342b8;
+    padding: 0.1vw 1.9vw;
+    border-radius: 100px;
+    position: absolute;
+    right:0;
+    color: rgb(0, 255, 0);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    margin-right: 3vw;
+    margin-top: 2vw;
+}
+
+/* ======================================== CURRENT CARGO HELD END ======================================== */
+
 
 .teleopDropdown-content,
 .autoDropdown-content {
     display: none;
-    position: absolute;
-    background-color: #E45D38;
+    border-radius: 15px;
+    background-color: #48a5fcb6;
     overflow: auto;
+    text-align: center;
     box-shadow: 0px 16px 32px 0px rgba(0, 0, 0, 0.651);
     z-index: 1;
     left: 20%;
@@ -316,47 +343,13 @@ h3 {
 
 .teleopDropdown-content a,
 .autoDropdown-content a {
+    cursor: pointer;
     color: black;
     padding: 5% 5%;
     font-size: 150%;
     text-decoration: none;
     display: block;
-}
-
-/*
-████████ ███████ ██      ███████  ██████  ██████  
-   ██    ██      ██      ██      ██    ██ ██   ██ 
-   ██    █████   ██      █████   ██    ██ ██████  
-   ██    ██      ██      ██      ██    ██ ██      
-   ██    ███████ ███████ ███████  ██████  ██      
-*/
-
-.teleWrapper{
-    display:grid;
-    grid-template-columns: 70vw auto;
-    grid-template-rows: auto;
-
-}
-
-.teleWrapper img{
-    width:100%;
-}
-
-.teleInteraction {
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
-    text-align: center;
-}
-
-.teleInteraction button{
-    padding:1em;
-    width:100%;
-    font-size: 2.5vw;
-}
-
-.teleopDropdown:hover,
-.teleopDropdown:focus {
-    background-color: #E45D38;
+    border-bottom: 1px solid black;
 }
 
 /*
