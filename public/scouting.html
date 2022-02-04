@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <meta name="theme-color" content="#fff">
     <link rel="shortcut icon" type="image/jpg" href="pics/Logo-Small-Square.png"/>
     
     <!-- update the version number as needed -->
@@ -95,10 +95,10 @@
                     <span class="slider"></span>
                 </label>
                 <div id="autoDropdown" class="autoDropdown-content unselectable">
-                    <a onclick="launchedCargo(4, 'auto')">Upper Hub</a>
-                    <a onclick="launchedCargo(2, 'auto')">Lower Hub</a>
-                    <a onclick="pickupCargo('auto')">Pickup Cargo</a>
-                    <a onclick="launchedCargo(0, 'auto')">Miss</a>
+                    <a onclick="launchedCargo(4, 'auto'); togglePopup('auto')">Upper Hub</a>
+                    <a onclick="launchedCargo(2, 'auto'); togglePopup('auto')">Lower Hub</a>
+                    <a onclick="pickupCargo('auto'); togglePopup('auto')">Pickup Cargo</a>
+                    <a onclick="launchedCargo(0, 'auto'); togglePopup('auto')">Miss</a>
                 </div>
             </div>
         </div>
@@ -112,12 +112,12 @@
         <div id="Teleop" class="tabcontent">
             <div class="teleWrapper">
                 <p id="currentCargo">1</p>
-                <img onclick="togglePopup('tele')" src="pics/fieldIMG.png" alt="Teleop field" id="teleopField"></img>
+                <img onclick="getMousePosition(event);togglePopup('tele')" src="pics/fieldIMG.png" alt="Teleop field" id="teleopField"></img>
                 <div id="teleopDropdown" class="teleopDropdown-content unselectable">
-                    <a onclick="launchedCargo(2, 'teleop')">Upper Hub</a>
-                    <a onclick="launchedCargo(1, 'teleop')">Lower Hub</a>
-                    <a onclick="pickupCargo('teleop')">Pickup Cargo</a>
-                    <a onclick="launchedCargo(0,'teleop')">Miss</a>
+                    <a onclick="launchedCargo(2, 'teleop'); togglePopup('tele')">Upper Hub</a>
+                    <a onclick="launchedCargo(1, 'teleop'); togglePopup('tele')">Lower Hub</a>
+                    <a onclick="pickupCargo('teleop'); togglePopup('tele')">Pickup Cargo</a>
+                    <a onclick="launchedCargo(0,'teleop'); togglePopup('tele')">Miss</a>
                 </div>
             </div>
         </div>

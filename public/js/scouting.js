@@ -36,8 +36,9 @@ openPage("Pre");
 console.log(localStorage.getItem("robotToScout"));
 
 function getMousePosition(event){
-    x = event.clientX;     // Get the horizontal coordinate
-    y = event.clientY;     // Get the vertical coordinate
+    var rect = event.target.getBoundingClientRect();
+    x = Math.round(event.clientX - rect.left);
+    y = Math.round(event.clientY - rect.top);
 }
 
 
@@ -49,10 +50,7 @@ function togglePopup(page){
             document.getElementById("autoDropdown").style.display = "none";
             popupOpen = false;
         }else{
-            //TODO MOVE autoDropdown to the mousePosition
             document.getElementById("autoDropdown").style.display = "block";
-            console.log(x);
-            console.log(y);
             document.getElementById("autoDropdown").style.transform = "translate(" + x + "px," +  y + "px)";
             popupOpen = true;
         }
@@ -61,8 +59,8 @@ function togglePopup(page){
             document.getElementById("teleopDropdown").style.display = "none";
             popupOpen = false;
         }else{
-            //TODO MOVE teleDropdown to the mousePosition
             document.getElementById("teleopDropdown").style.display = "block";
+            document.getElementById("teleopDropdown").style.transform = "translate(" + x + "px," +  y + "px)";
             popupOpen = true;
         }
     }

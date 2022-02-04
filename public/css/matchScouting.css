@@ -357,7 +357,7 @@ Cause they are literally the same lmao
     cursor: pointer;
     color: black;
     padding: 5% 5%;
-    font-size: 150%;
+    font-size: 2.5vw;
     text-decoration: none;
     display: block;
     border-bottom: 1px solid black;
@@ -469,6 +469,8 @@ Cause they are literally the same lmao
     -ms-transform: translateX(2.75vw);
     transform: translateX(2.75vw);
 }
+
+/*=================Endgame end=================*/
 
 #Auto {
     background-color: #fff;
