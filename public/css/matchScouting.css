@@ -280,6 +280,11 @@ Cause they are literally the same lmao
 
 .tabcontent .autoWrapper .slider {
     cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     border-radius: 34px;
     background-image: linear-gradient(red,orange);
     -webkit-transition: .4s;
@@ -409,8 +414,8 @@ Cause they are literally the same lmao
 
 .tabcontent .endgameWrapper .switch {
     display: inline-block;
-    width: 30px;
-    height: 15px;
+    width: 7vw;
+    height: 4vw;
     margin-left:auto;
     margin-right:auto;
     grid-column: 1/2 ;
@@ -427,8 +432,13 @@ Cause they are literally the same lmao
 
 .tabcontent .endgameWrapper .slider {
     cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     border-radius: 34px;
-    background-color: #0342b8;
+    background-image: linear-gradient(red,orange);
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -438,6 +448,8 @@ Cause they are literally the same lmao
     content: "";
     height: 2.75vw;
     width: 2.75vw;
+    margin-top: 0.625vw;
+    left:0.75vw;
     border-radius: 34px;
     background-image: radial-gradient(rgb(30, 122, 243), rgb(12, 14, 182));
     -webkit-transition: .4s;
@@ -478,3 +490,14 @@ Cause they are literally the same lmao
 #Post {
     background-color: #fff;
 }
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+
+
+
