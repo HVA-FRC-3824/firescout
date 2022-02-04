@@ -62,10 +62,10 @@
         <a href="./preview.html">Preview</a>
     </nav>
     <main id="adminBody">
-        <section>
-            <div class="container">
+        <section class="adminSection">
+            <div class="container" id="toHide">
                 <h1>Admin Panel</h1>
-                <div class="match-select">
+                <div class="adminPanel">
                     <select name="match num" class="match-selector" id="match">
                         <option>Select Match</option>
                     </select>
@@ -100,9 +100,14 @@
                         </select>
                     </p>
                 </div>
-                <div class="scout-match">
+                <div class="submitPanel">
                     <button onclick="sendData()">Submit Data</button>
                 </div>
+            </div>
+        </section>
+        <section class="loginWarn" id="loginWarning">
+            <div class="container">
+                <h1 id="loadingText">Loading Admin Panel...</h1>
             </div>
         </section>
     </main>

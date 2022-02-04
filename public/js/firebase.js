@@ -163,7 +163,10 @@ setTimeout(function(){
         console.log(e);
       }
       try{
-        document.getElementById('adminBody').style.display = "block";
+        if(document.getElementById('adminBody') != null){
+          document.getElementById('toHide').style.display = "block";
+          document.getElementById('loadingText').innerHTML = "Firebase SDK loaded, panel ready for use"
+        }
       }catch(e){
 
       }

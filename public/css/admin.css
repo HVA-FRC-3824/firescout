@@ -16,15 +16,12 @@ body {
     font-family: "Montserrat";
 }
 
-#adminBody{
-    display: none;
-}
 /*I was here*/
 .navbar{
     position: fixed;
     top: 0;
     left: 0;
-    color: #fff;
+    color: rgb(0, 0, 0);
     width: 100%;
     z-index: 100;
     backdrop-filter: blur(15px);
@@ -83,7 +80,7 @@ header .container nav {
     display: block;
     width: 100%;
     height: 5px;
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     margin: 6px 0px;
     transition: all 0.4s ease 0s;
 }
@@ -126,7 +123,7 @@ header .container nav {
     border-radius: 6px;
     background-color: rgba(28, 157, 218, 1);
     text-decoration: none;
-    color: #fff;
+    color: rgb(0, 0, 0);
 }
 
 .nav-mobile .login {
@@ -157,7 +154,7 @@ header .container nav {
     border-radius: 6px;
     background-color: rgba(111, 111, 111, 0);
     text-decoration: none;
-    color: #fff;
+    color: rgb(0, 0, 0);
 }
 
 .container {
@@ -172,13 +169,14 @@ header .container nav {
 ██   ██ ██████  ██      ██ ██ ██   ████      ██████  ██████  ██   ████    ██    ██   ██  ██████  ███████ ███████ 
 */
 
-main section {
+main .adminSection{
     height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     background-size: cover;
+    background-image: url(https://i.ibb.co/YRCxKNW/sky.jpg);
 }
 
 main .container{
@@ -189,13 +187,13 @@ main .container h1{
     padding:20px;
 }
 
-main section .container .match-select {
+main section .container .adminPanel {
     text-align: center;
     background-color: #f9f9f9;
     border-radius: 7px;
     box-shadow: 5px 5px 5px rgba(95, 95, 95, 1);
     height: 450px;
-    width: 82vw;
+    width: 450px;
     margin-left:auto;
     margin-right:auto;
     margin-bottom: 50px;
@@ -205,7 +203,7 @@ main section .container .match-select {
     grid-template-rows: auto;
 }
 
-main section .container .match-select .match-selector{
+main section .container .adminPanel .match-selector{
     grid-column: 1/4;
     grid-row: 1/2;
     -webkit-appearance: none;
@@ -220,44 +218,44 @@ main section .container .match-select .match-selector{
     margin-bottom: auto;
 }
 
-main section .container .match-select #r1{
+main section .container .adminPanel #redTeam1{
     grid-row: 2/3;
     grid-column: 1/2;
     color: red;
 }
 
-main section .container .match-select #r2{
+main section .container .adminPanel #redTeam2{
     grid-row: 3/4;
     grid-column: 1/2;
     color: red;
 }
 
-main section .container .match-select #r3{
+main section .container .adminPanel #redTeam3{
     grid-row: 4/5;
     grid-column: 1/2;
     color: red;
 }
 
-main section .container .match-select #b1{
+main section .container .adminPanel #blueTeam1{
     grid-row: 2/3;
     grid-column: 2/3;
     color: blue;
 }
 
-main section .container .match-select #b2{
+main section .container .adminPanel #blueTeam2{
     grid-row: 3/4;
     grid-column: 2/3;
     color: blue;
 }
 
-main section .container .match-select #b3{
+main section .container .adminPanel #blueTeam3{
     grid-row: 4/5;
     grid-column: 2/3;
     color: blue;
 }
 
 
-main section .container .scout-match button{
+main section .container .submitPanel button{
     font-size: 24px;
     font-family: "Montserrat";
     font-weight: 400; 
@@ -271,6 +269,31 @@ main section .container .scout-match button{
 main section .container .scout-match button:hover {
     background-color: #4C73D8;
     color: #fff;
+}
+
+
+/*================================================Loading bar/*================================================*/
+
+.loginWarn .container {
+    background-color: rgba(66, 250, 241, 0.842);
+    display: inline-block;
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    width:100vw;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.loginWarn .container h1{
+    padding:5px;
+    font-size:18px;
+    font-weight: 400;
+}
+
+
+#toHide{
+    display: none;
 }
 
 /*
@@ -320,7 +343,7 @@ main section .container .scout-match button:hover {
 
     .nav-login-bars nav a {
         text-decoration: none;
-        color: #fff;
+        color: rgb(0, 0, 0);
         padding: 0px 10px 0px 0px;
     }
 
