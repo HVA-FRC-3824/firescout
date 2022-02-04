@@ -88,7 +88,7 @@ try {
         writeData("Users/" + firebase.auth().currentUser.uid + "/displayName/", firebase.auth().currentUser.displayName);
         writeData("Users/" + firebase.auth().currentUser.uid + "/scoutPosition/", "none");
         setTimeout(() => {
-          location.replace("https://firescout3824.web.app/index.html");
+          location.replace("https://firescout3824.web.app/index");
         }, 2000);
         return false;
       },
@@ -100,7 +100,7 @@ try {
     },
     // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
     signInFlow: 'popup',
-    signInSuccessUrl: 'https://firescout3824.web.app/index.html',
+    signInSuccessUrl: 'https://firescout3824.web.app/index',
     signInOptions: [
       // Leave the lines as is for the providers you want to offer your users.
       //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -173,13 +173,13 @@ setTimeout(function(){
 
     }else{
       if(document.getElementById('adminBody') != null){
-        location.replace('./index.html');
+        location.replace('./index');
       }
     }
   }catch(e){
     console.log(e);
     if(document.getElementById('adminBody') != null){
-      location.replace('./index.html');
+      location.replace('./index');
     }
   }
 }, 2400)
