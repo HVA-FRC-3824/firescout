@@ -51,8 +51,22 @@ function togglePopup(page){
             popupOpen = false;
         }else{
             document.getElementById("autoDropdown").style.display = "block";
-            document.getElementById("autoDropdown").style.transform = "translate(" + x + "px," +  y + "px)";
-            popupOpen = true;
+
+            if(x>443.1 && y>150){
+                document.getElementById("autoDropdown").style.transform = "translate(443.1px," +  "143.94px)";
+                popupOpen = true;
+            }else if(x>443.1){
+                document.getElementById("autoDropdown").style.transform = "translate(443.1px," +  y + "px)";
+                popupOpen = true;
+            }else if(y>150) {
+                document.getElementById("autoDropdown").style.transform = "translate(" + x + "px," +  "143.94px)";
+                popupOpen = true;
+            }else{
+                document.getElementById("autoDropdown").style.transform = "translate(" + x + "px," +  y + "px)";
+                console.log("teest");
+                popupOpen = true;
+            }
+            
         }
     }else{
         if(popupOpen){
@@ -60,8 +74,22 @@ function togglePopup(page){
             popupOpen = false;
         }else{
             document.getElementById("teleopDropdown").style.display = "block";
-            document.getElementById("teleopDropdown").style.transform = "translate(" + x + "px," +  y + "px)";
-            popupOpen = true;
+
+            if(x>443.1 && y>150){
+                document.getElementById("teleopDropdown").style.transform = "translate(443.1px," +  "143.94px)";
+                popupOpen = true;
+            }else if(x>443.1){
+                document.getElementById("teleopDropdown").style.transform = "translate(443.1px," +  y + "px)";
+                popupOpen = true;
+            }else if(y>150) {
+                document.getElementById("teleopDropdown").style.transform = "translate(" + x + "px," +  "143.94px)";
+                popupOpen = true;
+            }else{
+                document.getElementById("teleopDropdown").style.transform = "translate(" + x + "px," +  y + "px)";
+                console.log("teest");
+                popupOpen = true;
+            }
+
         }
     }
 }
