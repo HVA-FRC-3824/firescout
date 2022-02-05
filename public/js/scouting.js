@@ -1,6 +1,30 @@
 var x;
 var y;
 const buttonTracker = [true,false,false,false,false];
+
+window.onload = function() {
+    const nav = document.querySelector('.navarrow');
+    const navbar = document.querySelector('.navBar');
+    const arrow = document.querySelector('.arrow');
+    const content = document.getElementsByClassName("tabcontent");
+    const preMatch = document.querySelector('.preMatch');
+    const autoWrapper = document.querySelector('.autoWrapper');
+    const teleWrapper = document.querySelector('.teleWrapper');
+    const endWrapper = document.querySelector('.endgameWrapper');
+
+    nav.addEventListener('click', function () {
+        arrow.classList.toggle('is-active');
+        navbar.classList.toggle('is-active');
+        preMatch.classList.toggle('is-active');
+        autoWrapper.classList.toggle('is-active');
+        teleWrapper.classList.toggle('is-active');
+        endWrapper.classList.toggle('is-active');
+        for (i = 0; i < content.length; i++) {
+            content[i].classList.toggle('is-active');
+        };
+    });
+}
+
 function openPage(pageName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -84,29 +108,6 @@ function openPage(pageName) {
     }
 }
 
-window.onload = function() {
-    const nav = document.querySelector('.navarrow');
-    const navbar = document.querySelector('.navBar');
-    const arrow = document.querySelector('.arrow');
-    const content = document.getElementsByClassName("tabcontent");
-    const preMatch = document.querySelector('.preMatch');
-    const autoWrapper = document.querySelector('.autoWrapper');
-    const teleWrapper = document.querySelector('.teleWrapper');
-    const endWrapper = document.querySelector('.endgameWrapper');
-
-    nav.addEventListener('click', function () {
-        arrow.classList.toggle('is-active');
-        navbar.classList.toggle('is-active');
-        preMatch.classList.toggle('is-active');
-        autoWrapper.classList.toggle('is-active');
-        teleWrapper.classList.toggle('is-active');
-        endWrapper.classList.toggle('is-active');
-        for (i = 0; i < content.length; i++) {
-            content[i].classList.toggle('is-active');
-        };
-    });
-}
-
 openPage("Pre");
 
 console.log(localStorage.getItem("robotToScout"));
@@ -122,18 +123,18 @@ function hasCargo(cargoTest){
     }
 }
 
+var autoImage = document.querySelector("#autoField");
+var teleImage = document.querySelector("#teleopField");
+
 function getMousePosition(event){
-    var autoImage = document.querySelector("#autoField");
-    var teleImage = document.querySelector("#teleopField");
     var rect = event.target.getBoundingClientRect();
     x = Math.round(((event.clientX - rect.left) / autoImage.clientWidth) * 2068);
     y = Math.round(((event.clientY - rect.top) / teleImage.clientWidth) * 1058);
-    xRel = event.clientX - rect.left;
-    yRel = event.clientY - rect.top;
-    console.log(x + " " + y);
-    console.log(xRel + " " + yRel);
+    xRel = Math.round(event.clientX - rect.left);
+    yRel = Math.round(event.clientY - rect.top);
+    //console.log(x + " " + y);
+    //console.log(xRel + " " + yRel);
 }
-
 
 var popupOpen = false;
 var mousePosition;
@@ -146,21 +147,19 @@ function togglePopup(page){
             popupOpen = false;
         }else{
             document.getElementById("autoDropdown").style.display = "block";
-
-            if(x>443.1 && y > 150){
-                document.getElementById("autoDropdown").style.transform = "translate(" + autoImage.clientWidth + " +  )";
+            if(xRel>(autoImage.clientWidth - autoPopup.clientWidth) && yRel > (autoImage.clientHeight - autoPopup.clientHeight)){
+                document.getElementById("autoDropdown").style.transform = "translate(" + (autoImage.clientWidth - autoPopup.clientWidth) + "px," + (autoImage.clientHeight - autoPopup.clientHeight) + "px)";
                 popupOpen = true;
-            }else if(x>443.1){
-                document.getElementById("autoDropdown").style.transform = "translate(443.1px," +  y + "px)";
+            }else if(xRel>(autoImage.clientWidth - autoPopup.clientWidth)){
+                document.getElementById("autoDropdown").style.transform = "translate(" + (autoImage.clientWidth - autoPopup.clientWidth) + "px," +  yRel + "px)";
                 popupOpen = true;
-            }else if(y>150) {
-                document.getElementById("autoDropdown").style.transform = "translate(" + x + "px," +  "143.94px)";
+            }else if(yRel>(autoImage.clientHeight - autoPopup.clientHeight)) {
+                document.getElementById("autoDropdown").style.transform = "translate(" + xRel + "px," + (autoImage.clientHeight - autoPopup.clientHeight) + "px)";
                 popupOpen = true;
             }else{
-                document.getElementById("autoDropdown").style.transform = "translate(" + x + "px," +  y + "px)";
+                document.getElementById("autoDropdown").style.transform = "translate(" + xRel + "px," +  yRel + "px)";
                 popupOpen = true;
             }
-            
         }
     }else{
         if(popupOpen){
@@ -168,21 +167,19 @@ function togglePopup(page){
             popupOpen = false;
         }else{
             document.getElementById("teleopDropdown").style.display = "block";
-
-            if(x>443.1 && y>150){
-                document.getElementById("teleopDropdown").style.transform = "translate(443.1px," +  "143.94px)";
+            if(xRel>(teleImage.clientWidth - telePopup.clientWidth) && yRel > (teleImage.clientHeight - telePopup.clientHeight)){
+                document.getElementById("teleopDropdown").style.transform = "translate(" + (teleImage.clientWidth - telePopup.clientWidth) + "px," + (teleImage.clientHeight - telePopup.clientHeight) + "px)";
                 popupOpen = true;
-            }else if(xRel>443.1){
-                document.getElementById("teleopDropdown").style.transform = "translate(443.1px," +  y + "px)";
+            }else if(xRel>(teleImage.clientWidth - telePopup.clientWidth)){
+                document.getElementById("teleopDropdown").style.transform = "translate(" + (teleImage.clientWidth - telePopup.clientWidth) + "px," +  yRel + "px)";
                 popupOpen = true;
-            }else if(yRel>150) {
-                document.getElementById("teleopDropdown").style.transform = "translate(" + x + "px," +  "143.94px)";
+            }else if(yRel>(teleImage.clientHeight - telePopup.clientHeight)) {
+                document.getElementById("teleopDropdown").style.transform = "translate(" + xRel + "px," + (teleImage.clientHeight - telePopup.clientHeight) + "px)";
                 popupOpen = true;
             }else{
-                document.getElementById("teleopDropdown").style.transform = "translate(" + x + "px," +  y + "px)";
+                document.getElementById("teleopDropdown").style.transform = "translate(" + xRel + "px," +  yRel + "px)";
                 popupOpen = true;
             }
-
         }
     }
 }

@@ -171,20 +171,20 @@ header .container nav {
 main .login .container{
     margin-top:130px;
     text-align: center;
-    width:450px;
+    width:350px;
     border-radius: 15px;
-    background-color: rgba(61, 90, 250, 0.562);
+    background-color: rgb(234, 234, 234);
     margin-right: auto;
     margin-left: auto;
 }
 
 main .login .container h1{
-    font-size: 48px;
+    font-size: 32px;
     padding:22px;
 }
 
 main .login .container label{
-    font-size: 24px;
+    font-size: 18px;
     margin-right: 8px;
 }
 
@@ -194,24 +194,48 @@ main .login .container p{
 }
 
 main .login .container button{
-    width: 130px;
+    width: 90px;
     height: 60px;
     border-radius: 6px;
     color: rgb(0, 0, 0);
     font-size: 22px;
-    background-color: rgba(28, 157, 218, 1);
+    background-color: rgb(75, 186, 214);
     border: none;
-    margin: 25px;
+    margin: 15px;
 }
 
 main .login .container input{
-    font-size: 24px;
+    font-size: 18px;
 }
 
 main .login .container ul{
     list-style-type: none;
 }
 
+main .login .container .firebaseui-error-wrapper{
+    display: none;
+}
+
+main .login .container .firebaseui-textfield{
+    display: grid;
+    grid-template-columns: 100px 180px;
+    grid-template-rows: auto;
+    justify-content: space-evenly;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
+}
+
+main .login .container .firebaseui-textfield label{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+main .login .container .firebaseui-textfield input{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    margin:10px;
+}
 
 @media all and (min-width: 850px) {
     /* 

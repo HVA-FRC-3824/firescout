@@ -64,6 +64,22 @@
             <div class="container">
                 <div id="firebaseui-auth-container"></div>
                 <div id="loader">Loading...</div>
+                <script>
+                    window.onload = function(){
+                        setTimeout(() => {
+                            try{
+                                document.querySelectorAll('[data-upgraded=",MaterialButton"]')[0].setAttribute("onclick","javascript:changeText();");
+                            }catch(e){
+                                console.log(e);
+                            }
+                        }, 1500);
+                    }
+                    function changeText(){
+                        setTimeout(() => {
+                            document.querySelectorAll('[for="name"]')[0].innerHTML = "Name";
+                        }, 350);
+                    }
+                </script>
             </div>
         </section>
     </main>
