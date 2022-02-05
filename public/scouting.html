@@ -45,13 +45,13 @@
     -->
     <div id="wrapper">
         <div class="navBar" id="navbar">
-            <button class="tablink"><i id="lilGuy" class="fas fa-user"></i> 3824</button>
-            <button class="tablink" onclick="openPage('Pre')" id="defaultOpen">Pre-Match Info</button>
-            <button class="tablink" onclick="openPage('Auto')">Auto</button>
-            <button class="tablink" onclick="openPage('Teleop')"> Teleop </button>
-            <button class="tablink" onclick="openPage('Endgame')"> Endgame </button>
-            <button class="tablink" onclick="location.replace('./schedule')"> Next Match </button>
-            <button class="tablink" id="space"></button>
+            <button class="tabExtra"><i id="lilGuy" class="fas fa-user"></i> 3824</button>
+            <button class="tablink" onclick="openPage('Pre')" id="defaultOpen">Pre-Match</button>
+            <button class="tablink" onclick="openPage('Auto')" id="auto">Auto</button>
+            <button class="tablink" onclick="openPage('Teleop')" id="teleop"> Teleop </button>
+            <button class="tablink" onclick="openPage('Endgame')" id="endgame"> Endgame </button>
+            <button class="nextMatch" onclick="location.replace('./schedule.html')"> Next Match </button>
+            <button class="tabExtra" id="space"></button>
         </div>
         <div class="navarrow"><img src="./pics/whiteArrow.png" class="arrow"></div>
 
@@ -74,8 +74,8 @@
                 
                 <div class="cargodiv">
                     <p class="cargo"> Has a cargo to start? </p>
-                    <button>Yes</button>
-                    <button>No</button>
+                    <button onclick="hasCargo('yesButton')" id="yesButton">Yes</button>
+                    <button onclick="hasCargo('noButton')" id="noButton">No</button>
                 </div>
             </div>
         </div>
@@ -131,23 +131,29 @@
         <div id="Endgame" class="tabcontent">
             <div class="endgameWrapper">
                 <div class="climbSelect">
-                    <img src="pics/hangerIMG.png" alt="image of hanger area for selection">
+                    <img src="pics/hanger-red.png" alt="image of hanger area for selection">
+                    <div class="climbHighlights">
+                        <div id="traversalDiv" class="barHighlighter"></div>
+                        <div id="highDiv" class="barHighlighter"></div>
+                        <div id="midDiv" class="barHighlighter"></div>
+                        <div id="lowDiv" class="barHighlighter"></div>
+                    </div>
                     <div class="buttonWrapper">
-                        <button>Traversal</button>
-                        <button>High</button>
-                        <button>Middle</button>
-                        <button>Low</button>
+                        <button onclick="barSelect('traversal')" id="traversal">Traversal</button>
+                        <button onclick="barSelect('high')" id="high">High</button>
+                        <button onclick="barSelect('middle')" id="middle">Middle</button>
+                        <button onclick="barSelect('low')" id="low">Low</button>
                     </div>
                 </div>
                 <div class="attemptClimb">
                     <p>Attempted Climb</p>
-                    <button>Yes</button>
-                    <button>No</button>  
+                    <button onClick="attemptedClimb('yesButton')" id="yesButtonClimb">Yes</button>
+                    <button onClick="attemptedClimb('noButton')" id="noButtonClimb">No</button>  
                 </div>
                 <div class="playedDefense">
                     <p>Played Defense</p>
-                    <button>Yes</button>
-                    <button>No</button>
+                    <button onClick="playedDefense('yesButton')" id="yesButtonDefense">Yes</button>
+                    <button onClick="playedDefense('noButton')" id="noButtonDefense">No</button>
                 </div>
                 <div class="cardArea">
                     <p>Cards?</p>

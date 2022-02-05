@@ -274,18 +274,18 @@ main .quickAnalyticsMobile .listView{
     width:300px;
 }
 
-main .quickAnalyticsMobile .listView button{
+main .quickAnalyticsMobile .listView button {
     color:black;
     background-color: rgba(0, 0, 0, 0);
 }
 
-main .quickAnalyticsMobile .listView table{
+main .quickAnalyticsMobile .listView table {
         margin-left:auto;
         margin-right:auto;
         width:300px;
 }
 
-main .quickAnalyticsDesktop .listView{
+main .quickAnalyticsDesktop .listView {
     display:none;
 }
 

@@ -14,7 +14,7 @@
 
 body {
     font-family: "Montserrat";
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(143, 143, 143);
 }
 
 header {
@@ -161,7 +161,6 @@ main section {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(https://i.ibb.co/YRCxKNW/sky.jpg);
     background-size: cover;
 }
 
@@ -255,6 +254,68 @@ main section .container .scout-match button:hover {
     color: #fff;
 }
 
+@media all and (max-height: 385px) {
+    main section .container {
+        margin: 275px 0 0 0 !important;
+    }
+}
+
+@media all and (min-width: 768px) and (max-height: 750px) {
+    main section .container .match-select #redTeam1 {
+        grid-column: 1 / 2;
+        grid-row: 4 / 5;
+        height: 20px;
+    }
+
+    main section .container .match-select #redTeam2 {
+        grid-column: 2 / 3;
+        grid-row: 4 / 5;
+        height: 20px;
+    }
+
+    main section .container .match-select #redTeam3 {
+        grid-column: 3 / 4;
+        grid-row: 4 / 5;
+        height: 20;
+    }
+
+    main section .container .match-select #blueTeam1 {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        height: 20px;
+    }
+
+    main section .container .match-select #blueTeam2 {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        height: 20px;
+    }
+
+    main section .container .match-select #blueTeam3 {
+        grid-column: 3 / 4;
+        grid-row: 2 / 3;
+        height: 20px;
+    }
+
+    main section .container .match-select .vs {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+        height: 20px;
+    }
+
+    main section .container .match-select {
+        height: 250px;
+    }
+
+    main section .container .match-select #match {
+        color: #000 !important;    
+    }
+
+    main section .container {
+        margin: 100px 0 0 0;
+    }
+}
+
 /*
 ████████  █████  ██████  ██      ███████ ████████     ███████ ██ ███████ ███████ 
    ██    ██   ██ ██   ██ ██      ██         ██        ██      ██    ███  ██      
@@ -294,10 +355,6 @@ main section .container .scout-match button:hover {
     ██  ██ ██ ██   ██  ██  ██      ██   ██ ██           ██ ██  ██     ██    ██    ██ ██      
     ██   ████ ██   ██   ████       ██████  ███████ ███████ ██   ██    ██     ██████  ██     
     */
-    main section {
-        background-image: url(https://i.ibb.co/K5yTWjK/desktop-BG.jpg);
-    }
-
     header .container .nav-login-bars nav {
         display: block;
         float: left;

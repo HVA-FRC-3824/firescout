@@ -88,7 +88,7 @@ try {
         writeData("Users/" + firebase.auth().currentUser.uid + "/displayName/", firebase.auth().currentUser.displayName);
         writeData("Users/" + firebase.auth().currentUser.uid + "/scoutPosition/", "none");
         setTimeout(() => {
-          location.replace("https://firescout3824.web.app/index");
+          location.replace("https://firescout3824.web.app/index.html");
         }, 2000);
         return false;
       },
@@ -173,13 +173,13 @@ setTimeout(function(){
 
     }else{
       if(document.getElementById('adminBody') != null){
-        location.replace('./index');
+        location.replace('./index.html');
       }
     }
   }catch(e){
     console.log(e);
     if(document.getElementById('adminBody') != null){
-      location.replace('./index');
+      location.replace('./index.html');
     }
   }
 }, 2400)

@@ -30,7 +30,7 @@ function startScouting(){
         robotToScout = document.getElementById(dataRead).innerHTML;
         localStorage.setItem('robotToScout', robotToScout);
     }catch(e){
-
+        
     }
-    location.replace("./scouting");
+    location.replace("./scouting.html");
 }

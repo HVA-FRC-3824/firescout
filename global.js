@@ -9,7 +9,7 @@ function navDropdown() {
 
 function addNav(){
     document.getElementById("topnav").innerHTML = 
-    "<img src='pics/Logo-Small-Square.png' alt='3824logo' onclick='location.replace('./index')'>" + 
+    "<img src='pics/Logo-Small-Square.png' alt='3824logo' onclick='location.replace('./index.html')'>" + 
     <div id='myLinks'> 
         <a href='schedule.html'>Match Scouting</a>
         <a href='pit.html'>Pit Scouting</a> 

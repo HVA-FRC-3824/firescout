@@ -1,0 +1,29 @@
+- Basic Stats
+    ✔Team Number
+    ✔Robot Weight
+    ✔Coding Language
+    ✔Drive train
+        -Mecanum
+        -Swerve
+        -Tank
+        -West Coast	
+    -robot-width
+    -robot-height
+
+- Climb
+    -climb?
+    -if so, what rung?
+    -climb time?
+    -climb percentage?
+
+-Cargo Info
+    -chamber size one or two balls?
+    -floor/top or both pickup
+    -top goal or bottom goal
+    -what ball auto
+
+-miscellaneous
+    -Redheads?
+    -Drive team exp
+    -Human player skill
+    -robot photo?
