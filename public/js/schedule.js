@@ -32,5 +32,5 @@ function startScouting(){
     }catch(e){
         
     }
-    location.replace("./scouting.html");
+    location.href = 'scouting.html';
 }
