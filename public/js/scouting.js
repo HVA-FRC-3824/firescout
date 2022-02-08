@@ -1,6 +1,29 @@
-var x;
-var y;
-const buttonTracker = [true,false,false,false,false];
+var dataDictionary = { //The object of all our data, this should be quite easy to push to firebase in this format
+    "fieldStartPositionX": 0,
+    "fieldStartPositionY": 0,
+    "autoShotsMissed": 0,
+    "teleShotsMissed": 0,
+    "movedOffTarmac": 0,
+    "autoUpperHubAmount": 0,
+    "autoLowerHubAmount": 0,
+    "teleUpperHubAmount": 0,
+    "teleLowerHubAmount": 0,
+    "playedDefense": false,
+    "attemptedClimb": false,
+    "levelClimbed": 'none',
+    "yellowCard": false,
+    "redCard": false
+}
+
+//but of course because nothing is easy dictionary cannot store arrays
+var autoShortsArrX = [];
+var autoShortsArrY = [];
+var teleShortsArrX = [];
+var teleShortsArrY = [];
+var autoPickupArrX = [];
+var autoPickupArrY = [];
+var telePickupArrX = [];
+var telePickupArrY = [];
 
 window.onload = function() {
     const nav = document.querySelector('.navarrow');
@@ -25,7 +48,9 @@ window.onload = function() {
     });
 }
 
-function openPage(pageName) {
+var buttonTracker = [true,false,false,false,false]; //array of which buttons at the top have been clicked
+
+function openPage(pageName) { //Runs when the nav bar buttons are pressed, the button pressed is passed in as a string
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -34,6 +59,8 @@ function openPage(pageName) {
     var currentButton = "green";
     var pastButton = "black";
     var futureButton = "gray";
+
+    // Changes the colors of the nav according to their visited status
     if (pageName == 'Pre'){
         document.getElementById("defaultOpen").style.backgroundColor = currentButton ;
         if (buttonTracker[1] == true) {
@@ -108,12 +135,12 @@ function openPage(pageName) {
     }
 }
 
-openPage("Pre");
 
-console.log(localStorage.getItem("robotToScout"));
+openPage("Pre"); //Starts the page by openeing the pre match page
 
+console.log(localStorage.getItem("robotToScout"));  //Gets the robot you are scouting from local storage
 
-function hasCargo(cargoTest){
+function hasCargo(cargoTest){ //Changes the color for the 'starting with cargo' button on pre match page
     if (cargoTest == "yesButton"){
         document.getElementById("yesButton").style.backgroundColor = '#7CFC00' ;
         document.getElementById("noButton").style.backgroundColor = '#4fbdba' ;
@@ -123,24 +150,30 @@ function hasCargo(cargoTest){
     }
 }
 
+//Creates usable variables for both images
 var autoImage = document.querySelector("#autoField");
 var teleImage = document.querySelector("#teleopField");
 
-function getMousePosition(event){
+//coords are global for the mouse postion
+var x;
+var y;
+
+function getMousePosition(event){ //Gets the position of the mouse !!only works when run from an onclick and passing in event!!
     var rect = event.target.getBoundingClientRect();
-    x = Math.round(((event.clientX - rect.left) / autoImage.clientWidth) * 2068);
+    x = Math.round(((event.clientX - rect.left) / autoImage.clientWidth) * 2068); //adjusts for any screen size, converts coords to a standard size, used for heatmap and data
     y = Math.round(((event.clientY - rect.top) / teleImage.clientWidth) * 1058);
-    xRel = Math.round(event.clientX - rect.left);
+    xRel = Math.round(event.clientX - rect.left); //gets the relative position of the mouse, used for placing the popup and icons
     yRel = Math.round(event.clientY - rect.top);
     //console.log(x + " " + y);
     //console.log(xRel + " " + yRel);
 }
 
-var popupOpen = false;
-var mousePosition;
-function togglePopup(page){
+var popupOpen = false; //popup open is global
+
+function togglePopup(page){ //Toggles the popup on tele or auto, takes in a string of 'auto' or 'teleop' and places it where the use clicked
     var autoPopup = document.querySelector('#autoDropdown');
     var telePopup = document.querySelector('#teleopDropdown');
+
     if(page == "auto"){
         if(popupOpen){
             document.getElementById("autoDropdown").style.display = "none";
@@ -184,7 +217,8 @@ function togglePopup(page){
     }
 }
 
-function launchedCargo(points, autoOrTeleop){
+
+function launchedCargo(points, autoOrTeleop){ //runs when any of the launched buttons are clicked from the popup, passes in the point values and wheather it is auto or tele
     if(autoOrTeleop == "teleop"){
         switch (points) {
             case 2:
@@ -218,7 +252,7 @@ function launchedCargo(points, autoOrTeleop){
     }
 }
 
-function pickupCargo(autoOrTeleop){
+function pickupCargo(autoOrTeleop){ //runs when the pickup cargo button is pressed from the popup, passes in 'auto' or 'teleop'
     if(autoOrTeleop == "teleop"){
         //push to where ever the data is being held that one ball was picked up at mousePosition during teleop
         console.log("teleop pickup");
@@ -228,7 +262,7 @@ function pickupCargo(autoOrTeleop){
     }
 }
 
-function attemptedClimb(climbTest){
+function attemptedClimb(climbTest){ //Changes the color of the attempted climb buttons to show which is selected
     if (climbTest == "yesButton"){
         document.getElementById("yesButtonClimb").style.backgroundColor = '#7CFC00' ;
         document.getElementById("noButtonClimb").style.backgroundColor = '#4fbdba' ;
@@ -238,7 +272,7 @@ function attemptedClimb(climbTest){
     }
 }
 
-function playedDefense(defenseTest){
+function playedDefense(defenseTest){ //Changes the color of the played defense buttons to show which is selected
     if (defenseTest == "yesButton"){
         document.getElementById("yesButtonDefense").style.backgroundColor = '#7CFC00' ;
         document.getElementById("noButtonDefense").style.backgroundColor = '#4fbdba' ;
@@ -248,7 +282,7 @@ function playedDefense(defenseTest){
     }
 }
 
-function barSelect(currentBar){
+function barSelect(currentBar){  //Changes the color of the climb level buttons and highlights the bar selected 
     if (currentBar == "traversal"){
         document.getElementById("traversal").style.backgroundColor = '#7CFC00' ;
         document.getElementById("high").style.backgroundColor = '#4fbdba' ;
@@ -285,6 +319,5 @@ function barSelect(currentBar){
         document.getElementById("highDiv").style.backgroundColor = '#00000000';
         document.getElementById("midDiv").style.backgroundColor = '#00000000';
         document.getElementById("lowDiv").style.backgroundColor = '#2bc43296';
-
     }
 }

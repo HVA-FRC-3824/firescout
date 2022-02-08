@@ -51,4 +51,5 @@ function sendData(){
             setUserScoutPosition(Object.keys(usersObject)[uidToUse], nameSelectors[i].name);
         }
     }
+    alert("data submitted!");
 }
