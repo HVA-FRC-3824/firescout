@@ -64,9 +64,9 @@ function openPage(pageName) { //Runs when the nav bar buttons are pressed, the b
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].className = "tabcontent " + pageName;
     };
-    var currentButton = "green";
-    var pastButton = "black";
-    var futureButton = "gray";
+    var currentButton = "#4f77aa";
+    var pastButton = "#1D1C1A";
+    var futureButton = "#1D1C1A";
 
     // Changes the colors of the nav according to their visited status
     if (pageName == 'Pre'){

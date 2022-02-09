@@ -114,7 +114,7 @@ h1 {
 
 .navBar {
     transition: all 0.5s ease 0s;
-    background-color:#7722cc;
+    background-color:#1D1C1A;
 }
 
 .tablink {
@@ -122,7 +122,7 @@ h1 {
     font-size: 2vw;
     height: 7.5vw;
     background-color: grey;
-    border-radius: 30px;
+    border-radius: 15px;
     border: none;
     color: white;
     padding:1%;
@@ -133,7 +133,7 @@ h1 {
     width: 15%;
     font-size: 2vw;
     height: 7.5vw;
-    background-color: blue;
+    background-color: #2f4c39;
     border-radius: 30px;
     border: none;
     color: white;
@@ -289,7 +289,7 @@ Cause they are literally the same lmao
     position: absolute;
     display: inline-block;
     width: 7vw;
-    height: 4vw;
+    height: 3.5vw;
     margin-bottom: 2vw;
     margin-left: 1vw;
     grid-column: 1 / 2;
@@ -311,10 +311,12 @@ Cause they are literally the same lmao
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 34px;
-    background-image: linear-gradient(red,orange);
+    border-radius: 14px;
+    background-image: linear-gradient(#FF5047,#FF5047);
     -webkit-transition: .4s;
     transition: .4s;
+    
+
 }
 
 .tabcontent .autoWrapper .slider:before {
@@ -322,16 +324,29 @@ Cause they are literally the same lmao
     content: "";
     height: 2.75vw;
     width: 2.75vw;
-    margin-top: 0.625vw;
+    margin-top: 0.345vw;
     left:0.75vw;
     border-radius: 34px;
-    background-image: radial-gradient(rgb(30, 122, 243), rgb(12, 14, 182));
+    background-image: linear-gradient(#cfcfc4,#cfcfc4);
     -webkit-transition: .4s;
     transition: .4s;
+    box-shadow:
+  0px 0px 13.8px rgba(0, 0, 0, 0.017),
+  0px 0px 33.3px rgba(0, 0, 0, 0.024),
+  0px 0px 62.6px rgba(0, 0, 0, 0.03),
+  0px 0px 111.7px rgba(0, 0, 0, 0.036),
+  0px 0px 208.9px rgba(0, 0, 0, 0.043),
+  0px 0px 500px rgba(0, 0, 0, 0.06)
+;
+
+
+
+
+  
 }
 
 .tabcontent .autoWrapper input:checked + .slider {
-    background-image: linear-gradient(green, yellow);
+    background-image: linear-gradient(#4f77aa,#4f77aa);
 }
 
 .tabcontent .autoWrapper input:focus + .slider {
@@ -359,12 +374,12 @@ Cause they are literally the same lmao
 
 #currentCargoDiv{
     font-size: 4vw;
-    background-color: #0342b8;
+    background-color: #FF5047;
     width: 5vw;
     border-radius: 100px;
     position: absolute;
     right:0;
-    color: rgb(0, 255, 0);
+    color: #cfcfc4;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     margin-right: 3vw;
     margin-top: 2vw;
