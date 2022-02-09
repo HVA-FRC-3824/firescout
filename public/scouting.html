@@ -88,8 +88,11 @@
     
         <div id="Auto" class="tabcontent">
             <div class="autoWrapper" >
-                <p id="currentCargo">1</p>
+                <div id="currentCargoDiv">
+                    <p id="currentCargoAuto">1</p>
+                </div>
                 <img onclick="getMousePosition(event); togglePopup('auto')"  src="pics/fieldIMG.png" alt="auto field" id="autoField"></img>
+                <p>/\  Moved Off Tarmac</p>
                 <label class="switch" name="movedOffTarmac">
                     <input id="movedOffTarmac" type="checkbox">
                     <span class="slider" onclick="toggleTarmac()"></span>
@@ -111,7 +114,9 @@
     
         <div id="Teleop" class="tabcontent">
             <div class="teleWrapper">
-                <p id="currentCargo">1</p>
+                <div id="currentCargoDiv">
+                    <p id="currentCargoTele">1</p>
+                </div>
                 <img onclick="getMousePosition(event);togglePopup('tele')" src="pics/fieldIMG.png" alt="Teleop field" id="teleopField"></img>
                 <div id="teleopDropdown" class="teleopDropdown-content unselectable">
                     <a onclick="launchedCargo(2, 'teleop'); togglePopup('tele')">Upper Hub</a>
@@ -130,7 +135,8 @@
     
         <div id="Endgame" class="tabcontent">
             <div class="endgameWrapper">
-                <div class="climbSelect">
+                <div class="climbSelect" id="climbSelectCover"></div>
+                <div class="climbSelect" id="climbSelectBox">
                     <img src="pics/hanger-red.png" alt="image of hanger area for selection">
                     <div class="climbHighlights">
                         <div id="traversalDiv" class="barHighlighter"></div>
@@ -143,6 +149,7 @@
                         <button onclick="barSelect('high')" id="high">High</button>
                         <button onclick="barSelect('middle')" id="middle">Middle</button>
                         <button onclick="barSelect('low')" id="low">Low</button>
+                        <button onclick="barSelect('fail')" id="fail">Fail</button>
                     </div>
                 </div>
                 <div class="attemptClimb">

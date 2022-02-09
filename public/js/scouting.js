@@ -26,6 +26,8 @@ var autoPickupArrY = [];
 var telePickupArrX = [];
 var telePickupArrY = [];
 
+var currentCargo = 0;
+
 // Colors
 var selectedColor = "#29ff5f";
 var buttonColor = "#5295ec";
@@ -145,15 +147,25 @@ openPage("Pre"); //Starts the page by openeing the pre match page
 
 console.log(localStorage.getItem("robotToScout"));  //Gets the robot you are scouting from local storage
 
+function updateCurrentCargo(){
+    document.getElementById("currentCargoAuto").innerHTML = currentCargo;
+    document.getElementById("currentCargoTele").innerHTML = currentCargo;
+}
+
+
 function hasCargo(cargoTest){ //Changes the color for the 'starting with cargo' button on pre match page
     if (cargoTest == "yesButton"){
         document.getElementById("yesButton").style.backgroundColor = selectedColor;
         document.getElementById("noButton").style.backgroundColor = buttonColor;
         dataDictionary["startedWithCargo"] = true;
+        currentCargo = 1;
+        updateCurrentCargo();
     } else {
         document.getElementById("yesButton").style.backgroundColor = buttonColor;
         document.getElementById("noButton").style.backgroundColor = selectedColor;
         dataDictionary["startedWithCargo"] = false;
+        currentCargo = 0;
+        updateCurrentCargo();
     }
 }
 
@@ -237,14 +249,29 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
             case 2:
                 //push to where ever the data is being held that one ball was scored during teleop in the upper hub at mousePosition
                 console.log("teleop upper hub");
+                if(currentCargo > 0){
+                    currentCargo--;
+                }else{
+                    alert("impossible!");
+                }
                 break;
             case 1:
                 //push to where ever the data is being held that one ball was scored during teleop in the lower hub at mousePosition
                 console.log("teleop lower hub");
+                if(currentCargo > 0){
+                    currentCargo--;
+                }else{
+                    alert("impossible!");
+                }
                 break;
             case 0:
                 //push to where ever the data is being held that one ball was missed during teleop at mousePosition
                 console.log("teleop miss");
+                if(currentCargo > 0){
+                    currentCargo--;
+                }else{
+                    alert("impossible!");
+                }
                 break;
         }
     }else{
@@ -252,46 +279,90 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
             case 4:
                 //push to where ever the data is being held that one ball was scored during auto in the upper hub at mousePosition
                 console.log("auto upper hub");
+                if(currentCargo > 0){
+                    currentCargo--;
+                }else{
+                    alert("impossible!");
+                }
                 break;
             case 2:
                 //push to where ever the data is being held that one ball was scored during auto in the lower hub at mousePosition
                 console.log("auto lower hub");
+                if(currentCargo > 0){
+                    currentCargo--;
+                }else{
+                    alert("impossible!");
+                }
                 break;
             case 0:
                 //push to where ever the data is being held that one ball was missed during auto at mousePosition
                 console.log("auto miss");
+                if(currentCargo > 0){
+                    currentCargo--;
+                }else{
+                    alert("impossible!");
+                }
                 break;
         }
     }
+    updateCurrentCargo();
 }
 
 function pickupCargo(autoOrTeleop){ //runs when the pickup cargo button is pressed from the popup, passes in 'auto' or 'teleop'
     if(autoOrTeleop == "teleop"){
         //push to where ever the data is being held that one ball was picked up at mousePosition during teleop
         console.log("teleop pickup");
+        if(currentCargo < 2){
+            currentCargo++;
+        }else{
+            alert("impossible!");
+        }
     }else{
         //push to where ever the data is being held that one ball was picked up at mousePosition during auto
         console.log("auto pickup");
+        if(currentCargo < 2){
+            currentCargo++;
+        }else{
+            alert("impossible!");
+        }
     }
+    updateCurrentCargo();
 }
 
 function attemptedClimb(climbTest){ //Changes the color of the attempted climb buttons to show which is selected
     if (climbTest == "yesButton"){
-        document.getElementById("yesButtonClimb").style.backgroundColor = '#7CFC00' ;
+        document.getElementById("yesButtonClimb").style.backgroundColor = selectedColor ;
         document.getElementById("noButtonClimb").style.backgroundColor = buttonColor ;
+        document.getElementById("climbSelectBox").style.filter = "blur(0px) grayscale(0%)";
+        document.getElementById("climbSelectCover").style.display = "none";
+        dataDictionary["attemptedClimb"] = true;
     } else {
         document.getElementById("yesButtonClimb").style.backgroundColor = buttonColor;
-        document.getElementById("noButtonClimb").style.backgroundColor = '#7CFC00';
+        document.getElementById("noButtonClimb").style.backgroundColor = selectedColor;
+        document.getElementById("traversal").style.backgroundColor = buttonColor ;
+        document.getElementById("high").style.backgroundColor = buttonColor ;
+        document.getElementById("middle").style.backgroundColor = buttonColor ;
+        document.getElementById("low").style.backgroundColor = buttonColor ;
+        document.getElementById("traversalDiv").style.backgroundColor = '#00000000';
+        document.getElementById("highDiv").style.backgroundColor = '#00000000';
+        document.getElementById("midDiv").style.backgroundColor = '#00000000';
+        document.getElementById("lowDiv").style.backgroundColor = '#00000000';
+        document.getElementById("climbSelectBox").style.filter = "blur(5px) grayscale(50%)";
+        document.getElementById("climbSelectCover").style.display = "grid";
+        dataDictionary["levelClimbed"] = 'none';
+        dataDictionary["attemptedClimb"] = false;
     }
 }
 
 function playedDefense(defenseTest){ //Changes the color of the played defense buttons to show which is selected
     if (defenseTest == "yesButton"){
-        document.getElementById("yesButtonDefense").style.backgroundColor = '#7CFC00' ;
+        document.getElementById("yesButtonDefense").style.backgroundColor = selectedColor ;
         document.getElementById("noButtonDefense").style.backgroundColor = buttonColor ;
+        dataDictionary["playedDefense"] = true;
     } else {
         document.getElementById("yesButtonDefense").style.backgroundColor = buttonColor;
-        document.getElementById("noButtonDefense").style.backgroundColor = '#7CFC00';
+        document.getElementById("noButtonDefense").style.backgroundColor = selectedColor;
+        dataDictionary["playedDefense"] = false;
     }
 }
 
@@ -301,36 +372,55 @@ function barSelect(currentBar){  //Changes the color of the climb level buttons 
         document.getElementById("high").style.backgroundColor = buttonColor ;
         document.getElementById("middle").style.backgroundColor = buttonColor ;
         document.getElementById("low").style.backgroundColor = buttonColor ;
+        document.getElementById("fail").style.backgroundColor = buttonColor ;
         document.getElementById("traversalDiv").style.backgroundColor = '#2bc43296';
         document.getElementById("highDiv").style.backgroundColor = '#00000000';
         document.getElementById("midDiv").style.backgroundColor = '#00000000';
         document.getElementById("lowDiv").style.backgroundColor = '#00000000';
+        dataDictionary["levelClimbed"] = 'traversal';
     } else if (currentBar == "high") {
         document.getElementById("traversal").style.backgroundColor = buttonColor ;
         document.getElementById("high").style.backgroundColor = selectedColor ;
         document.getElementById("middle").style.backgroundColor = buttonColor ;
         document.getElementById("low").style.backgroundColor = buttonColor ;
+        document.getElementById("fail").style.backgroundColor = buttonColor ;
         document.getElementById("traversalDiv").style.backgroundColor = '#00000000';
         document.getElementById("highDiv").style.backgroundColor = '#2bc43296';
         document.getElementById("midDiv").style.backgroundColor = '#00000000';
         document.getElementById("lowDiv").style.backgroundColor = '#00000000';
+        dataDictionary["levelClimbed"] = 'high';
     } else if (currentBar == "middle") {
         document.getElementById("traversal").style.backgroundColor = buttonColor ;
         document.getElementById("high").style.backgroundColor = buttonColor ;
         document.getElementById("middle").style.backgroundColor = selectedColor ;
         document.getElementById("low").style.backgroundColor = buttonColor ;
+        document.getElementById("fail").style.backgroundColor = buttonColor ;
         document.getElementById("traversalDiv").style.backgroundColor = '#00000000';
         document.getElementById("highDiv").style.backgroundColor = '#00000000';
         document.getElementById("midDiv").style.backgroundColor = '#2bc43296';
         document.getElementById("lowDiv").style.backgroundColor = '#00000000';
-    } else {
+        dataDictionary["levelClimbed"] = 'middle';
+    } else if (currentBar == "low"){
         document.getElementById("traversal").style.backgroundColor = buttonColor ;
         document.getElementById("high").style.backgroundColor = buttonColor ;
         document.getElementById("middle").style.backgroundColor = buttonColor ;
         document.getElementById("low").style.backgroundColor = selectedColor ;
+        document.getElementById("fail").style.backgroundColor = buttonColor ;
         document.getElementById("traversalDiv").style.backgroundColor = '#00000000';
         document.getElementById("highDiv").style.backgroundColor = '#00000000';
         document.getElementById("midDiv").style.backgroundColor = '#00000000';
         document.getElementById("lowDiv").style.backgroundColor = '#2bc43296';
+        dataDictionary["levelClimbed"] = 'low';
+    }else{
+        document.getElementById("traversal").style.backgroundColor = buttonColor ;
+        document.getElementById("high").style.backgroundColor = buttonColor ;
+        document.getElementById("middle").style.backgroundColor = buttonColor ;
+        document.getElementById("low").style.backgroundColor = buttonColor ;
+        document.getElementById("fail").style.backgroundColor = selectedColor ;
+        document.getElementById("traversalDiv").style.backgroundColor = '#00000000';
+        document.getElementById("highDiv").style.backgroundColor = '#00000000';
+        document.getElementById("midDiv").style.backgroundColor = '#00000000';
+        document.getElementById("lowDiv").style.backgroundColor = '#00000000';
+        dataDictionary["levelClimbed"] = 'fail';
     }
 }

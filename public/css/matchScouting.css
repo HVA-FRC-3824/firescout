@@ -229,19 +229,11 @@ h1 {
     margin: 2vw 3vw;
 }
 
-.tabcontent .preMatch .cargodiv button:hover {
-    color: white;
-}
-
 .tabcontent .preMatch #teamNumber {
     margin-top: 0;
     grid-column: 2 / 4;
     text-align: center;
     font-size: 5vw;
-}
-
-.tabcontent .endgameWrapper button:hover {
-    color: white;
 }
 
 .preMatch {
@@ -365,10 +357,10 @@ Cause they are literally the same lmao
 /* ======================================== CURRENT CARGO HELD ======================================== */
 
 
-#currentCargo{
+#currentCargoDiv{
     font-size: 4vw;
     background-color: #0342b8;
-    padding: 0.1vw 1.9vw;
+    width: 5vw;
     border-radius: 100px;
     position: absolute;
     right:0;
@@ -376,6 +368,12 @@ Cause they are literally the same lmao
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     margin-right: 3vw;
     margin-top: 2vw;
+    text-align: center;
+}
+
+#currentCargo{
+    width: fit-content;
+    display: inline-block;
 }
 
 /* ======================================== CURRENT CARGO HELD END ======================================== */
@@ -505,6 +503,14 @@ Cause they are literally the same lmao
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
+}
+
+.tabcontent .endgameWrapper #climbSelectBox{
+    filter:blur(5px) grayscale(50%); 
+}
+
+.tabcontent .endgameWrapper #climbSelectCover{
+    z-index: 9999g;
 }
 
 .tabcontent .endgameWrapper .climbSelect .climbHighlights{
