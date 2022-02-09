@@ -1,165 +1,3 @@
-/*
- ██████  ██       ██████  ██████   █████  ██      ███████ 
-██       ██      ██    ██ ██   ██ ██   ██ ██      ██      
-██   ███ ██      ██    ██ ██████  ███████ ██      ███████ 
-██    ██ ██      ██    ██ ██   ██ ██   ██ ██           ██ 
- ██████  ███████  ██████  ██████  ██   ██ ███████ ███████
-*/ 
-
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
-body {
-    font-family: "Montserrat";
-}
-
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    color: #fff;
-    width: 100%;
-    z-index: 100;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    background-color: rgba(168, 168, 168, 0.267);
-    transition: all 0.4s ease 0s;
-}
-
-.navbar.is-active {
-    backdrop-filter: blur(0px);
-    -webkit-backdrop-filter: blur(0px);
-    background-color: rgba(168, 168, 168, 0);
-}
-
-header .container {
-    padding: 32px 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    -webkit-box-pack: justify;
-    -webkit-box-align: center;
-}
-
-header .container h2 {
-    color: inherit;
-    font-size: 32px;
-    font-weight: 400;
-    cursor:pointer;
-}
-
-header .container nav {
-    display: none;
-}
-
-/*
-███    ██  █████  ██    ██     ███    ███  ██████  ██████  ██ ██      ███████ 
-████   ██ ██   ██ ██    ██     ████  ████ ██    ██ ██   ██ ██ ██      ██      
-██ ██  ██ ███████ ██    ██     ██ ████ ██ ██    ██ ██████  ██ ██      █████   
-██  ██ ██ ██   ██  ██  ██      ██  ██  ██ ██    ██ ██   ██ ██ ██      ██      
-██   ████ ██   ██   ████       ██      ██  ██████  ██████  ██ ███████ ███████ 
-*/
-
-.dropdown {
-    position: relative;
-    display: block;
-    width: 35px;
-    cursor: pointer;
-    appearance: none;
-    background: none;
-    outline: none;
-    border: none;
-}
-
-.dropdown .bars, .dropdown::before, .dropdown::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 5px;
-    background-color: white;
-    margin: 6px 0px;
-    transition: all 0.4s ease 0s;
-}
-
-.dropdown.is-active::before {
-    transform: rotate(-45deg) translate(-8px, 6px);
-}
-
-.dropdown.is-active::after {
-    transform: rotate(45deg) translate(-9px, -8px);
-}
-
-.dropdown.is-active .bars {
-    opacity: 0;
-}
-
-.nav-mobile {
-    position: fixed;
-    top: 0;
-    left: 100%;
-    width: 100%;
-    min-height: 100vh;
-    display: block;
-    z-index: 99;
-    background-color: rgba(168, 168, 168, 0.267);
-    padding: 100px 0px 0px 0px;
-    transition: all 0.4s ease 0s;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-}
-
-.nav-mobile a {
-    font-size: 18px;
-    display: block;
-    width: 100%;
-    max-width: 200px;
-    margin: 0px auto 16px;
-    text-align: center;
-    padding: 20px 25px;
-    border-radius: 6px;
-    background-color: rgba(28, 157, 218, 1);
-    text-decoration: none;
-    color: #fff;
-}
-
-.nav-mobile .login {
-    background-color: rgba(111, 111, 111, 0);
-}
-
-.nav-mobile.is-active {
-    left: 0;
-}
-
-.nav-login-bars .login {
-    float: left;
-    padding: 8px 20px 0px 0px;
-    color: inherit;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 400;
-}
-
-.nav-mobile .login-mobile {
-    font-size: 18px;
-    display: block;
-    width: 100%;
-    max-width: 300px;
-    margin: 0px auto 16px;
-    text-align: center;
-    padding: 20px 25px;
-    border-radius: 6px;
-    background-color: rgba(111, 111, 111, 0);
-    text-decoration: none;
-    color: #fff;
-}
-
-.container {
-    width: 100%;
-}
-
 /* 
 ██   ██ ███████ ██████   ██████      ██ ███    ███  ██████  
 ██   ██ ██      ██   ██ ██    ██     ██ ████  ████ ██       
@@ -168,8 +6,23 @@ header .container nav {
 ██   ██ ███████ ██   ██  ██████      ██ ██      ██  ██████  
 */
 
+* {
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+}
+
+main .frc-logo {
+    position: absolute;
+    z-index: 100;
+    height: 100vh;
+    width: 60vw;
+    margin-left: 40vw;
+}
+
 .hero {
-    background-image: url(https://i.ibb.co/zJtfcxG/sathero.jpg);
     width: 100%;
     min-height: 100vh;
     background-position: left;
@@ -178,12 +31,14 @@ header .container nav {
     overflow: hidden;
     display: flex;
     align-items: center;
+    background-image: linear-gradient(to right bottom, #507dcf, #00a1e8, #00c3f3, #1ee2f4, #74fff0);
 }
 
 .hero .container {
     padding: 0px 30px;
     position: relative;
     width: 100%;
+    z-index: 100;
 }
 
 main .hero .container h1 {
@@ -191,11 +46,13 @@ main .hero .container h1 {
     font-weight: 700;
     font-size: 45px;
     padding: 45px 0px;
+    z-index: 9999;
 }
 
 main .hero .container h3 {
     color: rgb(0, 0, 0);
     margin: 0px 0px 50px 0px;
+    z-index: 9999;
 }
 
 main .hero .container button {
@@ -220,7 +77,7 @@ main .hero .container button {
 
 
 main .features {
-    background-image: url(https://i.ibb.co/RPz0Yq4/hero-Image.jpg);
+    background-image: linear-gradient(to left top, #7722cc, #007aff, #00afff, #00daff, #74fff0);
     background-position: top;
 }
 
@@ -254,8 +111,8 @@ main .features .container h1 {
 
 main .features .container .ft-grid .feature {
     text-align: center;
-    background-color: #c2c2c294;
-    backdrop-filter: blur(10px);
+    background-color: rgb(235, 235, 235);
+    border-radius: 5px;
 }
 
 main .features .container .ft-grid .feature:nth-of-type(1) {
@@ -417,7 +274,7 @@ main .footer .container {
 */
 
 @media all and (min-width: 850px) {
-                                                                   
+
     .hero {
         background-position: bottom;
     }
@@ -500,51 +357,6 @@ main .footer .container {
     
 }
 
-    /* 
-    ███    ██  █████  ██    ██     ██████  ███████ ███████ ██   ██ ████████  ██████  ██████  
-    ████   ██ ██   ██ ██    ██     ██   ██ ██      ██      ██  ██     ██    ██    ██ ██   ██ 
-    ██ ██  ██ ███████ ██    ██     ██   ██ █████   ███████ █████      ██    ██    ██ ██████  
-    ██  ██ ██ ██   ██  ██  ██      ██   ██ ██           ██ ██  ██     ██    ██    ██ ██      
-    ██   ████ ██   ██   ████       ██████  ███████ ███████ ██   ██    ██     ██████  ██      
-    */ 
-
-@media all and (min-width: 1000px) {
-    header .container .nav-login-bars nav {
-        display: block;
-        float: left;
-        padding: 8px 5px 0px 0px;
-        font-size: 18px;
-        font-weight: 400;
-    }
-
-    .nav-login-bars nav a {
-        text-decoration: none;
-        color: #fff;
-        padding: 0px 10px 0px 0px;
-    }
-
-    .nav-login-bars .login {
-        display: block;
-        float: right;
-        padding: 8px 0px 0px 0px;
-        color: inherit;
-        text-decoration: none;
-        font-size: 18px;
-        font-weight: 400;
-    }
-
-    .dropdown {
-        display: none;
-    }
-}
-
-
-
-
-
-
-
-
 /* 
 ██    ██ ██      ████████ ██████   █████  ██     ██ ██ ██████  ███████ 
 ██    ██ ██         ██    ██   ██ ██   ██ ██     ██ ██ ██   ██ ██      
@@ -555,7 +367,7 @@ main .footer .container {
 
 @media all and (min-width: 1250px) {
     main .hero .container {
-        padding: 0px 120px;
+        padding: 0px 700px 0px 120px;
     }
 
     main .hero .container h1 {

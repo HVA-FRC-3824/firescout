@@ -145,7 +145,8 @@ function openPage(pageName) { //Runs when the nav bar buttons are pressed, the b
 
 openPage("Pre"); //Starts the page by openeing the pre match page
 
-console.log(localStorage.getItem("robotToScout"));  //Gets the robot you are scouting from local storage
+robotToScout = localStorage.getItem("robotToScout");  //Gets the robot you are scouting from local storage
+console.log(robotToScout);
 
 function updateCurrentCargo(){
     document.getElementById("currentCargoAuto").innerHTML = currentCargo;

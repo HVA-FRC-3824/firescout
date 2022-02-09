@@ -281,6 +281,26 @@ function getScoutPosition(){
   }, 1000);
 }
 
+function pushdataDiction(robotToScout, mNum, scoutName){
+  firebase.database().ref('matchScouting/' + robotToScout + mNum + scoutName).set({
+    "fieldStartPositionX": dataDictionary["fieldStartPositionX"],
+    "fieldStartPositionY": dataDictionary["fieldStartPositionY"],
+    "startedWithCargo": dataDictionary["startedWithCargo"],
+    "autoShotsMissed": dataDictionary["autoShotsMissed"],
+    "teleShotsMissed": dataDictionary["teleShotsMissed"],
+    "movedOffTarmac": dataDictionary["movedOffTarmac"],
+    "autoUpperHubAmount": dataDictionary["autoUpperHubAmount"],
+    "autoLowerHubAmount": dataDictionary["autoLowerHubAmount"],
+    "teleUpperHubAmount": dataDictionary["teleUpperHubAmount"],
+    "teleLowerHubAmount": dataDictionary["teleLowerHubAmount"],
+    "playedDefense": dataDictionary["playedDefense"],
+    "attemptedClimb": dataDictionary["attemptedClimb"],
+    "levelClimbed": dataDictionary["levelClimbed"],
+    "yellowCard": dataDictionary["yellowCard"],
+    "redCard": dataDictionary["redCard"]
+  });
+}
+
 
 /*
 ██████  ██ ████████     ███████  ██████  ██████  ██    ██ ████████ ██ ███    ██  ██████  
