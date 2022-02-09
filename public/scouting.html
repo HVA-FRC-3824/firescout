@@ -50,7 +50,7 @@
             <button class="tablink" onclick="openPage('Auto')" id="auto">Auto</button>
             <button class="tablink" onclick="openPage('Teleop')" id="teleop"> Teleop </button>
             <button class="tablink" onclick="openPage('Endgame')" id="endgame"> Endgame </button>
-            <button class="nextMatch" onclick="location.href('schedule.html')"> Next Match </button>
+            <button class="nextMatch" onclick="location.href = 'schedule.html'"> Next Match </button>
             <button class="tabExtra" id="space"></button>
         </div>
         <div class="navarrow"><img src="./pics/whiteArrow.png" class="arrow"></div>
@@ -92,7 +92,7 @@
                 <img onclick="getMousePosition(event); togglePopup('auto')"  src="pics/fieldIMG.png" alt="auto field" id="autoField"></img>
                 <label class="switch" name="movedOffTarmac">
                     <input id="movedOffTarmac" type="checkbox">
-                    <span class="slider"></span>
+                    <span class="slider" onclick="toggleTarmac()"></span>
                 </label>
                 <div id="autoDropdown" class="autoDropdown-content unselectable">
                     <a onclick="launchedCargo(4, 'auto'); togglePopup('auto')">Upper Hub</a>

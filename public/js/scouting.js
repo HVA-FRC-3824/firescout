@@ -1,6 +1,7 @@
 var dataDictionary = { //The object of all our data, this should be quite easy to push to firebase in this format
     "fieldStartPositionX": 0,
     "fieldStartPositionY": 0,
+    "startedWithCargo": false,
     "autoShotsMissed": 0,
     "teleShotsMissed": 0,
     "movedOffTarmac": 0,
@@ -24,6 +25,11 @@ var autoPickupArrX = [];
 var autoPickupArrY = [];
 var telePickupArrX = [];
 var telePickupArrY = [];
+
+// Colors
+var selectedColor = "#29ff5f";
+var buttonColor = "#5295ec";
+
 
 window.onload = function() {
     const nav = document.querySelector('.navarrow');
@@ -135,19 +141,26 @@ function openPage(pageName) { //Runs when the nav bar buttons are pressed, the b
     }
 }
 
-
 openPage("Pre"); //Starts the page by openeing the pre match page
 
 console.log(localStorage.getItem("robotToScout"));  //Gets the robot you are scouting from local storage
 
 function hasCargo(cargoTest){ //Changes the color for the 'starting with cargo' button on pre match page
     if (cargoTest == "yesButton"){
-        document.getElementById("yesButton").style.backgroundColor = '#7CFC00' ;
-        document.getElementById("noButton").style.backgroundColor = '#4fbdba' ;
+        document.getElementById("yesButton").style.backgroundColor = selectedColor;
+        document.getElementById("noButton").style.backgroundColor = buttonColor;
+        dataDictionary["startedWithCargo"] = true;
     } else {
-        document.getElementById("yesButton").style.backgroundColor = '#4fbdba';
-        document.getElementById("noButton").style.backgroundColor = '#7CFC00';
+        document.getElementById("yesButton").style.backgroundColor = buttonColor;
+        document.getElementById("noButton").style.backgroundColor = selectedColor;
+        dataDictionary["startedWithCargo"] = false;
     }
+}
+
+function toggleTarmac(){
+    tarmac = document.getElementById("movedOffTarmac").checked;
+    console.log(!tarmac);
+    dataDictionary["movedOffTarmac"] = !tarmac;
 }
 
 //Creates usable variables for both images
@@ -265,9 +278,9 @@ function pickupCargo(autoOrTeleop){ //runs when the pickup cargo button is press
 function attemptedClimb(climbTest){ //Changes the color of the attempted climb buttons to show which is selected
     if (climbTest == "yesButton"){
         document.getElementById("yesButtonClimb").style.backgroundColor = '#7CFC00' ;
-        document.getElementById("noButtonClimb").style.backgroundColor = '#4fbdba' ;
+        document.getElementById("noButtonClimb").style.backgroundColor = buttonColor ;
     } else {
-        document.getElementById("yesButtonClimb").style.backgroundColor = '#4fbdba';
+        document.getElementById("yesButtonClimb").style.backgroundColor = buttonColor;
         document.getElementById("noButtonClimb").style.backgroundColor = '#7CFC00';
     }
 }
@@ -275,46 +288,46 @@ function attemptedClimb(climbTest){ //Changes the color of the attempted climb b
 function playedDefense(defenseTest){ //Changes the color of the played defense buttons to show which is selected
     if (defenseTest == "yesButton"){
         document.getElementById("yesButtonDefense").style.backgroundColor = '#7CFC00' ;
-        document.getElementById("noButtonDefense").style.backgroundColor = '#4fbdba' ;
+        document.getElementById("noButtonDefense").style.backgroundColor = buttonColor ;
     } else {
-        document.getElementById("yesButtonDefense").style.backgroundColor = '#4fbdba';
+        document.getElementById("yesButtonDefense").style.backgroundColor = buttonColor;
         document.getElementById("noButtonDefense").style.backgroundColor = '#7CFC00';
     }
 }
 
 function barSelect(currentBar){  //Changes the color of the climb level buttons and highlights the bar selected 
     if (currentBar == "traversal"){
-        document.getElementById("traversal").style.backgroundColor = '#7CFC00' ;
-        document.getElementById("high").style.backgroundColor = '#4fbdba' ;
-        document.getElementById("middle").style.backgroundColor = '#4fbdba' ;
-        document.getElementById("low").style.backgroundColor = '#4fbdba' ;
+        document.getElementById("traversal").style.backgroundColor = selectedColor ;
+        document.getElementById("high").style.backgroundColor = buttonColor ;
+        document.getElementById("middle").style.backgroundColor = buttonColor ;
+        document.getElementById("low").style.backgroundColor = buttonColor ;
         document.getElementById("traversalDiv").style.backgroundColor = '#2bc43296';
         document.getElementById("highDiv").style.backgroundColor = '#00000000';
         document.getElementById("midDiv").style.backgroundColor = '#00000000';
         document.getElementById("lowDiv").style.backgroundColor = '#00000000';
     } else if (currentBar == "high") {
-        document.getElementById("traversal").style.backgroundColor = '#4fbdba' ;
-        document.getElementById("high").style.backgroundColor = '#7CFC00' ;
-        document.getElementById("middle").style.backgroundColor = '#4fbdba' ;
-        document.getElementById("low").style.backgroundColor = '#4fbdba' ;
+        document.getElementById("traversal").style.backgroundColor = buttonColor ;
+        document.getElementById("high").style.backgroundColor = selectedColor ;
+        document.getElementById("middle").style.backgroundColor = buttonColor ;
+        document.getElementById("low").style.backgroundColor = buttonColor ;
         document.getElementById("traversalDiv").style.backgroundColor = '#00000000';
         document.getElementById("highDiv").style.backgroundColor = '#2bc43296';
         document.getElementById("midDiv").style.backgroundColor = '#00000000';
         document.getElementById("lowDiv").style.backgroundColor = '#00000000';
     } else if (currentBar == "middle") {
-        document.getElementById("traversal").style.backgroundColor = '#4fbdba' ;
-        document.getElementById("high").style.backgroundColor = '#4fbdba' ;
-        document.getElementById("middle").style.backgroundColor = '#7CFC00' ;
-        document.getElementById("low").style.backgroundColor = '#4fbdba' ;
+        document.getElementById("traversal").style.backgroundColor = buttonColor ;
+        document.getElementById("high").style.backgroundColor = buttonColor ;
+        document.getElementById("middle").style.backgroundColor = selectedColor ;
+        document.getElementById("low").style.backgroundColor = buttonColor ;
         document.getElementById("traversalDiv").style.backgroundColor = '#00000000';
         document.getElementById("highDiv").style.backgroundColor = '#00000000';
         document.getElementById("midDiv").style.backgroundColor = '#2bc43296';
         document.getElementById("lowDiv").style.backgroundColor = '#00000000';
     } else {
-        document.getElementById("traversal").style.backgroundColor = '#4fbdba' ;
-        document.getElementById("high").style.backgroundColor = '#4fbdba' ;
-        document.getElementById("middle").style.backgroundColor = '#4fbdba' ;
-        document.getElementById("low").style.backgroundColor = '#7CFC00' ;
+        document.getElementById("traversal").style.backgroundColor = buttonColor ;
+        document.getElementById("high").style.backgroundColor = buttonColor ;
+        document.getElementById("middle").style.backgroundColor = buttonColor ;
+        document.getElementById("low").style.backgroundColor = selectedColor ;
         document.getElementById("traversalDiv").style.backgroundColor = '#00000000';
         document.getElementById("highDiv").style.backgroundColor = '#00000000';
         document.getElementById("midDiv").style.backgroundColor = '#00000000';
