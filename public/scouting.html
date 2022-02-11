@@ -89,7 +89,7 @@
         <div id="Auto" class="tabcontent">
             <div class="autoWrapper" >
                 <div id="currentCargoDiv">
-                    <p id="currentCargoAuto">1</p>
+                    <p id="currentCargo">1</p>
                 </div>
                 <img onclick="getMousePosition(event); togglePopup('auto')"  src="pics/fieldIMG.png" alt="auto field" id="autoField"></img>
                 <p>/\  Moved Off Tarmac</p>
@@ -115,7 +115,7 @@
         <div id="Teleop" class="tabcontent">
             <div class="teleWrapper">
                 <div id="currentCargoDiv">
-                    <p id="currentCargoTele">1</p>
+                    <p id="currentCargo">1</p>
                 </div>
                 <img onclick="getMousePosition(event);togglePopup('tele')" src="pics/fieldIMG.png" alt="Teleop field" id="teleopField"></img>
                 <div id="teleopDropdown" class="teleopDropdown-content unselectable">
@@ -165,11 +165,11 @@
                 <div class="cardArea">
                     <p>Cards?</p>
                     <label class="switch" name="movedOffTarmac">
-                        <input id="movedOffTarmac" type="checkbox">
+                        <input id="redCard" type="checkbox">
                         <span class="slider"></span>
                     </label>
                     <label class="switch" name="movedOffTarmac">
-                        <input id="movedOffTarmac" type="checkbox">
+                        <input id="yellowCard" type="checkbox">
                         <span class="slider"></span>
                     </label>
                 </div>

@@ -29,7 +29,7 @@ var telePickupArrY = [];
 var currentCargo = 0;
 
 // Colors
-var selectedColor = "#29ff5f";
+var selectedColor = "#00f3ff";
 var buttonColor = "#5295ec";
 
 
@@ -348,7 +348,7 @@ function attemptedClimb(climbTest){ //Changes the color of the attempted climb b
         document.getElementById("highDiv").style.backgroundColor = '#00000000';
         document.getElementById("midDiv").style.backgroundColor = '#00000000';
         document.getElementById("lowDiv").style.backgroundColor = '#00000000';
-        document.getElementById("climbSelectBox").style.filter = "blur(5px) grayscale(50%)";
+        document.getElementById("climbSelectBox").style.filter = "blur(5px) grayscale(100%)";
         document.getElementById("climbSelectCover").style.display = "grid";
         dataDictionary["levelClimbed"] = 'none';
         dataDictionary["attemptedClimb"] = false;

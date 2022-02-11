@@ -1,4 +1,8 @@
 
+body{
+    background-image: linear-gradient(to right top, #0052cc, #008cf7, #00b7d7, #00d883, #a8eb12);
+}
+
 /*
 ████████ ███████   █████   ███    ███ ███████     ███████ ███████  ██      ███████  ██████ ████████ 
     ██    ██      ██   ██ ████  ████ ██          ██      ██      ██      ██      ██         ██    
@@ -53,14 +57,14 @@ main .teams p{
 main .teams .blueTeam{
     margin-top:10px;
     width:300px;
-    background-color: #0166b37c;
+    background-color: #0166b3;
     margin-right:auto;
     margin-left:auto;
 }
 
 main .teams .redTeam{
     width:300px;
-    background-color: #ed1c2385;
+    background-color: #ed1c23;
     margin-bottom:50px;
     margin-right:auto;
     margin-left:auto;
@@ -100,7 +104,7 @@ main .listView th{
 main .quickAnalyticsMobile button{
     text-align: center;
     font-size: 40px;
-    background-color: rgba(168, 168, 168, 0.747);
+    background-color: rgba(168, 168, 168, 1);
     border-color: rgba(0, 0, 0, 0);
     border-radius: 15px;
     padding: 10px;
@@ -235,7 +239,6 @@ main .footer .container {
 
     .nav-login-bars nav a {
         text-decoration: none;
-        color: #000;
         padding: 0px 10px 0px 0px;
     }
 

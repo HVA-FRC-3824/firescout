@@ -6,6 +6,10 @@
 ██      ██  ██████  ██████  ██   ██ ███████     ██████   ██████     ██       ██     ██████  ██   ████
 */
 
+body {
+    background-image: linear-gradient(to right top, #75d8c7, #73dab7, #7cdba2, #8cda8a, #a1d871);
+}
+
 main {
     width: 100%;
     min-height: 100vh;
@@ -15,6 +19,8 @@ main {
 }
 
 main .page-name h1 {
+    color: #fff;
+    text-shadow: 4px 3px 18px rgba(154, 150, 150, 1);
     padding: 15vh 0px 5vh 0px;
 }
 

@@ -7,7 +7,7 @@
 */
 
 body {
-    background-color: rgba(143, 143, 143, 1);
+    background-image: linear-gradient(to right top, #ff5047, #ee4a85, #bf5fae, #8170ba, #4f77aa);
 }
 
 main section {

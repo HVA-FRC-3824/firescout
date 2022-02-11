@@ -16,10 +16,10 @@
 
 main .frc-logo {
     position: absolute;
-    z-index: 100;
+    z-index: 97;
     height: 100vh;
-    width: 60vw;
-    margin-left: 40vw;
+    width: 47vw;
+    margin-left: 52vw;
 }
 
 .hero {
@@ -38,7 +38,7 @@ main .frc-logo {
     padding: 0px 30px;
     position: relative;
     width: 100%;
-    z-index: 100;
+    z-index: 98;
 }
 
 main .hero .container h1 {
@@ -46,13 +46,13 @@ main .hero .container h1 {
     font-weight: 700;
     font-size: 45px;
     padding: 45px 0px;
-    z-index: 9999;
+    z-index: 98;
 }
 
 main .hero .container h3 {
     color: rgb(0, 0, 0);
     margin: 0px 0px 50px 0px;
-    z-index: 9999;
+    z-index: 98;
 }
 
 main .hero .container button {

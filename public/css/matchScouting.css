@@ -23,7 +23,7 @@ button {
     color: rgb(0, 0, 0);
     font-size: 3.2vw;
     text-align: center;
-    padding: 2vw 3vw;
+    padding: 1.5vw 3vw;
     margin: 1vw;
     border: 0;
     border-radius: 15px;
@@ -105,11 +105,11 @@ h1 {
     display: flex;
     grid-row: 1/2;
     width: 100vw;
-    height: 9vw;
+    height: 7.5vw;
 }
 
 .navBar.is-active {
-    transform: translate(0px, -9vw);
+    transform: translate(0px, -7.5vw);
 }
 
 .navBar {
@@ -120,7 +120,7 @@ h1 {
 .tablink {
     width: 15%;
     font-size: 2vw;
-    height: 7.5vw;
+    height: 5.5vw;
     background-color: grey;
     border-radius: 15px;
     border: none;
@@ -132,9 +132,8 @@ h1 {
 .nextMatch {
     width: 15%;
     font-size: 2vw;
-    height: 7.5vw;
     background-color: #2f4c39;
-    border-radius: 30px;
+    border-radius: 15px;
     border: none;
     color: white;
     padding:1%;
@@ -144,7 +143,6 @@ h1 {
 .tabExtra {
     width: 15%;
     font-size: 2vw;
-    height: 7.5vw;
     background-color:rgba(255, 255, 255, 0);
     border-radius: 30px;
     border: none;
@@ -190,7 +188,9 @@ h1 {
 
 .tabcontent .preMatch h2 {
     font-weight: 400;
-    padding-top: 20px;
+}
+.tabcontent p{
+    margin:0;
 }
 
 .tabcontent .preMatch .tarmac {
@@ -206,7 +206,7 @@ h1 {
 
 .tabcontent .preMatch .teamToScoutDiv {
     grid-column: 2 / 4;
-    grid-row: 1 / 4;
+    grid-row: 1 / 3;
 }
 
 .tabcontent .preMatch .preMatchScoutText {
@@ -220,12 +220,13 @@ h1 {
 
 .tabcontent .preMatch .cargodiv {
     font-size: 4vw;
+    padding-top:4.5vw;
     grid-column: 2 / 4;
-    grid-row: 4 / 5;
+    grid-row: 3 / 5;
 }
 
 .tabcontent .preMatch .cargodiv button {
-    padding: 2.6vw 3.4vw;
+    padding: 1.5vw 3.4vw;
     margin: 2vw 3vw;
 }
 
@@ -246,13 +247,6 @@ h1 {
 .preMatch.is-active {
     margin-top: 2.5vw;
 }
-
-.preMatch h2 {
-    font-size: 3.5vw;
-    padding: 0;
-    margin: 0;
-}
-
 
 /*
  █████  ██    ██ ████████  ██████       █████  ███    ██ ██████      ████████ ███████ ██      ███████ 
@@ -311,7 +305,7 @@ Cause they are literally the same lmao
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 14px;
+    border-radius: 40px;
     background-image: linear-gradient(#FF5047,#FF5047);
     -webkit-transition: .4s;
     transition: .4s;
@@ -331,18 +325,12 @@ Cause they are literally the same lmao
     -webkit-transition: .4s;
     transition: .4s;
     box-shadow:
-  0px 0px 13.8px rgba(0, 0, 0, 0.017),
-  0px 0px 33.3px rgba(0, 0, 0, 0.024),
-  0px 0px 62.6px rgba(0, 0, 0, 0.03),
-  0px 0px 111.7px rgba(0, 0, 0, 0.036),
-  0px 0px 208.9px rgba(0, 0, 0, 0.043),
-  0px 0px 500px rgba(0, 0, 0, 0.06)
-;
-
-
-
-
-  
+        0px 0px 13.8px rgba(0, 0, 0, 0.017),
+        0px 0px 33.3px rgba(0, 0, 0, 0.024),
+        0px 0px 62.6px rgba(0, 0, 0, 0.03),
+        0px 0px 111.7px rgba(0, 0, 0, 0.036),
+        0px 0px 208.9px rgba(0, 0, 0, 0.043),
+        0px 0px 500px rgba(0, 0, 0, 0.06);
 }
 
 .tabcontent .autoWrapper input:checked + .slider {
@@ -384,11 +372,19 @@ Cause they are literally the same lmao
     margin-right: 3vw;
     margin-top: 2vw;
     text-align: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #currentCargo{
+    font-size: 3.5vw;
     width: fit-content;
     display: inline-block;
+    margin-top:0.3vw;
+    margin-bottom: 0.3vw;
+
 }
 
 /* ======================================== CURRENT CARGO HELD END ======================================== */
@@ -464,6 +460,7 @@ Cause they are literally the same lmao
     grid-row: 3 / 4;
     bottom: 0;
     z-index: 100;
+    margin-left: 2vw;
 }
 
 .tabcontent .endgameWrapper .switch input {
@@ -480,7 +477,7 @@ Cause they are literally the same lmao
     right: 0;
     bottom: 0;
     border-radius: 34px;
-    background-image: linear-gradient(red,orange);
+    background-color: rgb(158, 158, 158);
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -493,13 +490,17 @@ Cause they are literally the same lmao
     margin-top: 0.625vw;
     left:0.75vw;
     border-radius: 34px;
-    background-image: radial-gradient(rgb(30, 122, 243), rgb(12, 14, 182));
+    background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
 }
 
 .tabcontent .endgameWrapper input:checked + .slider {
-    background-image: linear-gradient(green, yellow);
+    background-color:red;
+}
+
+.tabcontent .endgameWrapper #yellowCard:checked + .slider{
+    background-color: yellow;
 }
 
 .tabcontent .endgameWrapper input:focus + .slider {
@@ -521,7 +522,7 @@ Cause they are literally the same lmao
 }
 
 .tabcontent .endgameWrapper #climbSelectBox{
-    filter:blur(5px) grayscale(50%); 
+    filter:blur(5px) grayscale(100%); 
 }
 
 .tabcontent .endgameWrapper #climbSelectCover{
@@ -572,10 +573,11 @@ Cause they are literally the same lmao
     display: grid;
     grid-column: 1 / 2;
     grid-row: 1 / 3;
+    height:40vw;
 }
 
 .tabcontent .endgameWrapper .climbSelect .buttonWrapper button {
-    height: 6vw;
+    width:15vw;
     font-size: 2vw;
 }
 
