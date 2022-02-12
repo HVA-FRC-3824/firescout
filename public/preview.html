@@ -64,11 +64,13 @@
     </nav>
 
     <main>
+       
         <script type="module">
             import {getAllTeamInfo} from "./js/firebase.js"
             window.getAllTeamInfo = getAllTeamInfo;
         </script>
         <section class="teams">
+            <div class="teamDiv ">
                 <select onChange="displayMatchTeams((document.getElementById('match').value).slice(6))" name="match num" class="match-selector" id="match">
                     <option>Select Match</option>
                 </select>
@@ -112,10 +114,11 @@
                         <td id="redData3">6</td>
                     </tr>
                 </table>
-
+            </div>
         </section>
 
         <section class="quickAnalyticsMobile">
+            <div class="dataDiv ">
             <div>
                 <button id="teamColor" onclick="changeColor()">Team Color</button>
             </div> 
@@ -187,12 +190,14 @@
                         </tr>
                     </table>
                 </div>
+            </div>
         </section>
         <section class="footer">
             <div class="container">
                 <p id="load"><i>Created by: Weston Agreda, Grant Johnson, Graham Boswell, Leon Truong, Evan Boswell, Nick Broyles, Luke Daniel</i></p>
             </div>
         </section>
+        
     </main>
 </body>
 </html>

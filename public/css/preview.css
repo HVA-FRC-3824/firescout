@@ -22,8 +22,10 @@ main .teams{
 
 main  .teams .match-selector{
     font-size: 24px;
-    background-color: grey;
+    background-color: #cfcfc4;
     text-align: center;
+    margin-bottom: 1vw;
+    border-radius: 10px;
 }
 
 main .teams td{
@@ -57,17 +59,38 @@ main .teams p{
 main .teams .blueTeam{
     margin-top:10px;
     width:300px;
-    background-color: #0166b3;
+    background-color: #4f77aa;
     margin-right:auto;
     margin-left:auto;
+    border-color: #1D1C1A;
+    border-width: 1px;
+    border-radius: 10px;
+    border-style: groove;
+}
+
+main .teams .teamDiv{
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+    padding-top: 1vw;
+    padding-bottom: .1vw;
 }
 
 main .teams .redTeam{
     width:300px;
-    background-color: #ed1c23;
+    background-color: #FF5047;
     margin-bottom:50px;
     margin-right:auto;
     margin-left:auto;
+    border-color: #1D1C1A;
+    border-width: 1px;
+    border-radius: 10px;
+    border-style: groove;
+
+
+
+
 }
 
 
@@ -289,6 +312,29 @@ main .footer .container {
         display: inline-block;
         transform: translate(0px,-125px);
     }
+
+    main .teams .teamDiv{
+        padding-top: 2vw;
+        padding-bottom: 2vw;
+        background-color: white;
+        width: 950px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 15px;
+        box-shadow:
+  4.5px 4.5px 3.6px rgba(0, 0, 0, 0.091),
+  12.5px 12.5px 10px rgba(0, 0, 0, 0.13),
+  30.1px 30.1px 24.1px rgba(0, 0, 0, 0.169),
+  100px 100px 80px rgba(0, 0, 0, 0.26)
+;
+    }
+
+    main .teams .dataDiv{
+        color:white;
+        background-color: white;
+    }
+
+
 
     /*
      ██████  ██    ██ ██  ██████ ██   ██      █████  ███    ██  █████      ██████  ███████ ███████ ██   ██ ████████  ██████  ██████  
