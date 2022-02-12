@@ -6,17 +6,17 @@ function dropdown(id) {
             dropdownElement = document.getElementById('stats');
             break;
         case 2:
-            dropdownElement = document.getElementById('driveTeam');
+            dropdownElement = document.getElementById('climb');
             break;
         case 3:
-            dropdownElement = document.getElementById('driveTeam');
+            dropdownElement = document.getElementById('cargoInfo');
             break;
         case 4:
-            dropdownElement = document.getElementById('driveTeam');
+            dropdownElement = document.getElementById('misc');
             break;
         default:
-            console.log("hit default");
+            console.log("default");
             break;
     }
-    dropdownElement.classList.toggle('active');
+    dropdownElement.style.toggle('active');
 }

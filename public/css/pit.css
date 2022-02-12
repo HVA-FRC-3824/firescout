@@ -46,7 +46,7 @@ main .container .window {
         53.4px 53.4px 33.6px rgba(0, 0, 0, 0.025),
         100px 100px 63px rgba(0, 0, 0, 0.018)
     ;
-    transition: all 0.6s ease 0s;
+    transition: all 0.5s ease;
 }
 
 main .container .window .title {
@@ -64,12 +64,12 @@ main .container .window .title i {
     padding-right: 6px;
 }
 
-.active {
+main .container .window.active {
     height: auto !important;
 }
 
 main .container .window section {
-    padding: 20px 50px 60px 20px;
+    padding: 40px 4vw 40px 4vw !important; 
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: 50% 50%;
@@ -101,6 +101,10 @@ main .container .window section #botLang {
 main .container .window section #botDrive {
     grid-column: 1 / 2;
     grid-row: 4 / 5;
+}
+
+main .container .window section .width-input-div p {
+    display: inline-block;
 }
 
 main .container .window section #teamInput {
@@ -161,12 +165,37 @@ main .container .window section #driveSelect {
     margin-left: auto;
 }
 
-#teamInput::-webkit-outer-spin-button, #teamInput::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+main .container .window section #widthInput {
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    resize: none;
+    width: 150px;
+    text-align: center;
+    overflow: hidden;
+    font-size: 30px;
+    grid-row: 5 / 6;
+    grid-column:  2 / 3;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
 }
 
-#massInput::-webkit-outer-spin-button, #massInput::-webkit-inner-spin-button {
+main .container .window section #heightInput {
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    resize: none;
+    width: 150px;
+    text-align: center;
+    overflow: hidden;
+    font-size: 30px;
+    grid-row: 6 / 7;
+    grid-column:  2 / 3;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }

@@ -69,7 +69,7 @@
         </div>
 
         <div class="container">
-            <div class="window active" id="stats">
+            <div class="window" id="stats">
                 <div class="title">
                     <h2>Basic Stats</h2>
                     <i class="fas fa-angle-down" onclick="dropdown(1)"></i>
@@ -89,27 +89,31 @@
                         <option value="3">Mecanum</option>
                         <option value="4">Tank</option>
                     </select>
+                    <p id="widthLang">Robot Width:</p>
+                    <input id="widthInput" rows="1" type="number"></input>
+                    <p id="heightLang">Robot Height:</p>
+                    <input id="heightInput" rows="1" type="number"></input>
                 </section>
             </div>
 
-            <div class="window active" id="driveTeam">
+            <div class="window" id="climb">
                 <div class="title">
-                    <h2>Drive Team Experience</h2>
+                    <h2>Climb</h2>
                     <i class="fas fa-angle-down" onclick="dropdown(2)"></i>
                 </div>
             </div>
 
-            <div class="window active">
+            <div class="window" id="cargoInfo">
                 <div class="title">
-                    <h2></h2>
-                    <i class="fas fa-angle-down" id="dropdown-3"></i>
+                    <h2>Cargo Info</h2>
+                    <i class="fas fa-angle-down" onclick="dropdown(3)"></i>
                 </div>
             </div>
 
-            <div class="window active">
+            <div class="window" id="misc">
                 <div class="title">
-                    <h2>Robot Image</h2>
-                    <i class="fas fa-angle-down" id="dropdown-4"></i>
+                    <h2>Miscellaneous</h2>
+                    <i class="fas fa-angle-down" onclick="dropdown(4)"></i>
                 </div>
             </div>
         </div>

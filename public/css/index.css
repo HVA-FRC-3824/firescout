@@ -215,15 +215,25 @@ main .about .container img {
     height: auto;
 }
 
-main .field .container .sketchfab-embed-wrapper{
-    width: fit-content;
+/*
+██████  ██████      ███████ ██ ███████ ██      ██████  
+     ██ ██   ██     ██      ██ ██      ██      ██   ██ 
+ █████  ██   ██     █████   ██ █████   ██      ██   ██ 
+     ██ ██   ██     ██      ██ ██      ██      ██   ██ 
+██████  ██████      ██      ██ ███████ ███████ ██████  
+*/
+
+main .field .container .sketchfab-embed-wrapper {
     margin-left: auto;
     margin-right: auto;
 }
 
 main .field .container iframe{
-    width:75vw;
-    height:400px;
+    height: 400px;
+}
+
+main .field .container {
+    align-items: center;
 }
 
 /* 
