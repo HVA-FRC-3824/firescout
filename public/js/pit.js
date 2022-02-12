@@ -18,5 +18,5 @@ function dropdown(id) {
             console.log("default");
             break;
     }
-    dropdownElement.style.toggle('active');
+    dropdownElement.classList.toggle('active');
 }

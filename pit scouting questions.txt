@@ -1,4 +1,4 @@
-- Basic Stats
+✔ Basic Stats
     ✔Team Number
     ✔Robot Weight
     ✔Coding Language
@@ -7,22 +7,22 @@
         -Swerve
         -Tank
         -West Coast	
-    -robot-width
-    -robot-height
+    ✔robot-width
+    ✔robot-height
 
-- Climb
+✔ Climb
     -climb?
     -if so, what rung?
     -climb time?
     -climb percentage?
 
--Cargo Info
+✔ Cargo Info
     -chamber size one or two balls?
     -floor/top or both pickup
     -top goal or bottom goal
     -what ball auto
 
--miscellaneous
+✔ Miscellaneous
     -Redheads?
     -Drive team exp
     -Human player skill

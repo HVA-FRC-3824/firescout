@@ -1,3 +1,11 @@
+/*
+██    ██  █████  ██████  ██  █████  ██████  ██      ███████ ███████ 
+██    ██ ██   ██ ██   ██ ██ ██   ██ ██   ██ ██      ██      ██      
+██    ██ ███████ ██████  ██ ███████ ██████  ██      █████   ███████ 
+ ██  ██  ██   ██ ██   ██ ██ ██   ██ ██   ██ ██      ██           ██ 
+  ████   ██   ██ ██   ██ ██ ██   ██ ██████  ███████ ███████ ███████ 
+*/                                                                  
+
 var dataDictionary = { //The object of all our data, this should be quite easy to push to firebase in this format
     "fieldStartPositionX": 0,
     "fieldStartPositionY": 0,
@@ -28,10 +36,32 @@ var telePickupArrY = [];
 
 var currentCargo = 0;
 
+//bot number
+var robotToScout = -3824;
+
 // Colors
 var selectedColor = "#00f3ff";
 var buttonColor = "#5295ec";
 
+//Creates usable variables for both images
+var autoImage = document.querySelector("#autoField");
+var teleImage = document.querySelector("#teleopField");
+var tarmacImage = document.querySelector("#tarmacImage");
+var startPosIcon = document.querySelector("#startPosIcon");
+
+//coords are global for the mouse postion
+var x;
+var y;
+var xStart;
+var yStart;
+
+/*
+██████   █████   ██████  ███████     ███    ███  █████  ███    ██  █████   ██████  ███████ ███    ███ ███████ ███    ██ ████████ 
+██   ██ ██   ██ ██       ██          ████  ████ ██   ██ ████   ██ ██   ██ ██       ██      ████  ████ ██      ████   ██    ██    
+██████  ███████ ██   ███ █████       ██ ████ ██ ███████ ██ ██  ██ ███████ ██   ███ █████   ██ ████ ██ █████   ██ ██  ██    ██    
+██      ██   ██ ██    ██ ██          ██  ██  ██ ██   ██ ██  ██ ██ ██   ██ ██    ██ ██      ██  ██  ██ ██      ██  ██ ██    ██    
+██      ██   ██  ██████  ███████     ██      ██ ██   ██ ██   ████ ██   ██  ██████  ███████ ██      ██ ███████ ██   ████    ██
+*/
 
 window.onload = function() {
     const nav = document.querySelector('.navarrow');
@@ -145,14 +175,19 @@ function openPage(pageName) { //Runs when the nav bar buttons are pressed, the b
 
 openPage("Pre"); //Starts the page by openeing the pre match page
 
+/*
+██████  ██████  ███████       ███    ███  █████  ████████  ██████ ██   ██ 
+██   ██ ██   ██ ██            ████  ████ ██   ██    ██    ██      ██   ██ 
+██████  ██████  █████   █████ ██ ████ ██ ███████    ██    ██      ███████ 
+██      ██   ██ ██            ██  ██  ██ ██   ██    ██    ██      ██   ██ 
+██      ██   ██ ███████       ██      ██ ██   ██    ██     ██████ ██   ██
+*/
+
+
 robotToScout = localStorage.getItem("robotToScout");  //Gets the robot you are scouting from local storage
-console.log(robotToScout);
-
-function updateCurrentCargo(){
-    document.getElementById("currentCargoAuto").innerHTML = currentCargo;
-    document.getElementById("currentCargoTele").innerHTML = currentCargo;
-}
-
+document.querySelector('#teamNum').innerHTML = "<i id='lilGuy' class='fas fa-user'></i> " + robotToScout;
+document.querySelector('#teamNumber').innerHTML = robotToScout;
+//console.log(robotToScout);
 
 function hasCargo(cargoTest){ //Changes the color for the 'starting with cargo' button on pre match page
     if (cargoTest == "yesButton"){
@@ -170,19 +205,38 @@ function hasCargo(cargoTest){ //Changes the color for the 'starting with cargo' 
     }
 }
 
+function getStartPosition(event){
+    var rect = event.target.getBoundingClientRect();
+    xStart = Math.round(((event.clientX - rect.left) / tarmacImage.clientWidth) * 820); //adjusts for any screen size, converts coords to a standard size, used for heatmap and data
+    yStart = Math.round(((event.clientY - rect.top) / tarmacImage.clientWidth) * 820);
+    xStartRel = Math.round(event.clientX - rect.left); //gets the relative position of the mouse, used for placing the popup and icons
+    yStartRel = Math.round(event.clientY - rect.top);
+    dataDictionary["fieldStartPositionX"] = xStart;
+    dataDictionary["fieldStartPositionY"] = yStart;
+    console.log(xStartRel, yStartRel);
+    startPosIcon.style.display = "inline-block";
+    startPosIcon.style.transform = "translate(" + (xStartRel - startPosIcon.clientWidth/2) + "px," + (yStartRel - startPosIcon.clientHeight/2) + "px)"
+}
+
+
+/*
+ █████  ██    ██ ████████  ██████       █████  ███    ██ ██████      ████████ ███████ ██      ███████ 
+██   ██ ██    ██    ██    ██    ██     ██   ██ ████   ██ ██   ██        ██    ██      ██      ██      
+███████ ██    ██    ██    ██    ██     ███████ ██ ██  ██ ██   ██        ██    █████   ██      █████   
+██   ██ ██    ██    ██    ██    ██     ██   ██ ██  ██ ██ ██   ██        ██    ██      ██      ██      
+██   ██  ██████     ██     ██████      ██   ██ ██   ████ ██████         ██    ███████ ███████ ███████ 
+*/
+
 function toggleTarmac(){
     tarmac = document.getElementById("movedOffTarmac").checked;
     console.log(!tarmac);
     dataDictionary["movedOffTarmac"] = !tarmac;
 }
 
-//Creates usable variables for both images
-var autoImage = document.querySelector("#autoField");
-var teleImage = document.querySelector("#teleopField");
-
-//coords are global for the mouse postion
-var x;
-var y;
+function updateCurrentCargo(){
+    document.getElementById("currentCargoAuto").innerHTML = currentCargo;
+    document.getElementById("currentCargoTele").innerHTML = currentCargo;
+}
 
 function getMousePosition(event){ //Gets the position of the mouse !!only works when run from an onclick and passing in event!!
     var rect = event.target.getBoundingClientRect();
@@ -252,6 +306,8 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
                 console.log("teleop upper hub");
                 if(currentCargo > 0){
                     currentCargo--;
+                    dataDictionary["teleUpperHubAmount"]++;
+                    addIconToField('tele', 'teleUpperIcon');
                 }else{
                     alert("impossible!");
                 }
@@ -261,6 +317,8 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
                 console.log("teleop lower hub");
                 if(currentCargo > 0){
                     currentCargo--;
+                    dataDictionary["teleLowerHubAmount"]++;
+                    addIconToField('tele', 'teleLowerIcon');
                 }else{
                     alert("impossible!");
                 }
@@ -270,6 +328,8 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
                 console.log("teleop miss");
                 if(currentCargo > 0){
                     currentCargo--;
+                    dataDictionary["teleShotsMissed"]++;
+                    addIconToField('tele', 'teleMissIcon');
                 }else{
                     alert("impossible!");
                 }
@@ -279,27 +339,34 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
         switch (points) {
             case 4:
                 //push to where ever the data is being held that one ball was scored during auto in the upper hub at mousePosition
-                console.log("auto upper hub");
+                dataDictionary["autoUpperHubAmount"]++;
                 if(currentCargo > 0){
                     currentCargo--;
+                    console.log("auto upper hub");
+                    dataDictionary["autoUpperHubAmount"]++;
+                    addIconToField('auto', 'autoUpperIcon');
                 }else{
                     alert("impossible!");
                 }
                 break;
             case 2:
                 //push to where ever the data is being held that one ball was scored during auto in the lower hub at mousePosition
-                console.log("auto lower hub");
                 if(currentCargo > 0){
                     currentCargo--;
+                    console.log("auto lower hub");
+                    dataDictionary["autoLowerHubAmount"]++;
+                    addIconToField('auto', 'autoLowerIcon');
                 }else{
                     alert("impossible!");
                 }
                 break;
             case 0:
                 //push to where ever the data is being held that one ball was missed during auto at mousePosition
-                console.log("auto miss");
                 if(currentCargo > 0){
                     currentCargo--;
+                    console.log("auto miss");
+                    dataDictionary["autoShotsMissed"]++;
+                    addIconToField('auto', 'autoMissIcon');
                 }else{
                     alert("impossible!");
                 }
@@ -315,6 +382,7 @@ function pickupCargo(autoOrTeleop){ //runs when the pickup cargo button is press
         console.log("teleop pickup");
         if(currentCargo < 2){
             currentCargo++;
+            addIconToField("tele", "autoPickupIcon");
         }else{
             alert("impossible!");
         }
@@ -323,12 +391,60 @@ function pickupCargo(autoOrTeleop){ //runs when the pickup cargo button is press
         console.log("auto pickup");
         if(currentCargo < 2){
             currentCargo++;
+            addIconToField("auto", "telePickupIcon");
         }else{
             alert("impossible!");
         }
     }
     updateCurrentCargo();
 }
+
+var autoIconsAmount = 0;
+var teleIconsAmount = 0;
+
+function addIconToField(autoOrTele, whichIcon){
+    if(autoOrTele == 'auto'){
+        var iconToPlace;
+        if(whichIcon == "autoMissIcon"){
+            iconToPlace = "❌";
+        }else if(whichIcon == "autoUpperIcon"){
+            iconToPlace = "🥶";
+        }else if(whichIcon == "autoLowerIcon"){
+            iconToPlace = "🤖";
+        }else{
+            iconToPlace = "🍎";
+        }
+        document.getElementById("autoIcons").insertAdjacentHTML('afterbegin',"<p class='icons' id='" + whichIcon + autoIconsAmount + "'>" + iconToPlace + "</p>");
+        console.log(document.getElementById(whichIcon + autoIconsAmount));
+        currentIcon = document.getElementById(whichIcon + autoIconsAmount)
+        currentIcon.style.transform = "translate(" + (xRel - currentIcon.clientWidth/2)  + "px, " + (yRel - currentIcon.clientHeight/2) + "px)"
+        autoIconsAmount++;
+    }else{
+        var iconToPlace;
+        if(whichIcon == "teleMissIcon"){
+            iconToPlace = "❌";
+        }else if(whichIcon == "teleUpperIcon"){
+            iconToPlace = "🥶";
+        }else if(whichIcon == "teleLowerIcon"){
+            iconToPlace = "🤖";
+        }else{
+            iconToPlace = "🍎";
+        }
+        document.getElementById("teleIcons").insertAdjacentHTML('afterbegin',"<p class='icons' id='" + whichIcon + teleIconsAmount + "'>" + iconToPlace + "</p>");
+        console.log(document.getElementById(whichIcon + teleIconsAmount));
+        currentIcon = document.getElementById(whichIcon + teleIconsAmount);
+        currentIcon.style.transform = "translate(" + (xRel - currentIcon.clientWidth/2)  + "px, " + (yRel - currentIcon.clientHeight/2) + "px)"
+        teleIconsAmount = teleIconsAmount + 1;
+    }
+}
+
+/*
+███████ ███    ██ ██████   ██████   █████  ███    ███ ███████ 
+██      ████   ██ ██   ██ ██       ██   ██ ████  ████ ██      
+█████   ██ ██  ██ ██   ██ ██   ███ ███████ ██ ████ ██ █████   
+██      ██  ██ ██ ██   ██ ██    ██ ██   ██ ██  ██  ██ ██      
+███████ ██   ████ ██████   ██████  ██   ██ ██      ██ ███████
+*/
 
 function attemptedClimb(climbTest){ //Changes the color of the attempted climb buttons to show which is selected
     if (climbTest == "yesButton"){
@@ -364,6 +480,17 @@ function playedDefense(defenseTest){ //Changes the color of the played defense b
         document.getElementById("yesButtonDefense").style.backgroundColor = buttonColor;
         document.getElementById("noButtonDefense").style.backgroundColor = selectedColor;
         dataDictionary["playedDefense"] = false;
+    }
+}
+
+function cardFoul(cardType) {
+    var checkVal;
+    if (cardType == 0) {
+        checkVal = document.querySelector('#redCard').checked;
+        dataDictionary["redCard"] = checkVal;
+    } else if (cardType == 1) {
+        checkVal = document.querySelector('#yellowCard').checked;
+        dataDictionary["yellowCard"] = checkVal;
     }
 }
 

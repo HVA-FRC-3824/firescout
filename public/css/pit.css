@@ -64,15 +64,15 @@ main .container .window .title i {
     padding-right: 6px;
 }
 
-main .container .window.active {
-    height: auto !important;
+main .container .active {
+    height: auto;
 }
 
 main .container .window section {
     padding: 40px 4vw 40px 4vw !important; 
     display: grid;
     grid-template-rows: auto;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: auto;
     grid-gap: 20px;
 }
 
