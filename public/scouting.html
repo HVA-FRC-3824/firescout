@@ -23,7 +23,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
-    <script type="module" src="js/firebase.js"></script>
+    <script defer src="js/firebase.js"></script>
     <script defer src="js/data.js"></script>
     <script src="js/global.js"></script>
     <script defer src="js/scouting.js"></script>
@@ -50,7 +50,7 @@
             <button class="tablink" onclick="openPage('Auto')" id="auto">Auto</button>
             <button class="tablink" onclick="openPage('Teleop')" id="teleop"> Teleop </button>
             <button class="tablink" onclick="openPage('Endgame')" id="endgame"> Endgame </button>
-            <button class="nextMatch" onclick="location.href = 'schedule.html'"> Next Match </button>
+            <button class="nextMatch" onclick="nextMatch()"> Next Match </button>
             <button class="tabExtra" id="space"></button>
         </div>
         <div class="navarrow"><img src="./pics/whiteArrow.png" class="arrow"></div>

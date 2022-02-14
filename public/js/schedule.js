@@ -26,11 +26,22 @@ setTimeout(() => {
 }, 2200);
 
 function startScouting(){
-    try{
-        robotToScout = document.getElementById(dataRead).innerHTML;
-        localStorage.setItem('robotToScout', robotToScout);
-    }catch(e){
-        
+    try {
+        matchNumber = document.getElementById('match').value.slice(6);
+        if(matchNumber != " Match"){
+            localStorage.setItem('matchNum', matchNumber);
+        }else{
+            console.log(intentionalErrorHere);
+        }
+        try{
+            robotToScout = document.getElementById(dataRead).innerHTML;
+            localStorage.setItem('robotToScout', robotToScout);
+            location.href = 'scouting.html';
+        }catch(e){
+            alert("You do not have an assigned robot or you are not signed in");
+        }
+    } catch (e) {
+        console.log(e);
+        alert("Select a match!");
     }
-    location.href = 'scouting.html';
 }

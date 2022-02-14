@@ -144,6 +144,7 @@ setTimeout(function(){
     var currUser = firebase.auth().currentUser;
     console.log(currUser.displayName);
     document.getElementById("loginButton").innerHTML = "<i id='lilGuy' class='fas fa-user'></i> " + firebase.auth().currentUser.displayName;
+    localStorage.setItem("username", currUser.displayName);
     if(currUser.uid == 'qnlTm8LSbocnF57XDjqB6qxy7hJ2' || currUser.uid == 'ch2dqF6ZG6V6YgZoR21hzejsUC22' || currUser.uid == '7pIHSSKUgyRqXVz6MCbUMathVps1'){
       try{
         document.getElementById('lilGuy').style.color = "red";
@@ -281,8 +282,8 @@ function getScoutPosition(){
   }, 1000);
 }
 
-function pushdataDiction(robotToScout, mNum, scoutName){
-  firebase.database().ref('matchScouting/' + robotToScout + mNum + scoutName).set({
+function pushDataDictionary(robotToScout, mNum, scoutName){
+  firebase.database().ref('matchScouting/' + robotToScout + "/" + mNum + "/" + scoutName).set({
     "fieldStartPositionX": dataDictionary["fieldStartPositionX"],
     "fieldStartPositionY": dataDictionary["fieldStartPositionY"],
     "startedWithCargo": dataDictionary["startedWithCargo"],

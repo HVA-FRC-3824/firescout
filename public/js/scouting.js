@@ -39,6 +39,9 @@ var currentCargo = 0;
 //bot number
 var robotToScout = -3824;
 
+//Match number
+var matchNum = -1;
+
 // Colors
 var selectedColor = "#00f3ff";
 var buttonColor = "#5295ec";
@@ -183,7 +186,8 @@ openPage("Pre"); //Starts the page by openeing the pre match page
 ██      ██   ██ ███████       ██      ██ ██   ██    ██     ██████ ██   ██
 */
 
-
+currentUser = localStorage.getItem("username");
+matchNum = localStorage.getItem("matchNum")
 robotToScout = localStorage.getItem("robotToScout");  //Gets the robot you are scouting from local storage
 document.querySelector('#teamNum').innerHTML = "<i id='lilGuy' class='fas fa-user'></i> " + robotToScout;
 document.querySelector('#teamNumber').innerHTML = robotToScout;
@@ -213,7 +217,7 @@ function getStartPosition(event){
     yStartRel = Math.round(event.clientY - rect.top);
     dataDictionary["fieldStartPositionX"] = xStart;
     dataDictionary["fieldStartPositionY"] = yStart;
-    console.log(xStartRel, yStartRel);
+    //console.log(xStartRel, yStartRel);
     startPosIcon.style.display = "inline-block";
     startPosIcon.style.transform = "translate(" + (xStartRel - startPosIcon.clientWidth/2) + "px," + (yStartRel - startPosIcon.clientHeight/2) + "px)"
 }
@@ -229,7 +233,7 @@ function getStartPosition(event){
 
 function toggleTarmac(){
     tarmac = document.getElementById("movedOffTarmac").checked;
-    console.log(!tarmac);
+    //console.log(!tarmac);
     dataDictionary["movedOffTarmac"] = !tarmac;
 }
 
@@ -303,7 +307,7 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
         switch (points) {
             case 2:
                 //push to where ever the data is being held that one ball was scored during teleop in the upper hub at mousePosition
-                console.log("teleop upper hub");
+                //console.log("teleop upper hub");
                 if(currentCargo > 0){
                     currentCargo--;
                     dataDictionary["teleUpperHubAmount"]++;
@@ -314,7 +318,7 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
                 break;
             case 1:
                 //push to where ever the data is being held that one ball was scored during teleop in the lower hub at mousePosition
-                console.log("teleop lower hub");
+                //console.log("teleop lower hub");
                 if(currentCargo > 0){
                     currentCargo--;
                     dataDictionary["teleLowerHubAmount"]++;
@@ -325,7 +329,7 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
                 break;
             case 0:
                 //push to where ever the data is being held that one ball was missed during teleop at mousePosition
-                console.log("teleop miss");
+                //console.log("teleop miss");
                 if(currentCargo > 0){
                     currentCargo--;
                     dataDictionary["teleShotsMissed"]++;
@@ -342,7 +346,7 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
                 dataDictionary["autoUpperHubAmount"]++;
                 if(currentCargo > 0){
                     currentCargo--;
-                    console.log("auto upper hub");
+                    //console.log("auto upper hub");
                     dataDictionary["autoUpperHubAmount"]++;
                     addIconToField('auto', 'autoUpperIcon');
                 }else{
@@ -353,7 +357,7 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
                 //push to where ever the data is being held that one ball was scored during auto in the lower hub at mousePosition
                 if(currentCargo > 0){
                     currentCargo--;
-                    console.log("auto lower hub");
+                    //console.log("auto lower hub");
                     dataDictionary["autoLowerHubAmount"]++;
                     addIconToField('auto', 'autoLowerIcon');
                 }else{
@@ -364,7 +368,7 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
                 //push to where ever the data is being held that one ball was missed during auto at mousePosition
                 if(currentCargo > 0){
                     currentCargo--;
-                    console.log("auto miss");
+                    //console.log("auto miss");
                     dataDictionary["autoShotsMissed"]++;
                     addIconToField('auto', 'autoMissIcon');
                 }else{
@@ -379,7 +383,7 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
 function pickupCargo(autoOrTeleop){ //runs when the pickup cargo button is pressed from the popup, passes in 'auto' or 'teleop'
     if(autoOrTeleop == "teleop"){
         //push to where ever the data is being held that one ball was picked up at mousePosition during teleop
-        console.log("teleop pickup");
+        //console.log("teleop pickup");
         if(currentCargo < 2){
             currentCargo++;
             addIconToField("tele", "autoPickupIcon");
@@ -388,7 +392,7 @@ function pickupCargo(autoOrTeleop){ //runs when the pickup cargo button is press
         }
     }else{
         //push to where ever the data is being held that one ball was picked up at mousePosition during auto
-        console.log("auto pickup");
+        //console.log("auto pickup");
         if(currentCargo < 2){
             currentCargo++;
             addIconToField("auto", "telePickupIcon");
@@ -415,7 +419,7 @@ function addIconToField(autoOrTele, whichIcon){
             iconToPlace = "🍎";
         }
         document.getElementById("autoIcons").insertAdjacentHTML('afterbegin',"<p class='icons' id='" + whichIcon + autoIconsAmount + "'>" + iconToPlace + "</p>");
-        console.log(document.getElementById(whichIcon + autoIconsAmount));
+        //console.log(document.getElementById(whichIcon + autoIconsAmount));
         currentIcon = document.getElementById(whichIcon + autoIconsAmount)
         currentIcon.style.transform = "translate(" + (xRel - currentIcon.clientWidth/2)  + "px, " + (yRel - currentIcon.clientHeight/2) + "px)"
         autoIconsAmount++;
@@ -431,7 +435,7 @@ function addIconToField(autoOrTele, whichIcon){
             iconToPlace = "🍎";
         }
         document.getElementById("teleIcons").insertAdjacentHTML('afterbegin',"<p class='icons' id='" + whichIcon + teleIconsAmount + "'>" + iconToPlace + "</p>");
-        console.log(document.getElementById(whichIcon + teleIconsAmount));
+        //console.log(document.getElementById(whichIcon + teleIconsAmount));
         currentIcon = document.getElementById(whichIcon + teleIconsAmount);
         currentIcon.style.transform = "translate(" + (xRel - currentIcon.clientWidth/2)  + "px, " + (yRel - currentIcon.clientHeight/2) + "px)"
         teleIconsAmount = teleIconsAmount + 1;
@@ -550,5 +554,15 @@ function barSelect(currentBar){  //Changes the color of the climb level buttons 
         document.getElementById("midDiv").style.backgroundColor = '#00000000';
         document.getElementById("lowDiv").style.backgroundColor = '#00000000';
         dataDictionary["levelClimbed"] = 'fail';
+    }
+}
+
+
+// = == = = = == = == = = = = == = == = = = == = = = =NEXT MATCH FUNCTION VERY IMPORANTN == = == == ==== = = == = = = = = = == = = =//
+function nextMatch(){
+    if(confirm("Are you sure you would like to leave this page?")){
+        //pushing the data
+        pushDataDictionary(robotToScout, matchNum, currentUser);
+        location.href = 'schedule.html';
     }
 }
