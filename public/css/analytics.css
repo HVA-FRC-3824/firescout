@@ -4,6 +4,18 @@ body {
     background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
 }
 
+hr{
+    border:1px solid black;
+}
+
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
 /*
  █████  ██████  ███    ███ ██ ███    ██     ██     ██  █████  ██████  ███    ██ 
 ██   ██ ██   ██ ████  ████ ██ ████   ██     ██     ██ ██   ██ ██   ██ ████   ██ 
@@ -150,6 +162,12 @@ main .infoWheel .container .dataTable .innerData .dataCell{
 
 main .teamInsights .container{
     text-align: center;
+    padding-bottom:40px;
+}
+
+main .teamInsights .container:hover{
+    border-radius: 15px;
+    box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
 }
 
 main .teamInsights .container h1{
@@ -161,7 +179,7 @@ main .teamInsights .container p{
 }
 
 main .teamInsights .quickLook{
-    font-size: 22px;
+    font-size: 26px;
     width: 320px;
     margin-left: auto;
     margin-right: auto;
@@ -169,10 +187,15 @@ main .teamInsights .quickLook{
     padding:25px;
     background-color: rgb(103, 151, 255);
     display: grid;
+    border-radius: 15px;
+    box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
 }
 
 main .teamInsights .teamSelect{
+    border:0;
     margin: 20px;
+    font-size: 24px;
+    border-radius: 10px;
 }
 
 /*  
@@ -193,6 +216,14 @@ main .graphs #blur.container{
 
 main .graphs .container{
     text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    margin-top:20px;
+}
+
+main .graphs .container:hover{
+    border-radius: 15px;
+    box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
 }
 
 main .graphs .container canvas{
@@ -245,6 +276,11 @@ main .pitData .container{
     padding: 30px 0px;
 }
 
+main .pitData .container:hover{
+    border-radius: 15px;
+    box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
+}
+
 main .pitData .container h1{
     font-size: 32px;
     padding-bottom: 1px;
@@ -254,7 +290,9 @@ main .pitData .container .pitScoutData{
     font-size: 22px;
     margin-left: auto;
     margin-right: auto;
-    background-color:rgb(190, 190, 190);
+    background-color:rgb(130, 255, 255);
+    box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
+    border-radius: 15px;
     width:320px
 }
 
@@ -275,8 +313,15 @@ main .heatmap .container{
     padding: 30px 0px;
 }
 
+main .heatmap .container:hover{
+    border-radius: 15px;
+    box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
+}
+
 main .heatmap .container img{
     width: 80vw;
+    border-radius: 15px;
+    box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
 }
 
 main .heatmap .container h1{
@@ -311,7 +356,9 @@ main .rawData .container .theData{
     margin-left: auto;
     margin-right: auto;
     font-size: 22px;
-    background-color: rgb(117, 216, 255);
+    background-color: rgb(117, 255, 186);
+    border-radius: 15px;
+    box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
     width: 360px;
 }
 
@@ -343,7 +390,9 @@ main .TBAData .container .teamsSchedule{
     margin-left: auto;
     margin-right: auto;
     font-size: 14px;
+    border-radius: 15px;
     background-color: rgb(117, 216, 255);
+    box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
     width: fit-content;
 }
 

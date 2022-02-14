@@ -75,7 +75,7 @@
                 <header>
                     <p onclick="changeDataSlide('left')" class="unselectable">&lt;&nbsp;&nbsp;</p><p id="head" class="unselectable">Climb Percent</p><p onclick="changeDataSlide('right')" class="unselectable">&nbsp;&nbsp;&gt;</p>
                 </header>
-                <arrows class="desktopArrows">
+                <arrows class="desktopArrows unselectable">
                     <p id="left" onclick="changeDataSlide('left')" class="unselectable"><i class="fas fa-chevron-left"></i></p>
                     <p id="right" onclick="changeDataSlide('right')" class="unselectable"><i class="fas fa-chevron-right"></i></p>
                 </arrows>
@@ -220,14 +220,13 @@
         </section>
         <section class="TBAData">
             <div class="container">
-                <h1>TBA Data</h1>
+                <h1>Team Specific Match Schedule</h1>
                 <select onchange="findTeamsMatches(document.getElementById('tbaTeamNum').value)" class="teamSelect" id="tbaTeamNum">
                     <option>Select a Team</option>
                 </select>
                 <div class="teamsSchedule">
                     <table id="outterTableSchedule">
                         <tbody id="teamSchedule">
-                        
                         </tbody>
                     </table>
                 </div>
