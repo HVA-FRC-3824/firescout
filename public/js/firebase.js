@@ -157,6 +157,11 @@ setTimeout(function(){
       }catch(e){
         console.log(e);
       }
+      try {
+        document.getElementById('pullMasterButton').style.display = "inline-block";
+      } catch (e) {
+        console.log(e);
+      }
       try{
         document.getElementById('navMenu').insertAdjacentHTML('beforeend', "<a href='./admin.html'>Admin Panel</a>");
         document.getElementById('navMenuMobile').insertAdjacentHTML('beforeend', "<a href='./admin.html'>Admin Panel</a>");
@@ -322,9 +327,45 @@ function pushHeatArr(robotToScout, mNum, scoutName){
 ██   ██ ██   ████ ██   ██ ███████    ██       ██    ██  ██████ ███████                                                                      
 */
 
-function pullRobotData(robotNum){
+var robotData;
+function pullAllMatchScouting(){
+  document.getElementById('pullMasterButton').style.display = "none";
   console.log("pullingrobodata");
-  readData("matchScouting/" + robotNum);
+  readData("matchScouting");
+  setTimeout(() => {
+    robotData = dataRead;
+  }, 500);
+}
+
+function displayRawData(){
+  robot = document.getElementById("teamNum").value;
+  var totalClimbs = 0;
+  var autoMisses = 0;
+  var teleMisses = 0;
+  var autoUpperHubPoints = 0;
+  var autoLowerHubPoints = 0;
+  var teleUpperHubPoints = 0;
+  var teleLowerHubPoints = 0;
+  
+  keys(robotData[robot]).forEach(match => {
+    keys(robotData[robot][match]).forEach(name => {
+      //Tallys the total amount of climbs
+      if(robotData[robot][match][name]['data']['levelClimbed'] != 'none' && dataRead[robot][match][name]['data']['levelClimbed'] != 'fail'){
+        totalClimbs++;
+      }
+      //adds up the misses for tele and auto
+      autoMisses += robotData[robot][match][name]['data']['autoShotsMissed']
+      teleMisses += robotData[robot][match][name]['data']['teleShotsMissed']
+      //Calculates total score
+      autoUpperHubPoints += (robotData[robot][match][name]['data']['autoUpperHubAmount'] * 4);
+      autoLowerHubPoints += (robotData[robot][match][name]['data']['autoLowerHubAmount'] * 2);
+      teleUpperHubPoints += (robotData[robot][match][name]['data']['teleUpperHubAmount'] * 2);
+      teleLowerHubPoints += (robotData[robot][match][name]['data']['teleLowerHubAmount']);
+    });
+  });
+  document.getElementById("totalClimbs").innerHTML = "Total Climbs: " + totalClimbs;
+  document.getElementById("misses").innerHTML = "Total Misses: " + (autoMisses + teleMisses);
+  document.getElementById("totalScore").innerHTML = "Total Launching Score: " + (autoUpperHubPoints + autoLowerHubPoints + teleUpperHubPoints + teleLowerHubPoints);
 }
 
 /*

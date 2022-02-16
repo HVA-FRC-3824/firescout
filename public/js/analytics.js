@@ -219,7 +219,7 @@ function removeTeam(){
 */
 
 function populateTeams(){
-    console.log(sortedJames);
+    //console.log(sortedJames);
     for(i=0; i < sortedJames.length; i++){
         //console.log(sortedJames[i]);
         document.getElementById("teamNum").insertAdjacentHTML('beforeend',"<option>" + sortedJames[i] + "</option>");
@@ -231,7 +231,7 @@ populateTeams();
 
 function makeTeamSchedule(){
     document.getElementById("teamSchedule").remove();
-    console.log("removed");
+    //console.log("removed");
     document.getElementById("outterTableSchedule").insertAdjacentHTML('beforeend',"<tbody id='teamSchedule'></tbody>");
     teamTBAData.forEach(match => {
         //Creates the table of the matches the team is in

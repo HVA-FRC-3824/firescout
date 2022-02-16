@@ -151,13 +151,15 @@
             </div>
             <hr>
         </section>
+
         <section class="desktopData">
+            <div class="teamSelectDiv">
+                Select Team: 
+                <select class="teamSelect" id="teamNum"></select>
+            </div>
             <section class="teamInsights">
                 <div class="container">
                     <h1>Team Quick Look</h1>
-                    <select class="teamSelect" id="teamNum">
-                        
-                    </select>
                     <div class="quickLook">
                         <p>Climb Percent: 999</p>
                         <p>Avg Score: 999</p>
@@ -165,6 +167,7 @@
                     </div>
                 </div>
                 <hr id="mobileHR">
+                
             </section>
             <section class="graphs">
                 <div id="blur" class="container">
@@ -182,6 +185,7 @@
                     <p onclick="addTeam()" class="unselectable">+</p>
                 </div>
                 <hr id="mobileHR">
+
             </section>
             <section class="heatmap">
                 <div class="container">
@@ -189,6 +193,7 @@
                     <img src="https://firebasestorage.googleapis.com/v0/b/firescout3824.appspot.com/o/fieldIMG.png?alt=media">
                 </div>
                 <hr id="mobileHR">
+
             </section>
             <section class="pitData">
                 <div class="container">
@@ -205,19 +210,21 @@
             </section>
         </section>
         <hr id="desktopHR">
+
         <section class="rawData">
             <div class="container">
                 <h1>Raw data</h1>
                 <div class="theData">
-                    <p>Total Climbs: 4</p>
-                    <p>Total Score: 300</p>
-                    <p>Highest Scoring Match: 80</p>
-                    <p>Yellow Cards: 3</p>
-                    <p>other stuff: 279</p>
+                    <p id="totalClimbs">Total Climbs: 4</p>
+                    <p id="totalScore">Total Launching Score: 300</p>
+                    <p id="hightScore">Highest Scoring Match: 80</p>
+                    <p id="yellowCards">Yellow Cards: 3</p>
+                    <p id="misses">Total Misses: 5</p>
                 </div>
             </div>
             <hr>
         </section>
+
         <section class="TBAData">
             <div class="container">
                 <h1>Team Specific Match Schedule</h1>
@@ -232,6 +239,9 @@
                 </div>
             </div>
             <hr>
+        </section>
+        <section class="pullMaster">
+            <button id="pullMasterButton" onclick="pullAllMatchScouting()">PULL ALL DATA</button>
         </section>
     </main>
 </div>
