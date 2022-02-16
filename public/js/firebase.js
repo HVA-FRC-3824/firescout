@@ -337,35 +337,83 @@ function pullAllMatchScouting(){
   }, 500);
 }
 
-function displayRawData(){
+//DISPLAYS THE DATA TO THE RAW DATA INFO BOX
+function displayRawData(){ 
   robot = document.getElementById("teamNum").value;
-  var totalClimbs = 0;
+  var matchesPlayed = 0;
+  var totalSuccessfulClimbs = 0;
+  var failedClimbs = 0;
+  var highScore = 0;
   var autoMisses = 0;
   var teleMisses = 0;
-  var autoUpperHubPoints = 0;
-  var autoLowerHubPoints = 0;
-  var teleUpperHubPoints = 0;
-  var teleLowerHubPoints = 0;
+  var autoUpperHubShots = 0;
+  var autoLowerHubShots = 0;
+  var teleUpperHubShots = 0;
+  var teleLowerHubShots = 0;
   
   keys(robotData[robot]).forEach(match => {
+    //Updates the matches they have played
+    matchesPlayed++;
     keys(robotData[robot][match]).forEach(name => {
-      //Tallys the total amount of climbs
+      //Tallys the total amount of successful climbs
       if(robotData[robot][match][name]['data']['levelClimbed'] != 'none' && dataRead[robot][match][name]['data']['levelClimbed'] != 'fail'){
-        totalClimbs++;
+        totalSuccessfulClimbs++;
       }
+      //Tallys the total failed climbs
+      if(dataRead[robot][match][name]['data']['levelClimbed'] == 'fail'){
+        failedClimbs++;
+      }
+
+      //Calculates the highest scoring match
+      var climbPoints = 0;
+      switch (dataRead[robot][match][name]['data']['levelClimbed']) {
+        case 'traversal':
+          climbPoints = 15;
+          break;
+        case 'high':
+          climbPoints = 10;
+          break;
+        case 'middle':
+          climbPoints = 6;
+          break;
+        case 'low':
+          climbPoints = 4;
+          break;
+        default:
+          climbPoints = 0;
+          break;
+      }
+
+      var currentRobotScore = 
+      (dataRead[robot][match][name]['data']['autoUpperHubAmount'] * 4) + 
+      (dataRead[robot][match][name]['data']['autoLowerHubAmount'] * 2) +
+      (dataRead[robot][match][name]['data']['teleUpperHubAmount'] * 2) +
+      (dataRead[robot][match][name]['data']['teleLowerHubAmount']) +
+      climbPoints;
+
+      if(currentRobotScore > highScore){
+        highScore = currentRobotScore;
+      }
+
       //adds up the misses for tele and auto
       autoMisses += robotData[robot][match][name]['data']['autoShotsMissed']
       teleMisses += robotData[robot][match][name]['data']['teleShotsMissed']
-      //Calculates total score
-      autoUpperHubPoints += (robotData[robot][match][name]['data']['autoUpperHubAmount'] * 4);
-      autoLowerHubPoints += (robotData[robot][match][name]['data']['autoLowerHubAmount'] * 2);
-      teleUpperHubPoints += (robotData[robot][match][name]['data']['teleUpperHubAmount'] * 2);
-      teleLowerHubPoints += (robotData[robot][match][name]['data']['teleLowerHubAmount']);
+      //Calculates total amount of shots
+      autoUpperHubShots += robotData[robot][match][name]['data']['autoUpperHubAmount'];
+      autoLowerHubShots += robotData[robot][match][name]['data']['autoLowerHubAmount'];
+      teleUpperHubShots += robotData[robot][match][name]['data']['teleUpperHubAmount'];
+      teleLowerHubShots += robotData[robot][match][name]['data']['teleLowerHubAmount'];
     });
   });
-  document.getElementById("totalClimbs").innerHTML = "Total Climbs: " + totalClimbs;
-  document.getElementById("misses").innerHTML = "Total Misses: " + (autoMisses + teleMisses);
-  document.getElementById("totalScore").innerHTML = "Total Launching Score: " + (autoUpperHubPoints + autoLowerHubPoints + teleUpperHubPoints + teleLowerHubPoints);
+  document.getElementById("matchesPlayed").innerHTML = "Matches Played: " + matchesPlayed;
+  document.getElementById("totalSuccessfulClimbs").innerHTML = "Successful Climbs: " + totalSuccessfulClimbs;
+  document.getElementById("failedClimbs").innerHTML = "Failed Climbs: " + failedClimbs;
+  document.getElementById("highScore").innerHTML = "Highest Scoring Match: " + highScore;
+  document.getElementById("teleMisses").innerHTML = "Tele Misses: " + teleMisses;
+  document.getElementById("autoMisses").innerHTML = "Auto Misses: " + autoMisses;
+  document.getElementById("teleShotsTaken").innerHTML = "Tele Shots Taken: " + (teleUpperHubShots + teleLowerHubShots);
+  document.getElementById("autoShotsTaken").innerHTML = "Auto Shots Taken: " + (autoUpperHubShots + autoLowerHubShots);
+
 }
 
 /*
