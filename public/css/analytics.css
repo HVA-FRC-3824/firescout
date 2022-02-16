@@ -401,6 +401,10 @@ main .TBAData .container table{
     margin-right: auto;
 }
 
+main .TBAData .container td{
+    padding: 15px 5px;
+}
+
 main .TBAData .container .teamsSchedule #red{
     color: red;
 }

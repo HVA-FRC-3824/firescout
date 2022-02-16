@@ -89,7 +89,7 @@ try {
         writeData("Users/" + firebase.auth().currentUser.uid + "/scoutPosition/", "none");
         setTimeout(() => {
           location.href("https://firescout3824.web.app");
-        }, 2000);
+        }, 2300);
         return false;
       },
       uiShown: function() {
@@ -300,8 +300,14 @@ function pushDataDictionary(robotToScout, mNum, scoutName){
     "yellowCard": dataDictionary["yellowCard"],
     "redCard": dataDictionary["redCard"]
   });
+  pushHeatArr(robotToScout, mNum, scoutName);
 }
 
+function pushHeatArr(robotToScout, mNum, scoutName){
+  firebase.database().ref('heatmap/' + robotToScout + "/" + mNum + "/" + scoutName).set({
+    "autoX": autoShotsArrX
+  });
+}
 
 /*
 ██████  ██ ████████     ███████  ██████  ██████  ██    ██ ████████ ██ ███    ██  ██████  

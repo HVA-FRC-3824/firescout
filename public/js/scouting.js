@@ -25,10 +25,10 @@ var dataDictionary = { //The object of all our data, this should be quite easy t
 }
 
 //but of course because nothing is easy dictionary cannot store arrays
-var autoShortsArrX = [];
-var autoShortsArrY = [];
-var teleShortsArrX = [];
-var teleShortsArrY = [];
+var autoShotsArrX = [];
+var autoShotsArrY = [];
+var teleShotsArrX = [];
+var teleShotsArrY = [];
 var autoPickupArrX = [];
 var autoPickupArrY = [];
 var telePickupArrX = [];
@@ -301,6 +301,26 @@ function togglePopup(page){ //Toggles the popup on tele or auto, takes in a stri
     }
 }
 
+function pushToArr(shotOrPickup, autoOrTeleop, xToPush, yToPush){
+    if(shotOrPickup == "pickup"){
+        if(autoOrTeleop == "auto"){
+            autoPickupArrX.push(xToPush);
+            autoPickupArrY.push(yToPush);
+        }else{
+            telePickupArrX.push(xToPush);
+            telePickupArrY.push(yToPush);
+        }
+    }else{
+        if(autoOrTeleop == "auto"){
+            autoShotsArrX.push(xToPush);
+            autoShotsArrY.push(yToPush);
+        }else{
+            teleShotsArrX.push(xToPush);
+            teleShotsArrY.push(yToPush);
+        }
+    }
+    console.log(autoShotsArrX, autoShotsArrY);
+}
 
 function launchedCargo(points, autoOrTeleop){ //runs when any of the launched buttons are clicked from the popup, passes in the point values and wheather it is auto or tele
     if(autoOrTeleop == "teleop"){
@@ -312,6 +332,7 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
                     currentCargo--;
                     dataDictionary["teleUpperHubAmount"]++;
                     addIconToField('tele', 'teleUpperIcon');
+                    pushToArr('shot', 'tele', x, y);
                 }else{
                     alert("impossible!");
                 }
@@ -323,6 +344,7 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
                     currentCargo--;
                     dataDictionary["teleLowerHubAmount"]++;
                     addIconToField('tele', 'teleLowerIcon');
+                    pushToArr('shot', 'tele', x, y);
                 }else{
                     alert("impossible!");
                 }
@@ -334,6 +356,7 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
                     currentCargo--;
                     dataDictionary["teleShotsMissed"]++;
                     addIconToField('tele', 'teleMissIcon');
+                    pushToArr('shot', 'tele', x, y);
                 }else{
                     alert("impossible!");
                 }
@@ -349,6 +372,7 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
                     //console.log("auto upper hub");
                     dataDictionary["autoUpperHubAmount"]++;
                     addIconToField('auto', 'autoUpperIcon');
+                    pushToArr('shot', 'auto', x, y);
                 }else{
                     alert("impossible!");
                 }
@@ -360,6 +384,7 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
                     //console.log("auto lower hub");
                     dataDictionary["autoLowerHubAmount"]++;
                     addIconToField('auto', 'autoLowerIcon');
+                    pushToArr('shot', 'auto', x, y);
                 }else{
                     alert("impossible!");
                 }
@@ -371,6 +396,7 @@ function launchedCargo(points, autoOrTeleop){ //runs when any of the launched bu
                     //console.log("auto miss");
                     dataDictionary["autoShotsMissed"]++;
                     addIconToField('auto', 'autoMissIcon');
+                    pushToArr('shot', 'auto', x, y);
                 }else{
                     alert("impossible!");
                 }
@@ -386,7 +412,8 @@ function pickupCargo(autoOrTeleop){ //runs when the pickup cargo button is press
         //console.log("teleop pickup");
         if(currentCargo < 2){
             currentCargo++;
-            addIconToField("tele", "autoPickupIcon");
+            addIconToField("tele", "telePickupIcon");
+            pushToArr('pickup', 'tele', x, y);
         }else{
             alert("impossible!");
         }
@@ -395,7 +422,8 @@ function pickupCargo(autoOrTeleop){ //runs when the pickup cargo button is press
         //console.log("auto pickup");
         if(currentCargo < 2){
             currentCargo++;
-            addIconToField("auto", "telePickupIcon");
+            addIconToField("auto", "autoPickupIcon");
+            pushToArr('pickup', 'auto', x, y);
         }else{
             alert("impossible!");
         }
@@ -416,7 +444,7 @@ function addIconToField(autoOrTele, whichIcon){
         }else if(whichIcon == "autoLowerIcon"){
             iconToPlace = "🤖";
         }else{
-            iconToPlace = "🍎";
+            iconToPlace = "🤠";
         }
         document.getElementById("autoIcons").insertAdjacentHTML('afterbegin',"<p class='icons' id='" + whichIcon + autoIconsAmount + "'>" + iconToPlace + "</p>");
         //console.log(document.getElementById(whichIcon + autoIconsAmount));
@@ -432,7 +460,7 @@ function addIconToField(autoOrTele, whichIcon){
         }else if(whichIcon == "teleLowerIcon"){
             iconToPlace = "🤖";
         }else{
-            iconToPlace = "🍎";
+            iconToPlace = "🤠";
         }
         document.getElementById("teleIcons").insertAdjacentHTML('afterbegin',"<p class='icons' id='" + whichIcon + teleIconsAmount + "'>" + iconToPlace + "</p>");
         //console.log(document.getElementById(whichIcon + teleIconsAmount));

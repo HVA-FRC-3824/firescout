@@ -80,39 +80,5 @@ main .login .container .firebaseui-textfield input{
 }
 
 @media all and (min-width: 850px) {
-    /* 
-    ███    ██  █████  ██    ██     ██████  ███████ ███████ ██   ██ ████████  ██████  ██████  
-    ████   ██ ██   ██ ██    ██     ██   ██ ██      ██      ██  ██     ██    ██    ██ ██   ██ 
-    ██ ██  ██ ███████ ██    ██     ██   ██ █████   ███████ █████      ██    ██    ██ ██████  
-    ██  ██ ██ ██   ██  ██  ██      ██   ██ ██           ██ ██  ██     ██    ██    ██ ██      
-    ██   ████ ██   ██   ████       ██████  ███████ ███████ ██   ██    ██     ██████  ██      
-    */ 
 
-    header .container .nav-login-bars nav {
-        display: block;
-        float: left;
-        padding: 8px 5px 0px 0px;
-        font-size: 18px;
-        font-weight: 400;
-    }
-
-    .nav-login-bars nav a {
-        text-decoration: none;
-        color: rgb(0, 0, 0);
-        padding: 0px 10px 0px 0px;
-    }
-
-    .nav-login-bars .login {
-        display: block;
-        float: right;
-        padding: 8px 0px 0px 0px;
-        color: inherit;
-        text-decoration: none;
-        font-size: 18px;
-        font-weight: 400;
-    }
-
-    .dropdown {
-        display: none;
-    }
 }
