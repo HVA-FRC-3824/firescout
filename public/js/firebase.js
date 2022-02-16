@@ -207,7 +207,9 @@ function writeData(path, data) {
 }
 
 //Reads data from a path
-var dataRead;
+var dataRead; // THIS IS THE GLOBAL VARIABLE THAT STORES THE MOST RECENTLY READ DATA
+              //IF YOU ARE PULLING DATA MULTIPLE TIMES QUICKLY AND THIS SOLUTION ISN'T WORKING THEN DON'T PULL THE DATA IN MULTIPLE PULLS
+              // 🤠
 function readData(path){
   dataRead = "";
   return firebase.database().ref(path).once('value').then((snapshot) => {
@@ -284,28 +286,21 @@ function getScoutPosition(){
 
 function pushDataDictionary(robotToScout, mNum, scoutName){
   firebase.database().ref('matchScouting/' + robotToScout + "/" + mNum + "/" + scoutName).set({
-    "fieldStartPositionX": dataDictionary["fieldStartPositionX"],
-    "fieldStartPositionY": dataDictionary["fieldStartPositionY"],
-    "startedWithCargo": dataDictionary["startedWithCargo"],
-    "autoShotsMissed": dataDictionary["autoShotsMissed"],
-    "teleShotsMissed": dataDictionary["teleShotsMissed"],
-    "movedOffTarmac": dataDictionary["movedOffTarmac"],
-    "autoUpperHubAmount": dataDictionary["autoUpperHubAmount"],
-    "autoLowerHubAmount": dataDictionary["autoLowerHubAmount"],
-    "teleUpperHubAmount": dataDictionary["teleUpperHubAmount"],
-    "teleLowerHubAmount": dataDictionary["teleLowerHubAmount"],
-    "playedDefense": dataDictionary["playedDefense"],
-    "attemptedClimb": dataDictionary["attemptedClimb"],
-    "levelClimbed": dataDictionary["levelClimbed"],
-    "yellowCard": dataDictionary["yellowCard"],
-    "redCard": dataDictionary["redCard"]
+    "data": dataDictionary
   });
   pushHeatArr(robotToScout, mNum, scoutName);
 }
 
 function pushHeatArr(robotToScout, mNum, scoutName){
   firebase.database().ref('heatmap/' + robotToScout + "/" + mNum + "/" + scoutName).set({
-    "autoX": autoShotsArrX
+    "autoShotsX": autoShotsArrX,
+    "autoShotsY": autoShotsArrY,
+    "teleShotsX": teleShotsArrX,
+    "teleShotsY": teleShotsArrY,
+    "autoPickupsX": autoPickupArrX,
+    "autoPickupsY": autoPickupArrY,
+    "telePickupsX": telePickupArrX,
+    "telePickupsY": telePickupArrY
   });
 }
 
@@ -327,6 +322,10 @@ function pushHeatArr(robotToScout, mNum, scoutName){
 ██   ██ ██   ████ ██   ██ ███████    ██       ██    ██  ██████ ███████                                                                      
 */
 
+function pullRobotData(robotNum){
+  console.log("pullingrobodata");
+  readData("matchScouting/" + robotNum);
+}
 
 /*
  █████  ██████  ███    ███ ██ ███    ██     ██████   █████  ███    ██ ███████ ██      

@@ -12,7 +12,7 @@ var dataDictionary = { //The object of all our data, this should be quite easy t
     "startedWithCargo": false,
     "autoShotsMissed": 0,
     "teleShotsMissed": 0,
-    "movedOffTarmac": 0,
+    "movedOffTarmac": false,
     "autoUpperHubAmount": 0,
     "autoLowerHubAmount": 0,
     "teleUpperHubAmount": 0,
@@ -319,7 +319,7 @@ function pushToArr(shotOrPickup, autoOrTeleop, xToPush, yToPush){
             teleShotsArrY.push(yToPush);
         }
     }
-    console.log(autoShotsArrX, autoShotsArrY);
+    //console.log(autoShotsArrX, autoShotsArrY);
 }
 
 function launchedCargo(points, autoOrTeleop){ //runs when any of the launched buttons are clicked from the popup, passes in the point values and wheather it is auto or tele

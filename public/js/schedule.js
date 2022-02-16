@@ -31,7 +31,7 @@ function startScouting(){
         if(matchNumber != " Match"){
             localStorage.setItem('matchNum', matchNumber);
         }else{
-            console.log(intentionalErrorHere);
+            //console.log(intentionalErrorHere);
         }
         try{
             robotToScout = document.getElementById(dataRead).innerHTML;
