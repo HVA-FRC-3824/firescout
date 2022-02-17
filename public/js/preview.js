@@ -85,6 +85,8 @@ function updateTeamMobile(){
 function changeColor(){
     if(document.getElementById("teamColor").innerHTML == "Blue"){
         document.getElementById("teamColor").innerHTML = "Red";
+        document.getElementById("teamColorDesktop").style.color = "red";
+        document.getElementById("teamColorDesktop").innerHTML = "Red";
         document.getElementById("teamColor").style.color = "red";
         document.getElementById("listViewMobile").style.backgroundColor = "#ed1c2385";
         document.getElementById("listViewDesktop").style.backgroundColor = "#ed1c2385";
@@ -97,6 +99,8 @@ function changeColor(){
     }else{
         document.getElementById("teamColor").innerHTML = "Blue";
         document.getElementById("teamColor").style.color = "blue";
+        document.getElementById("teamColorDesktop").innerHTML = "Blue";
+        document.getElementById("teamColorDesktop").style.color = "blue";
         document.getElementById("listViewMobile").style.backgroundColor = "#0166b37c";
         document.getElementById("listViewDesktop").style.backgroundColor = "#0166b37c";
         //same as above but steps backwards in the array to go from red to blue

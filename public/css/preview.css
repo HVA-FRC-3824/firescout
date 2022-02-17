@@ -75,6 +75,13 @@ main .teams .teamDiv{
     width: 350px;
     padding-top: 1vw;
     padding-bottom: .1vw;
+    border-radius: 15px;
+    box-shadow:
+  4.5px 4.5px 3.6px rgba(0, 0, 0, 0.091),
+  12.5px 12.5px 10px rgba(0, 0, 0, 0.13),
+  30.1px 30.1px 24.1px rgba(0, 0, 0, 0.169),
+  100px 100px 80px rgba(0, 0, 0, 0.26)
+;
 }
 
 main .teams .redTeam{
@@ -104,6 +111,9 @@ main .teams .redTeam{
     ▀▀                                                                                                         
 */
 
+main .quickAnalyticsDesktop{
+    display:none;
+}
 main .quickAnalyticsMobile{
     margin-top: 100px;
     text-align: center;
@@ -124,6 +134,23 @@ main .listView th{
     font-size:28px;
 }
 
+main .quickAnalyticsMobile .dataDiv{
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+    padding-top: 1vw;
+    padding-bottom: .1vw;
+    margin-bottom:100px;
+    border-radius: 15px;
+    box-shadow:
+  4.5px 4.5px 3.6px rgba(0, 0, 0, 0.091),
+  12.5px 12.5px 10px rgba(0, 0, 0, 0.13),
+  30.1px 30.1px 24.1px rgba(0, 0, 0, 0.169),
+  100px 100px 80px rgba(0, 0, 0, 0.26)
+;
+}
+
 main .quickAnalyticsMobile button{
     text-align: center;
     font-size: 40px;
@@ -140,7 +167,7 @@ main .quickAnalyticsMobile .listView{
     margin-left:auto;
     margin-right:auto;
     background-color: #7722cc77;
-    margin-bottom:100px;
+    margin-bottom:20px;
     width:300px;
 }
 
@@ -155,7 +182,7 @@ main .quickAnalyticsMobile .listView table {
         width:300px;
 }
 
-main .quickAnalyticsDesktop .listView {
+main .quickAnalyticsDesktop .dataDiv {
     display:none;
 }
 
@@ -205,7 +232,7 @@ main .footer .container {
 ██████  ███████ ███████ ██   ██    ██     ██████  ██          ███████ ██ ███████ ███████ 
 */
 
-@media all and (min-width: 900px) {
+@media all and (min-width: 950px) {
     /*
     ███    ██  █████  ██    ██     ██████  ███████ ███████ ██   ██ ████████  ██████  ██████  
     ████   ██ ██   ██ ██    ██     ██   ██ ██      ██      ██  ██     ██    ██    ██ ██   ██ 
@@ -343,13 +370,51 @@ main .footer .container {
     ██ ▄▄ ██ ██    ██ ██ ██      ██  ██      ██   ██ ██  ██ ██ ██   ██     ██   ██ ██           ██ ██  ██     ██    ██    ██ ██      
      ██████   ██████  ██  ██████ ██   ██     ██   ██ ██   ████ ██   ██     ██████  ███████ ███████ ██   ██    ██     ██████  ██     
     */
-    
-    main .quickAnalyticsMobile .listView{
+
+    main .quickAnalyticsDesktop{
+        display: block;
+        margin-top: 100px;
+        text-align: center;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    main .quickAnalyticsMobile {
         display: none;
     }
 
     main .quickAnalyticsDesktop .teamData{
         display:inline-block;
+    }
+
+    main .quickAnalyticsDesktop .dataDivDesktop{
+        text-align: center;
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 1vw;
+        width: 950px;
+        padding-bottom: .1vw;
+        margin-bottom:100px;
+        border-radius: 15px;
+        box-shadow:
+  4.5px 4.5px 3.6px rgba(0, 0, 0, 0.091),
+  12.5px 12.5px 10px rgba(0, 0, 0, 0.13),
+  30.1px 30.1px 24.1px rgba(0, 0, 0, 0.169),
+  100px 100px 80px rgba(0, 0, 0, 0.26);
+    }
+
+    main .quickAnalyticsDesktop button{
+        text-align: center;
+        font-size: 40px;
+        background-color: rgba(168, 168, 168, 1);
+        border-color: rgba(0, 0, 0, 0);
+        border-radius: 15px;
+        padding: 10px;
+        margin-bottom: 5px;
+        color: #0166b3;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     main .quickAnalyticsDesktop .listView{
@@ -359,7 +424,7 @@ main .footer .container {
         margin-left: auto;
         margin-right: auto;
         background-color: #7722cc77;
-        margin-bottom: 100px;
+        margin-bottom: 25px;
     }
 
     main .quickAnalyticsDesktop .listView .teamData{
