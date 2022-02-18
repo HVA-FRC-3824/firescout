@@ -367,13 +367,13 @@ function displayDataWheel(){
 
   /* ======================= Finding the maximum values for all of the stats we want ======================= */
 
-  keys(robotData).forEach(robot => {
+  Object.keys(robotData).forEach(robot => {
     var currentRobotAutoUpper = 0;
     var currentRobotTeleUpper = 0;
     var currentRobotAutoLower = 0;
     var currentRobotTeleLower = 0;
-    keys(robotData[robot]).forEach(match => {
-      keys(robotData[robot][match]).forEach(scouter => {
+    Object.keys(robotData[robot]).forEach(match => {
+      Object.keys(robotData[robot][match]).forEach(scouter => {
         currentDataDict = robotData[robot][match][scouter]['data'];
         currentRobotAutoUpper += currentDataDict['autoUpperHubAmount'];
         currentRobotTeleUpper += currentDataDict['teleUpperHubAmount'];
@@ -397,7 +397,7 @@ function displayDataWheel(){
 
 
 
-  keys(robotData).forEach(robot => {
+  Object.keys(robotData).forEach(robot => {
     /* Operates on every robot before running through all of that robot's data */
     var currentRobotMatches = 0;
     var currentRobotAutoUpperHubAmount = 0;
@@ -405,10 +405,10 @@ function displayDataWheel(){
     var currentRobotAutoLowerHubAmount = 0;
     var currentRobotTeleLowerHubAmount = 0;
     var currentRobotClimbs = 0;
-    keys(robotData[robot]).forEach(match => {
+    Object.keys(robotData[robot]).forEach(match => {
       /* Operates on every match that current robot played in before running through the data itself */
       currentRobotMatches++;
-      keys(robotData[robot][match]).forEach(scouter => {
+      Object.keys(robotData[robot][match]).forEach(scouter => {
         /* Operates on every scouter for the current match, this is where you can operate on the data */
         currentDataDict = robotData[robot][match][scouter]['data'];
         currentRobotAutoUpperHubAmount += currentDataDict['autoUpperHubAmount'];
@@ -474,10 +474,10 @@ function displayRawData(){
   var teleUpperHubShots = 0;
   var teleLowerHubShots = 0;
   
-  keys(robotData[robot]).forEach(match => {
+  Object.keys(robotData[robot]).forEach(match => {
     //Updates the matches they have played
     matchesPlayed++;
-    keys(robotData[robot][match]).forEach(name => {
+    Object.keys(robotData[robot][match]).forEach(name => {
       //Tallys the total amount of successful climbs
       if(robotData[robot][match][name]['data']['levelClimbed'] != 'none' && dataRead[robot][match][name]['data']['levelClimbed'] != 'fail'){
         totalSuccessfulClimbs++;
