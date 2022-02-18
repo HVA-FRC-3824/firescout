@@ -349,15 +349,79 @@ function pullAllMatchScouting(){
 
 function displayDataWheel(){
   console.log(robotData);
-  //
+  
+  //variables to reset when recalculating he data wheel information
+  var highestTeleUpper = 0;
+  var highestAutoUpper = 0;
+  var highestTeleLower = 0;
+  var highestAutoLower = 0;
+  var robotWorths = [{team:9999, worth:0}];
+
+
+  /* Change values of w to change the importance of each data
+  d max is the maximum value for that stat, so for any accuracy stat the max is 100, for something like shots taken
+  the value would be the highest number of shots taken by any robot in our data
+  robotWorth = (w1 * (d1/d1max)) + (w2 * (d2/d2max)) + (w3 * (d3/d3max)) ... + (wn * (dn/dnmax));*/ 
+  //!!The general formula!!
+
+
+/* Finding the maximum values for all of the stats we want */
 
   keys(robotData).forEach(robot => {
+    var currentRobotAutoUpper = 0;
+    var currentRobotTeleUpper = 0;
+    var currentRobotAutoLower = 0;
+    var currentRobotTeleLower = 0;
     keys(robotData[robot]).forEach(match => {
       keys(robotData[robot][match]).forEach(scouter => {
-        console.log(robotData[robot][match][scouter]['data']);
+        currentDataDict = robotData[robot][match][scouter]['data'];
+        currentRobotAutoUpper += currentDataDict['autoUpperHubAmount'];
+        currentRobotTeleUpper += currentDataDict['teleUpperHubAmount'];
+        currentRobotAutoLower += currentDataDict['autoLowerHubAmount'];
+        currentRobotTeleLower += currentDataDict['teleLowerHubAmount'];
       });
     });
+    if(currentRobotAutoUpper > highestAutoUpper){
+      highestAutoUpper = currentRobotAutoUpper;
+    }
+    if(currentRobotTeleUpper > highestTeleUpper){
+      highestTeleUpper = currentRobotTeleUpper;
+    }
+    if(currentRobotAutoLower > highestAutoLower){
+      highestAutoLower = currentRobotAutoLower;
+    }
+    if(currentRobotTeleLower > highestTeleLower){
+      highestTeleLower = currentRobotTeleLower;
+    }
   });
+
+  keys(robotData).forEach(robot => {
+    /* Operates on every robot before running through all of that robot's data */
+    var currentRobotAutoUpperHubAmount = 0;
+    var currentRobotTeleUpperHubAmount = 0;
+    var currentRobotAutoLowerHubAmount = 0;
+    var currentRobotTeleLowerHubAmount = 0;
+    keys(robotData[robot]).forEach(match => {
+      /* Operates on every match that current robot played in before running through the data itself */
+
+      keys(robotData[robot][match]).forEach(scouter => {
+        /* Operates on every scouter for the current match, this is where you can operate on the data */
+        currentDataDict = robotData[robot][match][scouter]['data'];
+        currentRobotAutoUpperHubAmount += currentDataDict['autoUpperHubAmount'];
+        currentRobotTeleUpperHubAmount += currentDataDict['teleUpperHubAmount'];
+        currentRobotAutoLowerHubAmount += currentDataDict['autoLowerHubAmount'];
+        currentRobotTeleLowerHubAmount += currentDataDict['teleLowerHubAmount'];
+      });
+      /* Operates on every match after running through the data for that match */
+
+    });
+    /* Operates on every robot after running through all of that robot's data */
+    currentRobotWorth = (0.25 * (currentRobotAutoUpperHubAmount/highestAutoUpper) + (0.34 * (currentRobotTeleUpperHubAmount/highestTeleUpper)) + (0.18 * (currentRobotAutoLowerHubAmount/highestAutoLower)) + (0.23 * (currentRobotTeleLowerHubAmount/highestTeleLower)));
+    robotWorths.push({team:robot, worth:currentRobotWorth});
+  });
+  /* Runs after running through all data for All robots */
+  console.log(robotWorths)
+
 }
 
 //DISPLAYS THE DATA TO THE RAW DATA INFO BOX

@@ -51,7 +51,7 @@ function changeDataSlide(leftOrRight){
     var lable = document.getElementById("head")
     switch(currentTable){
         case 1:
-            lable.innerHTML = "Climb Percent";
+            lable.innerHTML = "Climb Weighted Worth";
             tables[0].style.backgroundColor = "rgba(231, 231, 231, 1)";
             tables[1].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
             tables[2].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
@@ -73,7 +73,7 @@ function changeDataSlide(leftOrRight){
             }
             break;
         case 2:
-            lable.innerHTML = "Auto Accuracy";
+            lable.innerHTML = "Auto Weighted Worth";
             tables[0].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
             tables[1].style.backgroundColor = "rgba(231, 231, 231, 1)";
             tables[2].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
@@ -95,7 +95,7 @@ function changeDataSlide(leftOrRight){
             }
             break;
         case 3:
-            lable.innerHTML = "Tele Accuracy";
+            lable.innerHTML = "Tele Weighted Worth";
             tables[0].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
             tables[1].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
             tables[2].style.backgroundColor = "rgba(231, 231, 231, 1)";
@@ -117,7 +117,7 @@ function changeDataSlide(leftOrRight){
             }
             break;
         case 4:
-            lable.innerHTML = "Avg Score";
+            lable.innerHTML = "Overall Robot Worth";
             tables[0].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
             tables[1].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
             tables[2].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
