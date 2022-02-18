@@ -365,7 +365,7 @@ function displayDataWheel(){
   //!!The general formula!!
 
 
-/* Finding the maximum values for all of the stats we want */
+  /* ======================= Finding the maximum values for all of the stats we want ======================= */
 
   keys(robotData).forEach(robot => {
     var currentRobotAutoUpper = 0;
@@ -395,15 +395,19 @@ function displayDataWheel(){
     }
   });
 
+
+
   keys(robotData).forEach(robot => {
     /* Operates on every robot before running through all of that robot's data */
+    var currentRobotMatches = 0;
     var currentRobotAutoUpperHubAmount = 0;
     var currentRobotTeleUpperHubAmount = 0;
     var currentRobotAutoLowerHubAmount = 0;
     var currentRobotTeleLowerHubAmount = 0;
+    var currentRobotClimbs = 0;
     keys(robotData[robot]).forEach(match => {
       /* Operates on every match that current robot played in before running through the data itself */
-
+      currentRobotMatches++;
       keys(robotData[robot][match]).forEach(scouter => {
         /* Operates on every scouter for the current match, this is where you can operate on the data */
         currentDataDict = robotData[robot][match][scouter]['data'];
@@ -411,16 +415,48 @@ function displayDataWheel(){
         currentRobotTeleUpperHubAmount += currentDataDict['teleUpperHubAmount'];
         currentRobotAutoLowerHubAmount += currentDataDict['autoLowerHubAmount'];
         currentRobotTeleLowerHubAmount += currentDataDict['teleLowerHubAmount'];
+        if(currentDataDict['levelClimbed'] == 'low' || currentDataDict['levelClimbed'] == 'middle' || currentDataDict['levelClimbed'] == 'high' || currentDataDict['levelClimbed'] == 'traversal'){
+          currentRobotClimbs++;
+        }
       });
       /* Operates on every match after running through the data for that match */
 
     });
     /* Operates on every robot after running through all of that robot's data */
-    currentRobotWorth = (0.25 * (currentRobotAutoUpperHubAmount/highestAutoUpper) + (0.34 * (currentRobotTeleUpperHubAmount/highestTeleUpper)) + (0.18 * (currentRobotAutoLowerHubAmount/highestAutoLower)) + (0.23 * (currentRobotTeleLowerHubAmount/highestTeleLower)));
+
+    /* Values to change for importance of stat towards robot worth, must add up to 1.00*/
+    var 
+    climbPercentWeight = 0.35,
+    autoUpperWeight = 0.17,
+    teleUpperWeight = 0.2,
+    autoLowerWeight = 0.15,
+    teleLowerWeight = 0.13;
+
+    currentRobotWorth = (autoUpperWeight * (currentRobotAutoUpperHubAmount/highestAutoUpper) + (teleUpperWeight * (currentRobotTeleUpperHubAmount/highestTeleUpper)) + (autoLowerWeight * (currentRobotAutoLowerHubAmount/highestAutoLower)) + (teleLowerWeight * (currentRobotTeleLowerHubAmount/highestTeleLower)) + (climbPercentWeight * (currentRobotClimbs/currentRobotMatches)));
+    currentRobotWorth = Math.round(currentRobotWorth * 100);
     robotWorths.push({team:robot, worth:currentRobotWorth});
   });
   /* Runs after running through all data for All robots */
   console.log(robotWorths)
+
+  //Sorts the robotWorths by the worht
+  robotWorths.sort((a, b) => (a.worth > b.worth) ? 1 : -1);
+  robotWorths = robotWorths.reverse();
+
+  console.log(robotWorths);
+
+  document.getElementById("table4").querySelector("#t1").innerHTML = "Team " + robotWorths[0].team;
+  document.getElementById("table4").querySelector("#d1").innerHTML = robotWorths[0].worth;
+  document.getElementById("table4").querySelector("#t2").innerHTML = "Team " + robotWorths[1].team;
+  document.getElementById("table4").querySelector("#d2").innerHTML = robotWorths[1].worth;
+  document.getElementById("table4").querySelector("#t3").innerHTML = "Team " + robotWorths[2].team;
+  document.getElementById("table4").querySelector("#d3").innerHTML = robotWorths[2].worth;
+  document.getElementById("table4").querySelector("#t4").innerHTML = "Team " + robotWorths[3].team;
+  document.getElementById("table4").querySelector("#d4").innerHTML = robotWorths[3].worth;
+  document.getElementById("table4").querySelector("#t5").innerHTML = "Team " + robotWorths[4].team;
+  document.getElementById("table4").querySelector("#d5").innerHTML = robotWorths[4].worth;
+  document.getElementById("table4").querySelector("#t6").innerHTML = "Team " + robotWorths[5].team;
+  document.getElementById("table4").querySelector("#d6").innerHTML = robotWorths[5].worth;
 
 }
 
