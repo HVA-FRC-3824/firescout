@@ -88,7 +88,7 @@ try {
         writeData("Users/" + firebase.auth().currentUser.uid + "/displayName/", firebase.auth().currentUser.displayName);
         writeData("Users/" + firebase.auth().currentUser.uid + "/scoutPosition/", "none");
         setTimeout(() => {
-          location.href("https://firescout3824.web.app");
+          location.href = "https://scoutinfrc.com";
         }, 2300);
         return false;
       },
@@ -143,7 +143,17 @@ setTimeout(function(){
   try{
     var currUser = firebase.auth().currentUser;
     console.log(currUser.displayName);
-    document.getElementById("loginButton").innerHTML = "<i id='lilGuy' class='fas fa-user'></i> " + firebase.auth().currentUser.displayName;
+    var tempStringVar = firebase.auth().currentUser.displayName;
+
+    var currUserCondensed = "";
+
+    if (tempStringVar.includes(" ")) {
+      var displayNameArray = tempStringVar.split(' ');
+      currUserCondensed = displayNameArray[0];
+    } else {
+      currUserCondensed = tempStringVar;
+    }
+    document.getElementById("loginButton").innerHTML = "<i id='lilGuy' class='fas fa-user'></i> " + currUserCondensed;
     localStorage.setItem("username", currUser.displayName);
     if(currUser.uid == 'qnlTm8LSbocnF57XDjqB6qxy7hJ2' || currUser.uid == 'ch2dqF6ZG6V6YgZoR21hzejsUC22' || currUser.uid == '7pIHSSKUgyRqXVz6MCbUMathVps1'){
       try{
@@ -335,6 +345,19 @@ function pullAllMatchScouting(){
   setTimeout(() => {
     robotData = dataRead;
   }, 500);
+}
+
+function displayDataWheel(){
+  console.log(robotData);
+  //
+
+  keys(robotData).forEach(robot => {
+    keys(robotData[robot]).forEach(match => {
+      keys(robotData[robot][match]).forEach(scouter => {
+        console.log(robotData[robot][match][scouter]['data']);
+      });
+    });
+  });
 }
 
 //DISPLAYS THE DATA TO THE RAW DATA INFO BOX

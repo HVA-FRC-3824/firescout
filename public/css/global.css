@@ -17,6 +17,14 @@ body {
 }
 
 .navbar {
+    overflow-x: visible;
+}
+
+.navbar .container {
+    overflow-x: visible;
+}
+
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -27,6 +35,13 @@ body {
     -webkit-backdrop-filter: blur(15px);
     background-color: rgba(168, 168, 168, 0.267);
     transition: all 0.4s ease 0s;
+}
+
+.cowboy {
+    display: none;
+    position: relative;
+    top: 3px;
+    padding-right: 10px;
 }
 
 .navbar.is-active {
@@ -46,12 +61,17 @@ header .container {
 
 header .container h2 {
     color: inherit;
-    font-size: 32px;
+    font-size: 20px;
     font-weight: 400;
-    cursor:pointer;
+    cursor: pointer;
+    overflow-x: visible;
 }
 
 header .container nav {
+    display: none;
+}
+
+.subtext {
     display: none;
 }
 
@@ -165,7 +185,30 @@ header .container nav {
 ██   ████ ██   ██   ████       ██████  ███████ ███████ ██   ██    ██     ██████  ██      
 */ 
 
-@media all and (min-width: 1000px) {
+@media all and (min-width: 500px) {
+    .cowboy {
+        display: inline-block;
+    }
+
+    header .container h2 {
+        font-size: 32px;
+    }
+}
+
+
+@media all and (min-width: 1200px) {
+    .subtext {
+        display: inline-block;
+        position: relative;
+        left: -70px;
+        top: 20px;
+        font-size: 16px;
+    }
+
+    header .container h2 {
+        padding-bottom: 15px;
+    }
+
     header .container .nav-login-bars nav {
         display: block;
         float: left;

@@ -94,10 +94,6 @@ main .teams .redTeam{
     border-width: 1px;
     border-radius: 10px;
     border-style: groove;
-
-
-
-
 }
 
 
@@ -277,33 +273,6 @@ main .footer .container {
 
     main .hero .container h3 {
         font-size: 30px;
-    }
-
-    header .container .nav-login-bars nav {
-        display: block;
-        float: left;
-        padding: 8px 5px 0px 0px;
-        font-size: 18px;
-        font-weight: 400;
-    }
-
-    .nav-login-bars nav a {
-        text-decoration: none;
-        padding: 0px 10px 0px 0px;
-    }
-
-    .nav-login-bars .login {
-        display: block;
-        float: right;
-        padding: 8px 0px 0px 0px;
-        color: inherit;
-        text-decoration: none;
-        font-size: 18px;
-        font-weight: 400;
-    }
-
-    .dropdown {
-        display: none;
     }
 
     /*
