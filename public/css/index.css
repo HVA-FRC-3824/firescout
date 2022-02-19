@@ -193,6 +193,12 @@ main .countdown .container p:nth-of-type(4),p:nth-of-type(8) {
     grid-column: 4/5;
 }
 
+main .twitch .container{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /*
  █████  ██████   ██████  ██    ██ ████████     ██    ██ ███████ 
 ██   ██ ██   ██ ██    ██ ██    ██    ██        ██    ██ ██      

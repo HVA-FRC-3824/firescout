@@ -41,5 +41,3 @@ backend things
     - be able to scan qr code and upload to database
         This way even if only one person at an event has cell signal, scouting can continue as normal
 
-
-    

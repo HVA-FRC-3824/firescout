@@ -198,13 +198,13 @@ function hasCargo(cargoTest){ //Changes the color for the 'starting with cargo' 
         document.getElementById("yesButton").style.backgroundColor = selectedColor;
         document.getElementById("noButton").style.backgroundColor = buttonColor;
         dataDictionary["startedWithCargo"] = true;
-        currentCargo = 1;
+        currentCargo += 1;
         updateCurrentCargo();
     } else {
         document.getElementById("yesButton").style.backgroundColor = buttonColor;
         document.getElementById("noButton").style.backgroundColor = selectedColor;
         dataDictionary["startedWithCargo"] = false;
-        currentCargo = 0;
+        currentCargo -= 1;
         updateCurrentCargo();
     }
 }

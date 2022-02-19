@@ -426,15 +426,19 @@ function displayDataWheel(){
 
     /* Values to change for importance of stat towards robot worth, must add up to 1.00*/
     var 
-    climbPercentWeight = 0.35,
-    autoUpperWeight = 0.17,
-    teleUpperWeight = 0.2,
-    autoLowerWeight = 0.15,
-    teleLowerWeight = 0.13;
+    climbPercentW = 0.041138,
+    teleAccuracyW = 0.061119,
+    autoAccuracyW = 0.049365,
+    teleShotsMadeW = 0.155148,
+    autoShotsMadeW = 0.171603,
+    telePointsTotalW = 0.211566,
+    autoPointsTotalW = 0.117536,
+    tarmacPercentW = 0.01622,
+    climbPointsW = 0.176305;
 
-    currentRobotWorth = (autoUpperWeight * (currentRobotAutoUpperHubAmount/highestAutoUpper) + (teleUpperWeight * (currentRobotTeleUpperHubAmount/highestTeleUpper)) + (autoLowerWeight * (currentRobotAutoLowerHubAmount/highestAutoLower)) + (teleLowerWeight * (currentRobotTeleLowerHubAmount/highestTeleLower)) + (climbPercentWeight * (currentRobotClimbs/currentRobotMatches)));
-    currentRobotWorth = Math.round(currentRobotWorth * 100);
-    robotWorths.push({team:robot, worth:currentRobotWorth});
+    cattScore = (autoUpperWeight * (currentRobotAutoUpperHubAmount/highestAutoUpper) + (teleUpperWeight * (currentRobotTeleUpperHubAmount/highestTeleUpper)) + (autoLowerWeight * (currentRobotAutoLowerHubAmount/highestAutoLower)) + (teleLowerWeight * (currentRobotTeleLowerHubAmount/highestTeleLower)) + (climbPercentWeight * (currentRobotClimbs/currentRobotMatches)));
+    cattScore = Math.round(cattScore * 100);
+    robotWorths.push({team:robot, worth:cattScore});
   });
   /* Runs after running through all data for All robots */
   console.log(robotWorths)
@@ -445,19 +449,18 @@ function displayDataWheel(){
 
   console.log(robotWorths);
 
-  document.getElementById("table4").querySelector("#t1").innerHTML = "Team " + robotWorths[0].team;
+  document.getElementById("table4").querySelector("#t1").innerHTML = robotWorths[0].team;
   document.getElementById("table4").querySelector("#d1").innerHTML = robotWorths[0].worth;
-  document.getElementById("table4").querySelector("#t2").innerHTML = "Team " + robotWorths[1].team;
+  document.getElementById("table4").querySelector("#t2").innerHTML = robotWorths[1].team;
   document.getElementById("table4").querySelector("#d2").innerHTML = robotWorths[1].worth;
-  document.getElementById("table4").querySelector("#t3").innerHTML = "Team " + robotWorths[2].team;
+  document.getElementById("table4").querySelector("#t3").innerHTML = robotWorths[2].team;
   document.getElementById("table4").querySelector("#d3").innerHTML = robotWorths[2].worth;
-  document.getElementById("table4").querySelector("#t4").innerHTML = "Team " + robotWorths[3].team;
+  document.getElementById("table4").querySelector("#t4").innerHTML = robotWorths[3].team;
   document.getElementById("table4").querySelector("#d4").innerHTML = robotWorths[3].worth;
-  document.getElementById("table4").querySelector("#t5").innerHTML = "Team " + robotWorths[4].team;
+  document.getElementById("table4").querySelector("#t5").innerHTML = robotWorths[4].team;
   document.getElementById("table4").querySelector("#d5").innerHTML = robotWorths[4].worth;
-  document.getElementById("table4").querySelector("#t6").innerHTML = "Team " + robotWorths[5].team;
+  document.getElementById("table4").querySelector("#t6").innerHTML = robotWorths[5].team;
   document.getElementById("table4").querySelector("#d6").innerHTML = robotWorths[5].worth;
-
 }
 
 //DISPLAYS THE DATA TO THE RAW DATA INFO BOX

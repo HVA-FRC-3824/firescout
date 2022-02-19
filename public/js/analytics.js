@@ -117,7 +117,7 @@ function changeDataSlide(leftOrRight){
             }
             break;
         case 4:
-            lable.innerHTML = "Overall Robot Worth";
+            lable.innerHTML = "CATT Score";
             tables[0].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
             tables[1].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
             tables[2].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
