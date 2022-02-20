@@ -348,13 +348,14 @@ function pullAllMatchScouting(){
 }
 
 function displayDataWheel(){
-  console.log(robotData);
+  //console.log(robotData);
   
   //variables to reset when recalculating he data wheel information
-  var highestTeleUpper = 0;
-  var highestAutoUpper = 0;
-  var highestTeleLower = 0;
-  var highestAutoLower = 0;
+  var highestAutoShotsMadeAvg = 0;
+  var highestTeleShotsMadeAvg = 0;
+  var highestAutoPointsAvg = 0;
+  var highestTelePointsAvg = 0;
+  var highestClimbPointsAvg = 0;
   var robotWorths = [{team:9999, worth:0}];
 
 
@@ -362,36 +363,58 @@ function displayDataWheel(){
   d max is the maximum value for that stat, so for any accuracy stat the max is 100, for something like shots taken
   the value would be the highest number of shots taken by any robot in our data
   robotWorth = (w1 * (d1/d1max)) + (w2 * (d2/d2max)) + (w3 * (d3/d3max)) ... + (wn * (dn/dnmax));*/ 
-  //!!The general formula!!
+  //!The general formula!
 
 
   /* ======================= Finding the maximum values for all of the stats we want ======================= */
 
   Object.keys(robotData).forEach(robot => {
-    var currentRobotAutoUpper = 0;
-    var currentRobotTeleUpper = 0;
-    var currentRobotAutoLower = 0;
-    var currentRobotTeleLower = 0;
+    var currentMatches = 0;
+    var currentAutoShotsMade = 0;
+    var currentTeleShotsMade = 0;
+    var currentTelePointsTotal = 0;
+    var currentAutoPointsTotal = 0;
+    var currentClimbPointsTotal = 0;
     Object.keys(robotData[robot]).forEach(match => {
+      currentMatches++;
       Object.keys(robotData[robot][match]).forEach(scouter => {
         currentDataDict = robotData[robot][match][scouter]['data'];
-        currentRobotAutoUpper += currentDataDict['autoUpperHubAmount'];
-        currentRobotTeleUpper += currentDataDict['teleUpperHubAmount'];
-        currentRobotAutoLower += currentDataDict['autoLowerHubAmount'];
-        currentRobotTeleLower += currentDataDict['teleLowerHubAmount'];
+        currentAutoShotsMade += (currentDataDict['autoUpperHubAmount'] + currentDataDict['autoLowerHubAmount']);
+        currentTeleShotsMade += (currentDataDict['teleUpperHubAmount'] + currentDataDict['teleLowerHubAmount']);
+        currentAutoPointsTotal += ((currentDataDict['autoUpperHubAmount'] * 4) + (currentDataDict['autoLowerHubAmount'] * 2));
+        currentTelePointsTotal += ((currentDataDict['teleUpperHubAmount'] * 2) + (currentDataDict['teleLowerHubAmount'] * 1));
+        switch (currentDataDict['levelClimbed']) {
+          case 'low':
+            currentClimbPointsTotal += 4;
+            break;
+          case 'middle':
+            currentClimbPointsTotal += 6;
+            break;
+          case 'high':
+            currentClimbPointsTotal += 10;
+            break;
+          case 'traversal':
+            currentClimbPointsTotal += 15;
+            break;
+          default:
+            break;
+        }
       });
     });
-    if(currentRobotAutoUpper > highestAutoUpper){
-      highestAutoUpper = currentRobotAutoUpper;
+    if((currentAutoShotsMade/currentMatches) > highestAutoShotsMadeAvg){
+      highestAutoShotsMadeAvg = (currentAutoShotsMade/currentMatches);
     }
-    if(currentRobotTeleUpper > highestTeleUpper){
-      highestTeleUpper = currentRobotTeleUpper;
+    if((currentTeleShotsMade/currentMatches) > highestTeleShotsMadeAvg){
+      highestTeleShotsMadeAvg = (currentTeleShotsMade/currentMatches);
     }
-    if(currentRobotAutoLower > highestAutoLower){
-      highestAutoLower = currentRobotAutoLower;
+    if((currentAutoPointsTotal/currentMatches) > highestAutoPointsAvg){
+      highestAutoPointsAvg = (currentAutoPointsTotal/currentMatches);
     }
-    if(currentRobotTeleLower > highestTeleLower){
-      highestTeleLower = currentRobotTeleLower;
+    if((currentTelePointsTotal/currentMatches) > highestTelePointsAvg){
+      highestTelePointsAvg = (currentTelePointsTotal/currentMatches);
+    }
+    if((currentClimbPointsTotal/currentMatches) > highestClimbPointsAvg){
+      highestClimbPointsAvg = (currentClimbPointsTotal/currentMatches);
     }
   });
 
@@ -399,25 +422,56 @@ function displayDataWheel(){
 
   Object.keys(robotData).forEach(robot => {
     /* Operates on every robot before running through all of that robot's data */
-    var currentRobotMatches = 0;
-    var currentRobotAutoUpperHubAmount = 0;
-    var currentRobotTeleUpperHubAmount = 0;
-    var currentRobotAutoLowerHubAmount = 0;
-    var currentRobotTeleLowerHubAmount = 0;
-    var currentRobotClimbs = 0;
+    var currentRobotMatches = 0,
+        currentRobotClimbs = 0,
+        currentRobotClimbPointsTotal = 0;
+    var currentRobotAutoShotsMade = 0,
+        currentRobotAutoMisses = 0,
+        currentRobotAutoPointsTotal = 0;
+    var currentRobotTeleShotsMade = 0,
+        currentRobotTeleMisses = 0,
+        currentRobotTelePointsTotal = 0;
+    var currentRobotTarmacLeaves = 0;
+    
     Object.keys(robotData[robot]).forEach(match => {
       /* Operates on every match that current robot played in before running through the data itself */
       currentRobotMatches++;
       Object.keys(robotData[robot][match]).forEach(scouter => {
         /* Operates on every scouter for the current match, this is where you can operate on the data */
         currentDataDict = robotData[robot][match][scouter]['data'];
-        currentRobotAutoUpperHubAmount += currentDataDict['autoUpperHubAmount'];
-        currentRobotTeleUpperHubAmount += currentDataDict['teleUpperHubAmount'];
-        currentRobotAutoLowerHubAmount += currentDataDict['autoLowerHubAmount'];
-        currentRobotTeleLowerHubAmount += currentDataDict['teleLowerHubAmount'];
-        if(currentDataDict['levelClimbed'] == 'low' || currentDataDict['levelClimbed'] == 'middle' || currentDataDict['levelClimbed'] == 'high' || currentDataDict['levelClimbed'] == 'traversal'){
-          currentRobotClimbs++;
+
+        switch (currentDataDict['levelClimbed']) {
+          case 'low':
+            currentRobotClimbs++;
+            currentRobotClimbPointsTotal += 4;
+            break;
+          case 'middle':
+            currentRobotClimbs++;
+            currentRobotClimbPointsTotal += 6;
+            break;
+          case 'high':
+            currentRobotClimbs++;
+            currentRobotClimbPointsTotal += 10;
+            break;
+          case 'traversal':
+            currentRobotClimbs++;
+            currentRobotClimbPointsTotal += 15;
+            break;
+          default:
+            break;
         }
+
+        currentRobotAutoShotsMade += currentDataDict['autoUpperHubAmount'] + currentDataDict['autoLowerHubAmount'];
+        currentRobotTeleShotsMade += currentDataDict['teleUpperHubAmount'] + currentDataDict['teleLowerHubAmount'];
+        currentRobotAutoMisses += currentDataDict['autoShotsMissed'];
+        currentRobotTeleMisses += currentDataDict['teleShotsMissed'];
+        currentRobotAutoPointsTotal += ((currentDataDict['autoUpperHubAmount'] * 4) + (currentDataDict['autoLowerHubAmount'] * 2));
+        currentRobotTelePointsTotal += ((currentDataDict['teleUpperHubAmount'] * 2) + (currentDataDict['teleLowerHubAmount'] * 1));
+
+        if(currentDataDict['movedOffTarmac']){
+          currentRobotTarmacLeaves++;
+        }
+
       });
       /* Operates on every match after running through the data for that match */
 
@@ -431,39 +485,39 @@ function displayDataWheel(){
     autoAccuracyW = 0.049365,
     teleShotsMadeW = 0.155148,
     autoShotsMadeW = 0.171603,
-    telePointsTotalW = 0.211566,
-    autoPointsTotalW = 0.117536,
+    telePointsAvgW = 0.211566,
+    autoPointsAvgW = 0.117536,
     tarmacPercentW = 0.01622,
-    climbPointsW = 0.176305;
+    climbPointsAvgW = 0.176305;
 
-    cattScore = (autoUpperWeight * (currentRobotAutoUpperHubAmount/highestAutoUpper) + (teleUpperWeight * (currentRobotTeleUpperHubAmount/highestTeleUpper)) + (autoLowerWeight * (currentRobotAutoLowerHubAmount/highestAutoLower)) + (teleLowerWeight * (currentRobotTeleLowerHubAmount/highestTeleLower)) + (climbPercentWeight * (currentRobotClimbs/currentRobotMatches)));
+    cattScore = (climbPercentW * (currentRobotClimbs/currentRobotMatches)) + (teleAccuracyW * (currentRobotTeleShotsMade/(currentRobotTeleShotsMade + currentRobotTeleMisses))) + (autoAccuracyW * (currentRobotAutoShotsMade/(currentRobotAutoShotsMade + currentRobotAutoMisses))) + (teleShotsMadeW * ((currentRobotTeleShotsMade/currentRobotMatches)/highestTeleShotsMadeAvg)) + (autoShotsMadeW * ((currentRobotAutoShotsMade/currentRobotMatches)/highestAutoShotsMadeAvg)) + (telePointsAvgW * ((currentRobotTelePointsTotal/currentRobotMatches)/highestTelePointsAvg)) + (autoPointsAvgW * ((currentRobotAutoPointsTotal/currentRobotMatches)/highestAutoPointsAvg)) + (tarmacPercentW * (currentRobotTarmacLeaves/currentRobotMatches)) + (climbPointsAvgW * ((currentRobotClimbPointsTotal/currentRobotMatches)/highestClimbPointsAvg));
     cattScore = Math.round(cattScore * 100);
     robotWorths.push({team:robot, worth:cattScore});
   });
   /* Runs after running through all data for All robots */
-  console.log(robotWorths)
+  //console.log(robotWorths)
 
-  //Sorts the robotWorths by the worht
-  robotWorths.sort((a, b) => (a.worth > b.worth) ? 1 : -1);
+  //Sorts the robotWorths by the worth
+  robotWorths = robotWorths.sort((a, b) => (a.worth > b.worth) ? 1 : -1); //TODO THIS SORT FUNCTION DOES NOT HANDLE TIES
   robotWorths = robotWorths.reverse();
 
   console.log(robotWorths);
 
-  document.getElementById("table4").querySelector("#t1").innerHTML = robotWorths[0].team;
-  document.getElementById("table4").querySelector("#d1").innerHTML = robotWorths[0].worth;
-  document.getElementById("table4").querySelector("#t2").innerHTML = robotWorths[1].team;
-  document.getElementById("table4").querySelector("#d2").innerHTML = robotWorths[1].worth;
-  document.getElementById("table4").querySelector("#t3").innerHTML = robotWorths[2].team;
-  document.getElementById("table4").querySelector("#d3").innerHTML = robotWorths[2].worth;
-  document.getElementById("table4").querySelector("#t4").innerHTML = robotWorths[3].team;
-  document.getElementById("table4").querySelector("#d4").innerHTML = robotWorths[3].worth;
-  document.getElementById("table4").querySelector("#t5").innerHTML = robotWorths[4].team;
-  document.getElementById("table4").querySelector("#d5").innerHTML = robotWorths[4].worth;
-  document.getElementById("table4").querySelector("#t6").innerHTML = robotWorths[5].team;
-  document.getElementById("table4").querySelector("#d6").innerHTML = robotWorths[5].worth;
+  document.getElementById("table1").querySelector("#t1").innerHTML = robotWorths[0].team;
+  document.getElementById("table1").querySelector("#d1").innerHTML = robotWorths[0].worth;
+  document.getElementById("table1").querySelector("#t2").innerHTML = robotWorths[1].team;
+  document.getElementById("table1").querySelector("#d2").innerHTML = robotWorths[1].worth;
+  document.getElementById("table1").querySelector("#t3").innerHTML = robotWorths[2].team;
+  document.getElementById("table1").querySelector("#d3").innerHTML = robotWorths[2].worth;
+  document.getElementById("table1").querySelector("#t4").innerHTML = robotWorths[3].team;
+  document.getElementById("table1").querySelector("#d4").innerHTML = robotWorths[3].worth;
+  document.getElementById("table1").querySelector("#t5").innerHTML = robotWorths[4].team;
+  document.getElementById("table1").querySelector("#d5").innerHTML = robotWorths[4].worth;
+  document.getElementById("table1").querySelector("#t6").innerHTML = robotWorths[5].team;
+  document.getElementById("table1").querySelector("#d6").innerHTML = robotWorths[5].worth;
 }
 
-//DISPLAYS THE DATA TO THE RAW DATA INFO BOX
+//=========================================================================DISPLAYS THE DATA TO THE RAW DATA INFO BOX
 function displayRawData(){ 
   robot = document.getElementById("teamNum").value;
   var matchesPlayed = 0;
