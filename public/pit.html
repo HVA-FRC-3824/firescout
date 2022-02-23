@@ -71,8 +71,8 @@
         </div>
 
         <div class="container">
-            <div class="window" id="stats"  onclick="dropdown(1)">
-                <div class="title">
+            <div class="window" id="stats">
+                <div class="title" onclick="dropdown(1)">
                     <h2>Basic Stats</h2>
                     <i class="fas fa-angle-down"></i>
                 </div>
@@ -146,25 +146,25 @@
                     <p>Pickup:</p>
                     <!-- TODO: want to do cool looking slider -->
                     <div class="container-slider" id="intakeSelector">
-                        <input type="radio" class="radio__input" value="0" name="intakeSelect" id="intakeSelect1">
+                        <input type="radio" class="radio__input" value="none" name="intakeSelect" id="intakeSelect1">
                         <label for="intakeSelect1" class="radio__label label1">None</label>
-                        <input type="radio" class="radio__input" value="1" name="intakeSelect" id="intakeSelect2">
+                        <input type="radio" class="radio__input" value="floor" name="intakeSelect" id="intakeSelect2">
                         <label for="intakeSelect2" class="radio__label label2">Floor</label>
-                        <input type="radio" class="radio__input" value="2" name="intakeSelect" id="intakeSelect3">
+                        <input type="radio" class="radio__input" value="terminal" name="intakeSelect" id="intakeSelect3">
                         <label for="intakeSelect3" class="radio__label label3">Terminal</label>
-                        <input type="radio" class="radio__input" value="2" name="intakeSelect" id="intakeSelect4">
+                        <input type="radio" class="radio__input" value="both" name="intakeSelect" id="intakeSelect4">
                         <label for="intakeSelect4" class="radio__label label3">Both</label>
                     </div>
                     <p>Goal:</p>
                     <!-- TODO: want to do cool looking slider -->
-                    <div class="container-slider" id="chamberSelector">
-                        <input type="radio" class="radio__input" value="None" name="goalSelect" id="goalSelect1">
+                    <div class="container-slider" id="goalSelector">
+                        <input type="radio" class="radio__input" value="none" name="goalSelect" id="goalSelect1">
                         <label for="goalSelect1" class="radio__label label1">None</label>
-                        <input type="radio" class="radio__input" value="Lower" name="goalSelect" id="goalSelect2">
+                        <input type="radio" class="radio__input" value="lower" name="goalSelect" id="goalSelect2">
                         <label for="goalSelect2" class="radio__label label2">Lower</label>
-                        <input type="radio" class="radio__input" value="Upper" name="goalSelect" id="goalSelect3">
+                        <input type="radio" class="radio__input" value="upper" name="goalSelect" id="goalSelect3">
                         <label for="goalSelect3" class="radio__label label3">Upper</label>
-                        <input type="radio" class="radio__input" value="Both" name="goalSelect" id="goalSelect4">
+                        <input type="radio" class="radio__input" value="both" name="goalSelect" id="goalSelect4">
                         <label for="goalSelect4" class="radio__label label3">Both</label>
                     </div>
                 </section>
@@ -179,19 +179,19 @@
                     <p>Drive Experience:</p>
                     <!-- TODO: want to do cool looking slider -->
                     <div class="container-slider" id="expSelector">
-                        <input type="radio" class="radio__input" value="None" name="expSelect" id="expSelect1">
-                        <label for="expSelect1" class="radio__label label1">1 year</label>
-                        <input type="radio" class="radio__input" value="Lower" name="expSelect" id="expSelect2">
-                        <label for="expSelect2" class="radio__label label2">2 years</label>
-                        <input type="radio" class="radio__input" value="Upper" name="expSelect" id="expSelect3">
-                        <label for="expSelect3" class="radio__label label3">3 years+</label>
+                        <input type="radio" class="radio__input" value="0" name="expSelect" id="expSelect1">
+                        <label for="expSelect1" class="radio__label label1">New</label>
+                        <input type="radio" class="radio__input" value="1" name="expSelect" id="expSelect2">
+                        <label for="expSelect2" class="radio__label label2">1 year</label>
+                        <input type="radio" class="radio__input" value="2" name="expSelect" id="expSelect3">
+                        <label for="expSelect3" class="radio__label label3">2 years+</label>
                     </div>
                 </section>
             </div>
         </div>
 
         <div class="buttonContainer">
-            <button class="submit">Submit</button>
+            <button class="submit" id="submit">Submit</button>
         </div>
     </main>
 
