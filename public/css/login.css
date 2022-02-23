@@ -6,6 +6,12 @@
 ███████  ██████   ██████  ██ ██   ████     ██████   ██████  ██   ██
 */
 
+body {
+    background-image: linear-gradient(to left bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
 .container {
     width: 100%;
 }
@@ -15,7 +21,7 @@ main .login .container{
     text-align: center;
     width:350px;
     border-radius: 15px;
-    background-color: rgb(234, 234, 234);
+    background-color: white;
     margin-right: auto;
     margin-left: auto;
 }
@@ -60,7 +66,7 @@ main .login .container .firebaseui-error-wrapper{
 
 main .login .container .firebaseui-textfield{
     display: grid;
-    grid-template-columns: 100px 180px;
+    grid-template-columns: 100px 200px;
     grid-template-rows: auto;
     justify-content: space-evenly;
     justify-items: center;

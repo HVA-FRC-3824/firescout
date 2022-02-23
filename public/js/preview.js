@@ -19,7 +19,6 @@ function displayMatchTeams(match){
         i++;
         team = "blueTeam" + i;
         document.getElementById(team).innerHTML = currentTeam.slice(3);
-        
     });
     rTeams = filteredJames[matchInt - 1].alliances.red.team_keys;
     var i = 0;
@@ -78,7 +77,10 @@ function changeTeams(isRightArrow){
 
 //takes whatever our "cursor" (currentTeamMobile value) is at in the currentTeamsArr and displays it to the bottom section on mobile
 function updateTeamMobile(){
-    document.getElementById("teamMobile").innerHTML = currentTeamsArr[currentTeamMobile].slice(3);
+    console.log("test");
+    console.log(currentTeamsArr);
+    console.log(currentTeamMobile);
+    document.getElementById("teamMobile").innerHTML = currentTeamsArr[parseInt(currentTeamMobile)].slice(3);
 }
 
 //Changes all the html elements that need to ba changed from red to blue and back
@@ -95,7 +97,11 @@ function changeColor(){
         currentTeamMobile = currentTeamMobile + 3;
         isBlueMobile = false;
         updateTeamMobile();
+        document.getElementById("team1").innerHTML == currentTeamsArr[0];
+        document.getElementById("team2").innerHTML == currentTeamsArr[1];
+        document.getElementById("team3").innerHTML == currentTeamsArr[2];
         //TODO updateTeamsDesktop
+
     }else{
         document.getElementById("teamColor").innerHTML = "Blue";
         document.getElementById("teamColor").style.color = "blue";
@@ -108,5 +114,8 @@ function changeColor(){
         isBlueMobile = true;
         updateTeamMobile();
         //TODO updateTeamsDesktop
+        document.getElementById("team1").innerHTML == currentTeamsArr[3];
+        document.getElementById("team2").innerHTML == currentTeamsArr[4];
+        document.getElementById("team3").innerHTML == currentTeamsArr[5];
     }
 }
