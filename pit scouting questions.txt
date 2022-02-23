@@ -14,7 +14,6 @@
     -climb?
     -if so, what rung?
     -climb time?
-    -climb percentage?
 
 ✔ Cargo Info
     -chamber size one or two balls?
@@ -23,7 +22,6 @@
     -what ball auto
 
 ✔ Miscellaneous
-    -Redheads?
     -Drive team exp
     -Human player skill
     -robot photo?

@@ -100,9 +100,31 @@
 
             <div class="window" id="climb">
                 <div class="title">
-                    <h2>Climb</h2>
+                    <h2>Endgame</h2>
                     <i class="fas fa-angle-down" onclick="dropdown(2)"></i>
                 </div>
+                <section class="climbSec">
+                    <p id="climbAbility">Climb Ability:</p>
+                    <label class="switch" name="movedOffTarmac" id="climbAbilitySwitch">
+                        <input id="yellowCard" type="checkbox" onclick="cardFoul(1)">
+                        <span class="slider"></span>
+                    </label>
+                    
+                    <p id="timeLabel">Time Needed:</p>
+                    <input id="climbTime" rows="1" type="number" max="4"></input>
+                    <p id="barLabel">Bar</p>
+                    <!-- TODO: want to do cool looking slider -->
+                    <div class="container-slider" id="barSelector">
+                        <input type="radio" class="radio__input" value="low" name="barSelect" id="barSelect1">
+                        <label for="barSelect1" class="radio__label label1">Low</label>
+                        <input type="radio" class="radio__input" value="middle" name="barSelect" id="barSelect2">
+                        <label for="barSelect2" class="radio__label label2">Middle</label>
+                        <input type="radio" class="radio__input" value="high" name="barSelect" id="barSelect3">
+                        <label for="barSelect3" class="radio__label label3">High</label>
+                        <input type="radio" class="radio__input" value="traversal" name="barSelect" id="barSelect4">
+                        <label for="barSelect4" class="radio__label label4">Traversal</label>
+                    </div>
+                </section>
             </div>
 
             <div class="window" id="cargoInfo">
@@ -110,6 +132,31 @@
                     <h2>Cargo Info</h2>
                     <i class="fas fa-angle-down" onclick="dropdown(3)"></i>
                 </div>
+                <section>
+                    <p>Chamber Size:</p>
+                    <!-- TODO: want to do cool looking slider -->
+                    <select id="climbSelect">
+                        <option selected disabled hidden>Select:</option>
+                        <option value="1">1 Balls</option>
+                        <option value="2">2 Balls</option>
+                    </select>
+                    <p>Pickup:</p>
+                    <!-- TODO: want to do cool looking slider -->
+                    <select id="pickupSelect">
+                        <option selected disabled hidden>Select:</option>
+                        <option value="1">Floor</option>
+                        <option value="2">Terminal</option>
+                        <option value="2">Both</option>
+                    </select>
+                    <p>Goal:</p>
+                    <!-- TODO: want to do cool looking slider -->
+                    <select id="goalSelect">
+                        <option selected disabled hidden>Select:</option>
+                        <option value="1">Bottom</option>
+                        <option value="2">Top</option>
+                        <option value="3">Both</option>
+                    </select>
+                </section>
             </div>
 
             <div class="window" id="misc">
@@ -117,6 +164,17 @@
                     <h2>Miscellaneous</h2>
                     <i class="fas fa-angle-down" onclick="dropdown(4)"></i>
                 </div>
+                <section>
+                    <p>Drive Experience:</p>
+                    <!-- TODO: want to do cool looking slider -->
+                    <select id="expSelect">
+                        <option selected disabled hidden>Select:</option>
+                        <option value="1">1 years</option>
+                        <option value="2">2 years</option>
+                        <option value="3">3 years+</option>
+                    </select>
+
+                </section>
             </div>
         </div>
 
