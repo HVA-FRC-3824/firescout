@@ -49,6 +49,10 @@ main .container .window {
     transition: all 0.5s ease;
 }
 
+main .container #climb {
+    overflow-x: hidden;
+}
+
 main .container .window .title {
     height: 55px;
     background-color: #f3f3f3;
@@ -264,6 +268,26 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 #climbTime {
     grid-row: 2 / 3;
     grid-column: 2 / 3;
+    width: 75px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.buttonContainer button {
+    width: 60vw;
+    height: 60px;
+    font-size: 24px;
+    font-family: "Montserrat";
+    font-weight: 400; 
+    border: 0;
+    background-color: rgba(28, 157, 218, 1);
+    border-radius: 4px;
+    color: #fff;
+}
+
+.buttonContainer button:hover {
+    background-color: #4C73D8;
+    color: #fff;
 }
 
 @media all and (max-width: 499px) {

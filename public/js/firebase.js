@@ -328,7 +328,11 @@ function pushHeatArr(robotToScout, mNum, scoutName){
 ██      ██    ██        ███████  ██████  ██████   ██████     ██    ██ ██   ████  ██████ 
 */
 
-
+function pushPitDictionary(robotToScout, mNum, scoutName){
+  firebase.database().ref('pitScouting/' + robotToScout + "/" + mNum + "/" + scoutName).set({
+    "data": dataDictionary
+  });
+}
 
 /*
  █████  ███    ██  █████  ██      ██    ██ ████████ ██  ██████ ███████ 
