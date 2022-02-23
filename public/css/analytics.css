@@ -40,7 +40,7 @@ hr{
 
 .loginWarn .container h1{
     padding:5px;
-    font-size:18px;
+    font-size:20px;
     font-weight: 400;
 }
 
@@ -200,7 +200,8 @@ main .teamInsights .container{
 }
 
 main .teamInsights .container h1{
-    padding: 25px 0px 0px 0px;
+    font-size: 28px;
+    padding: 25px 0px 10px 0px;
 }
 
 main .teamInsights .container p{
@@ -208,7 +209,7 @@ main .teamInsights .container p{
 }
 
 main .teamInsights .quickLook{
-    font-size: 28px;
+    font-size: 20px;
     width: 320px;
     margin-left: auto;
     margin-right: auto;
@@ -233,15 +234,17 @@ main .graphs #blur.container{
     -moz-filter: blur(4px);
     -o-filter: blur(4px);
     -ms-filter: blur(4px);
-    filter: blur(4px);
+    filter: blur(0px);
+}
+
+main .graphs{
+    margin:20px 20px 20px 20px;
 }
 
 main .graphs .container{
     text-align: center;
     background-color: white;
     border-radius: 10px;
-    margin-top:20px;
-    margin: 25px 50px;
 }
 
 main .graphs .container canvas{
@@ -277,7 +280,7 @@ main .graphs .container #selectors{
 }
 
 main .graphs .container select{
-    font-size: 18px;
+    font-size: 20px;
     margin-left:auto;
     margin-right:auto;
     margin-bottom: 12px;
@@ -300,22 +303,24 @@ main .pitData .container{
 }
 
 main .pitData .container h1{
-    font-size: 32px;
+    font-size:28px;
     padding-bottom: 1px;
 }
 
 main .pitData .container .pitScoutData{
-    font-size: 28px;
+    font-size: 20px;
     margin-left: auto;
     margin-right: auto;
+    display: grid;
     background-color:#0096ec;
     box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
     border-radius: 15px;
-    width:320px
+    width:320px;
+    padding:25px;
 }
 
 main .pitData .container .pitScoutData p{
-    padding: 15px 0px;
+    padding-bottom: 10px;
 }
 
 /*
@@ -339,11 +344,18 @@ main .heatmap .container{
 
 main .heatmap .container img{
     width: 80vw;
-    box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
+    box-shadow:
+  4.8px 5.2px 3.6px rgba(0, 0, 0, 0.07),
+  12.2px 13px 9.1px rgba(0, 0, 0, 0.048),
+  24.8px 26.6px 18.6px rgba(0, 0, 0, 0.039),
+  51.1px 54.8px 38.3px rgba(0, 0, 0, 0.031),
+  140px 150px 105px rgba(0, 0, 0, 0.022);
     grid-row: 2 / 3;
     grid-column: 1 / 5;
     margin-left: auto;
     margin-right: auto;
+    border: 10px solid white;
+    border-radius: 0px 15px 15px 15px;
 }
 
 main .heatmap .container h1{
@@ -381,7 +393,7 @@ main .rawData .container{
 }
 
 main .rawData .container h1{
-    font-size: 32px;
+    font-size: 28px;
     margin-bottom: 16px;
 }
 
@@ -410,7 +422,7 @@ main .TBAData .container{
 }
 
 main .TBAData .container h1{
-    font-size: 32px;
+    font-size: 28px;
     margin-bottom: 16px;
 }
 
@@ -465,26 +477,7 @@ main #pullMasterButton{
    ██    ██   ██ ██████  ███████ ███████    ██        ███████ ██ ███████ ███████
 */
 
-@media all and (min-width: 800px) {
-    /*
-    ███    ██  █████  ██    ██     ██████  ███████ ███████ ██   ██ ████████  ██████  ██████  
-    ████   ██ ██   ██ ██    ██     ██   ██ ██      ██      ██  ██     ██    ██    ██ ██   ██ 
-    ██ ██  ██ ███████ ██    ██     ██   ██ █████   ███████ █████      ██    ██    ██ ██████  
-    ██  ██ ██ ██   ██  ██  ██      ██   ██ ██           ██ ██  ██     ██    ██    ██ ██      
-    ██   ████ ██   ██   ████       ██████  ███████ ███████ ██   ██    ██     ██████  ██     
-    */
-
-    main .hero .container h1 {
-        font-size: 50px;
-    }
-
-    main .hero .container h3 {
-        font-size: 30px;
-    }
-
-    .dropdown {
-        display: none;
-    }
+@media all and (min-width: 900px) {
 
     /* 
     ██████   █████  ████████  █████      ██     ██ ██   ██ ███████ ███████ ██          ████████  █████  ██████  ██      ███████ ████████ 
@@ -521,9 +514,19 @@ main #pullMasterButton{
         display: inline-block;
         grid-column: 2/3;
         grid-row: 2/3;
-        width: 600px;
+        width: 350px;
+        height: 200px;
         margin-right: auto;
         margin-left: auto;
+        border-radius: 15px;
+        margin-top:75px;
+        box-shadow:
+        2.8px 2.8px 2.2px rgba(0, 0, 0, 0.07),
+        6.7px 6.7px 5.3px rgba(0, 0, 0, 0.05),
+        12.5px 12.5px 10px rgba(0, 0, 0, 0.042),
+        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.035),
+        41.8px 41.8px 33.4px rgba(0, 0, 0, 0.028),
+        100px 100px 80px rgba(0, 0, 0, 0.02);
     }
 
     main .pitData{
@@ -538,13 +541,20 @@ main #pullMasterButton{
     }
 
     main .heatmap .container img{
-        width:550px;
+        width:350px;
     }
 
     main .desktopData{
         display: grid;
         grid-template-columns: auto;
         grid-template-rows: auto;
+        background-color: #ececec;
+        width: 90vw;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 15px;
+        margin-top:20px;
+        margin-bottom:20px;
     }
 
     #mobileHR{
@@ -582,6 +592,16 @@ main #pullMasterButton{
 */
 
 @media all and (min-width: 1250px){
+
+    main .graphs{
+        width: 550px;
+        margin-top:20px;
+    }
+
+    main .heatmap .container img{
+        width:550px;
+    }
+
     /*
     ██████  ███████ ███████ ██   ██ ████████  ██████  ██████      ██████   █████  ████████  █████  
     ██   ██ ██      ██      ██  ██     ██    ██    ██ ██   ██     ██   ██ ██   ██    ██    ██   ██ 
@@ -665,7 +685,7 @@ main #pullMasterButton{
     */
 
     main .TBAData .container .teamsSchedule{
-        font-size: 32px;
+        font-size: 28px;
     }
 
     main .TBAData .container .teamSelect{

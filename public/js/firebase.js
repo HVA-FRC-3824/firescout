@@ -55,6 +55,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var auth = firebase.auth();
 var storage = firebase.storage();
+var analytics = firebase.analytics();
 
 /*
  █████  ██    ██ ████████ ██   ██ 
