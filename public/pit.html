@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <link rel="shortcut icon" type="image/jpg" href="pics/Logo-Small-Square.png"/>
-
-    <script src="js/pit.js"></script>
     
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/9.6.4/firebase-app-compat.js"></script>
@@ -23,12 +21,12 @@
     <script defer src="/__/firebase/9.6.4/firebase-remote-config-compat.js"></script>
     <script defer src="/__/firebase/9.6.4/firebase-performance-compat.js"></script>
     
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
-    <script src="js/firebase.js"></script>
+    <script defer src="js/firebase.js"></script>
     <script defer src="js/data.js"></script>
-    <script src="js/global.js"></script>
+    <script defer src="js/global.js"></script>
+    <script defer src="js/pit.js"></script>
 
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" type="text/css" href="css/pit.css">
@@ -83,18 +81,23 @@
                     <input id="massInput" rows="1" type="number" max="4"></input>
                     <p id="botLang">Robot Language:</p>
                     <input id="langInput" rows="1" type="text"></input>
-                    <p id="botDrive">Drive Train:</p>
-                    <select id="driveSelect">
-                        <option selected disabled hidden>Select:</option>
-                        <option value="1">West Coast</option>
-                        <option value="2">Swerve</option>
-                        <option value="3">Mecanum</option>
-                        <option value="4">Tank</option>
-                    </select>
                     <p id="widthLang">Robot Width:</p>
                     <input id="widthInput" rows="1" type="number"></input>
                     <p id="heightLang">Robot Height:</p>
                     <input id="heightInput" rows="1" type="number"></input>
+                    <p id="botDrive">Drive Train:</p>
+                    <div class="container-slider" id="trainSelector">
+                        <input type="radio" class="radio__input" value="West Coast" name="trainSelect" id="trainSelect1">
+                        <label for="trainSelect1" class="radio__label label1">West Coast</label>
+                        <input type="radio" class="radio__input" value="Swerve" name="trainSelect" id="trainSelect2">
+                        <label for="trainSelect2" class="radio__label label2">Swerve</label>
+                        <input type="radio" class="radio__input" value="Mecanum" name="trainSelect" id="trainSelect3">
+                        <label for="trainSelect3" class="radio__label label3">Mecanum</label>
+                        <input type="radio" class="radio__input" value="Tank" name="trainSelect" id="trainSelect4">
+                        <label for="trainSelect4" class="radio__label label4">Tank</label>
+                        <input type="radio" class="radio__input" value="" name="trainSelect" id="trainSelect50"  checked="checked">
+                        <label for="trainSelect50" class="radio__label label50">nothing</label>
+                    </div>
                 </section>
             </div>
 
@@ -104,25 +107,31 @@
                     <i class="fas fa-angle-down"></i>
                 </div>
                 <section class="climbSec">
+
+                    <!-- TODO: fix switch style and clean this up -->
                     <p id="climbAbility">Climb Ability:</p>
                     <label class="switch" name="movedOffTarmac" id="climbAbilitySwitch">
-                        <input id="yellowCard" type="checkbox" onclick="cardFoul(1)">
+                        <input id="yellowCard" type="checkbox">
                         <span class="slider"></span>
                     </label>
                     
-                    <p id="timeLabel">Time Needed:</p>
-                    <input id="climbTime" rows="1" type="number" max="4"></input>
-                    <p id="barLabel">Bar</p>
-                    <!-- TODO: want to do cool looking slider -->
-                    <div class="container-slider" id="barSelector">
-                        <input type="radio" class="radio__input" value="low" name="barSelect" id="barSelect1">
-                        <label for="barSelect1" class="radio__label label1">Low</label>
-                        <input type="radio" class="radio__input" value="middle" name="barSelect" id="barSelect2">
-                        <label for="barSelect2" class="radio__label label2">Middle</label>
-                        <input type="radio" class="radio__input" value="high" name="barSelect" id="barSelect3">
-                        <label for="barSelect3" class="radio__label label3">High</label>
-                        <input type="radio" class="radio__input" value="traversal" name="barSelect" id="barSelect4">
-                        <label for="barSelect4" class="radio__label label4">Traversal</label>
+                    <div class="climbSpecifics">
+                        <p id="timeLabel">Time Needed:</p>
+                        <input id="climbTime" rows="1" type="number" max="4"></input>
+                        <p id="barLabel">Bar</p>
+                        
+                        <div class="container-slider" id="barSelector">
+                            <input type="radio" class="radio__input" value="low" name="barSelect" id="barSelect1">
+                            <label for="barSelect1" class="radio__label label1">Low</label>
+                            <input type="radio" class="radio__input" value="middle" name="barSelect" id="barSelect2">
+                            <label for="barSelect2" class="radio__label label2">Middle</label>
+                            <input type="radio" class="radio__input" value="high" name="barSelect" id="barSelect3">
+                            <label for="barSelect3" class="radio__label label3">High</label>
+                            <input type="radio" class="radio__input" value="traversal" name="barSelect" id="barSelect4">
+                            <label for="barSelect4" class="radio__label label4">Traversal</label>
+                            <input type="radio" class="radio__input" value="" name="barSelect" id="barSelect50"  checked="checked">
+                            <label for="barSelect50" class="radio__label label50">nothing</label>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -134,7 +143,6 @@
                 </div>
                 <section>
                     <p>Chamber Size:</p>
-                    <!-- TODO: want to do cool looking slider -->
                     <div class="container-slider" id="chamberSelector">
                         <input type="radio" class="radio__input" value="0" name="chamberSelect" id="chamberSelect1">
                         <label for="chamberSelect1" class="radio__label label1">None</label>
@@ -142,9 +150,10 @@
                         <label for="chamberSelect2" class="radio__label label2">1 Balls</label>
                         <input type="radio" class="radio__input" value="2" name="chamberSelect" id="chamberSelect3">
                         <label for="chamberSelect3" class="radio__label label3">2 Balls</label>
+                        <input type="radio" class="radio__input" value="" name="chamberSelect" id="chamberSelect50"  checked="checked">
+                        <label for="chamberSelect50" class="radio__label label50">nothing</label>
                     </div>
                     <p>Pickup:</p>
-                    <!-- TODO: want to do cool looking slider -->
                     <div class="container-slider" id="intakeSelector">
                         <input type="radio" class="radio__input" value="none" name="intakeSelect" id="intakeSelect1">
                         <label for="intakeSelect1" class="radio__label label1">None</label>
@@ -154,9 +163,10 @@
                         <label for="intakeSelect3" class="radio__label label3">Terminal</label>
                         <input type="radio" class="radio__input" value="both" name="intakeSelect" id="intakeSelect4">
                         <label for="intakeSelect4" class="radio__label label3">Both</label>
+                        <input type="radio" class="radio__input" value="" name="intakeSelect" id="intakeSelect50"  checked="checked">
+                        <label for="intakeSelect50" class="radio__label label50">nothing</label>
                     </div>
                     <p>Goal:</p>
-                    <!-- TODO: want to do cool looking slider -->
                     <div class="container-slider" id="goalSelector">
                         <input type="radio" class="radio__input" value="none" name="goalSelect" id="goalSelect1">
                         <label for="goalSelect1" class="radio__label label1">None</label>
@@ -166,6 +176,8 @@
                         <label for="goalSelect3" class="radio__label label3">Upper</label>
                         <input type="radio" class="radio__input" value="both" name="goalSelect" id="goalSelect4">
                         <label for="goalSelect4" class="radio__label label3">Both</label>
+                        <input type="radio" class="radio__input" value="" name="goalSelect" id="goalSelect50"  checked="checked">
+                        <label for="goalSelect50" class="radio__label label50">nothing</label>
                     </div>
                 </section>
             </div>
@@ -177,7 +189,6 @@
                 </div>
                 <section>
                     <p>Drive Experience:</p>
-                    <!-- TODO: want to do cool looking slider -->
                     <div class="container-slider" id="expSelector">
                         <input type="radio" class="radio__input" value="0" name="expSelect" id="expSelect1">
                         <label for="expSelect1" class="radio__label label1">New</label>
@@ -185,123 +196,16 @@
                         <label for="expSelect2" class="radio__label label2">1 year</label>
                         <input type="radio" class="radio__input" value="2" name="expSelect" id="expSelect3">
                         <label for="expSelect3" class="radio__label label3">2 years+</label>
+                        <input type="radio" class="radio__input" value="" name="expSelect" id="expSelect50"  checked="checked">
+                        <label for="expSelect50" class="radio__label label50">nothing</label>
                     </div>
                 </section>
             </div>
-        </div>
 
-        <div class="buttonContainer">
-            <button class="submit" id="submit">Submit</button>
+            <div class="buttonContainer">
+                <button class="submit" id="submit" onclick="setPitData()">Submit</button>
+            </div>
         </div>
     </main>
-
-    <!--
-    <main>
-        <section class="base">
-            <div class="container">
-                <div class="modal-button-group">
-                    <div class="modal-button" onclick="toggleModal(1)">
-                        <h1>Basic Specs</h1>
-                    </div>
-                    <div class="modal-button" onclick="toggleModal(2)">
-                        <h1>Drive Team Info</h1>
-                    </div>
-                    <div class="modal-button" onclick="toggleModal(3)">
-                        <h1>test 3</h1>
-                    </div>
-                    <div class="modal-button" onclick="toggleModal(4)">
-                        <h1>test 4</h1>
-                    </div>
-                    <input type='file' id='input' class="img-input">test file input</input>
-                    
-                    <div class="modal-button" onclick="toggleModal(5)">
-                        <h1>test 5</h1>
-                    </div>
-                    <div class="modal-button" onclick="toggleModal(6)">
-                        <h1>test 6</h1>
-                    </div>
-                    <div class="modal-button" onclick="toggleModal(7)">
-                        <h1>test 7</h1>
-                    </div>
-                    <div class="modal-button" onclick="toggleModal(8)">
-                        <h1>test 8</h1>
-                    </div>
-                </div>
-                <div class="button-container">
-                    <button>Send Data</button>
-                </div>
-            </div>
-        </section>
-        <section class="modal-container">
-            <div class="modal modal-1">
-                <h1>Basic Stats <i class="fas fa-chevron-down" onclick="toggleModal(1)"></i></h1>
-                <div class="questions">
-                    <p class="team-num">Team Number</p>
-                    <textarea class="team-num-area"></textarea>
-                    <p class="bot-weight">Robot Weight</p>
-                    <textarea class="bot-weight-area"></textarea>
-                    <p class="bot-lang">Robot Language</p>
-                    <textarea class="bot-lang-area"></textarea>
-                    <p class="drive-exp">Driver Experience</p>
-                    <textarea class="drive-exp-area"></textarea>
-                </div>
-            </div>
-            <div class="modal modal-2">
-                <h1>test 2 <i class="fas fa-chevron-down" onclick="toggleModal(2)"></i></h1>
-                
-            </div>
-            <div class="modal modal-3">
-                <h1>test 3 <i class="fas fa-chevron-down" onclick="toggleModal(3)"></i></h1>
-                
-            </div>
-            <div class="modal modal-4">
-                <h1>test 4 <i class="fas fa-chevron-down" onclick="toggleModal(4)"></i></h1>
-                
-            </div>
-            <div class="modal modal-5">
-                <h1>test 5 <i class="fas fa-chevron-down" onclick="toggleModal(5)"></i></h1>
-                
-            </div>
-            <div class="modal modal-6">
-                <h1>test 6 <i class="fas fa-chevron-down" onclick="toggleModal(6)"></i></h1>
-                
-            </div>
-            <div class="modal modal-7">
-                <h1>test 7 <i class="fas fa-chevron-down" onclick="toggleModal(7)"></i></h1>
-                
-            </div>
-            <div class="modal modal-8">
-                <h1>test 8 <i class="fas fa-chevron-down" onclick="toggleModal(8)"></i></h1>
-                
-            </div>
-        </section>
-    </main>
-    -->
-
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyAkfcVtNcyDlW0yiTH2i5rYdmBJ_z1O57M",
-            authDomain: "firescout3824.firebaseapp.com",
-            databaseURL: "https://firescout3824-default-rtdb.firebaseio.com",
-            projectId: "firescout3824",
-            storageBucket: "firescout3824.appspot.com",
-            messagingSenderId: "246498824596",
-            appId: "1:246498824596:web:efc2c0cbc94999559d3f81",
-            measurementId: "G-7SBQ64VMNP"
-        };
-
-        const app = initializeApp(firebaseConfig);
-
-        import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-storage.js";
-
-        var files = [];
-        var reader = new FileReader();
-
-        var stoarge = getStorage();
-
-        
-    </script>
 </body>
 </html>

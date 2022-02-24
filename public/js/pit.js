@@ -5,23 +5,27 @@
  ██  ██  ██   ██ ██   ██ ██ ██   ██ ██   ██ ██      ██           ██ 
   ████   ██   ██ ██   ██ ██ ██   ██ ██████  ███████ ███████ ███████ 
 */
+// TODO: use querySelector arrays instead for performance reasons
 
 var teamNumber = -1;
 
 var pitDictionary = {
     "robotWeight": 8909889,
-    "robotLang": 'nothing',
-    "driveTrain": 'nothing',
+    "robotLang": '',
+    "driveTrain": '',
     "width": 8909889,
     "height": 8909889,
     "climbAbility": false,
     "climbTime": 8909889,
-    "climbLevel": 'nothing',
+    "climbLevel": '',
     "chamberSize": 8909889,
-    "intakeLevel": 'nothing',
-    "goalLevel": 'nothing',
-    "driverExp": 8909889
+    "intakeLevel": '',
+    "goalLevel": '',
+    "driverExp": 8909889,
+    "pitScouter": localStorage.getItem("username")
 }
+
+var keys = Object.keys(pitDictionary);
 
 var errors = [];
 
@@ -34,35 +38,21 @@ var errors = [];
 */
 
 function setPitData() {
-    teamNumber = document.getElementById("teamInput").value;
-    console.log(teamNumber);
-    pitDictionary[0] = document.getElementById("massInput").value;
-    console.log(pitDictionary[0]);
-    pitDictionary[1] = document.getElementById("langInput").value;
-    console.log(pitDictionary[1]);
-    pitDictionary[2] = document.getElementById("driveSelect").value;
-    console.log(pitDictionary[2]);
-    pitDictionary[3] = document.getElementById("widthInput").value;
-    console.log(pitDictionary[3]);
-    pitDictionary[4] = document.getElementById("heightInput").value;
-    console.log(pitDictionary[4]);
-    pitDictionary[5] = document.getElementById("yellowCard").value;
-    console.log(pitDictionary[5]);
-    pitDictionary[6] = document.getElementById("climbTime").value;
-    console.log(pitDictionary[6]);
-    try {
-        pitDictionary[7] = document.querySelector('input[name="barSelect"]:checked').value;
-    } catch (e) {
-        console.log(e);
-    }
-    pitDictionary[8] = document.querySelector('input[name="chamberSelect"]:checked').value;
-    console.log(pitDictionary[8]);
-    pitDictionary[9] = document.querySelector('input[name="intakeSelect"]:checked').value;
-    console.log(pitDictionary[9]);
-    pitDictionary[10] = document.querySelector('input[name="goalSelect"]:checked').value;
-    console.log(pitDictionary[10]);
-    pitDictionary[11] = document.querySelector('input[name="expSelect"]:checked').value;
-    console.log(pitDictionary[11]);
+    teamNumber = parseInt(document.getElementById("teamInput").value);
+    pitDictionary["robotWeight"] = parseInt(document.getElementById("massInput").value);
+    pitDictionary["robotLang"] = document.getElementById("langInput").value;
+    pitDictionary["driveTrain"] = document.querySelector('input[name="trainSelect"]:checked').value;
+    pitDictionary["width"] = parseInt(document.getElementById("widthInput").value);
+    pitDictionary["height"] = parseInt(document.getElementById("heightInput").value);
+    pitDictionary["climbAbility"] = document.getElementById("yellowCard").value;
+    pitDictionary["climbTime"] = parseInt(document.getElementById("climbTime").value);
+    pitDictionary["climbLevel"] = document.querySelector('input[name="barSelect"]:checked').value;
+    pitDictionary["chamberSize"] = document.querySelector('input[name="chamberSelect"]:checked').value;
+    pitDictionary["intakeLevel"] = document.querySelector('input[name="intakeSelect"]:checked').value;
+    pitDictionary["goalLevel"] = document.querySelector('input[name="goalSelect"]:checked').value;
+    pitDictionary["driverExp"] = document.querySelector('input[name="expSelect"]:checked').value;
+
+    submitPitData();
 }
 
 /* 
@@ -75,14 +65,26 @@ function setPitData() {
 
 
 function submitPitData() {
-    for (let i = 0; i < pitDictionary.length; i++) {
-        if (typeof(pitDictionary[i]) == 'string') {
-            if (pitDictionary[i] == 'nothing') {
-                errors.push(Object.keys(pitDictionary)[i]);
+    errors = [];
+
+    if (isNaN(teamNumber)) {
+        alert("Please input team number!");
+        return;
+    } else if (teamNumber > 8898 || teamNumber <= 0) {
+        alert("Please input valid team number!");
+        return;
+    }
+
+    for (let i = 0; i < Object.keys(pitDictionary).length-1; i++) {
+        if (typeof(pitDictionary[keys[i]]) == 'string') {
+            if (pitDictionary[i] === '') {
+                errors.push(keys[i] + ' ');
+                console.log("found string error");
             }
-        } else if (typeof(pitDictionary[i]) == 'number') {
-            if (pitDictionary[i] == -8909889) {
-                errors.push(Object.keys(pitDictionary)[i]);
+        } else if (typeof(pitDictionary[i]) === 'number') {
+            if (isNaN(pitDictionary[i])) {
+                errors.push(keys[i] + ' ');
+                console.log("found number error");
             }
         }
     }
@@ -90,7 +92,8 @@ function submitPitData() {
     if (errors.length != 0) {
         alert("Please fill in " + errors);
     } else {
-        console.log("Success")
+        alert("Success");
+        pushPitDictionary(teamNumber);
     }
 }
 
