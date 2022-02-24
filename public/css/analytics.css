@@ -184,6 +184,9 @@ main .teamSelectDiv{
     margin-right: auto;
     margin-top: 20px;
     font-size: 42px;
+    background-color: white;
+    padding:10px;
+    border-radius:15px;
 }
 
 main .teamSelectDiv .teamSelect{
@@ -245,6 +248,10 @@ main .graphs .container{
     text-align: center;
     background-color: white;
     border-radius: 10px;
+    width: 75vw;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:20px
 }
 
 main .graphs .container canvas{
@@ -343,7 +350,6 @@ main .heatmap .container{
 }
 
 main .heatmap .container img{
-    width: 80vw;
     box-shadow:
   4.8px 5.2px 3.6px rgba(0, 0, 0, 0.07),
   12.2px 13px 9.1px rgba(0, 0, 0, 0.048),
@@ -354,30 +360,128 @@ main .heatmap .container img{
     grid-column: 1 / 5;
     margin-left: auto;
     margin-right: auto;
-    border: 10px solid white;
+    border: 1px solid white;
     border-radius: 0px 15px 15px 15px;
+}
+
+main .heatmap .container #fieldHeatMap{
+    grid-row: 2 / 3;
+    grid-column: 1 / 5;
+    height: 227px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+main .heatmap .container .heatmap-canvas:first-of-type{
+    filter: hue-rotate(90deg);
+}
+
+main .heatmap .container #tarmacHeatMap{
+    height:405px;
+}
+
+main .heatmap .container #tarmacHeatMap{
+    grid-row: 2 / 3;
+    grid-column: 1 / 5;
+    display: none;
+}
+
+main .heatmap .container #fieldIMG{
+    display: block;
+    width: 425px;
+    grid-row: 1 / 2;
+}
+
+main .heatmap .container #tarmacIMG{
+    display:none;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+    width: 425px;
 }
 
 main .heatmap .container h1{
     font-size: 28px;
     padding: 10px 40px 10px 40px;
+    background-color: rgba(143, 143, 143, 0.418);
+    color:rgba(0, 0, 0, 0.418);
+}
+
+main .heatmap .container .is-selected{
+    background-color: white;
+    color: black;
 }
 
 main .heatmap .container #fullField{
     grid-column: 1 / 2;
-    background-color: rgb(255, 255, 255);
     border-radius:20px 20px 0px 0px;
 }
 main .heatmap .container #tarmac{
     grid-column: 2 / 3;
-    background-color: rgba(143, 143, 143, 0.418);
-    color:rgba(0, 0, 0, 0.418);
     border-radius:20px 20px 0px 0px;
 }
+
+main .heatmap .container .checkBoxesDiv{
+    grid-row: 2 / 3; 
+    grid-column: 1 / 5;
+}
+
+main .heatmap .container .toggle {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 62px;
+    height: 32px;
+    display: inline-block;
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: #707070;
+    transition: background-color ease 0.3s;
+  }
+  
+  main .heatmap .container .toggle:before {
+    content: "on off";
+    display: block;
+    position: absolute;
+    z-index: 2;
+    width: 28px;
+    height: 28px;
+    background: #fff;
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    font: 10px/28px Helvetica;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-indent: -22px;
+    word-spacing: 37px;
+    color: #fff;
+    text-shadow: -1px -1px rgba(0,0,0,0.15);
+    white-space: nowrap;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+  }
+  
+  main .heatmap .container .toggle:checked {
+    background-color: #4CD964;
+  }
+  
+  main .heatmap .container .toggle:checked:before {
+    left: 32px;
+  }
+
 
 #desktopHR{
     display: none;
 }
+
+
+
 
 /*
 ██████   █████  ██     ██     ██████   █████  ████████  █████  
@@ -389,7 +493,7 @@ main .heatmap .container #tarmac{
 
 main .rawData .container{
     text-align: center;
-    margin:50px 0px 200px;
+    margin:50px 0px 50px;
 }
 
 main .rawData .container h1{
@@ -398,14 +502,18 @@ main .rawData .container h1{
 }
 
 main .rawData .container .theData{
-    padding:40px 10px;
+    padding:30px 10px;
     margin-left: auto;
     margin-right: auto;
-    font-size: 22px;
+    font-size: 20px;
     background-color: #0096ec;
     border-radius: 15px;
     box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
-    width: 360px;
+    width: 320px;
+}
+
+main .rawData .container .theData p {
+    padding-bottom: 10px;
 }
 
 /*
@@ -519,7 +627,7 @@ main #pullMasterButton{
         margin-right: auto;
         margin-left: auto;
         border-radius: 15px;
-        margin-top:75px;
+        margin-top:55px;
         box-shadow:
         2.8px 2.8px 2.2px rgba(0, 0, 0, 0.07),
         6.7px 6.7px 5.3px rgba(0, 0, 0, 0.05),
@@ -527,6 +635,10 @@ main #pullMasterButton{
         22.3px 22.3px 17.9px rgba(0, 0, 0, 0.035),
         41.8px 41.8px 33.4px rgba(0, 0, 0, 0.028),
         100px 100px 80px rgba(0, 0, 0, 0.02);
+    }
+
+    main .graphs .container{
+        width: 350px;
     }
 
     main .pitData{
@@ -540,8 +652,28 @@ main #pullMasterButton{
         grid-row: 3/4;
     }
 
-    main .heatmap .container img{
-        width:350px;
+    main .heatmap .container #fieldHeatMap{
+        height: 188px;
+    }
+
+    main .heatmap .container #tarmacHeatMap{
+        height: 250px;
+    }
+
+    main .heatmap .container{
+        margin-top:20px;
+        width: 350px;
+    }
+
+    main .heatmap .container #fieldIMG{
+        width: 350px;
+    }
+    
+    main .heatmap .container #tarmacIMG{
+        height: 250px;
+        width: auto;
+        padding-left: 50px;
+        padding-right: 50px;
     }
 
     main .desktopData{
@@ -598,8 +730,32 @@ main #pullMasterButton{
         margin-top:20px;
     }
 
-    main .heatmap .container img{
-        width:550px;
+    main .graphs .container{
+        width: 550px;
+    }
+
+    main .heatmap .container{
+        width: 550px;
+    }
+
+    main .heatmap .container #fieldHeatMap{
+        height: 282px;
+    }
+
+    main .heatmap .container #tarmacHeatMap{
+        height: 290px;
+    }
+
+    main .heatmap .container #fieldIMG{
+        width: 550px;
+    }
+    
+    main .heatmap .container #tarmacIMG{
+        display: none;
+        height: 290px;
+        width: auto;
+        padding-left: 150px;
+        padding-right: 150px;
     }
 
     /*

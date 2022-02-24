@@ -226,12 +226,17 @@ function writeData(path, data) {
 var dataRead; // THIS IS THE GLOBAL VARIABLE THAT STORES THE MOST RECENTLY READ DATA
               //IF YOU ARE PULLING DATA MULTIPLE TIMES QUICKLY AND THIS SOLUTION ISN'T WORKING THEN DON'T PULL THE DATA IN MULTIPLE PULLS
               // 🤠
+              //YOU DONT HAVE TO USE THIS FUNCTION TO PULL DATA BUT THIS IS A GOOD OUTLINE
+              //ARE THESE COMMNENTS HELPING ANYONE
+              // :)
 function readData(path){
   dataRead = "";
   return firebase.database().ref(path).once('value').then((snapshot) => {
     console.log(snapshot.val());
     dataRead = snapshot.val();
-    if(path == "Users"){
+    //ignore this if statement if you are copy pasting this funtion to read firebase data, this if is just for reading users data
+    //TODO stop using readData and just write the firebase.ref whenever you want to get data
+    if(path == "Users"){ 
       usersObject = snapshot.val();
     }
   });
@@ -256,32 +261,14 @@ try {
 ██      ██ ██   ██    ██     ██████ ██   ██     ██      ██   ██ ███████   ████   ██ ███████  ███ ███  
 */
 
+var allTeamInfo;
+
 function getAllTeamInfo(){
-  get(ref(db, 'matchScouting')).then((snapshot) => {
-    if (snapshot.exists()) {
-      var allTeamInfo = snapshot.val();
-      //console.log(allTeamInfo);
-    } else {
-      console.log("No data available");
-    }
-  }).catch((error) => {
-    console.error(error);
-  });
-  return allTeamInfo;
-}
-
-function getTeamInfo(team){
-  get(ref(db, 'matchScouting/' + team)).then((snapshot) => {
-    if (snapshot.exists()) {
-      //console.log(snapshot.val());
-    } else {
-      console.log("No data available");
-    }
-  }).catch((error) => {
-    console.error(error);
+  return firebase.database().ref('matchScouting').once('value').then((snapshot) => {
+    console.log(snapshot.val());
+    allTeamInfo = snapshot.val();
   });
 }
-
 
 /*
 ███    ███  █████  ████████  ██████ ██   ██     ███████  ██████  ██████  ██    ██ ████████ ██ ███    ██  ██████  
@@ -346,10 +333,10 @@ var robotData;
 function pullAllMatchScouting(){
   document.getElementById('pullMasterButton').style.display = "none";
   console.log("pullingrobodata");
-  readData("matchScouting");
-  setTimeout(() => {
-    robotData = dataRead;
-  }, 500);
+  return firebase.database().ref('matchScouting').once('value').then((snapshot) => {
+    console.log(snapshot.val());
+    robotData = snapshot.val();
+  });
 }
 
 function displayDataWheel(){
@@ -522,7 +509,8 @@ function displayDataWheel(){
   document.getElementById("table1").querySelector("#d6").innerHTML = robotWorths[5].worth;
 }
 
-//=========================================================================DISPLAYS THE DATA TO THE RAW DATA INFO BOX
+//=========================================================================DISPLAYS THE DATA TO THE RAW DATA INFO BOX//=========================================================================
+
 function displayRawData(){ 
   robot = document.getElementById("teamNum").value;
   var matchesPlayed = 0;
@@ -541,17 +529,17 @@ function displayRawData(){
     matchesPlayed++;
     Object.keys(robotData[robot][match]).forEach(name => {
       //Tallys the total amount of successful climbs
-      if(robotData[robot][match][name]['data']['levelClimbed'] != 'none' && dataRead[robot][match][name]['data']['levelClimbed'] != 'fail'){
+      if(robotData[robot][match][name]['data']['levelClimbed'] != 'none' && robotData[robot][match][name]['data']['levelClimbed'] != 'fail'){
         totalSuccessfulClimbs++;
       }
       //Tallys the total failed climbs
-      if(dataRead[robot][match][name]['data']['levelClimbed'] == 'fail'){
+      if(robotData[robot][match][name]['data']['levelClimbed'] == 'fail'){
         failedClimbs++;
       }
 
       //Calculates the highest scoring match
       var climbPoints = 0;
-      switch (dataRead[robot][match][name]['data']['levelClimbed']) {
+      switch (robotData[robot][match][name]['data']['levelClimbed']) {
         case 'traversal':
           climbPoints = 15;
           break;
@@ -570,10 +558,10 @@ function displayRawData(){
       }
 
       var currentRobotScore = 
-      (dataRead[robot][match][name]['data']['autoUpperHubAmount'] * 4) + 
-      (dataRead[robot][match][name]['data']['autoLowerHubAmount'] * 2) +
-      (dataRead[robot][match][name]['data']['teleUpperHubAmount'] * 2) +
-      (dataRead[robot][match][name]['data']['teleLowerHubAmount']) +
+      (robotData[robot][match][name]['data']['autoUpperHubAmount'] * 4) + 
+      (robotData[robot][match][name]['data']['autoLowerHubAmount'] * 2) +
+      (robotData[robot][match][name]['data']['teleUpperHubAmount'] * 2) +
+      (robotData[robot][match][name]['data']['teleLowerHubAmount']) +
       climbPoints;
 
       if(currentRobotScore > highScore){
@@ -599,6 +587,18 @@ function displayRawData(){
   document.getElementById("teleShotsTaken").innerHTML = "Tele Shots Taken: " + (teleUpperHubShots + teleLowerHubShots);
   document.getElementById("autoShotsTaken").innerHTML = "Auto Shots Taken: " + (autoUpperHubShots + autoLowerHubShots);
 
+}
+
+
+//========================================HEATMAP========================================//
+
+var heatmapDataMaster;
+function getHeatData(){
+  var path = "heatmap";
+  return firebase.database().ref(path).once('value').then((snapshot) => {
+    console.log(snapshot.val());
+    heatmapDataMaster = snapshot.val();
+  });
 }
 
 /*

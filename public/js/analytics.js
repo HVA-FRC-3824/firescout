@@ -29,7 +29,7 @@ function screenTest(e){
     }
 }
 
-mediaQueries.addListener(screenTest);
+//mediaQueries.addListener(screenTest);
 
 function changeDataSlide(leftOrRight){
     //console.log(leftOrRight);
@@ -207,6 +207,171 @@ function removeTeam(){
     if(graphTeamsNum > 1){
         document.getElementById("selector" + graphTeamsNum).remove();
         graphTeamsNum -= 1;    
+    }
+}
+
+////=========================================================================HEATMAP//=========================================================================
+
+var hasBeenClicked = [false, false];
+
+function changeHeatIMG(image){
+    if(image == 'full'){
+        document.getElementById("tarmacIMG").style.display = 'none';
+        document.getElementById("fieldIMG").style.display = 'block';
+        document.getElementById("fieldHeatMap").style.display = "block"
+        document.getElementById("tarmacHeatMap").style.display = "none"
+        document.getElementById("fullField").classList.add('is-selected');
+        document.getElementById("tarmac").classList.remove('is-selected');
+        if(!hasBeenClicked[0]){
+            generateFieldHeatmap();
+        }
+        hasBeenClicked[0] = true;
+    }else{
+        document.getElementById("fieldIMG").style.display = 'none';
+        document.getElementById("tarmacIMG").style.display = 'block';
+        document.getElementById("fieldHeatMap").style.display = "none"
+        document.getElementById("tarmacHeatMap").style.display = "block"
+        document.getElementById("fullField").classList.remove('is-selected');
+        document.getElementById("tarmac").classList.add('is-selected');
+        if(!hasBeenClicked[1]){
+            generateTarmacHeatmap();
+        }
+        hasBeenClicked[1] = true;
+    }
+    try {
+        setFieldHeatData();
+        setTarmacHeatData();
+    } catch (e) {
+        
+    }
+}
+
+var heatmapInstanceField;
+var heatmapInstanceTarmac;
+
+function generateFieldHeatmap(){
+    var fieldConfig = {
+        container: document.getElementById('fieldHeatMap'),
+        radius: 15,
+        maxOpacity: .5,
+        minOpacity: 0,
+        blur: .75
+      };
+      // create heatmap with configuration
+    heatmapInstanceFieldShots = h337.create(fieldConfig);
+    heatmapInstanceFieldPickup = h337.create(fieldConfig);
+
+      //TWO HEATMAP INSTANCES CAN TARGET THE SAME ELEMENT
+      //USE THIS TO DO A SEPARATE SHOTS VS PICKUPS HEATMAP FOR EXTRA SICKNESS
+
+}
+
+function setFieldHeatData(robot){
+    var autoPickupsXArr = [];
+    var autoPickupsYArr = [];
+    var autoShotsXArr = [];
+    var autoShotsYArr = [];
+    var telePickupsXArr = [];
+    var telePickupsYArr = [];
+    var teleShotsXArr = [];
+    var teleShotsYArr = [];
+    var heatData = heatmapDataMaster[robot];
+    Object.keys(heatData).forEach(match => {
+        Object.keys(heatData[match]).forEach(scouter => {
+            autoPickupsXArr = (heatData[match][scouter]["autoPickupsX"]);
+            autoPickupsYArr = (heatData[match][scouter]["autoPickupsY"]);
+            autoShotsXArr = (heatData[match][scouter]["autoShotsX"]);
+            autoShotsYArr = (heatData[match][scouter]["autoShotsY"]);
+            telePickupsXArr = (heatData[match][scouter]["telePickupsX"]);
+            telePickupsYArr = (heatData[match][scouter]["telePickupsY"]);
+            teleShotsXArr = (heatData[match][scouter]["teleShotsX"]);
+            teleShotsYArr = (heatData[match][scouter]["teleShotsY"]);
+        });
+    });
+
+    var fieldX = document.getElementById("fieldIMG").clientWidth;
+    var fieldY = document.getElementById("fieldIMG").clientHeight;
+
+    //for auto
+    var autoPickupsDataArr = []
+    for (var i = 0; i < autoPickupsXArr.length; i++) {
+        autoPickupsDataArr.push({x:(Math.round((autoPickupsXArr[i]/2068)*fieldX)),y:(Math.round((autoPickupsYArr[i]/1058)*fieldY)),value:100});
+    };
+    
+    var autoShotsDataArr = [];
+    for (var i = 0; i < autoShotsXArr.length; i++) {
+        autoShotsDataArr.push({x:(Math.round((autoShotsXArr[i]/2068)*fieldX)),y:(Math.round((autoShotsYArr[i]/1058)*fieldY)),value:100});
+    };
+
+    //for tele
+    var telePickupsDataArr = [];
+    for (var i = 0; i < telePickupsXArr.length; i++) {
+        telePickupsDataArr.push({x:(Math.round((telePickupsXArr[i]/2068)*fieldX)),y:(Math.round((telePickupsYArr[i]/1058)*fieldY)),value:100});
+    };
+
+    var teleShotsDataArr = [];
+    for (var i = 0; i < teleShotsXArr.length; i++) {
+        teleShotsDataArr.push({x:(Math.round((teleShotsXArr[i]/2068)*fieldX)),y:(Math.round((teleShotsYArr[i]/1058)*fieldY)),value:100});
+    };
+    
+    //console.log(teleShotsYArr);
+    //console.log(fieldY);
+    //console.log(teleShotsData);
+    heatmapInstanceFieldShots.setData({max: 100, min:0, data:[]});
+    heatmapInstanceFieldPickup.setData({max: 100, min:0, data:[]});
+    heatmapInstanceFieldShots.addData(teleShotsDataArr);
+    heatmapInstanceFieldPickup.addData(telePickupsDataArr);
+    heatmapInstanceFieldShots.addData(autoShotsDataArr);
+    heatmapInstanceFieldPickup.addData(autoPickupsDataArr);
+}
+
+function generateTarmacHeatmap(){
+    var tarmacConfig = {
+        container: document.getElementById('tarmacHeatMap'),
+        radius: 15,
+        maxOpacity: .5,
+        minOpacity: 0,
+        blur: .75
+      };
+      // create heatmap with configuration
+    heatmapInstanceTarmac = h337.create(tarmacConfig);
+}
+
+function setTarmacHeatData(){
+    var dataPoint = {
+        x: 229, // x coordinate of the datapoint, a number
+        y: 100, // y coordinate of the datapoint, a number
+        value: 50 // the value at datapoint(x, y)
+    };
+    var data = {
+        max: 100,
+        min: 0,
+        data: [
+          dataPoint, dataPoint, dataPoint, dataPoint
+        ]
+    };
+
+    heatmapInstanceTarmac.setData(data);
+}
+
+function updateHeatmaps(){
+    heatmapInstanceField.setDataMax(200);
+    heatmapInstanceTarmac.setDataMax(200);
+}
+
+function togglePickupHeatmap(){
+    if(document.getElementById("togglePickupSwitch").checked){
+        document.querySelector("#fieldHeatMap").getElementsByClassName('heatmap-canvas')[1].style.display = 'block';
+    }else{
+        document.querySelector("#fieldHeatMap").getElementsByClassName('heatmap-canvas')[1].style.display = 'none';
+    }
+}
+
+function toggleLaunchesHeatmap(){
+    if(document.getElementById("toggleLaunchSwitch").checked){
+        document.querySelector("#fieldHeatMap").getElementsByClassName('heatmap-canvas')[0].style.display = 'block';
+    }else{
+        document.querySelector("#fieldHeatMap").getElementsByClassName('heatmap-canvas')[0].style.display = 'none';
     }
 }
 

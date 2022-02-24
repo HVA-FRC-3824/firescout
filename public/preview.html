@@ -66,10 +66,6 @@
 
     <main>
        
-        <script type="module">
-            import {getAllTeamInfo} from "./js/firebase.js"
-            window.getAllTeamInfo = getAllTeamInfo;
-        </script>
         <section class="teams">
             <div class="teamDiv ">
                 <select onChange="displayMatchTeams((document.getElementById('match').value).slice(6))" name="match num" class="match-selector" id="match">
@@ -121,7 +117,7 @@
         <section class="quickAnalyticsMobile">
             <div class="dataDiv">
                 <div>
-                    <button id="teamColor" onclick="changeColor()">Team Color</button>
+                    <button id="teamColor" onclick="changeColor()">Blue</button>
                 </div> 
 
                 <div class="listView" id="listViewMobile">
@@ -143,7 +139,7 @@
         <section class="quickAnalyticsDesktop">
             <div class="dataDivDesktop">
                 <div>
-                    <button id="teamColorDesktop" onclick="changeColor()">Team Color</button>
+                    <button id="teamColorDesktop" onclick="changeColor()">Blue</button>
                 </div> 
 
                 <div class="listView" id="listViewDesktop">

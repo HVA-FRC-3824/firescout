@@ -24,6 +24,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
     <script defer src="js/firebase.js"></script>
+    <script defer src="js/heatmap.js"></script>
     <script defer src="js/data.js"></script>
     <script src="js/global.js"></script>
     <script defer src="js/analytics.js"></script>
@@ -73,7 +74,7 @@
         <section class="infoWheel">
             <div class="container unselectable">
                 <header>
-                    <p onclick="changeDataSlide('left')" class="unselectable">&lt;&nbsp;&nbsp;</p><p id="head" class="unselectable">Climb Weighted Worth</p><p onclick="changeDataSlide('right')" class="unselectable">&nbsp;&nbsp;&gt;</p>
+                    <p onclick="changeDataSlide('left')" class="unselectable">&lt;&nbsp;&nbsp;</p><p id="head" class="unselectable">CATT Score</p><p onclick="changeDataSlide('right')" class="unselectable">&nbsp;&nbsp;&gt;</p>
                 </header>
                 <arrows class="desktopArrows unselectable">
                     <p id="left" onclick="changeDataSlide('left')" class="unselectable"><i class="fas fa-chevron-left"></i></p>
@@ -162,12 +163,11 @@
                 <div class="container">
                     <h1>Team Quick Look</h1>
                     <div class="quickLook">
+                        <p>CATT Score: 45</p>
                         <p>Climb Percent: 97%</p>
                         <p>Average Score: 75</p>
-                        <p>Tele Accuracy</p>
-                        <p>Auto Accuracy: 0</p>
-                        <p>Stat 5: Yes</p>
-                        <p>Stat 6: Yes</p>
+                        <p>Tele Accuracy: 69%</p>
+                        <p>Auto Accuracy: 96%</p>
                     </div>
                 </div>
                 <hr id="mobileHR">
@@ -188,12 +188,22 @@
                     <p onclick="addTeam()" class="unselectable">+</p>
                 </div>
                 <hr id="mobileHR">
-
             </section>
             <section class="heatmap">
                 <div class="container">
-                    <h1 id="fullField">Field</h1><h1 id="tarmac">Tarmac</h1>
-                    <img src="https://firebasestorage.googleapis.com/v0/b/firescout3824.appspot.com/o/fieldIMG.png?alt=media">
+                    <h1 class="is-selected" id="fullField" onclick="changeHeatIMG('full')">Field</h1><h1 class="" id="tarmac" onclick="changeHeatIMG('tarmac')">Tarmac</h1>
+                    <div id="tarmacHeatMap">
+                        <img id="tarmacIMG" src="https://firebasestorage.googleapis.com/v0/b/firescout3824.appspot.com/o/tarmacIMG.png?alt=media">
+                    </div>
+                    <div id="fieldHeatMap">
+                        <img id="fieldIMG" src="https://firebasestorage.googleapis.com/v0/b/firescout3824.appspot.com/o/fieldIMG.png?alt=media">
+                        <div class="checkBoxesDiv">
+                            <label>toggle pickup</label>
+                            <input id="togglePickupSwitch" onclick="togglePickupHeatmap()" class="toggle" type="checkbox" />
+                            <label>toggle launches</label>
+                            <input id="toggleLaunchSwitch" onclick="toggleLaunchesHeatmap()" class="toggle" type="checkbox" />
+                        </div>
+                    </div>
                 </div>
                 <hr id="mobileHR">
 
@@ -202,12 +212,12 @@
                 <div class="container">
                     <h1>Pit Scout Data</h1>
                     <div class="pitScoutData">
-                        <p>Defense Bot: Yes</p>
-                        <p>Robot size: small</p>
+                        <p>Defense Bot: No</p>
+                        <p>Robot size: 30x30</p>
                         <p>Can climb: Yes</p>
-                        <p>New drive team: Yes</p>
-                        <p>Stat 5: Yes</p>
-                        <p>Stat 6: Yes</p>
+                        <p>Drive Team EXP: 3+</p>
+                        <p>Drive Train: Swerve</p>
+                        <p>Chamber Size: 2</p>
                     </div>
                 </div>
                 <hr id="mobileHR">
@@ -248,8 +258,9 @@
             </div>
             <hr>
         </section>
-        <section class="pullMaster">
-            <button id="pullMasterButton" onclick="pullAllMatchScouting()">PULL ALL DATA</button>
+        <section class="pulling buttons">
+            <button id="pullMasterButton" onclick="pullAllMatchScouting(); getHeatData();">PULL ALL DATA</button>
+            
         </section>
     </main>
 </div>

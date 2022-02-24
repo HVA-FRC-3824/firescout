@@ -28,11 +28,26 @@ function displayMatchTeams(match){
         document.getElementById(team).innerHTML = currentTeam.slice(3);
     });
     currentTeamsArr = bTeams.concat(rTeams);
+    console.log(currentTeamsArr);
     updateTeamMobile();
-    //TODO updateTeamDesktop();
+    updateTeamDesktop();
 }
 //runs populateMatches upon page load
 populateMatches();
+
+function updateTeamDesktop(){
+    console.log(currentTeamMobile);
+    if(currentTeamMobile == 0){
+        document.getElementById("team1").innerHTML = currentTeamsArr[0];
+        document.getElementById("team2").innerHTML = currentTeamsArr[1];
+        document.getElementById("team3").innerHTML = currentTeamsArr[2];
+    }else{
+        document.getElementById("team1").innerHTML = currentTeamsArr[3];
+        document.getElementById("team2").innerHTML = currentTeamsArr[4];
+        document.getElementById("team3").innerHTML = currentTeamsArr[5];
+    }
+
+}
 
 //cycles through the teams on mobile
 function changeTeams(isRightArrow){
@@ -56,7 +71,7 @@ function changeTeams(isRightArrow){
             }
         }
     }else{
-        //this code runs when trying to dislplay red alliance information, same as above but all array numebrs are +3
+        //this code runs when trying to display red alliance information, same as above but all array numebrs are +3
         //Yes you could just have two seperate arrays for red and blue but this array of all six will become useful when pulling from firebase
         if(isRightArrow){
             if(currentTeamMobile >= 5){
@@ -85,22 +100,19 @@ function updateTeamMobile(){
 
 //Changes all the html elements that need to ba changed from red to blue and back
 function changeColor(){
-    if(document.getElementById("teamColor").innerHTML == "Blue"){
+    if(document.getElementById("teamColor").innerHTML == "Blue" || document.getElementById("teamColorDesktop").innerHTML == "Blue"){
         document.getElementById("teamColor").innerHTML = "Red";
         document.getElementById("teamColorDesktop").style.color = "red";
         document.getElementById("teamColorDesktop").innerHTML = "Red";
         document.getElementById("teamColor").style.color = "red";
         document.getElementById("listViewMobile").style.backgroundColor = "#ed1c2385";
         document.getElementById("listViewDesktop").style.backgroundColor = "#ed1c2385";
-        //moves the "curson" in the array of current teams up three, effectively switching to red but keeping which team you are looking at
+        //moves the "cursor" in the array of current teams up three, effectively switching to red but keeping which team you are looking at
         //ex. if you are looking at blue 2 you will be looking at red 2
         currentTeamMobile = currentTeamMobile + 3;
         isBlueMobile = false;
         updateTeamMobile();
-        document.getElementById("team1").innerHTML == currentTeamsArr[0];
-        document.getElementById("team2").innerHTML == currentTeamsArr[1];
-        document.getElementById("team3").innerHTML == currentTeamsArr[2];
-        //TODO updateTeamsDesktop
+        updateTeamDesktop();
 
     }else{
         document.getElementById("teamColor").innerHTML = "Blue";
@@ -113,9 +125,6 @@ function changeColor(){
         currentTeamMobile = currentTeamMobile - 3;
         isBlueMobile = true;
         updateTeamMobile();
-        //TODO updateTeamsDesktop
-        document.getElementById("team1").innerHTML == currentTeamsArr[3];
-        document.getElementById("team2").innerHTML == currentTeamsArr[4];
-        document.getElementById("team3").innerHTML == currentTeamsArr[5];
+        updateTeamDesktop();
     }
 }
