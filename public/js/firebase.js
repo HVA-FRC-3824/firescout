@@ -330,7 +330,8 @@ function pushPitDictionary(teamNumber){
 */
 
 var robotData;
-function pullAllMatchScouting(){
+
+function pullAllMatchScouting() {
   document.getElementById('pullMasterButton').style.display = "none";
   console.log("pullingrobodata");
   return firebase.database().ref('matchScouting').once('value').then((snapshot) => {
