@@ -21,7 +21,7 @@ var pitDictionary = {
     "chamberSize": 8909889,
     "intakeLevel": '',
     "goalLevel": '',
-    "driverExp": 8909889,
+    "driverExp": '',
     "pitScouter": localStorage.getItem("username")
 }
 

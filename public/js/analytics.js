@@ -261,9 +261,8 @@ function generateFieldHeatmap(){
     heatmapInstanceFieldShots = h337.create(fieldConfig);
     heatmapInstanceFieldPickup = h337.create(fieldConfig);
 
-      //TWO HEATMAP INSTANCES CAN TARGET THE SAME ELEMENT
-      //USE THIS TO DO A SEPARATE SHOTS VS PICKUPS HEATMAP FOR EXTRA SICKNESS
-
+    //TWO HEATMAP INSTANCES CAN TARGET THE SAME ELEMENT
+    //USE THIS TO DO A SEPARATE SHOTS VS PICKUPS HEATMAP FOR EXTRA SICKNESS
 }
 
 function setFieldHeatData(robot){
@@ -373,6 +372,83 @@ function toggleLaunchesHeatmap(){
     }else{
         document.querySelector("#fieldHeatMap").getElementsByClassName('heatmap-canvas')[0].style.display = 'none';
     }
+}
+
+
+function displayPitData(selectedRobot) {
+    var robotWeight = 0;
+    var robotLang = 'None';
+    var driveTrain = 'None';
+    var width = 0;
+    var height = 0;
+    var climbAbility = 'No';
+    var climbTime = 0;
+    var climbLevel = 'Low';
+    var chamberSize = 'None';
+    var intakeLevel = 'None';
+    var goalLevel = 'Neither';
+    var driverExp = 0;
+    var scouter = 'None';
+    
+    Object.keys(pitScoutingDataMaster).forEach(robot => {
+        if (robot == selectedRobot) {
+            Object.keys(pitScoutingDataMaster[robot]["data"]).forEach(data => {
+                switch(data) {
+                    case 'chamberSize':
+                        chamberSize = pitScoutingDataMaster[robot]["data"][data];
+                        break;
+                    case 'climbAbility':
+                        climbAbility = pitScoutingDataMaster[robot]["data"][data];
+                        break;
+                    case 'climbLevel':
+                        driveTrain = pitScoutingDataMaster[robot]["data"][data];
+                        break;
+                    case 'climbTime':
+                        climbTime = pitScoutingDataMaster[robot]["data"][data];
+                        break;
+                    case 'driveTrain':
+                        driveTrain = pitScoutingDataMaster[robot]["data"][data];
+                        break;
+                    case 'driverExp':
+                        driverExp = pitScoutingDataMaster[robot]["data"][data];
+                        break;
+                    case 'goalLevel':
+                        goalLevel = pitScoutingDataMaster[robot]["data"][data];
+                        break;
+                    case 'height':
+                        height = pitScoutingDataMaster[robot]["data"][data];
+                        break;
+                    case 'intakeLevel':
+                        intakeLevel = pitScoutingDataMaster[robot]["data"][data];
+                        break;
+                    case 'pitScouter':
+                        scouter = pitScoutingDataMaster[robot]["data"][data];
+                        break;
+                    case 'robotLang':
+                        robotLang = pitScoutingDataMaster[robot]["data"][data];
+                        break;
+                    case 'robotWeight':
+                        robotWeight = pitScoutingDataMaster[robot]["data"][data];
+                        break;
+                    case 'width':
+                        width = pitScoutingDataMaster[robot]["data"][data];
+                        break;
+                }
+            })
+        }
+    });
+
+    document.getElementById('pitWeight').innerHTML = robotWeight + " lbs.";
+    document.getElementById('pitLang').innerHTML = robotLang;
+    document.getElementById('pitWidth').innerHTML = width + " in.";
+    document.getElementById('pitDriveTrain').innerHTML = driveTrain;
+    document.getElementById('pitHeight').innerHTML = height + " in.";
+    document.getElementById('pitClimb').innerHTML = climbAbility;
+    document.getElementById('pitTime').innerHTML = climbTime + " sec.";
+    document.getElementById('pitClimbLevel').innerHTML = climbLevel;
+    document.getElementById('pitChamber').innerHTML = chamberSize;
+    document.getElementById('pitGoalLevel').innerHTML = goalLevel;
+    document.getElementById('pitExpLevel').innerHTML = driverExp;
 }
 
 /*

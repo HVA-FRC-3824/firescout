@@ -602,6 +602,18 @@ function getHeatData(){
   });
 }
 
+//========================================PIT SCOUTING===================================//
+
+var pitScoutingDataMaster;
+
+function getPitData(){
+  var path = "pitScouting";
+  return firebase.database().ref(path).once('value').then((snapshot) => {
+    console.log(snapshot.val());
+    pitScoutingDataMaster = snapshot.val();
+  });
+}
+
 /*
  █████  ██████  ███    ███ ██ ███    ██     ██████   █████  ███    ██ ███████ ██      
 ██   ██ ██   ██ ████  ████ ██ ████   ██     ██   ██ ██   ██ ████   ██ ██      ██      
