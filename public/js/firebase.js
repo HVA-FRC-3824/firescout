@@ -156,7 +156,7 @@ setTimeout(function(){
     }
     document.getElementById("loginButton").innerHTML = "<i id='lilGuy' class='fas fa-user'></i> " + currUserCondensed;
     localStorage.setItem("username", currUser.displayName);
-    if(currUser.uid == 'qnlTm8LSbocnF57XDjqB6qxy7hJ2' || currUser.uid == 'ch2dqF6ZG6V6YgZoR21hzejsUC22' || currUser.uid == '7pIHSSKUgyRqXVz6MCbUMathVps1'){
+    if(currUser.uid == 'qnlTm8LSbocnF57XDjqB6qxy7hJ2' || currUser.uid == 'ch2dqF6ZG6V6YgZoR21hzejsUC22' || currUser.uid == '7pIHSSKUgyRqXVz6MCbUMathVps1' || auth.uid == 'nr5UJLwQoNPahFLeMkdwVnpfTD63' || auth.uid == 'vCQoJYBplYf5viQqgcVtTYWbPnp2'){
       try{
         document.getElementById('lilGuy').style.color = "red";
       }catch(e){
