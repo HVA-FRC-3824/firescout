@@ -389,9 +389,14 @@ function displayPitData(selectedRobot) {
     var goalLevel = 'Neither';
     var driverExp = 0;
     var scouter = 'None';
+    var dataPresent = false;
+
+    document.getElementById('pitTable').classList.remove('noData');
+    document.getElementById('noData').classList.remove('noData');
     
     Object.keys(pitScoutingDataMaster).forEach(robot => {
         if (robot == selectedRobot) {
+            dataPresent = true;
             Object.keys(pitScoutingDataMaster[robot]["data"]).forEach(data => {
                 switch(data) {
                     case 'chamberSize':
@@ -438,17 +443,22 @@ function displayPitData(selectedRobot) {
         }
     });
 
-    document.getElementById('pitWeight').innerHTML = robotWeight + " lbs.";
-    document.getElementById('pitLang').innerHTML = robotLang;
-    document.getElementById('pitWidth').innerHTML = width + " in.";
-    document.getElementById('pitDriveTrain').innerHTML = driveTrain;
-    document.getElementById('pitHeight').innerHTML = height + " in.";
-    document.getElementById('pitClimb').innerHTML = climbAbility;
-    document.getElementById('pitTime').innerHTML = climbTime + " sec.";
-    document.getElementById('pitClimbLevel').innerHTML = climbLevel;
-    document.getElementById('pitChamber').innerHTML = chamberSize;
-    document.getElementById('pitGoalLevel').innerHTML = goalLevel;
-    document.getElementById('pitExpLevel').innerHTML = driverExp;
+    if (dataPresent == true) {
+        document.getElementById('pitWeight').innerHTML = robotWeight + " lbs.";
+        document.getElementById('pitLang').innerHTML = robotLang;
+        document.getElementById('pitWidth').innerHTML = width + " in.";
+        document.getElementById('pitDriveTrain').innerHTML = driveTrain;
+        document.getElementById('pitHeight').innerHTML = height + " in.";
+        document.getElementById('pitClimb').innerHTML = climbAbility;
+        document.getElementById('pitTime').innerHTML = climbTime + " sec.";
+        document.getElementById('pitClimbLevel').innerHTML = climbLevel;
+        document.getElementById('pitChamber').innerHTML = chamberSize;
+        document.getElementById('pitGoalLevel').innerHTML = goalLevel;
+        document.getElementById('pitExpLevel').innerHTML = driverExp;
+    } else {
+        document.getElementById('pitTable').classList.add('noData');
+        document.getElementById('noData').classList.add('noData');
+    }
 }
 
 /*

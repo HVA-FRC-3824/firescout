@@ -318,7 +318,9 @@ main .pitData .container .pitScoutData{
     font-size: 20px;
     margin-left: auto;
     margin-right: auto;
-    display: grid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color:#0096ec;
     box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
     border-radius: 15px;
@@ -326,8 +328,16 @@ main .pitData .container .pitScoutData{
     padding:25px;
 }
 
-main .pitData .container .pitScoutData p{
-    padding-bottom: 10px;
+main .pitData .container .pitScoutData .pitTable.noData {
+    display: none;
+}
+
+main .pitData .container .pitScoutData .noDataMessage {
+    display: none;
+}
+
+main .pitData .container .pitScoutData .noDataMessage.noData {
+    display: inline;
 }
 
 /*

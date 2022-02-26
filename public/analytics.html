@@ -157,7 +157,7 @@
         <section class="desktopData">
             <div class="teamSelectDiv">
                 Select Team: 
-                <select class="teamSelect" id="teamNum"></select>
+                <select class="teamSelect" id="teamNum" onchange="displayPitData(document.getElementById('teamNum').value)"></select>
             </div>
             <section class="teamInsights">
                 <div class="container">
@@ -211,8 +211,8 @@
             <section class="pitData">
                 <div class="container">
                     <h1>Pit Scout Data</h1>
-                    <div class="pitScoutData">
-                        <table>
+                    <div class="pitScoutData" id="pitContainer">
+                        <table id="pitTable" class="pitTable">
                             <tr>
                                 <th>Category</th>
                                 <th>Value</th>
@@ -222,7 +222,7 @@
                                 <td id="pitWeight">125 lbs.</td>
                             </tr>
                             <tr>
-                                <td>Robot Language</td>
+                                <td>Language</td>
                                 <td id="pitLang">Java</td>
                             </tr>
                             <tr>
@@ -262,6 +262,8 @@
                                 <td id="pitExpLevel">Neither</td>
                             </tr>
                         </table>
+
+                        <p class="noDataMessage" id="noData">No data available.</p>
                     </div>
                 </div>
                 <hr id="mobileHR">
