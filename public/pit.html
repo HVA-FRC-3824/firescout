@@ -110,12 +110,15 @@
 
                     <!-- TODO: fix switch style and clean this up -->
                     <p id="climbAbility">Climb Ability:</p>
-                    <label class="switch" name="movedOffTarmac" id="climbAbilitySwitch">
-                        <input id="yellowCard" type="checkbox">
-                        <span class="slider"></span>
-                    </label>
+                    <div>
+                        <div class="climbAbilitySwitch">
+                            <input id="climbAbilitySwitch" name="climbSwitchName" type="checkbox" onclick="toggleGrey()">
+                            <label for="climbSwitchName"></label>
+                        </div>
+                    </div>
                     
-                    <div class="climbSpecifics">
+                    
+                    <div class="climbSpecifics" id="climbSpecifics">
                         <p id="timeLabel">Time Needed:</p>
                         <input id="climbTime" rows="1" type="number" max="4"></input>
                         <p id="barLabel">Bar</p>
@@ -129,7 +132,7 @@
                             <label for="barSelect3" class="radio__label label3">High</label>
                             <input type="radio" class="radio__input" value="Traversal" name="barSelect" id="barSelect4">
                             <label for="barSelect4" class="radio__label label4">Traversal</label>
-                            <input type="radio" class="radio__input" value="" name="barSelect" id="barSelect50"  checked="checked">
+                            <input type="radio" class="radio__input" value="N/A" name="barSelect" id="barSelect50"  checked="checked">
                             <label for="barSelect50" class="radio__label label50">nothing</label>
                         </div>
                     </div>
@@ -203,7 +206,10 @@
             </div>
 
             <div class="buttonContainer">
-                <button class="submit" id="submit" onclick="setPitData()">Submit</button>
+                <div>
+                    <button class="submit" id="submit" onclick="setPitData()">Submit</button>
+                    <button class="submit" id="submit" onclick="resetPitData()">Reset</button>
+                </div>
             </div>
         </div>
     </main>

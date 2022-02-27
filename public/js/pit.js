@@ -44,7 +44,7 @@ function setPitData() {
     pitDictionary["driveTrain"] = document.querySelector('input[name="trainSelect"]:checked').value;
     pitDictionary["width"] = parseInt(document.getElementById("widthInput").value);
     pitDictionary["height"] = parseInt(document.getElementById("heightInput").value);
-    pitDictionary["climbAbility"] = document.getElementById("yellowCard").value;
+    pitDictionary["climbAbility"] = document.getElementById("climbAbilitySwitch").checked;
     pitDictionary["climbTime"] = parseInt(document.getElementById("climbTime").value);
     pitDictionary["climbLevel"] = document.querySelector('input[name="barSelect"]:checked').value;
     pitDictionary["chamberSize"] = document.querySelector('input[name="chamberSelect"]:checked').value;
@@ -66,6 +66,10 @@ function setPitData() {
 
 function submitPitData() {
     errors = [];
+
+    if (!(document.getElementById('climbAbilitySwitch').checked)) {
+        pitDictionary["climbTime"] = 'N/A'
+    }
 
     if (isNaN(teamNumber)) {
         alert("Please input team number!");
@@ -127,3 +131,44 @@ function dropdown(id) {
     }
     dropdownElement.classList.toggle('active');
 }
+
+/* 
+███████ ██     ██ ██ ████████  ██████ ██   ██ 
+██      ██     ██ ██    ██    ██      ██   ██ 
+███████ ██  █  ██ ██    ██    ██      ███████ 
+     ██ ██ ███ ██ ██    ██    ██      ██   ██ 
+███████  ███ ███  ██    ██     ██████ ██   ██ 
+*/
+var tracker = 0;
+
+function toggleGrey() {
+    document.getElementById('climbSpecifics').classList.toggle('canClimb');
+}
+
+/* 
+██████  ███████ ███████ ███████ ████████ 
+██   ██ ██      ██      ██         ██    
+██████  █████   ███████ █████      ██    
+██   ██ ██           ██ ██         ██    
+██   ██ ███████ ███████ ███████    ██    
+*/
+
+function resetPitData() {
+    if (document.getElementById("climbAbilitySwitch").checked) {
+        toggleGrey();
+    }
+    document.getElementById("teamInput").value = '';
+    document.getElementById("massInput").value = '';
+    document.getElementById("langInput").value = '';
+    document.getElementById("trainSelect50").checked = true;
+    document.getElementById("widthInput").value = '';
+    document.getElementById("heightInput").value = '';
+    document.getElementById("climbAbilitySwitch").checked = false;
+    document.getElementById("climbTime").value = '';
+    document.getElementById("barSelect50").checked = true;
+    document.getElementById("chamberSelect50").checked = true;
+    document.getElementById("intakeSelect50").checked = true;
+    document.getElementById("goalSelect50").checked = true;
+    document.getElementById("expSelect50").checked = true;
+}
+
