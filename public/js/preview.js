@@ -10,6 +10,12 @@ function populateMatches(){
     }
 }   
 
+function refreshData(){
+    pullAllMatchScouting();
+    setTimeout(generateCATTScores(),750);
+    document.getElementById('refreshButton').style.diplay = "none";
+}
+
 //takes whichever match you have selected and populates the team numbers in the top section and makes a call to populate the bottom section with b1/blue
 function displayMatchTeams(match){
     matchInt = parseInt(match);
@@ -18,14 +24,38 @@ function displayMatchTeams(match){
     bTeams.forEach(currentTeam => {
         i++;
         team = "blueTeam" + i;
+        stats = "blueData" + i;
+        score = 0;
+        teamNumber = currentTeam.slice(3);
+        for (let i = 0; i < robotWorths.length; i++) { 
+            if (robotWorths[i]["team"] == currentTeam.slice(3)) {
+                score = robotWorths[i]["worth"];
+            }
+          }
         document.getElementById(team).innerHTML = currentTeam.slice(3);
+        if (score == 0){
+            score = "N/a";
+        }
+        document.getElementById(stats).innerHTML = score;
     });
     rTeams = filteredJames[matchInt - 1].alliances.red.team_keys;
     var i = 0;
     rTeams.forEach(currentTeam => {
         i++;
         team = "redTeam" + i;
+        stats = "redData" + i;
+        score = 0;
+        teamNumber = currentTeam.slice(3);
+        for (let i = 0; i < robotWorths.length; i++) { 
+            if (robotWorths[i]["team"] == currentTeam.slice(3)) {
+                score = robotWorths[i]["worth"];
+            }
+        }
         document.getElementById(team).innerHTML = currentTeam.slice(3);
+        if (score == 0){
+            score = "N/a";
+        }
+        document.getElementById(stats).innerHTML = score;
     });
     currentTeamsArr = bTeams.concat(rTeams);
     console.log(currentTeamsArr);
@@ -38,13 +68,13 @@ populateMatches();
 function updateTeamDesktop(){
     console.log(currentTeamMobile);
     if(currentTeamMobile == 0){
-        document.getElementById("team1").innerHTML = currentTeamsArr[0];
-        document.getElementById("team2").innerHTML = currentTeamsArr[1];
-        document.getElementById("team3").innerHTML = currentTeamsArr[2];
+        document.getElementById("team1").innerHTML = currentTeamsArr[0].slice(3);
+        document.getElementById("team2").innerHTML = currentTeamsArr[1].slice(3);
+        document.getElementById("team3").innerHTML = currentTeamsArr[2].slice(3);
     }else{
-        document.getElementById("team1").innerHTML = currentTeamsArr[3];
-        document.getElementById("team2").innerHTML = currentTeamsArr[4];
-        document.getElementById("team3").innerHTML = currentTeamsArr[5];
+        document.getElementById("team1").innerHTML = currentTeamsArr[3].slice(3);
+        document.getElementById("team2").innerHTML = currentTeamsArr[4].slice(3);
+        document.getElementById("team3").innerHTML = currentTeamsArr[5].slice(3);
     }
 
 }

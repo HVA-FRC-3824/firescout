@@ -63,9 +63,12 @@
         <a href="./analytics.html">Analytics</a>
         <a href="./preview.html">Preview</a>
     </nav>
-
+    
     <main>
         <section class="teams">
+            <div>
+                <button id="refeshbutton" role="button" onclick="refreshData()">Pull Data</button>
+            </div>
             <div class="teamDiv ">
                 <select onChange="displayMatchTeams((document.getElementById('match').value).slice(6))" name="match num" class="match-selector" id="match">
                     <option>Select Match</option>
@@ -74,7 +77,7 @@
                 <table>
                     </tr>
                         <th><u>Team#</u></th>
-                        <th><u>Avg. Score</u></th>
+                        <th><u>CATT Score</u></th>
                     </tr>
                     <tr>
                         <td id="blueTeam1">254</td> </td>
@@ -95,7 +98,7 @@
                 <table>
                     </tr>
                     <th><u>Team#</u></th>
-                    <th><u>Avg. Score</u></th>
+                    <th><u>CATT Score</u></th>
                     </tr>
                     <tr>
                         <td id="redTeam1">254</td>
@@ -149,12 +152,15 @@
                             </tr>
                             <tr>
                                 <td id="team1data1">data</td>
+                                <td>data</td>
                             </tr>
                             <tr>
                                 <td id="team1data2">data</td>
+                                <td>data</td>
                             </tr>
                             <tr>
                                 <td id="team1data3">data</td>
+                                <td>data</td>
                             </tr>
                         </table>
                     </div>
@@ -165,12 +171,15 @@
                             </tr>
                             <tr>
                                 <td id="team2data1">data</td>
+                                <td>data</td>
                             </tr>
                             <tr>
                                 <td id="team2data2">data</td>
+                                <td>data</td>
                             </tr>
                             <tr>
                                 <td id="team2data3">data</td>
+                                <td>data</td>
                             </tr>
                         </table>
                     </div>
@@ -181,12 +190,15 @@
                             </tr>
                             <tr>
                                 <td id="team3data1">data</td>
+                                <td>data</td>
                             </tr>
                             <tr>
                                 <td id="team3data2">data</td>
+                                <td>data</td>
                             </tr>
                             <tr>
                                 <td id="team3data3">data</td>
+                                <td>data</td>
                             </tr>
                         </table>
                     </div>

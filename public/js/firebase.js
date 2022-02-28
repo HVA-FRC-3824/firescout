@@ -156,7 +156,7 @@ setTimeout(function(){
     }
     document.getElementById("loginButton").innerHTML = "<i id='lilGuy' class='fas fa-user'></i> " + currUserCondensed;
     localStorage.setItem("username", currUser.displayName);
-    if(currUser.uid == 'qnlTm8LSbocnF57XDjqB6qxy7hJ2' || currUser.uid == 'ch2dqF6ZG6V6YgZoR21hzejsUC22' || currUser.uid == '7pIHSSKUgyRqXVz6MCbUMathVps1' || auth.uid == 'nr5UJLwQoNPahFLeMkdwVnpfTD63' || auth.uid == 'vCQoJYBplYf5viQqgcVtTYWbPnp2'){
+    if(currUser.uid == 'qnlTm8LSbocnF57XDjqB6qxy7hJ2' || currUser.uid == 'ch2dqF6ZG6V6YgZoR21hzejsUC22' || currUser.uid == '7pIHSSKUgyRqXVz6MCbUMathVps1' || currUser.uid == 'nr5UJLwQoNPahFLeMkdwVnpfTD63' || currUser.uid == 'vCQoJYBplYf5viQqgcVtTYWbPnp2'){
       try{
         document.getElementById('lilGuy').style.color = "red";
       }catch(e){
@@ -332,7 +332,11 @@ function pushPitDictionary(teamNumber){
 var robotData;
 
 function pullAllMatchScouting() {
-  document.getElementById('pullMasterButton').style.display = "none";
+  try{
+    document.getElementById('pullMasterButton').style.display = "none";
+  }catch(e){
+    console.log(e);
+  }
   console.log("pullingrobodata");
   return firebase.database().ref('matchScouting').once('value').then((snapshot) => {
     console.log(snapshot.val());
@@ -340,7 +344,9 @@ function pullAllMatchScouting() {
   });
 }
 
-function displayDataWheel(){
+var robotWorths = [{team:9999, worth:0}];
+
+function generateCATTScores(){
   //console.log(robotData);
   
   //variables to reset when recalculating he data wheel information
@@ -349,7 +355,6 @@ function displayDataWheel(){
   var highestAutoPointsAvg = 0;
   var highestTelePointsAvg = 0;
   var highestClimbPointsAvg = 0;
-  var robotWorths = [{team:9999, worth:0}];
 
 
   /* Change values of w to change the importance of each data
@@ -496,6 +501,9 @@ function displayDataWheel(){
 
   console.log(robotWorths);
 
+}
+
+function displayDataWheel() {
   document.getElementById("table1").querySelector("#t1").innerHTML = robotWorths[0].team;
   document.getElementById("table1").querySelector("#d1").innerHTML = robotWorths[0].worth;
   document.getElementById("table1").querySelector("#t2").innerHTML = robotWorths[1].team;
@@ -509,7 +517,6 @@ function displayDataWheel(){
   document.getElementById("table1").querySelector("#t6").innerHTML = robotWorths[5].team;
   document.getElementById("table1").querySelector("#d6").innerHTML = robotWorths[5].worth;
 }
-
 //=========================================================================DISPLAYS THE DATA TO THE RAW DATA INFO BOX//=========================================================================
 
 function displayRawData(){ 
