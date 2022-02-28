@@ -208,7 +208,7 @@ main .teamInsights .container h1{
     padding: 25px 0px 10px 0px;
 }
 
-main .teamInsights .container p{
+main .teamInsights .container td{
     padding-bottom: 10px;
 }
 
@@ -490,9 +490,6 @@ main .heatmap .container .toggle {
 #desktopHR{
     display: none;
 }
-
-
-
 
 /*
 ██████   █████  ██     ██     ██████   █████  ████████  █████  

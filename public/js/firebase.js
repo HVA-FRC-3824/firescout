@@ -500,7 +500,6 @@ function generateCATTScores(){
   robotWorths = robotWorths.reverse();
 
   console.log(robotWorths);
-
 }
 
 function displayDataWheel() {
@@ -519,7 +518,7 @@ function displayDataWheel() {
 }
 //=========================================================================DISPLAYS THE DATA TO THE RAW DATA INFO BOX//=========================================================================
 
-function displayRawData(){ 
+function displayRawDataAndQuickLook(){ 
   robot = document.getElementById("teamNum").value;
   var matchesPlayed = 0;
   var totalSuccessfulClimbs = 0;
@@ -586,6 +585,18 @@ function displayRawData(){
       teleLowerHubShots += robotData[robot][match][name]['data']['teleLowerHubAmount'];
     });
   });
+
+  //Generates the data for quick look
+  robotWorths.forEach(currRobot => {
+      if (currRobot["team"] == robot) {
+          cattScore = currRobot["worth"];
+      }
+  });
+  var climbPercent = totalSuccessfulClimbs / matchesPlayed;
+  var avgScore = ((teleUpperHubShots * 2) + (teleLowerHubShots) + (autoUpperHubShots * 4) + (autoLowerHubShots * 2)) / matchesPlayed;
+  var teleAcc = (teleUpperHubShots + teleLowerHubShots) / (teleUpperHubShots + teleLowerHubShots + teleMisses);
+  var autoAcc = (autoUpperHubShots + autoLowerHubShots) / (autoUpperHubShots + autoLowerHubShots + autoMisses);
+
   document.getElementById("matchesPlayed").innerHTML = "Matches Played: " + matchesPlayed;
   document.getElementById("totalSuccessfulClimbs").innerHTML = "Successful Climbs: " + totalSuccessfulClimbs;
   document.getElementById("failedClimbs").innerHTML = "Failed Climbs: " + failedClimbs;
@@ -595,8 +606,12 @@ function displayRawData(){
   document.getElementById("teleShotsTaken").innerHTML = "Tele Shots Taken: " + (teleUpperHubShots + teleLowerHubShots);
   document.getElementById("autoShotsTaken").innerHTML = "Auto Shots Taken: " + (autoUpperHubShots + autoLowerHubShots);
 
+  document.getElementById("quickCATTScore").innerHTML = cattScore;
+  document.getElementById("quickClimbPercent").innerHTML = Math.round(climbPercent*100);
+  document.getElementById("quickAvgScore").innerHTML = Math.round(avgScore*100);
+  document.getElementById("quickTeleAcc").innerHTML = Math.round(teleAcc*100);
+  document.getElementById("quickAutoAcc").innerHTML = Math.round(autoAcc*100);
 }
-
 
 //========================================HEATMAP========================================//
 

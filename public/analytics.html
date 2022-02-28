@@ -163,11 +163,28 @@
                 <div class="container">
                     <h1>Team Quick Look</h1>
                     <div class="quickLook">
-                        <p>CATT Score: 45</p>
-                        <p>Climb Percent: 97%</p>
-                        <p>Average Score: 75</p>
-                        <p>Tele Accuracy: 69%</p>
-                        <p>Auto Accuracy: 96%</p>
+                        <table>
+                            <tr>
+                                <td>CATT Score:</td>
+                                <td id="quickCATTScore">99</td>
+                            </tr>
+                            <tr>
+                                <td>Climb Percent:</td>
+                                <td id="quickClimbPercent">99</td>
+                            </tr>
+                            <tr>
+                                <td>Average Score:</td>
+                                <td id="quickAvgScore">99</td>
+                            </tr>
+                            <tr>
+                                <td>Tele Accuracy:</td>
+                                <td id="quickTeleAcc">99</td>
+                            </tr>
+                            <tr>
+                                <td>Auto Accuracy:</td>
+                                <td id="quickAutoAcc">99</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 <hr id="mobileHR">
@@ -305,7 +322,7 @@
             <hr>
         </section>
         <section class="pulling buttons">
-            <button id="pullMasterButton" onclick="pullAllMatchScouting(); getHeatData();">PULL ALL DATA</button>
+            <button id="pullMasterButton" onclick="pullAllMatchScouting(); getHeatData(); getPitData();">PULL ALL DATA</button>
             
         </section>
     </main>
