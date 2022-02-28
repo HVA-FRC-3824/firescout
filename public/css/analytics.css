@@ -315,7 +315,7 @@ main .pitData .container h1{
     padding-bottom: 1px;
 }
 
-main .pitData .container .pitScoutData{
+main .pitData .container .pitScoutData {
     font-size: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -327,6 +327,10 @@ main .pitData .container .pitScoutData{
     border-radius: 15px;
     width:320px;
     padding:25px;
+}
+
+main .pitData .container .pitScoutData .pitTable tr th {
+    padding-bottom: 10px;
 }
 
 main .pitData .container .pitScoutData .pitTable.noData {
