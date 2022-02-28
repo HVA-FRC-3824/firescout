@@ -143,6 +143,16 @@ var tracker = 0;
 
 function toggleGrey() {
     document.getElementById('climbSpecifics').classList.toggle('canClimb');
+
+    if (tracker == 0) {
+        tracker = 1;
+        return;
+    } else if (tracker == 1) {
+        tracker = 0;
+        document.getElementById("climbTime").value = '';
+        document.getElementById("barSelect50").checked = true;
+        return;
+    }
 }
 
 /* 

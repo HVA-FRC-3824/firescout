@@ -370,8 +370,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 .buttonContainer button {
     text-align: center;
     height: 60px;
-    width: 49%;
-    font-size: 24px;
+    width: 45%;
+    font-size: 16px;
     font-family: "Montserrat";
     font-weight: 400; 
     border: 0;
