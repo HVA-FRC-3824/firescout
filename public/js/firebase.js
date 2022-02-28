@@ -321,6 +321,18 @@ function pushPitDictionary(teamNumber){
   });
 }
 
+function pushPitImage(image) {
+  // Create a root reference
+  var storageRef = firebase.storage().ref();
+
+  // Create a reference to 'robot-images/[name of image file]'
+  var robotImagesRef = storageRef.child('robot-images/' + image["name"]);
+
+  robotImagesRef.put(image).then((snapshot) => {
+    console.log('Uploaded a blob or file!');
+  });
+}
+
 /*
  █████  ███    ██  █████  ██      ██    ██ ████████ ██  ██████ ███████ 
 ██   ██ ████   ██ ██   ██ ██       ██  ██     ██    ██ ██      ██      

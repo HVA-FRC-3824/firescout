@@ -76,15 +76,15 @@
                 </div>
                 <section>
                     <p id="teamNum">Team Number:</p>
-                    <input id="teamInput" rows="1" type="number" max="4"></input>
+                    <input id="teamInput" rows="1" type="text" max="4"></input>
                     <p id="botMass">Robot Weight:</p>
-                    <input id="massInput" rows="1" type="number" max="4"></input>
+                    <input id="massInput" rows="1" type="text" max="4"></input>
                     <p id="botLang">Robot Language:</p>
                     <input id="langInput" rows="1" type="text"></input>
                     <p id="widthLang">Robot Width:</p>
-                    <input id="widthInput" rows="1" type="number"></input>
+                    <input id="widthInput" rows="1" type="text"></input>
                     <p id="heightLang">Robot Height:</p>
-                    <input id="heightInput" rows="1" type="number"></input>
+                    <input id="heightInput" rows="1" type="text"></input>
                     <p id="botDrive">Drive Train:</p>
                     <div class="container-slider" id="trainSelector">
                         <input type="radio" class="radio__input" value="West Coast" name="trainSelect" id="trainSelect1">
@@ -107,8 +107,6 @@
                     <i class="fas fa-angle-down"></i>
                 </div>
                 <section class="climbSec">
-
-                    <!-- TODO: fix switch style and clean this up -->
                     <p id="climbAbility">Climb Ability:</p>
                     <div>
                         <div class="climbAbilitySwitch">
@@ -120,7 +118,7 @@
                     
                     <div class="climbSpecifics" id="climbSpecifics">
                         <p id="timeLabel">Time Needed:</p>
-                        <input id="climbTime" rows="1" type="number" max="4"></input>
+                        <input id="climbTime" rows="1" type="text" max="4"></input>
                         <p id="barLabel">Bar</p>
                         
                         <div class="container-slider" id="barSelector">
@@ -185,8 +183,8 @@
                 </section>
             </div>
 
-            <div class="window" id="misc" onclick="dropdown(4)">
-                <div class="title">
+            <div class="window" id="misc">
+                <div class="title" onclick="dropdown(4)">
                     <h2>Miscellaneous</h2>
                     <i class="fas fa-angle-down"></i>
                 </div>
@@ -202,6 +200,8 @@
                         <input type="radio" class="radio__input" value="" name="expSelect" id="expSelect50"  checked="checked">
                         <label for="expSelect50" class="radio__label label50">nothing</label>
                     </div>
+
+                    <input type="file" id="myImageId" accept="image/*;capture=camera">
                 </section>
             </div>
 

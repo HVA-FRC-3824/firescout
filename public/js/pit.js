@@ -9,6 +9,14 @@
 
 var teamNumber = -1;
 
+var botImage;
+
+var tempName;
+
+var fileType;
+
+var renamedbotImage;
+
 var pitDictionary = {
     "robotWeight": 8909889,
     "robotLang": '',
@@ -22,7 +30,8 @@ var pitDictionary = {
     "intakeLevel": '',
     "goalLevel": '',
     "driverExp": '',
-    "pitScouter": localStorage.getItem("username")
+    "pitScouter": localStorage.getItem("username"),
+    "imageFileType": ''
 }
 
 var keys = Object.keys(pitDictionary);
@@ -71,13 +80,29 @@ function submitPitData() {
         pitDictionary["climbTime"] = 'N/A'
     }
 
-    if (isNaN(teamNumber)) {
-        alert("Please input team number!");
-        return;
-    } else if (teamNumber > 8898 || teamNumber <= 0) {
+    if (isNaN(teamNumber) || (teamNumber > 8898 || teamNumber <= 0)) {
         alert("Please input valid team number!");
         return;
+    } else if (isNaN(pitDictionary["robotWeight"])) {
+        alert("Please input valid robot weight!");
+        return;
+    } else if (isNaN(pitDictionary["width"])) {
+        alert("Please input valid robot width!");
+        return;
+    } else if (isNaN(pitDictionary["height"])) {
+        alert("Please input valid robot height!");
+        return;
+    } else if (isNaN(pitDictionary["climbTime"])) {
+        alert("Please input valid robot weight!");
+        return;
     }
+
+    var preservedObject = document.getElementById('myImageId').files[0];
+    tempName = document.getElementById('myImageId').files[0]["name"];
+    fileType = tempName.split(".", 2);
+    pitDictionary["imageFileType"] = fileType[1];
+    renamedbotImage = new File([preservedObject], teamNumber + "." + fileType[1]);
+    console.log(renamedbotImage);
 
     for (let i = 0; i < Object.keys(pitDictionary).length-1; i++) {
         if (typeof(pitDictionary[keys[i]]) == 'string') {
@@ -98,6 +123,7 @@ function submitPitData() {
     } else {
         alert("Success");
         pushPitDictionary(teamNumber);
+        pushPitImage(renamedbotImage);
     }
 }
 
@@ -182,3 +208,14 @@ function resetPitData() {
     document.getElementById("expSelect50").checked = true;
 }
 
+/* document.querySelector('input[name="myImage"]').addEventListener('change', function() {
+    if (this.files && this.files[0]) {
+        var img = document.querySelector('img');
+        img.onload = () => {
+            URL.revokeObjectURL(img.src);  // no longer needed, free memory
+        }
+
+        img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+    }
+});
+*/
