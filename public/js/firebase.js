@@ -648,6 +648,25 @@ function getPitData(){
   });
 }
 
+function pullPitImage(robotNum, fileType) {
+  var path = 'robot-images/' + robotNum + '.' + fileType;
+
+  firebase.storage().ref().child(path).getDownloadURL().then((url) => {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = (event) => {
+      var blob = xhr.response;
+    };
+    xhr.open('GET', url);
+    xhr.send();
+
+    return url;
+  })
+  .catch((error) => {
+    alert(error.message);
+  });
+}
+
 /*
  █████  ██████  ███    ███ ██ ███    ██     ██████   █████  ███    ██ ███████ ██      
 ██   ██ ██   ██ ████  ████ ██ ████   ██     ██   ██ ██   ██ ████   ██ ██      ██      

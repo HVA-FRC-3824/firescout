@@ -590,6 +590,38 @@ main #pullMasterButton{
 }
 
 /*
+██ ███    ███  █████   ██████  ███████     ██       ██████   █████  ██████  
+██ ████  ████ ██   ██ ██       ██          ██      ██    ██ ██   ██ ██   ██ 
+██ ██ ████ ██ ███████ ██   ███ █████       ██      ██    ██ ███████ ██   ██ 
+██ ██  ██  ██ ██   ██ ██    ██ ██          ██      ██    ██ ██   ██ ██   ██ 
+██ ██      ██ ██   ██  ██████  ███████     ███████  ██████  ██   ██ ██████  
+*/
+
+.imgDisplay {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.imageDisplay {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    border-radius: 7px;
+    height: 300px;
+    width: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: 3px dashed #bbb;
+}
+
+/*
 ████████  █████  ██████  ██      ███████ ████████     ███████ ██ ███████ ███████ 
    ██    ██   ██ ██   ██ ██      ██         ██        ██      ██    ███  ██      
    ██    ███████ ██████  ██      █████      ██        ███████ ██   ███   █████   

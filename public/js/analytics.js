@@ -438,6 +438,9 @@ function displayPitData(selectedRobot) {
                     case 'width':
                         width = pitScoutingDataMaster[robot]["data"][data];
                         break;
+                    case 'imageFileType':
+                        fileType = pitScoutingDataMaster[robot]["data"][data];
+                        break;
                 }
             })
         }
@@ -455,10 +458,18 @@ function displayPitData(selectedRobot) {
         document.getElementById('pitChamber').innerHTML = chamberSize;
         document.getElementById('pitGoalLevel').innerHTML = goalLevel;
         document.getElementById('pitExpLevel').innerHTML = driverExp;
+
+        displayPitImage(selectedRobot, fileType);
     } else {
         document.getElementById('pitTable').classList.add('noData');
         document.getElementById('noData').classList.add('noData');
     }
+}
+
+function displayPitImage(selectedRobot, fileType) {
+    var image = pullPitImage(selectedRobot, fileType);
+
+    document.getElementById('pitImageViewer').style.backgroundImage = image;
 }
 
 /*
