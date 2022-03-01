@@ -502,7 +502,14 @@ function generateCATTScores(){
 
     cattScore = (climbPercentW * (currentRobotClimbs/currentRobotMatches)) + (teleAccuracyW * (currentRobotTeleShotsMade/(currentRobotTeleShotsMade + currentRobotTeleMisses))) + (autoAccuracyW * (currentRobotAutoShotsMade/(currentRobotAutoShotsMade + currentRobotAutoMisses))) + (teleShotsMadeW * ((currentRobotTeleShotsMade/currentRobotMatches)/highestTeleShotsMadeAvg)) + (autoShotsMadeW * ((currentRobotAutoShotsMade/currentRobotMatches)/highestAutoShotsMadeAvg)) + (telePointsAvgW * ((currentRobotTelePointsTotal/currentRobotMatches)/highestTelePointsAvg)) + (autoPointsAvgW * ((currentRobotAutoPointsTotal/currentRobotMatches)/highestAutoPointsAvg)) + (tarmacPercentW * (currentRobotTarmacLeaves/currentRobotMatches)) + (climbPointsAvgW * ((currentRobotClimbPointsTotal/currentRobotMatches)/highestClimbPointsAvg));
     cattScore = Math.round(cattScore * 100);
-    robotWorths.push({team:robot, worth:cattScore});
+    /*
+    █████  ██████  ██████  ███████ ███    ██ ██████      ███    ███  █████  ███████ ████████ ███████ ██████       █████  ██████  ██████   █████  ██    ██ 
+    ██   ██ ██   ██ ██   ██ ██      ████   ██ ██   ██     ████  ████ ██   ██ ██         ██    ██      ██   ██     ██   ██ ██   ██ ██   ██ ██   ██  ██  ██  
+    ███████ ██████  ██████  █████   ██ ██  ██ ██   ██     ██ ████ ██ ███████ ███████    ██    █████   ██████      ███████ ██████  ██████  ███████   ████   
+    ██   ██ ██      ██      ██      ██  ██ ██ ██   ██     ██  ██  ██ ██   ██      ██    ██    ██      ██   ██     ██   ██ ██   ██ ██   ██ ██   ██    ██    
+    ██   ██ ██      ██      ███████ ██   ████ ██████      ██      ██ ██   ██ ███████    ██    ███████ ██   ██     ██   ██ ██   ██ ██   ██ ██   ██    ██    
+    */                                                                                                                                      
+    robotWorths.push({team:robot, worth:cattScore, averageScore:(currentRobotTelePointsTotal + currentRobotAutoPointsTotal)/currentRobotMatches, climbPercent:currentRobotClimbs/currentRobotMatches, teleAccuracy:currentRobotTeleShotsMade/(currentRobotTeleShotsMade + currentRobotTeleMisses),autoAccuracy:currentRobotAutoShotsMade/(currentRobotAutoShotsMade+currentRobotAutoMisses),avgClimbPoints:(currentRobotClimbPointsTotal/currentRobotMatches)});
   });
   /* Runs after running through all data for All robots */
   //console.log(robotWorths)
@@ -515,6 +522,7 @@ function generateCATTScores(){
 }
 
 function displayDataWheel() {
+  generateCATTScores()
   document.getElementById("table1").querySelector("#t1").innerHTML = robotWorths[0].team;
   document.getElementById("table1").querySelector("#d1").innerHTML = robotWorths[0].worth;
   document.getElementById("table1").querySelector("#t2").innerHTML = robotWorths[1].team;
