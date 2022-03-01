@@ -92,8 +92,8 @@ function submitPitData() {
     } else if (isNaN(pitDictionary["height"])) {
         alert("Please input valid robot height!");
         return;
-    } else if (isNaN(pitDictionary["climbTime"])) {
-        alert("Please input valid robot weight!");
+    } else if (document.getElementById("climbAbilitySwitch").checked && isNaN(pitDictionary["climbTime"])) {
+        alert("Please input valid robot climb time!");
         return;
     }
 
@@ -193,6 +193,9 @@ function resetPitData() {
     if (document.getElementById("climbAbilitySwitch").checked) {
         toggleGrey();
     }
+    document.getElementById('myImageId').value = '';
+    document.getElementById('noImageText').style.display = 'block';
+    document.getElementById('imageViewer').style.backgroundImage = 'none';
     document.getElementById("teamInput").value = '';
     document.getElementById("massInput").value = '';
     document.getElementById("langInput").value = '';
@@ -208,14 +211,12 @@ function resetPitData() {
     document.getElementById("expSelect50").checked = true;
 }
 
-/* document.querySelector('input[name="myImage"]').addEventListener('change', function() {
+document.getElementById('myImageId').addEventListener('change', function() {
     if (this.files && this.files[0]) {
-        var img = document.querySelector('img');
-        img.onload = () => {
-            URL.revokeObjectURL(img.src);  // no longer needed, free memory
-        }
+        var img = document.getElementById('imageViewer');
 
-        img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+        document.getElementById('noImageText').style.display = 'none';
+
+        img.style.backgroundImage = "url(\"" + URL.createObjectURL(this.files[0]) + "\")"; // set src to blob url
     }
 });
-*/

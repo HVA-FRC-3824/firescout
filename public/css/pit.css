@@ -106,7 +106,7 @@ main .container #cargoInfo.active {
 }
 
 main .container #misc.active {
-    height: 229px;
+    height: 645px;
 }
 
 /*
@@ -458,6 +458,50 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 /*
+██ ███    ███  █████   ██████  ███████     ██    ██ ██████  ██       ██████   █████  ██████  
+██ ████  ████ ██   ██ ██       ██          ██    ██ ██   ██ ██      ██    ██ ██   ██ ██   ██ 
+██ ██ ████ ██ ███████ ██   ███ █████       ██    ██ ██████  ██      ██    ██ ███████ ██   ██ 
+██ ██  ██  ██ ██   ██ ██    ██ ██          ██    ██ ██      ██      ██    ██ ██   ██ ██   ██ 
+██ ██      ██ ██   ██  ██████  ███████      ██████  ██      ███████  ██████  ██   ██ ██████  
+*/
+
+.uploadContainer {
+    display: flex;
+    text-align: center;
+}
+
+#myImageId {
+    display: none;
+}
+
+#imageLabel {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 20px 30px;
+    font-weight: 400;
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+#imageViewer {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    border-radius: 7px;
+    height: 300px;
+    width: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: 3px dashed #bbb;
+}
+
+/*
  █████  ██      ████████      ██████  ██████  ██ ██████  
 ██   ██ ██         ██        ██       ██   ██ ██ ██   ██ 
 ███████ ██         ██        ██   ███ ██████  ██ ██   ██ 
@@ -489,7 +533,12 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     }
 
     main .container #misc.active {
-        height: 234px;
+        height: 600px;
+    }
+
+    #imageViewer {
+        height: 250px;
+        width: 250px;
     }
 
     main .container .window section p {
