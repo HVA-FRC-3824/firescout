@@ -265,7 +265,7 @@ main .graphs .container canvas{
 main .graphs .container p{
     display: inline-block;
     cursor: pointer;
-    font-size: 28px;
+    font-size: 32px;
     padding:0px 30px;
 }
 
@@ -287,8 +287,12 @@ main .graphs .container #selectors{
     width: fit-content;
 }
 
-main .graphs .container select{
-    font-size: 20px;
+main .graphs .container .teamSelect{
+    width: 150px;
+}
+
+main .graphs .container input{
+    font-size: 14px;
     margin-left:auto;
     margin-right:auto;
     margin-bottom: 12px;
@@ -739,6 +743,11 @@ main #pullMasterButton{
 
     #desktopHR{
         display: block;
+    }
+
+    /* graphs  */
+    main .graphs .container .teamSelect{
+        width: 75px;
     }
 
     /* 

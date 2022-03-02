@@ -540,6 +540,7 @@ function generateAllTheThings(){
   setTimeout(() => {
     generateFieldHeatmap();
   }, 250);
+
 }
 
 function displayAllTheThings(){
@@ -585,6 +586,11 @@ function displayQuickLook(robot){
     document.getElementById("quickTeleAcc").innerHTML = Math.round(robotInfo['teleAccuracy']);
     document.getElementById("quickAutoAcc").innerHTML = Math.round(robotInfo['autoAccuracy']);
   } catch (error) {
+    /*
+    
+      Sets each data point to NO DATA so that the box doesn't change size because that looks very bad
+
+    */
     document.getElementById("quickCATTScore").innerHTML = "NO DATA";
     document.getElementById("quickClimbPercent").innerHTML = "NO DATA";
     document.getElementById("quickAvgScore").innerHTML = "NO DATA";

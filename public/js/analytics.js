@@ -153,53 +153,93 @@ window.changeDataSlide = changeDataSlide;
  ██████  ██   ██ ██   ██ ██      ██   ██ 
  */
 
-var xValues = [1,5,12,13,16,19,40,46,50,52,56];
-var yValues = [7,8,12,15,23,20,19,22];
-var yValues2 = [20,23,29,25,28];
+function generateGraph(robotsArr,statToDisplay){
+    var matchesArr = [];
+    var scoresArr = [];
+    robotsArr.forEach(robot => {
+        matchesArr = [];
+        scoresArr = [];
+        Object.keys(robotData[robot]).forEach(match => {
+            // basically getting per match data which is something we do not do elsewhere and will not need to do elsewhere
+            matchesArr.push(match);
+            Object.keys(robotData[robot][match]).forEach(name => {
+                switch (robotData[robot][match][name]['data']['levelClimbed']) {
+                    case 'traversal':
+                      climbPoints = 15;
+                      break;
+                    case 'high':
+                      climbPoints = 10;
+                      break;
+                    case 'middle':
+                      climbPoints = 6;
+                      break;
+                    case 'low':
+                      climbPoints = 4;
+                      break;
+                    default:
+                      climbPoints = 0;
+                      break;
+                  }
+            
+                  var currentRobotScore = 
+                  (robotData[robot][match][name]['data']['autoUpperHubAmount'] * 4) + 
+                  (robotData[robot][match][name]['data']['autoLowerHubAmount'] * 2) +
+                  (robotData[robot][match][name]['data']['teleUpperHubAmount'] * 2) +
+                  (robotData[robot][match][name]['data']['teleLowerHubAmount']) +
+                  climbPoints;
+                  scoresArr.push(currentRobotScore);
+            });
+        });
+    });
 
-new Chart("myChart", {
-  type: "line",
-  data: {
-    labels: xValues,
-    datasets: [{
-        label: "auto Accuracy",
-        data: yValues,
-        backgroundColor: "rgba(50,120,0,0.5)",
-        borderColor: "rgba(0,0,0,1)",
-        borderWidth: "1",
-        fill: false,
-        lineTension: 0.4,
-        pointBackgroundColor:"rgba(0,250,0,1)",
-        pointBorderColor:"rgba(255,0,255,1)",
-        pointBorderWidth: 2,
-        pointHitRadius: 20,
-        pointHoverBackgroundColor:"rbga(0,0,0,0.5)"
-    },{
-        label: "tele Accuracy",
-        data: yValues2,
-        backgroundColor: "rgba(50,120,0,0.5)",
-        borderColor: "rgba(255,0,0,1)",
-        borderWidth: "1",
-        fill: false,
-        lineTension: 0.4,
-        pointBackgroundColor:"rgba(0,250,0,1)",
-        pointBorderColor:"rgba(255,0,255,1)",
-        pointBorderWidth: 2,
-        pointHitRadius: 20,
-        pointHoverBackgroundColor:"rbga(0,0,0,0.5)"
-    }]
-    },
-    options:{
+    var xValues = matchesArr;
+    var yValues = scoresArr;
+    var yValues2 = [20,23,29,25,28];
+    new Chart("myChart", {
+        type: "line",
+        data: {
+          labels: xValues,
+          datasets: [{
+              label: "Score",
+              data: yValues,
+              backgroundColor: "rgba(50,120,0,0.5)",
+              borderColor: "rgba(0,0,0,1)",
+              borderWidth: "1",
+              fill: false,
+              lineTension: 0.4,
+              pointBackgroundColor:"rgba(0,250,0,1)",
+              pointBorderColor:"rgba(255,0,255,1)",
+              pointBorderWidth: 2,
+              pointHitRadius: 20,
+              pointHoverBackgroundColor:"rbga(0,0,0,0.5)"
+          },{
+              label: "dummy data",
+              data: yValues2,
+              backgroundColor: "rgba(50,120,0,0.5)",
+              borderColor: "rgba(255,0,0,1)",
+              borderWidth: "1",
+              fill: false,
+              lineTension: 0.4,
+              pointBackgroundColor:"rgba(0,250,0,1)",
+              pointBorderColor:"rgba(255,0,255,1)",
+              pointBorderWidth: 2,
+              pointHitRadius: 20,
+              pointHoverBackgroundColor:"rbga(0,0,0,0.5)"
+          }]
+          },
+          options:{
+      
+          }
+      });
+}
 
-    }
-});
 
 var graphTeamsNum = 1;
 
 function addTeam(){
     if(graphTeamsNum < 3){
         graphTeamsNum += 1;
-        document.getElementById("selectors").insertAdjacentHTML('beforeend',"<select class='teamSelect' id='selector" + graphTeamsNum +"'><option>3824</option><option>279</option><option>254</option><option>4020</option></select>");
+        document.getElementById("selectors").insertAdjacentHTML('beforeend',"<input placeholder='Team' class='teamSelect' id='selector" + graphTeamsNum +"'></input>");
     }
 }
 
