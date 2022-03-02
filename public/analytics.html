@@ -157,13 +157,14 @@
         <section class="desktopData">
             <div class="teamSelectDiv">
                 Select Team: 
-                <select class="teamSelect" id="teamNum" onchange="displayPitData(document.getElementById('teamNum').value)"></select>
+                <select class="teamSelect" id="teamNum" onchange="displayAllTheThings();"></select>
+                <button onclick="generateAllTheThings()">Generate All the Things</button>
             </div>
             <section class="teamInsights">
                 <div class="container">
                     <h1>Team Quick Look</h1>
                     <div class="quickLook">
-                        <table>
+                        <table id="quickLookTable">
                             <tr>
                                 <td>CATT Score:</td>
                                 <td id="quickCATTScore">99</td>

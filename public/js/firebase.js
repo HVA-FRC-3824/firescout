@@ -362,7 +362,7 @@ function pullAllMatchScouting() {
 
 var robotWorths = [{team:9999, worth:0}];
 
-function generateCATTScores(){
+function generateCATTScores(){ //TODO rename this function everywhere so it is more general, it now generates the big useful array
   //console.log(robotData);
   
   //variables to reset when recalculating he data wheel information
@@ -504,10 +504,20 @@ function generateCATTScores(){
     tarmacPercentW = 0.01622,
     climbPointsAvgW = 0.176305;
 
-    cattScore = (climbPercentW * (currentRobotClimbs/currentRobotMatches)) + (teleAccuracyW * (currentRobotTeleShotsMade/(currentRobotTeleShotsMade + currentRobotTeleMisses))) + (autoAccuracyW * (currentRobotAutoShotsMade/(currentRobotAutoShotsMade + currentRobotAutoMisses))) + (teleShotsMadeW * ((currentRobotTeleShotsMade/currentRobotMatches)/highestTeleShotsMadeAvg)) + (autoShotsMadeW * ((currentRobotAutoShotsMade/currentRobotMatches)/highestAutoShotsMadeAvg)) + (telePointsAvgW * ((currentRobotTelePointsTotal/currentRobotMatches)/highestTelePointsAvg)) + (autoPointsAvgW * ((currentRobotAutoPointsTotal/currentRobotMatches)/highestAutoPointsAvg)) + (tarmacPercentW * (currentRobotTarmacLeaves/currentRobotMatches)) + (climbPointsAvgW * ((currentRobotClimbPointsTotal/currentRobotMatches)/highestClimbPointsAvg));
+    cattScore = 
+      (climbPercentW * (currentRobotClimbs/currentRobotMatches)) + 
+      (teleAccuracyW * (currentRobotTeleShotsMade/(currentRobotTeleShotsMade + currentRobotTeleMisses))) + 
+      (autoAccuracyW * (currentRobotAutoShotsMade/(currentRobotAutoShotsMade + currentRobotAutoMisses))) + 
+      (teleShotsMadeW * ((currentRobotTeleShotsMade/currentRobotMatches)/highestTeleShotsMadeAvg)) + 
+      (autoShotsMadeW * ((currentRobotAutoShotsMade/currentRobotMatches)/highestAutoShotsMadeAvg)) + 
+      (telePointsAvgW * ((currentRobotTelePointsTotal/currentRobotMatches)/highestTelePointsAvg)) + 
+      (autoPointsAvgW * ((currentRobotAutoPointsTotal/currentRobotMatches)/highestAutoPointsAvg)) + 
+      (tarmacPercentW * (currentRobotTarmacLeaves/currentRobotMatches)) + 
+      (climbPointsAvgW * ((currentRobotClimbPointsTotal/currentRobotMatches)/highestClimbPointsAvg));
+
     cattScore = Math.round(cattScore * 100);
     /*
-    █████  ██████  ██████  ███████ ███    ██ ██████      ███    ███  █████  ███████ ████████ ███████ ██████       █████  ██████  ██████   █████  ██    ██ 
+     █████  ██████  ██████  ███████ ███    ██ ██████      ███    ███  █████  ███████ ████████ ███████ ██████       █████  ██████  ██████   █████  ██    ██ 
     ██   ██ ██   ██ ██   ██ ██      ████   ██ ██   ██     ████  ████ ██   ██ ██         ██    ██      ██   ██     ██   ██ ██   ██ ██   ██ ██   ██  ██  ██  
     ███████ ██████  ██████  █████   ██ ██  ██ ██   ██     ██ ████ ██ ███████ ███████    ██    █████   ██████      ███████ ██████  ██████  ███████   ████   
     ██   ██ ██      ██      ██      ██  ██ ██ ██   ██     ██  ██  ██ ██   ██      ██    ██    ██      ██   ██     ██   ██ ██   ██ ██   ██ ██   ██    ██    
@@ -525,8 +535,22 @@ function generateCATTScores(){
   console.log(robotWorths);
 }
 
+function generateAllTheThings(){
+  generateCATTScores();
+  setTimeout(() => {
+    generateFieldHeatmap();
+  }, 250);
+}
+
+function displayAllTheThings(){
+  selectedTeam = document.getElementById('teamNum').value;
+  displayPitData(selectedTeam);
+  displayQuickLook(selectedTeam); 
+  setFieldHeatData(selectedTeam);
+  displayQuickLook(selectedTeam);
+}
+
 function displayDataWheel() {
-  generateCATTScores()
   document.getElementById("table1").querySelector("#t1").innerHTML = robotWorths[0].team;
   document.getElementById("table1").querySelector("#d1").innerHTML = robotWorths[0].worth;
   document.getElementById("table1").querySelector("#t2").innerHTML = robotWorths[1].team;
@@ -540,10 +564,37 @@ function displayDataWheel() {
   document.getElementById("table1").querySelector("#t6").innerHTML = robotWorths[5].team;
   document.getElementById("table1").querySelector("#d6").innerHTML = robotWorths[5].worth;
 }
-//=========================================================================DISPLAYS THE DATA TO THE RAW DATA INFO BOX//=========================================================================
+//=========================================================================DISPLAYS THE DATA TO THE quick look DATA INFO BOX//=========================================================================
 
-function displayRawDataAndQuickLook(){ 
-  robot = document.getElementById("teamNum").value;
+function displayQuickLook(robot){ 
+  
+  //Generates the data for quick look
+  robotWorths.forEach(currRobot => {
+      if (currRobot["team"] == robot) {
+          cattScore = currRobot["worth"];
+      }
+  });
+  
+  robotInfoIndex = robotWorths.findIndex(x => x.team == robot);
+  robotInfo = robotWorths[robotInfoIndex];
+
+  try {
+    document.getElementById("quickCATTScore").innerHTML = robotInfo['worth'];
+    document.getElementById("quickClimbPercent").innerHTML = Math.round(robotInfo['climbPercent']);
+    document.getElementById("quickAvgScore").innerHTML = Math.round(robotInfo['averageScore']);
+    document.getElementById("quickTeleAcc").innerHTML = Math.round(robotInfo['teleAccuracy']);
+    document.getElementById("quickAutoAcc").innerHTML = Math.round(robotInfo['autoAccuracy']);
+  } catch (error) {
+    document.getElementById("quickCATTScore").innerHTML = "NO DATA";
+    document.getElementById("quickClimbPercent").innerHTML = "NO DATA";
+    document.getElementById("quickAvgScore").innerHTML = "NO DATA";
+    document.getElementById("quickTeleAcc").innerHTML = "NO DATA";
+    document.getElementById("quickAutoAcc").innerHTML = "NO DATA";
+  }
+  
+}
+
+function displayRawData(robot){
   var matchesPlayed = 0;
   var totalSuccessfulClimbs = 0;
   var failedClimbs = 0;
@@ -568,7 +619,7 @@ function displayRawDataAndQuickLook(){
         failedClimbs++;
       }
 
-      //Calculates the highest scoring match
+      //Calculates the highest scoring match for this robot
       var climbPoints = 0;
       switch (robotData[robot][match][name]['data']['levelClimbed']) {
         case 'traversal':
@@ -610,17 +661,6 @@ function displayRawDataAndQuickLook(){
     });
   });
 
-  //Generates the data for quick look
-  robotWorths.forEach(currRobot => {
-      if (currRobot["team"] == robot) {
-          cattScore = currRobot["worth"];
-      }
-  });
-  var climbPercent = totalSuccessfulClimbs / matchesPlayed;
-  var avgScore = ((teleUpperHubShots * 2) + (teleLowerHubShots) + (autoUpperHubShots * 4) + (autoLowerHubShots * 2)) / matchesPlayed;
-  var teleAcc = (teleUpperHubShots + teleLowerHubShots) / (teleUpperHubShots + teleLowerHubShots + teleMisses);
-  var autoAcc = (autoUpperHubShots + autoLowerHubShots) / (autoUpperHubShots + autoLowerHubShots + autoMisses);
-
   document.getElementById("matchesPlayed").innerHTML = "Matches Played: " + matchesPlayed;
   document.getElementById("totalSuccessfulClimbs").innerHTML = "Successful Climbs: " + totalSuccessfulClimbs;
   document.getElementById("failedClimbs").innerHTML = "Failed Climbs: " + failedClimbs;
@@ -629,13 +669,8 @@ function displayRawDataAndQuickLook(){
   document.getElementById("autoMisses").innerHTML = "Auto Misses: " + autoMisses;
   document.getElementById("teleShotsTaken").innerHTML = "Tele Shots Taken: " + (teleUpperHubShots + teleLowerHubShots);
   document.getElementById("autoShotsTaken").innerHTML = "Auto Shots Taken: " + (autoUpperHubShots + autoLowerHubShots);
-
-  document.getElementById("quickCATTScore").innerHTML = cattScore;
-  document.getElementById("quickClimbPercent").innerHTML = Math.round(climbPercent*100);
-  document.getElementById("quickAvgScore").innerHTML = Math.round(avgScore*100);
-  document.getElementById("quickTeleAcc").innerHTML = Math.round(teleAcc*100);
-  document.getElementById("quickAutoAcc").innerHTML = Math.round(autoAcc*100);
 }
+
 
 //========================================HEATMAP========================================//
 
