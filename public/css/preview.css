@@ -452,10 +452,23 @@ main .footer .container {
     }
 
     main .quickAnalyticsDesktop .listView .teamData{
-        margin-left: 70px;
-        margin-right: 70px;
+        margin-left: 0px;
+        margin-right: 0px;
+        display: inline-block;
     }
     main .quickAnalyticsDesktop .listView .teamData td,th{
         padding:20px;
+    }
+    main .quickAnalyticsDesktop .listView .teamStats{
+        margin-left: 0px;
+        margin-right: 0px;
+        display: inline-block;
+    }
+    main .quickAnalyticsDesktop .listView .teamStats td,th{
+        padding:20px;
+    }
+    main .quickAnalyticsDesktop .listView .teamStats td{
+        padding:20px;
+        font-size: 24px;
     }
 }
