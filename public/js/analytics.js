@@ -458,18 +458,14 @@ function displayPitData(selectedRobot) {
         document.getElementById('pitChamber').innerHTML = chamberSize;
         document.getElementById('pitGoalLevel').innerHTML = goalLevel;
         document.getElementById('pitExpLevel').innerHTML = driverExp;
-
-        displayPitImage(selectedRobot, fileType);
+        
+        pullPitImage(selectedRobot, fileType);
     } else {
         document.getElementById('pitTable').classList.add('noData');
         document.getElementById('noData').classList.add('noData');
+
+        pullPitImage(selectedRobot, fileType);
     }
-}
-
-function displayPitImage(selectedRobot, fileType) {
-    var image = pullPitImage(selectedRobot, fileType);
-
-    document.getElementById('pitImageViewer').style.backgroundImage = image;
 }
 
 /*

@@ -321,14 +321,18 @@ function pushPitDictionary(teamNumber){
   });
 }
 
-function pushPitImage(image) {
+function pushPitImage(image, fileType) {
   // Create a root reference
   var storageRef = firebase.storage().ref();
+
+  var metadata = {
+    contentType: "image/" + fileType,
+  };
 
   // Create a reference to 'robot-images/[name of image file]'
   var robotImagesRef = storageRef.child('robot-images/' + image["name"]);
 
-  robotImagesRef.put(image).then((snapshot) => {
+  robotImagesRef.put(image, metadata).then((snapshot) => {
     console.log('Uploaded a blob or file!');
   });
 }
@@ -648,22 +652,18 @@ function getPitData(){
   });
 }
 
+var botImage;
+
 function pullPitImage(robotNum, fileType) {
   var path = 'robot-images/' + robotNum + '.' + fileType;
 
   firebase.storage().ref().child(path).getDownloadURL().then((url) => {
-    var xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
-    xhr.onload = (event) => {
-      var blob = xhr.response;
-    };
-    xhr.open('GET', url);
-    xhr.send();
-
-    return url;
-  })
-  .catch((error) => {
-    alert(error.message);
+    document.getElementById('noPitImageText').style.display = "none";
+    document.getElementById('pitImageViewer').style.backgroundImage = "url(\"" + url + "\")";
+  }) .catch((error) => {
+    /* alert("Error: " + error.message); */
+    document.getElementById('pitImageViewer').style.backgroundImage = "";
+    document.getElementById('noPitImageText').style.display = "block";
   });
 }
 

@@ -123,7 +123,7 @@ function submitPitData() {
     } else {
         alert("Success");
         pushPitDictionary(teamNumber);
-        pushPitImage(renamedbotImage);
+        pushPitImage(renamedbotImage, fileType[1]);
     }
 }
 
