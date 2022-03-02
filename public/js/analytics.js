@@ -292,26 +292,42 @@ function setFieldHeatData(robot){
     var fieldY = document.getElementById("fieldIMG").clientHeight;
 
     //for auto
-    var autoPickupsDataArr = []
-    for (var i = 0; i < autoPickupsXArr.length; i++) {
-        autoPickupsDataArr.push({x:(Math.round((autoPickupsXArr[i]/2068)*fieldX)),y:(Math.round((autoPickupsYArr[i]/1058)*fieldY)),value:100});
-    };
+    var autoPickupsDataArr = [];
+    try {
+        for (var i = 0; i < autoPickupsXArr.length; i++) {
+            autoPickupsDataArr.push({x:(Math.round((autoPickupsXArr[i]/2068)*fieldX)),y:(Math.round((autoPickupsYArr[i]/1058)*fieldY)),value:100});
+        };    
+    } catch (error) {
+        console.log(error);
+    }
     
     var autoShotsDataArr = [];
-    for (var i = 0; i < autoShotsXArr.length; i++) {
-        autoShotsDataArr.push({x:(Math.round((autoShotsXArr[i]/2068)*fieldX)),y:(Math.round((autoShotsYArr[i]/1058)*fieldY)),value:100});
-    };
+    try {
+        for (var i = 0; i < autoShotsXArr.length; i++) {
+            autoShotsDataArr.push({x:(Math.round((autoShotsXArr[i]/2068)*fieldX)),y:(Math.round((autoShotsYArr[i]/1058)*fieldY)),value:100});
+        };
+    } catch (error) {
+        console.log(error);
+    }
 
     //for tele
     var telePickupsDataArr = [];
-    for (var i = 0; i < telePickupsXArr.length; i++) {
-        telePickupsDataArr.push({x:(Math.round((telePickupsXArr[i]/2068)*fieldX)),y:(Math.round((telePickupsYArr[i]/1058)*fieldY)),value:100});
-    };
+    try {
+        for (var i = 0; i < telePickupsXArr.length; i++) {
+            telePickupsDataArr.push({x:(Math.round((telePickupsXArr[i]/2068)*fieldX)),y:(Math.round((telePickupsYArr[i]/1058)*fieldY)),value:100});
+        };
+    } catch (error) {
+        console.log(error);
+    }
 
     var teleShotsDataArr = [];
-    for (var i = 0; i < teleShotsXArr.length; i++) {
-        teleShotsDataArr.push({x:(Math.round((teleShotsXArr[i]/2068)*fieldX)),y:(Math.round((teleShotsYArr[i]/1058)*fieldY)),value:100});
-    };
+    try {
+        for (var i = 0; i < teleShotsXArr.length; i++) {
+            teleShotsDataArr.push({x:(Math.round((teleShotsXArr[i]/2068)*fieldX)),y:(Math.round((teleShotsYArr[i]/1058)*fieldY)),value:100});
+        };
+    } catch (error) {
+        console.log(error);
+    }
     
     //console.log(teleShotsYArr);
     //console.log(fieldY);
