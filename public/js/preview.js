@@ -13,7 +13,7 @@ function populateMatches(){
 function refreshData(){
     pullAllMatchScouting();
     setTimeout(generateCATTScores(),750);
-    document.getElementById('refreshButton').style.diplay = "none";
+    document.getElementById('refreshButton').style.display = "none";
 }
 
 //takes whichever match you have selected and populates the team numbers in the top section and makes a call to populate the bottom section with b1/blue
