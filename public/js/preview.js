@@ -3,6 +3,7 @@ var currentTeamMobile = 0;  //will be a value from 0 - 6, corrosponding to b1,b2
 var currentTeamsArr = [];   //an array of all the team numbers for this match, will be more useful for getting firebase data
 
 
+
 //poopulates matches in the selector box at the top of the page
 function populateMatches(){ 
     for(i=0; i < filteredJames.length; i++){
@@ -26,17 +27,18 @@ function displayMatchTeams(match){
         team = "blueTeam" + i;
         stats = "blueData" + i;
         score = 0;
-        teamNumber = currentTeam.slice(3);
+        teamNumber = currentTeam;
         for (let i = 0; i < robotWorths.length; i++) { 
-            if (robotWorths[i]["team"] == currentTeam.slice(3)) {
+            if (robotWorths[i]["team"] == currentTeam) {
                 score = robotWorths[i]["worth"];
             }
           }
-        document.getElementById(team).innerHTML = currentTeam.slice(3);
+        document.getElementById(team).innerHTML = currentTeam;
         if (score == 0){
             score = "N/a";
         }
         document.getElementById(stats).innerHTML = score;
+        bTeams[currentTeam] = teamNumber
     });
     rTeams = filteredJames[matchInt - 1].alliances.red.team_keys;
     var i = 0;
@@ -45,36 +47,38 @@ function displayMatchTeams(match){
         team = "redTeam" + i;
         stats = "redData" + i;
         score = 0;
-        teamNumber = currentTeam.slice(3);
+        teamNumber = currentTeam;
         for (let i = 0; i < robotWorths.length; i++) { 
-            if (robotWorths[i]["team"] == currentTeam.slice(3)) {
+            if (robotWorths[i]["team"] == currentTeam) {
                 score = robotWorths[i]["worth"];
             }
         }
-        document.getElementById(team).innerHTML = currentTeam.slice(3);
+        document.getElementById(team).innerHTML = currentTeam;
         if (score == 0){
             score = "N/a";
         }
         document.getElementById(stats).innerHTML = score;
+        rTeams[currentTeam] = teamNumber
     });
     currentTeamsArr = bTeams.concat(rTeams);
-    console.log(currentTeamsArr);
+    for (let i=0; i<6; i++){
+        currentTeamsArr[i] = currentTeamsArr[i].slice( 3);
+    }
+    currentTeamMobile = currentTeamsArr[0];
     updateTeamMobile();
     updateTeamDesktop();
 }
 //runs populateMatches upon page load
 populateMatches();
-
 function updateTeamDesktop(){
-    console.log(currentTeamMobile);
     if(currentTeamMobile == 0){
-        document.getElementById("team1").innerHTML = currentTeamsArr[0].slice(3);
-        document.getElementById("team2").innerHTML = currentTeamsArr[1].slice(3);
-        document.getElementById("team3").innerHTML = currentTeamsArr[2].slice(3);
+        document.getElementById("team1").innerHTML = currentTeamsArr[0];
+        document.getElementById("team2").innerHTML = currentTeamsArr[1];
+        document.getElementById("team3").innerHTML = currentTeamsArr[2];
     }else{
-        document.getElementById("team1").innerHTML = currentTeamsArr[3].slice(3);
-        document.getElementById("team2").innerHTML = currentTeamsArr[4].slice(3);
-        document.getElementById("team3").innerHTML = currentTeamsArr[5].slice(3);
+        document.getElementById("team1").innerHTML = currentTeamsArr[3];
+        document.getElementById("team2").innerHTML = currentTeamsArr[4];
+        document.getElementById("team3").innerHTML = currentTeamsArr[5];
     }
 
 }
@@ -86,34 +90,45 @@ function changeTeams(isRightArrow){
         //then checks if the right or left arrow is pressed
         if(isRightArrow){
             //lastly checks if we are at the end of our array, if so then wrap us around to the start of it
-            if(currentTeamMobile >= 2){
-                currentTeamMobile = 0;
-            }else{
-                currentTeamMobile++;
+            if(currentTeamMobile == currentTeamsArr[2]){
+                currentTeamMobile = currentTeamsArr[0];
+            }else if (currentTeamMobile ==currentTeamsArr[1]){
+                currentTeamMobile = currentTeamsArr[2];
+            } else {
+                currentTeamMobile = currentTeamsArr[1]
             }
         }else{
             //this runs if the left arrow is pressed, therefore has to check if we are at the leftmost element in the array
             //and move us around to the end accordingly
-            if(currentTeamMobile == 0){
-                currentTeamMobile = 2;
-            }else{
-                currentTeamMobile--;
+            if(currentTeamMobile == currentTeamsArr[2]){
+                currentTeamMobile = currentTeamsArr[1];
+            }else if (currentTeamMobile ==currentTeamsArr[1]){
+                currentTeamMobile = currentTeamsArr[0];
+            } else {
+                currentTeamMobile = currentTeamsArr[2]
             }
         }
     }else{
         //this code runs when trying to display red alliance information, same as above but all array numebrs are +3
         //Yes you could just have two seperate arrays for red and blue but this array of all six will become useful when pulling from firebase
         if(isRightArrow){
-            if(currentTeamMobile >= 5){
-                currentTeamMobile = 3;
-            }else{
-                currentTeamMobile++;
+            //lastly checks if we are at the end of our array, if so then wrap us around to the start of it
+            if(currentTeamMobile == currentTeamsArr[5]){
+                currentTeamMobile = currentTeamsArr[3];
+            }else if (currentTeamMobile ==currentTeamsArr[4]){
+                currentTeamMobile = currentTeamsArr[5];
+            } else {
+                currentTeamMobile = currentTeamsArr[4]
             }
         }else{
-            if(currentTeamMobile == 3){
-                currentTeamMobile = 5;
-            }else{
-                currentTeamMobile--;
+            //this runs if the left arrow is pressed, therefore has to check if we are at the leftmost element in the array
+            //and move us around to the end accordingly
+            if(currentTeamMobile == currentTeamsArr[5]){
+                currentTeamMobile = currentTeamsArr[4];
+            }else if (currentTeamMobile ==currentTeamsArr[4]){
+                currentTeamMobile = currentTeamsArr[3];
+            } else {
+                currentTeamMobile = currentTeamsArr[5]
             }
         }
     }
@@ -122,10 +137,15 @@ function changeTeams(isRightArrow){
 
 //takes whatever our "cursor" (currentTeamMobile value) is at in the currentTeamsArr and displays it to the bottom section on mobile
 function updateTeamMobile(){
-    console.log("test");
-    console.log(currentTeamsArr);
-    console.log(currentTeamMobile);
-    document.getElementById("teamMobile").innerHTML = currentTeamsArr[parseInt(currentTeamMobile)].slice(3);
+    document.getElementById("teamMobile").innerHTML = currentTeamMobile;
+    for (let i = 0; i < robotWorths.length; i++) { 
+        if (robotWorths[i]["team"] == currentTeamMobile) {
+            document.getElementById("mobile1").innerHTML = "Average Score" + robotWorths[i]["averageScore"];
+            document.getElementById("mobile2").innerHTML = "Climb Percent" + robotWorths[i]["climbPercent"];
+            document.getElementById("mobile3").innerHTML = "Tele Accuracy" + robotWorths[i]["teleAccuracy"];
+        }
+      }
+    
 }
 
 //Changes all the html elements that need to ba changed from red to blue and back
@@ -139,7 +159,12 @@ function changeColor(){
         document.getElementById("listViewDesktop").style.backgroundColor = "#ed1c2385";
         //moves the "cursor" in the array of current teams up three, effectively switching to red but keeping which team you are looking at
         //ex. if you are looking at blue 2 you will be looking at red 2
-        currentTeamMobile = currentTeamMobile + 3;
+        for(let i = 0; i<3; i++){
+            if (currentTeamsArr[i] == currentTeamMobile){
+                temp = currentTeamsArr[i+3];
+                currentTeamMobile = temp;
+            };
+        };
         isBlueMobile = false;
         updateTeamMobile();
         updateTeamDesktop();
@@ -152,7 +177,12 @@ function changeColor(){
         document.getElementById("listViewMobile").style.backgroundColor = "#0166b37c";
         document.getElementById("listViewDesktop").style.backgroundColor = "#0166b37c";
         //same as above but steps backwards in the array to go from red to blue
-        currentTeamMobile = currentTeamMobile - 3;
+        for(let i = 0; i<currentTeamsArr.length; i++){
+            if (currentTeamsArr[i] == currentTeamMobile){
+                temp = currentTeamsArr[i-3];
+                currentTeamMobile = temp;
+            };
+        };
         isBlueMobile = true;
         updateTeamMobile();
         updateTeamDesktop();
