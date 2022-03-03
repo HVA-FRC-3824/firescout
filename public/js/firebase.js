@@ -337,13 +337,13 @@ function pushPitImage(image, fileType) {
   });
 }
 
-/*
- █████  ███    ██  █████  ██      ██    ██ ████████ ██  ██████ ███████ 
-██   ██ ████   ██ ██   ██ ██       ██  ██     ██    ██ ██      ██      
-███████ ██ ██  ██ ███████ ██        ████      ██    ██ ██      ███████ 
-██   ██ ██  ██ ██ ██   ██ ██         ██       ██    ██ ██           ██ 
-██   ██ ██   ████ ██   ██ ███████    ██       ██    ██  ██████ ███████                                                                      
-*/
+
+//  █████  ███    ██  █████  ██      ██    ██ ████████ ██  ██████ ███████ 
+// ██   ██ ████   ██ ██   ██ ██       ██  ██     ██    ██ ██      ██      
+// ███████ ██ ██  ██ ███████ ██        ████      ██    ██ ██      ███████ 
+// ██   ██ ██  ██ ██ ██   ██ ██         ██       ██    ██ ██           ██ 
+// ██   ██ ██   ████ ██   ██ ███████    ██       ██    ██  ██████ ███████                                                                      
+
 
 var robotData;
 
@@ -437,6 +437,7 @@ function generateCATTScores(){ //TODO rename this function everywhere so it is m
   Object.keys(robotData).forEach(robot => {
     /* Operates on every robot before running through all of that robot's data */
     var currentRobotMatches = 0,
+        currentRobotScouters = 0,
         currentRobotClimbs = 0,
         currentRobotClimbPointsTotal = 0;
     var currentRobotAutoShotsMade = 0,
@@ -446,12 +447,14 @@ function generateCATTScores(){ //TODO rename this function everywhere so it is m
         currentRobotTeleMisses = 0,
         currentRobotTelePointsTotal = 0;
     var currentRobotTarmacLeaves = 0;
+
     
     Object.keys(robotData[robot]).forEach(match => {
       /* Operates on every match that current robot played in before running through the data itself */
       currentRobotMatches++;
       Object.keys(robotData[robot][match]).forEach(scouter => {
         /* Operates on every scouter for the current match, this is where you can operate on the data */
+        currentRobotScouters++;
         currentDataDict = robotData[robot][match][scouter]['data'];
 
         switch (currentDataDict['levelClimbed']) {
@@ -505,15 +508,15 @@ function generateCATTScores(){ //TODO rename this function everywhere so it is m
     climbPointsAvgW = 0.176305;
 
     cattScore = 
-      (climbPercentW * (currentRobotClimbs/currentRobotMatches)) + 
+      (climbPercentW * (currentRobotClimbs/currentRobotScouters)) + 
       (teleAccuracyW * (currentRobotTeleShotsMade/(currentRobotTeleShotsMade + currentRobotTeleMisses))) + 
       (autoAccuracyW * (currentRobotAutoShotsMade/(currentRobotAutoShotsMade + currentRobotAutoMisses))) + 
-      (teleShotsMadeW * ((currentRobotTeleShotsMade/currentRobotMatches)/highestTeleShotsMadeAvg)) + 
-      (autoShotsMadeW * ((currentRobotAutoShotsMade/currentRobotMatches)/highestAutoShotsMadeAvg)) + 
-      (telePointsAvgW * ((currentRobotTelePointsTotal/currentRobotMatches)/highestTelePointsAvg)) + 
-      (autoPointsAvgW * ((currentRobotAutoPointsTotal/currentRobotMatches)/highestAutoPointsAvg)) + 
-      (tarmacPercentW * (currentRobotTarmacLeaves/currentRobotMatches)) + 
-      (climbPointsAvgW * ((currentRobotClimbPointsTotal/currentRobotMatches)/highestClimbPointsAvg));
+      (teleShotsMadeW * ((currentRobotTeleShotsMade/currentRobotScouters)/highestTeleShotsMadeAvg)) + 
+      (autoShotsMadeW * ((currentRobotAutoShotsMade/currentRobotScouters)/highestAutoShotsMadeAvg)) + 
+      (telePointsAvgW * ((currentRobotTelePointsTotal/currentRobotScouters)/highestTelePointsAvg)) + 
+      (autoPointsAvgW * ((currentRobotAutoPointsTotal/currentRobotScouters)/highestAutoPointsAvg)) + 
+      (tarmacPercentW * (currentRobotTarmacLeaves/currentRobotScouters)) + 
+      (climbPointsAvgW * ((currentRobotClimbPointsTotal/currentRobotScouters)/highestClimbPointsAvg));
 
     cattScore = Math.round(cattScore * 100);
     /*
@@ -523,7 +526,15 @@ function generateCATTScores(){ //TODO rename this function everywhere so it is m
     ██   ██ ██      ██      ██      ██  ██ ██ ██   ██     ██  ██  ██ ██   ██      ██    ██    ██      ██   ██     ██   ██ ██   ██ ██   ██ ██   ██    ██    
     ██   ██ ██      ██      ███████ ██   ████ ██████      ██      ██ ██   ██ ███████    ██    ███████ ██   ██     ██   ██ ██   ██ ██   ██ ██   ██    ██    
     */                                                                                                                                      
-    robotWorths.push({team:robot, worth:cattScore, averageScore:(currentRobotTelePointsTotal + currentRobotAutoPointsTotal)/currentRobotMatches, climbPercent:currentRobotClimbs/currentRobotMatches, teleAccuracy:currentRobotTeleShotsMade/(currentRobotTeleShotsMade + currentRobotTeleMisses),autoAccuracy:currentRobotAutoShotsMade/(currentRobotAutoShotsMade+currentRobotAutoMisses),avgClimbPoints:(currentRobotClimbPointsTotal/currentRobotMatches)});
+    robotWorths.push({
+      team:robot, 
+      worth:cattScore, 
+      averageScore: (currentRobotTelePointsTotal + currentRobotAutoPointsTotal)/currentRobotScouters, 
+      climbPercent: (currentRobotClimbs / currentRobotScouters) * 100, 
+      teleAccuracy: (currentRobotTeleShotsMade / (currentRobotTeleShotsMade + currentRobotTeleMisses)) * 100,
+      autoAccuracy: (currentRobotAutoShotsMade / (currentRobotAutoShotsMade + currentRobotAutoMisses)) * 100,
+      avgClimbPoints: (currentRobotClimbPointsTotal / currentRobotScouters)
+    });
   });
   /* Runs after running through all data for All robots */
   //console.log(robotWorths)
@@ -540,15 +551,65 @@ function generateAllTheThings(){
   setTimeout(() => {
     generateFieldHeatmap();
   }, 250);
-
+  document.getElementById('genButton').style.display = 'none';
 }
 
 function displayAllTheThings(){
-  selectedTeam = document.getElementById('teamNum').value;
-  displayPitData(selectedTeam);
-  displayQuickLook(selectedTeam); 
-  setFieldHeatData(selectedTeam);
-  displayQuickLook(selectedTeam);
+  var selectedTeam = Number(document.getElementById('teamNum').value);
+  try {
+    displayPitData(selectedTeam);
+  } catch (error) {
+    
+  }
+  try {
+    displayQuickLook(selectedTeam); 
+  } catch (error) {
+    
+  }
+  try {
+    displayRawData(selectedTeam); 
+  } catch (error) {
+    
+  }
+  try {
+    setFieldHeatData(selectedTeam);
+  } catch (error) {
+    
+  }
+  try {
+    findTeamsMatches(selectedTeam);
+  } catch (error) {
+    
+  }
+  try {
+    var 
+    r1 = 0,
+    r2 = 0,
+    r3 = 0;
+
+    try {
+      r1 = document.getElementById("selector1").value;
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+      r2 = document.getElementById("selector2").value;
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+      r3 = document.getElementById("selector3").value;
+    } catch (error) {
+      console.log(error);
+    }
+    arrToPass = [selectedTeam, Number(r1), Number(r2), Number(r3)];
+    console.log(arrToPass);
+    setTimeout(() => {
+      generateGraph(arrToPass);
+    }, 250);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function displayDataWheel() {
@@ -564,6 +625,57 @@ function displayDataWheel() {
   document.getElementById("table1").querySelector("#d5").innerHTML = robotWorths[4].worth;
   document.getElementById("table1").querySelector("#t6").innerHTML = robotWorths[5].team;
   document.getElementById("table1").querySelector("#d6").innerHTML = robotWorths[5].worth;
+
+  robotWorths = robotWorths.sort((a, b) => (a.climbPercent > b.climbPercent) ? 1 : -1); //TODO THIS SORT FUNCTION DOES NOT HANDLE TIES
+  robotWorths = robotWorths.reverse();
+
+  document.getElementById("table2").querySelector("#t1").innerHTML = robotWorths[0].team;
+  document.getElementById("table2").querySelector("#d1").innerHTML = robotWorths[0].climbPercent;
+  document.getElementById("table2").querySelector("#t2").innerHTML = robotWorths[1].team;
+  document.getElementById("table2").querySelector("#d2").innerHTML = robotWorths[1].climbPercent;
+  document.getElementById("table2").querySelector("#t3").innerHTML = robotWorths[2].team;
+  document.getElementById("table2").querySelector("#d3").innerHTML = robotWorths[2].climbPercent;
+  document.getElementById("table2").querySelector("#t4").innerHTML = robotWorths[3].team;
+  document.getElementById("table2").querySelector("#d4").innerHTML = robotWorths[3].climbPercent;
+  document.getElementById("table2").querySelector("#t5").innerHTML = robotWorths[4].team;
+  document.getElementById("table2").querySelector("#d5").innerHTML = robotWorths[4].climbPercent;
+  document.getElementById("table2").querySelector("#t6").innerHTML = robotWorths[5].team;
+  document.getElementById("table2").querySelector("#d6").innerHTML = robotWorths[5].climbPercent;
+
+  robotWorths = robotWorths.sort((a, b) => (a.averageScore > b.averageScore) ? 1 : -1); //TODO THIS SORT FUNCTION DOES NOT HANDLE TIES
+  robotWorths = robotWorths.reverse();
+
+  document.getElementById("table3").querySelector("#t1").innerHTML = robotWorths[0].team;
+  document.getElementById("table3").querySelector("#d1").innerHTML = robotWorths[0].averageScore;
+  document.getElementById("table3").querySelector("#t2").innerHTML = robotWorths[1].team;
+  document.getElementById("table3").querySelector("#d2").innerHTML = robotWorths[1].averageScore;
+  document.getElementById("table3").querySelector("#t3").innerHTML = robotWorths[2].team;
+  document.getElementById("table3").querySelector("#d3").innerHTML = robotWorths[2].averageScore;
+  document.getElementById("table3").querySelector("#t4").innerHTML = robotWorths[3].team;
+  document.getElementById("table3").querySelector("#d4").innerHTML = robotWorths[3].averageScore;
+  document.getElementById("table3").querySelector("#t5").innerHTML = robotWorths[4].team;
+  document.getElementById("table3").querySelector("#d5").innerHTML = robotWorths[4].averageScore;
+  document.getElementById("table3").querySelector("#t6").innerHTML = robotWorths[5].team;
+  document.getElementById("table3").querySelector("#d6").innerHTML = robotWorths[5].averageScore;
+
+  robotWorths = robotWorths.sort((a, b) => (a.autoAccuracy > b.autoAccuracy) ? 1 : -1); //TODO THIS SORT FUNCTION DOES NOT HANDLE TIES
+  robotWorths = robotWorths.reverse();
+
+  document.getElementById("table4").querySelector("#t1").innerHTML = robotWorths[0].team;
+  document.getElementById("table4").querySelector("#d1").innerHTML = robotWorths[0].autoAccuracy;
+  document.getElementById("table4").querySelector("#t2").innerHTML = robotWorths[1].team;
+  document.getElementById("table4").querySelector("#d2").innerHTML = robotWorths[1].autoAccuracy;
+  document.getElementById("table4").querySelector("#t3").innerHTML = robotWorths[2].team;
+  document.getElementById("table4").querySelector("#d3").innerHTML = robotWorths[2].autoAccuracy;
+  document.getElementById("table4").querySelector("#t4").innerHTML = robotWorths[3].team;
+  document.getElementById("table4").querySelector("#d4").innerHTML = robotWorths[3].autoAccuracy;
+  document.getElementById("table4").querySelector("#t5").innerHTML = robotWorths[4].team;
+  document.getElementById("table4").querySelector("#d5").innerHTML = robotWorths[4].autoAccuracy;
+  document.getElementById("table4").querySelector("#t6").innerHTML = robotWorths[5].team;
+  document.getElementById("table4").querySelector("#d6").innerHTML = robotWorths[5].autoAccuracy;
+
+  document.getElementById("dataWheelDisplay").style.display = "none";
+
 }
 //=========================================================================DISPLAYS THE DATA TO THE quick look DATA INFO BOX//=========================================================================
 

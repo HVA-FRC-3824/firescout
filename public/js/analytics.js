@@ -73,7 +73,7 @@ function changeDataSlide(leftOrRight){
             }
             break;
         case 2:
-            lable.innerHTML = "Auto Weighted Worth";
+            lable.innerHTML = "Climb Percent";
             tables[0].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
             tables[1].style.backgroundColor = "rgba(231, 231, 231, 1)";
             tables[2].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
@@ -95,7 +95,7 @@ function changeDataSlide(leftOrRight){
             }
             break;
         case 3:
-            lable.innerHTML = "Tele Weighted Worth";
+            lable.innerHTML = "Average Score";
             tables[0].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
             tables[1].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
             tables[2].style.backgroundColor = "rgba(231, 231, 231, 1)";
@@ -117,7 +117,7 @@ function changeDataSlide(leftOrRight){
             }
             break;
         case 4:
-            lable.innerHTML = "Climb Weighted Worth";
+            lable.innerHTML = "Auto Accuracy";
             tables[0].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
             tables[1].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
             tables[2].style.backgroundColor = "rgba(231, 231, 231, 0.5)";
@@ -153,17 +153,60 @@ window.changeDataSlide = changeDataSlide;
  ██████  ██   ██ ██   ██ ██      ██   ██ 
  */
 
-function generateGraph(robotsArr,statToDisplay){
+function generateGraph(robotsArr){
+    var currentMatchesArr = [0];
+    var currentScoresArr = [0];
     var matchesArr = [];
     var scoresArr = [];
+    var highestMatch = 0;
+    for(var i = 3; i >= 0 ; i--){
+        if(robotsArr[i] == 0){
+            robotsArr.splice(i, 1);
+        }
+    }
+    console.log(robotsArr);
+
     robotsArr.forEach(robot => {
-        matchesArr = [];
-        scoresArr = [];
+        currentMatchesArr = [0];
+        //console.log(currentMatchesArr);
         Object.keys(robotData[robot]).forEach(match => {
             // basically getting per match data which is something we do not do elsewhere and will not need to do elsewhere
-            matchesArr.push(match);
+            currentMatchesArr.push(Number(match));
+            //console.log(currentMatchesArr);
+            //console.log(match);
+            if (Number(match) > Number(highestMatch)) {
+                highestMatch = Number(match);
+            }
             Object.keys(robotData[robot][match]).forEach(name => {
-                switch (robotData[robot][match][name]['data']['levelClimbed']) {
+                //for each scouter
+            });
+
+        });
+        matchesArr.push(currentMatchesArr);
+    });
+
+    //console.log(matchesArr);
+    var xValues = [0];
+    var currentScoresArr = [];
+    //console.log(highestMatch + " Highest Match");
+    for(let i = 0; i < highestMatch; i++){
+        xValues.push(i+1);
+        currentScoresArr.push(NaN);
+    }
+
+    robotsArr.forEach(currentRobot => {
+        currentScoresArr = [];
+        for(let i = 0; i < highestMatch; i++){
+            currentScoresArr.push(NaN);
+        }
+        var currentRobotScore = 0;
+        var currentRobotScouters = 0;
+        console.log(currentRobot);
+        Object.keys(robotData[currentRobot]).forEach(match => {
+            // basically getting per match data which is something we do not do elsewhere and will not need to do elsewhere
+            Object.keys(robotData[currentRobot][match]).forEach(name => {
+                currentRobotScouters++;
+                switch (robotData[currentRobot][match][name]['data']['levelClimbed']) {
                     case 'traversal':
                       climbPoints = 15;
                       break;
@@ -180,59 +223,82 @@ function generateGraph(robotsArr,statToDisplay){
                       climbPoints = 0;
                       break;
                   }
-            
-                  var currentRobotScore = 
-                  (robotData[robot][match][name]['data']['autoUpperHubAmount'] * 4) + 
-                  (robotData[robot][match][name]['data']['autoLowerHubAmount'] * 2) +
-                  (robotData[robot][match][name]['data']['teleUpperHubAmount'] * 2) +
-                  (robotData[robot][match][name]['data']['teleLowerHubAmount']) +
+                  currentRobotScore = 
+                  (robotData[currentRobot][match][name]['data']['autoUpperHubAmount'] * 4) + 
+                  (robotData[currentRobot][match][name]['data']['autoLowerHubAmount'] * 2) +
+                  (robotData[currentRobot][match][name]['data']['teleUpperHubAmount'] * 2) +
+                  (robotData[currentRobot][match][name]['data']['teleLowerHubAmount']) +
                   climbPoints;
-                  scoresArr.push(currentRobotScore);
+
             });
+            //console.log((Math.round(currentRobotScore/currentRobotScouters)));
+            currentScoresArr[match] = (Math.round(currentRobotScore/currentRobotScouters));
+            console.log(currentScoresArr[match]);
         });
+        //console.log(scoresArr);
+        scoresArr.push(currentScoresArr);
     });
 
-    var xValues = matchesArr;
-    var yValues = scoresArr;
-    var yValues2 = [20,23,29,25,28];
-    new Chart("myChart", {
+    var datasets = [{
+        label: "DummyData",
+        data: [0,5,10,15,20,25,30,35,40],
+        backgroundColor: "rgba(50,120,0,0.5)",
+        borderColor: "rgba(0,0,0,1)",
+        borderWidth: "1",
+        fill: false,
+        lineTension: 0.4,
+        pointBackgroundColor:"rgba(0,250,0,1)",
+        pointBorderColor:"rgba(255,0,255,1)",
+        pointBorderWidth: 2,
+        pointHitRadius: 20,
+        pointHoverBackgroundColor:"rbga(0,0,0,0.5)"
+    }];
+
+    for (var i = 0; i < 4; i++) {
+        color = "rgba(" + i*10 + ",100," + i*200/1.3 + ",1)" 
+        try {
+            datasets.push({
+                label: robotsArr[i],
+                data: scoresArr[i],
+                backgroundColor: "rgba(50,120,0,0.5)",
+                borderColor: color,
+                borderWidth: "1",
+                fill: false,
+                lineTension: 0.4,
+                pointBackgroundColor:"rgba(0,250,0,1)",
+                pointBorderColor:"rgba(255,0,255,1)",
+                pointBorderWidth: 2,
+                pointHitRadius: 20,
+                pointHoverBackgroundColor:"rbga(0,0,0,0.5)"
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    //console.log(scoresArr);
+    //console.log(xValues);
+    //console.log(datasets);
+    try {
+        regenChart();
+    } catch (error) {
+        console.log("no chart to kill");
+    }
+    const myChart = new Chart("myChart", {
         type: "line",
         data: {
           labels: xValues,
-          datasets: [{
-              label: "Score",
-              data: yValues,
-              backgroundColor: "rgba(50,120,0,0.5)",
-              borderColor: "rgba(0,0,0,1)",
-              borderWidth: "1",
-              fill: false,
-              lineTension: 0.4,
-              pointBackgroundColor:"rgba(0,250,0,1)",
-              pointBorderColor:"rgba(255,0,255,1)",
-              pointBorderWidth: 2,
-              pointHitRadius: 20,
-              pointHoverBackgroundColor:"rbga(0,0,0,0.5)"
-          },{
-              label: "dummy data",
-              data: yValues2,
-              backgroundColor: "rgba(50,120,0,0.5)",
-              borderColor: "rgba(255,0,0,1)",
-              borderWidth: "1",
-              fill: false,
-              lineTension: 0.4,
-              pointBackgroundColor:"rgba(0,250,0,1)",
-              pointBorderColor:"rgba(255,0,255,1)",
-              pointBorderWidth: 2,
-              pointHitRadius: 20,
-              pointHoverBackgroundColor:"rbga(0,0,0,0.5)"
-          }]
+          datasets: datasets
           },
           options:{
-      
+            spanGaps: true
           }
       });
 }
 
+function regenChart() {
+    document.getElementById('myChart').remove();
+    document.getElementById('chartWrapper').insertAdjacentHTML('beforeend',"<canvas id='myChart'></canvas>");
+}
 
 var graphTeamsNum = 1;
 
@@ -292,7 +358,7 @@ var heatmapInstanceTarmac;
 function generateFieldHeatmap(){
     var fieldConfig = {
         container: document.getElementById('fieldHeatMap'),
-        radius: 15,
+        radius: 35,
         maxOpacity: .5,
         minOpacity: 0,
         blur: .75
@@ -306,6 +372,8 @@ function generateFieldHeatmap(){
 }
 
 function setFieldHeatData(robot){
+    heatmapInstanceFieldShots.setData({max: 100, min:0, data:[]});
+    heatmapInstanceFieldPickup.setData({max: 100, min:0, data:[]});
     var autoPickupsXArr = [];
     var autoPickupsYArr = [];
     var autoShotsXArr = [];
@@ -372,8 +440,6 @@ function setFieldHeatData(robot){
     //console.log(teleShotsYArr);
     //console.log(fieldY);
     //console.log(teleShotsData);
-    heatmapInstanceFieldShots.setData({max: 100, min:0, data:[]});
-    heatmapInstanceFieldPickup.setData({max: 100, min:0, data:[]});
     heatmapInstanceFieldShots.addData(teleShotsDataArr);
     heatmapInstanceFieldPickup.addData(telePickupsDataArr);
     heatmapInstanceFieldShots.addData(autoShotsDataArr);
