@@ -138,14 +138,14 @@ function changeTeams(isRightArrow){
 //takes whatever our "cursor" (currentTeamMobile value) is at in the currentTeamsArr and displays it to the bottom section on mobile
 function updateTeamMobile(){
     document.getElementById("teamMobile").innerHTML = currentTeamMobile;
+    console.log(robotWorths[0]["averageScore"]);
     for (let i = 0; i < robotWorths.length; i++) { 
         if (robotWorths[i]["team"] == currentTeamMobile) {
-            document.getElementById("mobile1").innerHTML = "Average Score" + robotWorths[i]["averageScore"];
-            document.getElementById("mobile2").innerHTML = "Climb Percent" + robotWorths[i]["climbPercent"];
-            document.getElementById("mobile3").innerHTML = "Tele Accuracy" + robotWorths[i]["teleAccuracy"];
+            document.getElementById("mobile1").innerHTML = robotWorths[0]["averageScore"];
+            document.getElementById("mobile2").innerHTML = robotWorths[0]["climbPercent"];
+            document.getElementById("mobile3").innerHTML = robotWorths[0]["teleAccuracy"];
         }
       }
-    
 }
 
 //Changes all the html elements that need to ba changed from red to blue and back
