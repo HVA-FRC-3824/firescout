@@ -80,7 +80,7 @@ function findTeamsMatches(teamNum){
 }
 
 
-kidnap("/event/2020scmb/teams/keys");
+kidnap("/event/2022flwp/teams/keys");
 sortTeamsList();
-kidnap("/event/2020scmb/matches");
+kidnap("/event/2022flwp/matches");
 filterMatches();
