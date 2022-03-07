@@ -194,7 +194,15 @@ main .countdown .container p:nth-of-type(4),p:nth-of-type(8) {
 }
 
 main .twitch .container{
-    width: fit-content;
+    width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 30px;
+}
+
+main .twitch .container iframe{
+    width: 450px;
+    height: 250px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -381,6 +389,16 @@ main .footer .container {
                                                                                                                                                     
     main .countdown .container .countdownWrapper{
         padding:100px 35vw;
+    }
+
+    main .twitch .container{
+        width: fit-content;
+    }
+    
+    main .twitch .container iframe{
+        display: inline-block;
+        width: 450px;
+        height: 250px;
     }
     
 }
