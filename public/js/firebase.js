@@ -307,6 +307,22 @@ function pushHeatArr(robotToScout, mNum, scoutName){
   });
 }
 
+//run from the console and paste in the QR data
+function pushQRCodeData(qrCodeData){
+  match = qrCodeData.match;
+  scouter = qrCodeData.scouter;
+  robotNumber = qrCodeData.teamNum;
+
+  delete qrCodeData.match;
+  delete qrCodeData.scouter;
+  delete qrCodeData.teamNum;
+
+  firebase.database().ref('matchScouting/' + robotNumber + "/" + match + "/" + scouter).set({
+    "data": qrCodeData
+  });
+
+}
+
 /*
 ██████  ██ ████████     ███████  ██████  ██████  ██    ██ ████████ ██ ███    ██  ██████  
 ██   ██ ██    ██        ██      ██      ██    ██ ██    ██    ██    ██ ████   ██ ██       

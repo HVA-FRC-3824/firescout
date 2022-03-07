@@ -190,7 +190,12 @@ currentUser = localStorage.getItem("username");
 matchNum = localStorage.getItem("matchNum")
 robotToScout = localStorage.getItem("robotToScout");  //Gets the robot you are scouting from local storage
 document.querySelector('#teamNum').innerHTML = "<i id='lilGuy' class='fas fa-user'></i> " + robotToScout;
-document.querySelector('#teamNumber').innerHTML = robotToScout;
+
+try {
+    document.querySelector('#teamNumber').innerHTML = robotToScout;
+} catch (error) {
+    
+}
 //console.log(robotToScout);
 
 function hasCargo(cargoTest){ //Changes the color for the 'starting with cargo' button on pre match page
@@ -590,7 +595,34 @@ function barSelect(currentBar){  //Changes the color of the climb level buttons 
 function nextMatch(){
     if(confirm("Are you sure you would like to leave this page?")){
         //pushing the data
-        pushDataDictionary(robotToScout, matchNum, currentUser);
-        location.href = 'schedule.html';
+        if(offlineMode){
+            generateQRCode();
+        }else{
+            pushDataDictionary(robotToScout, matchNum, currentUser);
+            location.href = 'schedule.html';
+        }   
     }
 }
+
+function generateQRCode(){
+    dataDictionary.match = document.getElementById('offlineMatchNum').value;
+    dataDictionary.teamNum = document.getElementById('offlineRobotNum').value;
+    dataDictionary.scouter = document.getElementById('offlineScouterName').value;
+
+
+    qrData = JSON.stringify(dataDictionary);
+    console.log(qrData);
+
+    //Generate a qr code here some how lol
+    //Currently will no support heatmap because it could overflow data
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+        text: qrData,
+        width: 512,
+        height: 512,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+
+}
+

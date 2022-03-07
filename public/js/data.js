@@ -80,6 +80,7 @@ function findTeamsMatches(teamNum){
 }
 
 
+
 kidnap("/event/2022flwp/teams/keys");
 sortTeamsList();
 kidnap("/event/2022flwp/matches");

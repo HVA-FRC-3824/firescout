@@ -7,24 +7,11 @@
     <meta name="theme-color" content="#fff">
 
     <link rel="shortcut icon" type="image/jpg" href="pics/Logo-Small-Square.png"/>
-    
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/9.6.4/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/9.6.4/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/9.6.4/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/9.6.4/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/9.6.4/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/9.6.4/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/9.6.4/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/9.6.4/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/9.6.4/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/9.6.4/firebase-performance-compat.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
-    <script defer src="js/firebase.js"></script>
-    <script defer src="js/data.js"></script>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
     <script src="js/global.js"></script>
     <script defer src="js/scouting.js"></script>
 
@@ -38,7 +25,7 @@
 </head>
 <body>
     <script>
-        var offlineMode = false;
+        var offlineMode = true;
     </script>
     <!--
 ============================================
@@ -72,9 +59,12 @@
                     <p id="startPosIcon">❌</p>
                     <img src="./pics/tarmacIMG.png" class="tarmac" onclick="getStartPosition(event)" id="tarmacImage"> 
                 </div>
-                <div class="teamToScoutDiv">
-                    <p class="preMatchScoutText">You are Scouting:</p>        
-                    <p id="teamNumber">3824</p> 
+
+                <div class="offlineMode">
+                    <p>Offline Mode</p>
+                    <input id="offlineScouterName" type="text" placeholder="Name">
+                    <input id="offlineRobotNum" type="number" placeholder="Robot Number">
+                    <input id="offlineMatchNum" type="number" placeholder="Match">
                 </div>
                 
                 <div class="cargodiv">
@@ -82,6 +72,7 @@
                     <button onclick="hasCargo('yesButton')" id="yesButton">Yes</button>
                     <button onclick="hasCargo('noButton')" id="noButton">No</button>
                 </div>
+
             </div>
         </div>
     
@@ -183,6 +174,7 @@
                     </label>
                 </div>
             </div> 
+            <div id="qrcode">QR Code</div>
         </div>
     </div>
     </body>
