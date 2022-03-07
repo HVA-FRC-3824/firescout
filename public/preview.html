@@ -67,7 +67,8 @@
     <main>
         <section class="teams">
             <div>
-                <button id="refreshButton" onclick="refreshData()">Pull Data</button>
+                <button id="pullButton" onclick="pullAllMatchScouting(); removeSelf('pullButton')">Pull Data</button>
+                <button id="genButton" onclick="generateCATTScores(); removeSelf('genButton')">Generate things</button>
             </div>
             <div class="teamDiv ">
                 <select onChange="displayMatchTeams((document.getElementById('match').value).slice(6))" name="match num" class="match-selector" id="match">
@@ -151,13 +152,13 @@
                                 <th><u>Stats</u></th>
                             </tr>
                             <tr>
-                                <td>Average Climb Points</td>
+                                <td>Average Score</td>
                             </tr>
                             <tr>
-                                <td>Average Auto Points</td>
+                                <td>Climb Percent</td>
                             </tr>
                             <tr>
-                                <td>Average Tele Points</td>
+                                <td>Tele Accuracy</td>
                             </tr>
                         </table>
                     </div>

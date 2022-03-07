@@ -1,5 +1,5 @@
-var isBlueMobile = true;  //is true if the currently displayed color at the bottom is blue, false if red
-var currentTeamMobile = 0;  //will be a value from 0 - 6, corrosponding to b1,b2,b3,r1,r2,r3
+var isBlue = true;  //is true if the currently displayed color at the bottom is blue, false if red
+var currentTeamMobile = 0;  
 var currentTeamsArr = [];   //an array of all the team numbers for this match, will be more useful for getting firebase data
 
 
@@ -11,10 +11,8 @@ function populateMatches(){
     }
 }   
 
-function refreshData(){
-    pullAllMatchScouting();
-    setTimeout(generateCATTScores(),750);
-    document.getElementById('refreshButton').style.display = "none";
+function removeSelf(btnID){
+    document.getElementById(btnID).style.display = "none";
 }
 
 //takes whichever match you have selected and populates the team numbers in the top section and makes a call to populate the bottom section with b1/blue
@@ -29,16 +27,16 @@ function displayMatchTeams(match){
         score = 0;
         teamNumber = currentTeam;
         for (let i = 0; i < robotWorths.length; i++) { 
-            if (robotWorths[i]["team"] == currentTeam) {
+            if (robotWorths[i]["team"] == currentTeam.slice(3)) {
                 score = robotWorths[i]["worth"];
             }
-          }
-        document.getElementById(team).innerHTML = currentTeam;
+        }
+        document.getElementById(team).innerHTML = currentTeam.slice();
         if (score == 0){
-            score = "N/a";
+            score = "N/A";
         }
         document.getElementById(stats).innerHTML = score;
-        bTeams[currentTeam] = teamNumber
+        bTeams[currentTeam] = teamNumber;
     });
     rTeams = filteredJames[matchInt - 1].alliances.red.team_keys;
     var i = 0;
@@ -49,20 +47,21 @@ function displayMatchTeams(match){
         score = 0;
         teamNumber = currentTeam;
         for (let i = 0; i < robotWorths.length; i++) { 
-            if (robotWorths[i]["team"] == currentTeam) {
+            if (robotWorths[i]["team"] == currentTeam.slice(3)) {
                 score = robotWorths[i]["worth"];
             }
         }
-        document.getElementById(team).innerHTML = currentTeam;
+        document.getElementById(team).innerHTML = currentTeam.slice(3);
         if (score == 0){
-            score = "N/a";
+            score = "N/A";
         }
         document.getElementById(stats).innerHTML = score;
-        rTeams[currentTeam] = teamNumber
+        rTeams[currentTeam] = teamNumber;
+        console.log(score + "  " + stats);
     });
     currentTeamsArr = bTeams.concat(rTeams);
     for (let i=0; i<6; i++){
-        currentTeamsArr[i] = currentTeamsArr[i].slice( 3);
+        currentTeamsArr[i] = currentTeamsArr[i].slice(3);
     }
     currentTeamMobile = currentTeamsArr[0];
     updateTeamMobile();
@@ -71,7 +70,7 @@ function displayMatchTeams(match){
 //runs populateMatches upon page load
 populateMatches();
 function updateTeamDesktop(){
-    if(currentTeamMobile == 0){
+    if(isBlue){
         document.getElementById("team1").innerHTML = currentTeamsArr[0];
         document.getElementById("team2").innerHTML = currentTeamsArr[1];
         document.getElementById("team3").innerHTML = currentTeamsArr[2];
@@ -81,12 +80,25 @@ function updateTeamDesktop(){
         document.getElementById("team3").innerHTML = currentTeamsArr[5];
     }
 
+    for(let j = 1; j < 4; j++){
+        id = 'team' + j;
+        document.getElementById("team"+ j +"data1").innerHTML = "N/A";
+        document.getElementById("team"+ j +"data2").innerHTML = "N/A";
+        document.getElementById("team"+ j +"data3").innerHTML = "N/A";
+        for (let i = 0; i < robotWorths.length; i++) {
+            if(document.getElementById(id).innerHTML == robotWorths[i]["team"]){
+                document.getElementById("team"+ j +"data1").innerHTML = robotWorths[i]['averageScore'];
+                document.getElementById("team"+ j +"data2").innerHTML = robotWorths[i]['climbPercent'];
+                document.getElementById("team"+ j +"data3").innerHTML = robotWorths[i]['teleAccuracy'];
+            }
+        }
+    }
 }
 
 //cycles through the teams on mobile
 function changeTeams(isRightArrow){
     //First checks if blue or red is currently active
-    if(isBlueMobile){
+    if(isBlue){
         //then checks if the right or left arrow is pressed
         if(isRightArrow){
             //lastly checks if we are at the end of our array, if so then wrap us around to the start of it
@@ -115,7 +127,7 @@ function changeTeams(isRightArrow){
             //lastly checks if we are at the end of our array, if so then wrap us around to the start of it
             if(currentTeamMobile == currentTeamsArr[5]){
                 currentTeamMobile = currentTeamsArr[3];
-            }else if (currentTeamMobile ==currentTeamsArr[4]){
+            }else if (currentTeamMobile == currentTeamsArr[4]){
                 currentTeamMobile = currentTeamsArr[5];
             } else {
                 currentTeamMobile = currentTeamsArr[4]
@@ -138,12 +150,15 @@ function changeTeams(isRightArrow){
 //takes whatever our "cursor" (currentTeamMobile value) is at in the currentTeamsArr and displays it to the bottom section on mobile
 function updateTeamMobile(){
     document.getElementById("teamMobile").innerHTML = currentTeamMobile;
-    console.log(robotWorths[0]["averageScore"]);
+    document.getElementById("mobile1").innerHTML = 'N/A';
+    document.getElementById("mobile2").innerHTML = 'N/A';
+    document.getElementById("mobile3").innerHTML = 'N/A';
     for (let i = 0; i < robotWorths.length; i++) { 
         if (robotWorths[i]["team"] == currentTeamMobile) {
-            document.getElementById("mobile1").innerHTML = robotWorths[0]["averageScore"];
-            document.getElementById("mobile2").innerHTML = robotWorths[0]["climbPercent"];
-            document.getElementById("mobile3").innerHTML = robotWorths[0]["teleAccuracy"];
+            console.log('success');
+            document.getElementById("mobile1").innerHTML = robotWorths[i]["averageScore"];
+            document.getElementById("mobile2").innerHTML = robotWorths[i]["climbPercent"];
+            document.getElementById("mobile3").innerHTML = robotWorths[i]["teleAccuracy"];
         }
       }
 }
@@ -165,7 +180,7 @@ function changeColor(){
                 currentTeamMobile = temp;
             };
         };
-        isBlueMobile = false;
+        isBlue = false;
         updateTeamMobile();
         updateTeamDesktop();
 
@@ -183,7 +198,7 @@ function changeColor(){
                 currentTeamMobile = temp;
             };
         };
-        isBlueMobile = true;
+        isBlue = true;
         updateTeamMobile();
         updateTeamDesktop();
     }

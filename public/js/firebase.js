@@ -630,49 +630,49 @@ function displayDataWheel() {
   robotWorths = robotWorths.reverse();
 
   document.getElementById("table2").querySelector("#t1").innerHTML = robotWorths[0].team;
-  document.getElementById("table2").querySelector("#d1").innerHTML = robotWorths[0].climbPercent;
+  document.getElementById("table2").querySelector("#d1").innerHTML = Math.round(robotWorths[0].climbPercent);
   document.getElementById("table2").querySelector("#t2").innerHTML = robotWorths[1].team;
-  document.getElementById("table2").querySelector("#d2").innerHTML = robotWorths[1].climbPercent;
+  document.getElementById("table2").querySelector("#d2").innerHTML = Math.round(robotWorths[1].climbPercent);
   document.getElementById("table2").querySelector("#t3").innerHTML = robotWorths[2].team;
-  document.getElementById("table2").querySelector("#d3").innerHTML = robotWorths[2].climbPercent;
+  document.getElementById("table2").querySelector("#d3").innerHTML = Math.round(robotWorths[2].climbPercent);
   document.getElementById("table2").querySelector("#t4").innerHTML = robotWorths[3].team;
-  document.getElementById("table2").querySelector("#d4").innerHTML = robotWorths[3].climbPercent;
+  document.getElementById("table2").querySelector("#d4").innerHTML = Math.round(robotWorths[3].climbPercent);
   document.getElementById("table2").querySelector("#t5").innerHTML = robotWorths[4].team;
-  document.getElementById("table2").querySelector("#d5").innerHTML = robotWorths[4].climbPercent;
+  document.getElementById("table2").querySelector("#d5").innerHTML = Math.round(robotWorths[4].climbPercent);
   document.getElementById("table2").querySelector("#t6").innerHTML = robotWorths[5].team;
-  document.getElementById("table2").querySelector("#d6").innerHTML = robotWorths[5].climbPercent;
+  document.getElementById("table2").querySelector("#d6").innerHTML = Math.round(robotWorths[5].climbPercent);
 
   robotWorths = robotWorths.sort((a, b) => (a.averageScore > b.averageScore) ? 1 : -1); //TODO THIS SORT FUNCTION DOES NOT HANDLE TIES
   robotWorths = robotWorths.reverse();
 
   document.getElementById("table3").querySelector("#t1").innerHTML = robotWorths[0].team;
-  document.getElementById("table3").querySelector("#d1").innerHTML = robotWorths[0].averageScore;
+  document.getElementById("table3").querySelector("#d1").innerHTML = Math.round(robotWorths[0].averageScore);
   document.getElementById("table3").querySelector("#t2").innerHTML = robotWorths[1].team;
-  document.getElementById("table3").querySelector("#d2").innerHTML = robotWorths[1].averageScore;
+  document.getElementById("table3").querySelector("#d2").innerHTML = Math.round(robotWorths[1].averageScore);
   document.getElementById("table3").querySelector("#t3").innerHTML = robotWorths[2].team;
-  document.getElementById("table3").querySelector("#d3").innerHTML = robotWorths[2].averageScore;
+  document.getElementById("table3").querySelector("#d3").innerHTML = Math.round(robotWorths[2].averageScore);
   document.getElementById("table3").querySelector("#t4").innerHTML = robotWorths[3].team;
-  document.getElementById("table3").querySelector("#d4").innerHTML = robotWorths[3].averageScore;
+  document.getElementById("table3").querySelector("#d4").innerHTML = Math.round(robotWorths[3].averageScore);
   document.getElementById("table3").querySelector("#t5").innerHTML = robotWorths[4].team;
-  document.getElementById("table3").querySelector("#d5").innerHTML = robotWorths[4].averageScore;
+  document.getElementById("table3").querySelector("#d5").innerHTML = Math.round(robotWorths[4].averageScore);
   document.getElementById("table3").querySelector("#t6").innerHTML = robotWorths[5].team;
-  document.getElementById("table3").querySelector("#d6").innerHTML = robotWorths[5].averageScore;
+  document.getElementById("table3").querySelector("#d6").innerHTML = Math.round(robotWorths[5].averageScore);
 
   robotWorths = robotWorths.sort((a, b) => (a.autoAccuracy > b.autoAccuracy) ? 1 : -1); //TODO THIS SORT FUNCTION DOES NOT HANDLE TIES
   robotWorths = robotWorths.reverse();
 
   document.getElementById("table4").querySelector("#t1").innerHTML = robotWorths[0].team;
-  document.getElementById("table4").querySelector("#d1").innerHTML = robotWorths[0].autoAccuracy;
+  document.getElementById("table4").querySelector("#d1").innerHTML = Math.round(robotWorths[0].autoAccuracy);
   document.getElementById("table4").querySelector("#t2").innerHTML = robotWorths[1].team;
-  document.getElementById("table4").querySelector("#d2").innerHTML = robotWorths[1].autoAccuracy;
+  document.getElementById("table4").querySelector("#d2").innerHTML = Math.round(robotWorths[1].autoAccuracy);
   document.getElementById("table4").querySelector("#t3").innerHTML = robotWorths[2].team;
-  document.getElementById("table4").querySelector("#d3").innerHTML = robotWorths[2].autoAccuracy;
+  document.getElementById("table4").querySelector("#d3").innerHTML = Math.round(robotWorths[2].autoAccuracy);
   document.getElementById("table4").querySelector("#t4").innerHTML = robotWorths[3].team;
-  document.getElementById("table4").querySelector("#d4").innerHTML = robotWorths[3].autoAccuracy;
+  document.getElementById("table4").querySelector("#d4").innerHTML = Math.round(robotWorths[3].autoAccuracy);
   document.getElementById("table4").querySelector("#t5").innerHTML = robotWorths[4].team;
-  document.getElementById("table4").querySelector("#d5").innerHTML = robotWorths[4].autoAccuracy;
+  document.getElementById("table4").querySelector("#d5").innerHTML = Math.round(robotWorths[4].autoAccuracy);
   document.getElementById("table4").querySelector("#t6").innerHTML = robotWorths[5].team;
-  document.getElementById("table4").querySelector("#d6").innerHTML = robotWorths[5].autoAccuracy;
+  document.getElementById("table4").querySelector("#d6").innerHTML = Math.round(robotWorths[5].autoAccuracy);
 
   document.getElementById("dataWheelDisplay").style.display = "none";
 
