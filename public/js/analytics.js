@@ -239,20 +239,7 @@ function generateGraph(robotsArr){
         scoresArr.push(currentScoresArr);
     });
 
-    var datasets = [{
-        label: "DummyData",
-        data: [0,5,10,15,20,25,30,35,40],
-        backgroundColor: "rgba(50,120,0,0.5)",
-        borderColor: "rgba(0,0,0,1)",
-        borderWidth: "1",
-        fill: false,
-        lineTension: 0.4,
-        pointBackgroundColor:"rgba(0,250,0,1)",
-        pointBorderColor:"rgba(255,0,255,1)",
-        pointBorderWidth: 2,
-        pointHitRadius: 20,
-        pointHoverBackgroundColor:"rbga(0,0,0,0.5)"
-    }];
+    var datasets = [];
 
     for (var i = 0; i < 4; i++) {
         color = "rgba(" + i*10 + ",100," + i*200/1.3 + ",1)" 
@@ -318,8 +305,6 @@ function removeTeam(){
 
 ////=========================================================================HEATMAP//=========================================================================
 
-var hasBeenClicked = [false, false];
-
 function changeHeatIMG(image){
     if(image == 'full'){
         document.getElementById("tarmacIMG").style.display = 'none';
@@ -328,10 +313,6 @@ function changeHeatIMG(image){
         document.getElementById("tarmacHeatMap").style.display = "none"
         document.getElementById("fullField").classList.add('is-selected');
         document.getElementById("tarmac").classList.remove('is-selected');
-        if(!hasBeenClicked[0]){
-            generateFieldHeatmap();
-        }
-        hasBeenClicked[0] = true;
     }else{
         document.getElementById("fieldIMG").style.display = 'none';
         document.getElementById("tarmacIMG").style.display = 'block';
@@ -339,10 +320,6 @@ function changeHeatIMG(image){
         document.getElementById("tarmacHeatMap").style.display = "block"
         document.getElementById("fullField").classList.remove('is-selected');
         document.getElementById("tarmac").classList.add('is-selected');
-        if(!hasBeenClicked[1]){
-            generateTarmacHeatmap();
-        }
-        hasBeenClicked[1] = true;
     }
     try {
         setFieldHeatData();
@@ -399,11 +376,13 @@ function setFieldHeatData(robot){
     var fieldX = document.getElementById("fieldIMG").clientWidth;
     var fieldY = document.getElementById("fieldIMG").clientHeight;
 
+    const valueOfHeatPoints = 45;
+
     //for auto
     var autoPickupsDataArr = [];
     try {
         for (var i = 0; i < autoPickupsXArr.length; i++) {
-            autoPickupsDataArr.push({x:(Math.round((autoPickupsXArr[i]/2068)*fieldX)),y:(Math.round((autoPickupsYArr[i]/1058)*fieldY)),value:100});
+            autoPickupsDataArr.push({x:(Math.round((autoPickupsXArr[i]/2068)*fieldX)),y:(Math.round((autoPickupsYArr[i]/1058)*fieldY)),value:valueOfHeatPoints});
         };    
     } catch (error) {
         console.log(error);
@@ -412,7 +391,7 @@ function setFieldHeatData(robot){
     var autoShotsDataArr = [];
     try {
         for (var i = 0; i < autoShotsXArr.length; i++) {
-            autoShotsDataArr.push({x:(Math.round((autoShotsXArr[i]/2068)*fieldX)),y:(Math.round((autoShotsYArr[i]/1058)*fieldY)),value:100});
+            autoShotsDataArr.push({x:(Math.round((autoShotsXArr[i]/2068)*fieldX)),y:(Math.round((autoShotsYArr[i]/1058)*fieldY)),value:valueOfHeatPoints});
         };
     } catch (error) {
         console.log(error);
@@ -422,7 +401,7 @@ function setFieldHeatData(robot){
     var telePickupsDataArr = [];
     try {
         for (var i = 0; i < telePickupsXArr.length; i++) {
-            telePickupsDataArr.push({x:(Math.round((telePickupsXArr[i]/2068)*fieldX)),y:(Math.round((telePickupsYArr[i]/1058)*fieldY)),value:100});
+            telePickupsDataArr.push({x:(Math.round((telePickupsXArr[i]/2068)*fieldX)),y:(Math.round((telePickupsYArr[i]/1058)*fieldY)),value:valueOfHeatPoints});
         };
     } catch (error) {
         console.log(error);
@@ -431,7 +410,7 @@ function setFieldHeatData(robot){
     var teleShotsDataArr = [];
     try {
         for (var i = 0; i < teleShotsXArr.length; i++) {
-            teleShotsDataArr.push({x:(Math.round((teleShotsXArr[i]/2068)*fieldX)),y:(Math.round((teleShotsYArr[i]/1058)*fieldY)),value:100});
+            teleShotsDataArr.push({x:(Math.round((teleShotsXArr[i]/2068)*fieldX)),y:(Math.round((teleShotsYArr[i]/1058)*fieldY)),value:valueOfHeatPoints});
         };
     } catch (error) {
         console.log(error);

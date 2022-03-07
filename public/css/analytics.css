@@ -347,6 +347,7 @@ main .pitData .container .pitScoutData .noDataMessage {
 
 main .pitData .container .pitScoutData .noDataMessage.noData {
     display: inline;
+    padding-top:120px;
 }
 
 /*

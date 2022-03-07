@@ -245,7 +245,7 @@ function updateCurrentCargo(){
 function getMousePosition(event){ //Gets the position of the mouse !!only works when run from an onclick and passing in event!!
     var rect = event.target.getBoundingClientRect();
     x = Math.round(((event.clientX - rect.left) / autoImage.clientWidth) * 2068); //adjusts for any screen size, converts coords to a standard size, used for heatmap and data
-    y = Math.round(((event.clientY - rect.top) / teleImage.clientWidth) * 1058);
+    y = Math.round(((event.clientY - rect.top) / teleImage.clientHeight) * 1058);
     xRel = Math.round(event.clientX - rect.left); //gets the relative position of the mouse, used for placing the popup and icons
     yRel = Math.round(event.clientY - rect.top);
     //console.log(x + " " + y);
