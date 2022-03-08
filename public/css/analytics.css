@@ -381,7 +381,7 @@ main .heatmap .container img{
     margin-left: auto;
     margin-right: auto;
     border: 1px solid white;
-    border-radius: 0px 15px 15px 15px;
+    border-radius: 15px;
 }
 
 main .heatmap .container #fieldHeatMap{
@@ -397,28 +397,10 @@ main .heatmap .container .heatmap-canvas:first-of-type{
     filter: hue-rotate(90deg);
 }
 
-main .heatmap .container #tarmacHeatMap{
-    height:405px;
-}
-
-main .heatmap .container #tarmacHeatMap{
-    grid-row: 2 / 3;
-    grid-column: 1 / 5;
-    display: none;
-}
-
 main .heatmap .container #fieldIMG{
     display: block;
     width: 425px;
     grid-row: 1 / 2;
-}
-
-main .heatmap .container #tarmacIMG{
-    display:none;
-    padding-left: 10px;
-    padding-right: 10px;
-    background-color: white;
-    width: 425px;
 }
 
 main .heatmap .container h1{
@@ -435,10 +417,6 @@ main .heatmap .container .is-selected{
 
 main .heatmap .container #fullField{
     grid-column: 1 / 2;
-    border-radius:20px 20px 0px 0px;
-}
-main .heatmap .container #tarmac{
-    grid-column: 2 / 3;
     border-radius:20px 20px 0px 0px;
 }
 

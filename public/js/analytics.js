@@ -287,23 +287,7 @@ function regenChart() {
     document.getElementById('chartWrapper').insertAdjacentHTML('beforeend',"<canvas id='myChart'></canvas>");
 }
 
-var graphTeamsNum = 1;
-
-function addTeam(){
-    if(graphTeamsNum < 3){
-        graphTeamsNum += 1;
-        document.getElementById("selectors").insertAdjacentHTML('beforeend',"<input placeholder='Team' class='teamSelect' id='selector" + graphTeamsNum +"'></input>");
-    }
-}
-
-function removeTeam(){
-    if(graphTeamsNum > 1){
-        document.getElementById("selector" + graphTeamsNum).remove();
-        graphTeamsNum -= 1;    
-    }
-}
-
-////=========================================================================HEATMAP//=========================================================================
+//=========================================================================HEATMAP=========================================================================
 
 function changeHeatIMG(image){
     if(image == 'full'){
@@ -425,38 +409,8 @@ function setFieldHeatData(robot){
     heatmapInstanceFieldPickup.addData(autoPickupsDataArr);
 }
 
-function generateTarmacHeatmap(){
-    var tarmacConfig = {
-        container: document.getElementById('tarmacHeatMap'),
-        radius: 15,
-        maxOpacity: .5,
-        minOpacity: 0,
-        blur: .75
-      };
-      // create heatmap with configuration
-    heatmapInstanceTarmac = h337.create(tarmacConfig);
-}
-
-function setTarmacHeatData(){
-    var dataPoint = {
-        x: 229, // x coordinate of the datapoint, a number
-        y: 100, // y coordinate of the datapoint, a number
-        value: 50 // the value at datapoint(x, y)
-    };
-    var data = {
-        max: 100,
-        min: 0,
-        data: [
-          dataPoint, dataPoint, dataPoint, dataPoint
-        ]
-    };
-
-    heatmapInstanceTarmac.setData(data);
-}
-
 function updateHeatmaps(){
     heatmapInstanceField.setDataMax(200);
-    heatmapInstanceTarmac.setDataMax(200);
 }
 
 function togglePickupHeatmap(){
