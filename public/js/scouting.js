@@ -593,14 +593,14 @@ function barSelect(currentBar){  //Changes the color of the climb level buttons 
 
 // = == = = = == = == = = = = == = == = = = == = = = =NEXT MATCH FUNCTION VERY IMPORANTN == = == == ==== = = == = = = = = = == = = =//
 function nextMatch(){
-    if(confirm("Are you sure you would like to leave this page?")){
+    if(offlineMode){
+        generateQRCode();
+    }else{
+        if(confirm("Are you sure you would like to leave this page?")){
         //pushing the data
-        if(offlineMode){
-            generateQRCode();
-        }else{
             pushDataDictionary(robotToScout, matchNum, currentUser);
-            location.href = 'schedule.html';
-        }   
+            location.href = 'schedule.html'; 
+        }
     }
 }
 
@@ -615,6 +615,12 @@ function generateQRCode(){
 
     //Generate a qr code here some how lol
     //Currently will no support heatmap because it could overflow data
+    try{
+        qrcode.clear();
+        console.log("test");
+    }catch(e){
+
+    }
     var qrcode = new QRCode(document.getElementById("qrcode"), {
         text: qrData,
         width: 512,

@@ -639,6 +639,14 @@ Cause they are literally the same lmao
     padding:20px;
 }
 
+.offlineResetBtn{
+    border-radius: 0;
+    background-color: #ff281d;
+    padding:1vw;
+    font-size: 2.3vw;
+    float:right;
+}
+
 @media (prefers-color-scheme: dark){
     body, html{
         background-color: black;
