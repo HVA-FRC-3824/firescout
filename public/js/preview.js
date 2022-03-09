@@ -87,9 +87,9 @@ function updateTeamDesktop(){
         document.getElementById("team"+ j +"data3").innerHTML = "N/A";
         for (let i = 0; i < robotWorths.length; i++) {
             if(document.getElementById(id).innerHTML == robotWorths[i]["team"]){
-                document.getElementById("team"+ j +"data1").innerHTML = robotWorths[i]['averageScore'];
-                document.getElementById("team"+ j +"data2").innerHTML = robotWorths[i]['climbPercent'];
-                document.getElementById("team"+ j +"data3").innerHTML = robotWorths[i]['teleAccuracy'];
+                document.getElementById("team"+ j +"data1").innerHTML = Math.round(robotWorths[i]['averageScore']);
+                document.getElementById("team"+ j +"data2").innerHTML = Math.round(robotWorths[i]['climbPercent']);
+                document.getElementById("team"+ j +"data3").innerHTML = Math.round(robotWorths[i]['teleAccuracy']);
             }
         }
     }
@@ -156,9 +156,9 @@ function updateTeamMobile(){
     for (let i = 0; i < robotWorths.length; i++) { 
         if (robotWorths[i]["team"] == currentTeamMobile) {
             console.log('success');
-            document.getElementById("mobile1").innerHTML = robotWorths[i]["averageScore"];
-            document.getElementById("mobile2").innerHTML = robotWorths[i]["climbPercent"];
-            document.getElementById("mobile3").innerHTML = robotWorths[i]["teleAccuracy"];
+            document.getElementById("mobile1").innerHTML = Math.round(robotWorths[i]["averageScore"]);
+            document.getElementById("mobile2").innerHTML = Math.round(robotWorths[i]["climbPercent"]);
+            document.getElementById("mobile3").innerHTML = Math.round(robotWorths[i]["teleAccuracy"]);
         }
       }
 }
