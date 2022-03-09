@@ -49,7 +49,7 @@
         <div class="navBar" id="navbar">
             <button class="tabExtra" id="teamNum"><i id="lilGuy" class="fas fa-user"></i> 3824</button>
             <button class="tablink" onclick="openPage('Pre')" id="defaultOpen">Pre-Match</button>
-            <button class="tablink" onclick="openPage('Auto')" id="auto">Auto</button>
+            <button class="tablink" onclick="openPage('Auto');displayAutoWarn()" id="auto">Auto</button>
             <button class="tablink" onclick="openPage('Teleop')" id="teleop"> Teleop </button>
             <button class="tablink" onclick="openPage('Endgame')" id="endgame"> Endgame </button>
             <button class="nextMatch" onclick="nextMatch()"> Next Match </button>
@@ -93,6 +93,7 @@
     
         <div id="Auto" class="tabcontent">
             <div class="autoWrapper" >
+                <div class="autoWarn"><h1>AUTO</h1></div>
                 <div id="currentCargoDiv">
                     <p id="currentCargoAuto">0</p>
                 </div>

@@ -466,7 +466,7 @@ function addIconToField(autoOrTele, whichIcon){
         document.getElementById("autoIcons").insertAdjacentHTML('afterbegin',"<p class='icons' id='autoIcon" + autoIconsAmount + "'>" + iconToPlace + "</p>");
         whichAutoIconsArr.push(whichIcon);
         //console.log(document.getElementById(whichIcon + autoIconsAmount));
-        currentIcon = document.getElementById("autoIcon" + autoIconsAmount)
+        currentIcon = document.getElementById("autoIcon" + autoIconsAmount);
         currentIcon.style.transform = "translate(" + (xRel - currentIcon.clientWidth/2)  + "px, " + (yRel - currentIcon.clientHeight/2) + "px)"
         autoIconsAmount++;
     }else{
@@ -562,6 +562,13 @@ function undoAction(autoOrTele){
     updateCurrentCargo();
 }
 
+
+//MAKES THE AUTO WARN APPEAR AFTER X AMOUNT OF TIME
+function displayAutoWarn(){
+    setTimeout(() => {
+        document.getElementById("autoField").style.opacity = 0.8;
+    }, 25000);
+}
 
 /*
 ███████ ███    ██ ██████   ██████   █████  ███    ███ ███████ 

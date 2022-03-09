@@ -305,6 +305,21 @@ Cause they are literally the same lmao
     position: absolute;
 }
 
+.tabcontent .autoWrapper .autoWarn{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    z-index: -1;
+}
+
+.tabcontent .autoWarn h1{
+    font-size: 20vw;
+    margin-top:8vw;
+    color: rgb(30, 255, 0);
+}
+
 /* ======================================== MOVED OFF TARMAC SWITCH ======================================== */
 
 .tabcontent .autoWrapper .switch {
@@ -416,6 +431,7 @@ Cause they are literally the same lmao
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 100;
 }
 
 #currentCargo{
