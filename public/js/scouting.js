@@ -202,14 +202,24 @@ function hasCargo(cargoTest){ //Changes the color for the 'starting with cargo' 
     if (cargoTest == "yesButton"){
         document.getElementById("yesButton").style.backgroundColor = selectedColor;
         document.getElementById("noButton").style.backgroundColor = buttonColor;
+        if(dataDictionary["startedWithCargo"]){
+            //true is already selected
+        }else{
+            currentCargo += 1;
+        }
         dataDictionary["startedWithCargo"] = true;
-        currentCargo += 1;
         updateCurrentCargo();
     } else {
         document.getElementById("yesButton").style.backgroundColor = buttonColor;
         document.getElementById("noButton").style.backgroundColor = selectedColor;
+        if(!dataDictionary["startedWithCargo"]){
+            //already not holding a cargo
+        }else{
+            if(currentCargo > 0){
+                currentCargo -= 1;
+            }
+        }
         dataDictionary["startedWithCargo"] = false;
-        currentCargo -= 1;
         updateCurrentCargo();
     }
 }
@@ -445,11 +455,11 @@ function addIconToField(autoOrTele, whichIcon){
         if(whichIcon == "autoMissIcon"){
             iconToPlace = "❌";
         }else if(whichIcon == "autoUpperIcon"){
-            iconToPlace = "🥶";
+            iconToPlace = "⬆️";
         }else if(whichIcon == "autoLowerIcon"){
-            iconToPlace = "🤖";
+            iconToPlace = "⬇️";
         }else{
-            iconToPlace = "🤠";
+            iconToPlace = "⭕️";
         }
         document.getElementById("autoIcons").insertAdjacentHTML('afterbegin',"<p class='icons' id='" + whichIcon + autoIconsAmount + "'>" + iconToPlace + "</p>");
         //console.log(document.getElementById(whichIcon + autoIconsAmount));
@@ -461,11 +471,11 @@ function addIconToField(autoOrTele, whichIcon){
         if(whichIcon == "teleMissIcon"){
             iconToPlace = "❌";
         }else if(whichIcon == "teleUpperIcon"){
-            iconToPlace = "🥶";
+            iconToPlace = "⬆️";
         }else if(whichIcon == "teleLowerIcon"){
-            iconToPlace = "🤖";
+            iconToPlace = "⬇️";
         }else{
-            iconToPlace = "🤠";
+            iconToPlace = "⭕️";
         }
         document.getElementById("teleIcons").insertAdjacentHTML('afterbegin',"<p class='icons' id='" + whichIcon + teleIconsAmount + "'>" + iconToPlace + "</p>");
         //console.log(document.getElementById(whichIcon + teleIconsAmount));
@@ -608,7 +618,6 @@ function generateQRCode(){
     dataDictionary.match = document.getElementById('offlineMatchNum').value;
     dataDictionary.teamNum = document.getElementById('offlineRobotNum').value;
     dataDictionary.scouter = document.getElementById('offlineScouterName').value;
-
 
     qrData = JSON.stringify(dataDictionary);
     console.log(qrData);

@@ -157,13 +157,15 @@
         <section class="desktopData">
             <div class="teamSelectDiv">
                 <select class="teamSelect" id="teamNum"></select>
+            </div>
+            <div class="buttonsDiv">
                 <button id="genButton" onclick="generateAllTheThings()"><i class="fas fa-calculator"></i></button>
                 <button onclick="displayAllTheThings();"><i class="fas fa-sync"></i></button>
                 <button id="dataWheelDisplay" onclick="displayDataWheel();"><i class="fas fa-download"></i></button>
             </div>
             <section class="teamInsights">
                 <div class="container">
-                    <h1>Team Quick Look</h1>
+                    <h1>Quick Look</h1>
                     <div class="quickLook">
                         <table id="quickLookTable">
                             <tr>
@@ -206,10 +208,14 @@
                     <div id="fieldHeatMap">
                         <img id="fieldIMG" src="https://firebasestorage.googleapis.com/v0/b/firescout3824.appspot.com/o/fieldIMG.png?alt=media">
                         <div class="checkBoxesDiv">
-                            <label>toggle pickup</label>
-                            <input id="togglePickupSwitch" onclick="togglePickupHeatmap()" class="toggle" type="checkbox" checked/>
-                            <label>toggle launches</label>
-                            <input id="toggleLaunchSwitch" onclick="toggleLaunchesHeatmap()" class="toggle" type="checkbox" checked/>
+                            <label>Toggle auto pickups</label>
+                            <input id="togglePickupSwitch" onclick="togglePickupHeatmap('auto')" class="toggle" type="checkbox" checked/>
+                            <label>Toggle auto launches</label>
+                            <input id="toggleLaunchSwitch" onclick="toggleLaunchesHeatmap('auto')" class="toggle" type="checkbox" checked/>
+                            <label>Toggle tele pickups</label>
+                            <input id="toggleLaunchSwitch" onclick="togglePickupHeatmap('tele')" class="toggle" type="checkbox" checked/>
+                            <label>Toggle tele launches</label>
+                            <input id="toggleLaunchSwitch" onclick="toggleLaunchesHeatmap('tele')" class="toggle" type="checkbox" checked/>
                         </div>
                     </div>
                 </div>
