@@ -158,11 +158,19 @@
             <div class="teamSelectDiv">
                 <select class="teamSelect" id="teamNum"></select>
             </div>
+
+            <section class="imgDisplay">
+                <div class="imageDisplay" id="pitImageViewer">
+                    <p id="noPitImageText">No image available</p>
+                </div>
+            </section>
+
             <div class="buttonsDiv">
                 <button id="genButton" onclick="generateAllTheThings()"><i class="fas fa-calculator"></i></button>
                 <button onclick="displayAllTheThings();"><i class="fas fa-sync"></i></button>
                 <button id="dataWheelDisplay" onclick="displayDataWheel();"><i class="fas fa-download"></i></button>
             </div>
+
             <section class="teamInsights">
                 <div class="container">
                     <h1>Quick Look</h1>
@@ -193,93 +201,39 @@
                 </div>
                 <hr id="mobileHR">
             </section>
+
             <section class="graphs">
                 <div id="blur" class="container">
                     <div id="chartWrapper"><canvas id="myChart"></canvas></div>
                     <h3>add teams to compare</h3>
                     <div id="selectors" class="unselectable">
                         <input class="teamSelect" id="selector1" placeholder="Team"></input>
+                        <input class="teamSelect" id="selector1" placeholder="Team"></input>
+                        <input class="teamSelect" id="selector1" placeholder="Team"></input>
                     </div>
                 </div>
                 <hr id="mobileHR">
             </section>
+
             <section class="heatmap">
                 <div class="container">
                     <div id="fieldHeatMap">
                         <img id="fieldIMG" src="https://firebasestorage.googleapis.com/v0/b/firescout3824.appspot.com/o/fieldIMG.png?alt=media">
-                        <div class="checkBoxesDiv">
-                            <label>Toggle auto pickups</label>
-                            <input id="togglePickupSwitch" onclick="togglePickupHeatmap('auto')" class="toggle" type="checkbox" checked/>
-                            <label>Toggle auto launches</label>
-                            <input id="toggleLaunchSwitch" onclick="toggleLaunchesHeatmap('auto')" class="toggle" type="checkbox" checked/>
-                            <label>Toggle tele pickups</label>
-                            <input id="toggleLaunchSwitch" onclick="togglePickupHeatmap('tele')" class="toggle" type="checkbox" checked/>
-                            <label>Toggle tele launches</label>
-                            <input id="toggleLaunchSwitch" onclick="toggleLaunchesHeatmap('tele')" class="toggle" type="checkbox" checked/>
-                        </div>
+                    </div>
+                    <div class="checkBoxesDiv">
+                        <label>Toggle auto pickups</label>
+                        <input id="togglePickupSwitch" onclick="togglePickupHeatmap('auto')" class="toggle" type="checkbox" checked/>
+                        <label>Toggle auto launches</label>
+                        <input id="toggleLaunchSwitch" onclick="toggleLaunchesHeatmap('auto')" class="toggle" type="checkbox" checked/>
+                        <label>Toggle tele pickups</label>
+                        <input id="toggleLaunchSwitch" onclick="togglePickupHeatmap('tele')" class="toggle" type="checkbox" checked/>
+                        <label>Toggle tele launches</label>
+                        <input id="toggleLaunchSwitch" onclick="toggleLaunchesHeatmap('tele')" class="toggle" type="checkbox" checked/>
                     </div>
                 </div>
                 <hr id="mobileHR">
             </section>
-            <section class="pitData">
-                <div class="container">
-                    <h1>Pit Scout Data</h1>
-                    <div class="pitScoutData" id="pitContainer">
-                        <table id="pitTable" class="pitTable">
-                            <tr>
-                                <th>Category</th>
-                                <th>Value</th>
-                            </tr>
-                            <tr>
-                                <td>Robot Weight</td>
-                                <td id="pitWeight">125 lbs.</td>
-                            </tr>
-                            <tr>
-                                <td>Language</td>
-                                <td id="pitLang">Java</td>
-                            </tr>
-                            <tr>
-                                <td>Robot Drive</td>
-                                <td id="pitDriveTrain">West Coast</td>
-                            </tr>
-                            <tr>
-                                <td>Robot Width</td>
-                                <td id="pitWidth" >129 in.</td>
-                            </tr>
-                            <tr>
-                                <td>Robot Height</td>
-                                <td id="pitHeight">119 in.</td>
-                            </tr>
-                            <tr>
-                                <td>Climber</td>
-                                <td id="pitClimb">Yes</td>
-                            </tr>
-                            <tr>
-                                <td>Climb Time</td>
-                                <td id="pitTime">21 sec.</td>
-                            </tr>
-                            <tr>
-                                <td>Level</td>
-                                <td id="pitClimbLevel">Traversal</td>
-                            </tr>
-                            <tr>
-                                <td>Chamber</td>
-                                <td id="pitChamber">None</td>
-                            </tr>
-                            <tr>
-                                <td>Goal Level</td>
-                                <td id="pitGoalLevel">Neither</td>
-                            </tr>
-                            <tr>
-                                <td>Driver Exp.</td>
-                                <td id="pitExpLevel">Neither</td>
-                            </tr>
-                        </table>
-                        <p class="noDataMessage" id="noData">No data available.</p>
-                    </div>
-                </div>
-                <hr id="mobileHR">
-            </section>
+            
         </section>
 
         <hr id="desktopHR">
@@ -316,12 +270,67 @@
             </div>
             <hr>
         </section>
-        
-        <section class="imgDisplay">
-            <div class="imageDisplay" id="pitImageViewer">
-                <p id="noPitImageText">No image available</p>
+
+        <section class="pitData">
+            <div class="container">
+                <h1>Pit Scout Data</h1>
+                <div class="pitScoutData" id="pitContainer">
+                    <table id="pitTable" class="pitTable">
+                        <tr>
+                            <th>Category</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>Robot Weight</td>
+                            <td id="pitWeight">125 lbs.</td>
+                        </tr>
+                        <tr>
+                            <td>Language</td>
+                            <td id="pitLang">Java</td>
+                        </tr>
+                        <tr>
+                            <td>Robot Drive</td>
+                            <td id="pitDriveTrain">West Coast</td>
+                        </tr>
+                        <tr>
+                            <td>Robot Width</td>
+                            <td id="pitWidth" >129 in.</td>
+                        </tr>
+                        <tr>
+                            <td>Robot Height</td>
+                            <td id="pitHeight">119 in.</td>
+                        </tr>
+                        <tr>
+                            <td>Climber</td>
+                            <td id="pitClimb">Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Climb Time</td>
+                            <td id="pitTime">21 sec.</td>
+                        </tr>
+                        <tr>
+                            <td>Level</td>
+                            <td id="pitClimbLevel">Traversal</td>
+                        </tr>
+                        <tr>
+                            <td>Chamber</td>
+                            <td id="pitChamber">None</td>
+                        </tr>
+                        <tr>
+                            <td>Goal Level</td>
+                            <td id="pitGoalLevel">Neither</td>
+                        </tr>
+                        <tr>
+                            <td>Driver Exp.</td>
+                            <td id="pitExpLevel">Neither</td>
+                        </tr>
+                    </table>
+                    <p class="noDataMessage" id="noData">No data available.</p>
+                </div>
             </div>
+            <hr id="mobileHR">
         </section>
+
         <section class="pulling buttons">
             <button id="pullMasterButton" onclick="pullAllMatchScouting(); getHeatData(); getPitData();">PULL ALL DATA</button>
             
