@@ -448,6 +448,8 @@ function pickupCargo(autoOrTeleop){ //runs when the pickup cargo button is press
 
 var autoIconsAmount = 0;
 var teleIconsAmount = 0;
+var whichAutoIconsArr = []; // for the undo button only
+var whichTeleIconsArr = []; // for the undo button only
 
 function addIconToField(autoOrTele, whichIcon){
     if(autoOrTele == 'auto'){
@@ -461,9 +463,10 @@ function addIconToField(autoOrTele, whichIcon){
         }else{
             iconToPlace = "⭕️";
         }
-        document.getElementById("autoIcons").insertAdjacentHTML('afterbegin',"<p class='icons' id='" + whichIcon + autoIconsAmount + "'>" + iconToPlace + "</p>");
+        document.getElementById("autoIcons").insertAdjacentHTML('afterbegin',"<p class='icons' id='autoIcon" + autoIconsAmount + "'>" + iconToPlace + "</p>");
+        whichAutoIconsArr.push(whichIcon);
         //console.log(document.getElementById(whichIcon + autoIconsAmount));
-        currentIcon = document.getElementById(whichIcon + autoIconsAmount)
+        currentIcon = document.getElementById("autoIcon" + autoIconsAmount)
         currentIcon.style.transform = "translate(" + (xRel - currentIcon.clientWidth/2)  + "px, " + (yRel - currentIcon.clientHeight/2) + "px)"
         autoIconsAmount++;
     }else{
@@ -477,13 +480,88 @@ function addIconToField(autoOrTele, whichIcon){
         }else{
             iconToPlace = "⭕️";
         }
-        document.getElementById("teleIcons").insertAdjacentHTML('afterbegin',"<p class='icons' id='" + whichIcon + teleIconsAmount + "'>" + iconToPlace + "</p>");
+        document.getElementById("teleIcons").insertAdjacentHTML('afterbegin',"<p class='icons' id='teleIcon" + teleIconsAmount + "'>" + iconToPlace + "</p>");
+        whichTeleIconsArr.push(whichIcon);
         //console.log(document.getElementById(whichIcon + teleIconsAmount));
-        currentIcon = document.getElementById(whichIcon + teleIconsAmount);
+        currentIcon = document.getElementById("teleIcon" + teleIconsAmount);
         currentIcon.style.transform = "translate(" + (xRel - currentIcon.clientWidth/2)  + "px, " + (yRel - currentIcon.clientHeight/2) + "px)"
         teleIconsAmount = teleIconsAmount + 1;
     }
 }
+
+function undoAction(autoOrTele){
+    if(autoOrTele == "auto"){
+        if(autoIconsAmount > 0){
+            autoIconsAmount--;
+            document.getElementById("autoIcon" + autoIconsAmount).remove();
+            itemToUndo = whichAutoIconsArr.pop();
+            //console.log(itemToUndo);
+            switch (itemToUndo) {
+                case 'autoMissIcon':
+                    dataDictionary['autoShotsMissed']--;
+                    autoShotsArrX.pop();
+                    autoShotsArrY.pop();
+                    currentCargo++;
+                    break;
+                case 'autoUpperIcon':
+                    dataDictionary['autoUpperHubAmount']--;
+                    autoShotsArrX.pop();
+                    autoShotsArrY.pop();
+                    currentCargo++;
+                    break;
+                case 'autoLowerIcon':
+                    dataDictionary['autoLowerHubAmount']--;
+                    autoShotsArrX.pop();
+                    autoShotsArrY.pop();
+                    currentCargo++;
+                    break;
+                default: // for pickup
+                    autoPickupArrX.pop();
+                    autoPickupArrY.pop();
+                    currentCargo--;
+                    break;
+            }
+        }else{
+            console.log("nothing to undo");
+        }
+    }else{
+        if(teleIconsAmount > 0){
+            teleIconsAmount--;
+            document.getElementById("teleIcon" + teleIconsAmount).remove();
+            itemToUndo = whichTeleIconsArr.pop();
+            //console.log(itemToUndo);
+            switch (itemToUndo) {
+                case 'teleMissIcon':
+                    dataDictionary['teleShotsMissed']--;
+                    teleShotsArrX.pop();
+                    teleShotsArrY.pop();
+                    currentCargo++;
+                    break;
+                case 'teleUpperIcon':
+                    dataDictionary['teleUpperHubAmount']--;
+                    autoShotsArrX.pop();
+                    autoShotsArrY.pop();
+                    currentCargo++;
+                    break;
+                case 'teleLowerIcon':
+                    dataDictionary['teleLowerHubAmount']--;
+                    teleShotsArrX.pop();
+                    teleShotsArrY.pop();
+                    currentCargo++;
+                    break;
+                default: // for pickup
+                    telePickupArrX.pop();
+                    telePickupArrY.pop();
+                    currentCargo--;
+                    break;
+            }
+        }else{
+            console.log("nothing to undo");
+        }
+    }
+    updateCurrentCargo();
+}
+
 
 /*
 ███████ ███    ██ ██████   ██████   █████  ███    ███ ███████ 

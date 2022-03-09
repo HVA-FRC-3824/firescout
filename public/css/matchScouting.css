@@ -373,6 +373,18 @@ Cause they are literally the same lmao
     transform: translateX(2.75vw);
 }
 
+.tabcontent .autoWrapper .undoButton{
+    width: 15vw;
+    margin-left: auto;
+    transform: translate(0vw, -3vw);
+}
+
+.tabcontent .teleWrapper .undoButton{
+    width: 15vw;
+    margin-left: auto;
+    transform: translate(0vw, -1.2vw);
+}
+
 .autoWrapper.is-active {
     margin-top: 3.8%;
 }
@@ -380,6 +392,8 @@ Cause they are literally the same lmao
 .teleWrapper.is-active {
     margin-top: 3.8%;
 }
+
+
 
 /* ======================================== MOVED OFF TARMAC SWITCH END ======================================== */
 
