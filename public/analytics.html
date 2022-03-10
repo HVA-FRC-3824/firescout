@@ -155,10 +155,19 @@
         </section>
 
         <section class="desktopData">
-            <div class="teamSelectDiv">
-                <select class="teamSelect" id="teamNum"></select>
+            <div class="interact-container">
+                <div class="teamSelectDiv">
+                    <select class="teamSelect" id="teamNum"></select>
+                </div>
+    
+                
+                <div class="buttonsDiv">
+                    <button id="genButton" onclick="generateAllTheThings()"><i class="fas fa-calculator"></i></button>
+                    <button onclick="displayAllTheThings();"><i class="fas fa-sync"></i></button>
+                    <button id="dataWheelDisplay" onclick="displayDataWheel();"><i class="fas fa-download"></i></button>
+                </div>
             </div>
-
+            
             <section class="imgDisplay">
                 <div class="imageDisplay" id="pitImageViewer">
                     <p id="noPitImageText">No image available</p>

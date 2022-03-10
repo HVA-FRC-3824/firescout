@@ -640,10 +640,14 @@ main #pullMasterButton{
        ██    ██   ██ ██████  ███████ ███████    ██        ██████  ██   ██    ██    ██   ██ 
     */ 
 
-    main .teamSelectDiv{
+    main .teamSelectDiv {
         grid-row: 1 / 2;
         grid-column: 1 / 2;
         background-color: rgba(255, 255, 255, 0);
+    }
+
+    .interact-container {
+        
     }
 
     main .imgDisplay{
