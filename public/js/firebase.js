@@ -566,6 +566,9 @@ function generateAllTheThings(){
   generateCATTScores();
   setTimeout(() => {
     generateFieldHeatmap();
+    setTimeout(() => {
+      displayDataWheel();
+    }, 250);
   }, 250);
   document.getElementById('genButton').style.display = 'none';
 }

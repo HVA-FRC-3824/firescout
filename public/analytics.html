@@ -168,7 +168,7 @@
             <div class="buttonsDiv">
                 <button id="genButton" onclick="generateAllTheThings()"><i class="fas fa-calculator"></i></button>
                 <button onclick="displayAllTheThings();"><i class="fas fa-sync"></i></button>
-                <button id="dataWheelDisplay" onclick="displayDataWheel();"><i class="fas fa-download"></i></button>
+                <button id="pullMasterButton" onclick="pullAllMatchScouting(); getHeatData(); getPitData();"><i class="fas fa-download"></i></button>
             </div>
 
             <section class="teamInsights">
@@ -221,19 +221,14 @@
                         <img id="fieldIMG" src="https://firebasestorage.googleapis.com/v0/b/firescout3824.appspot.com/o/fieldIMG.png?alt=media">
                     </div>
                     <div class="checkBoxesDiv">
-                        <label>Toggle auto pickups</label>
                         <input id="togglePickupSwitch" onclick="togglePickupHeatmap('auto')" class="toggle" type="checkbox" checked/>
-                        <label>Toggle auto launches</label>
                         <input id="toggleLaunchSwitch" onclick="toggleLaunchesHeatmap('auto')" class="toggle" type="checkbox" checked/>
-                        <label>Toggle tele pickups</label>
                         <input id="toggleLaunchSwitch" onclick="togglePickupHeatmap('tele')" class="toggle" type="checkbox" checked/>
-                        <label>Toggle tele launches</label>
                         <input id="toggleLaunchSwitch" onclick="toggleLaunchesHeatmap('tele')" class="toggle" type="checkbox" checked/>
                     </div>
                 </div>
                 <hr id="mobileHR">
             </section>
-            
         </section>
 
         <hr id="desktopHR">
@@ -332,7 +327,7 @@
         </section>
 
         <section class="pulling buttons">
-            <button id="pullMasterButton" onclick="pullAllMatchScouting(); getHeatData(); getPitData();">PULL ALL DATA</button>
+            
             
         </section>
     </main>
