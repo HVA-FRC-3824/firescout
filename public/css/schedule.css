@@ -171,6 +171,13 @@ main section .container .scout-match button:hover {
     }
 }
 
+/* This is amaris's fault for having a crappy phone */
+@media all and (max-height: 768px) {
+    main section .container {
+        margin-top: 200px;
+    }
+}
+
 /*
 ████████  █████  ██████  ██      ███████ ████████     ███████ ██ ███████ ███████ 
    ██    ██   ██ ██   ██ ██      ██         ██        ██      ██    ███  ██      
