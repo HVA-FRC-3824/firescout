@@ -309,17 +309,29 @@ function pushHeatArr(robotToScout, mNum, scoutName){
 
 //run from the console and paste in the QR data
 function pushQRCodeData(qrCodeData){
-  match = qrCodeData.match;
-  scouter = qrCodeData.scouter;
-  robotNumber = qrCodeData.teamNum;
+  var qrDictionary = { //The object of all our data, this should be quite easy to push to firebase in this format
+    "fieldStartPositionX": 0,
+    "fieldStartPositionY": 0,
+    "startedWithCargo": qrCodeData.slice(0,1),
+    "autoShotsMissed": qrCodeData.slice(1,3),
+    "teleShotsMissed": qrCodeData.slice(3,5),
+    "movedOffTarmac": qrCodeData.slice(5,6),
+    "autoUpperHubAmount": qrCodeData.slice(6,7),
+    "autoLowerHubAmount": qrCodeData.slice(7,8),
+    "teleUpperHubAmount": qrCodeData.slice(8,10),
+    "teleLowerHubAmount": qrCodeData.slice(10,12),
+    "playedDefense": qrCodeData.slice(12,13),
+    "attemptedClimb": qrCodeData.slice(13,14),
+    "levelClimbed": qrCodeData.slice(14,15),
+    "yellowCard": qrCodeData.slice(15,16),
+    "redCard": qrCodeData.slice(16,17)
+}
 
-  delete qrCodeData.match;
-  delete qrCodeData.scouter;
-  delete qrCodeData.teamNum;
-
-  firebase.database().ref('matchScouting/' + robotNumber + "/" + match + "/" + scouter).set({
-    "data": qrCodeData
-  });
+console.log(qrDictionary);
+//(cargo_1)(autoShotsMissed_2,3)(teleShotsMissed_4,5)(movedOffTarmac_6)
+//(autoUpperHubAmount_7)(autoLowerHubAmount_8)(teleUpperHubAmount_9,10)
+//(teleLowerHubAmount_11,12)(playedDefense_13)(attemptedClimb_14)
+//(levelClimbed_15)(yellowCard_16)(redCard_17)
 
 }
 

@@ -24,6 +24,13 @@ var dataDictionary = { //The object of all our data, this should be quite easy t
     "redCard": false
 }
 
+//(cargo_1)(autoShotsMissed_2,3)(teleShotsMissed_4,5)(movedOffTarmac_6)
+//(autoUpperHubAmount_7)(autoLowerHubAmount_8)(teleUpperHubAmount_9,10)
+//(teleLowerHubAmount_11,12)(playedDefense_13)(attemptedClimb_14)
+//(levelClimbed_15)(yellowCard_16)(redCard_17)
+
+//115151151515150040038246
+
 //but of course because nothing is easy dictionary cannot store arrays
 var autoShotsArrX = [];
 var autoShotsArrY = [];
@@ -704,7 +711,7 @@ function generateQRCode(){
     dataDictionary.teamNum = document.getElementById('offlineRobotNum').value;
     dataDictionary.scouter = document.getElementById('offlineScouterName').value;
 
-    qrData = JSON.stringify(dataDictionary);
+    qrData = JSON.stringify("115151151515150040038246weston");
     console.log(qrData);
 
     //Generate a qr code here some how lol
