@@ -751,11 +751,112 @@ function nextMatch(){
 }
 
 function generateQRCode(){
-    dataDictionary.match = document.getElementById('offlineMatchNum').value;
-    dataDictionary.teamNum = document.getElementById('offlineRobotNum').value;
-    dataDictionary.scouter = document.getElementById('offlineScouterName').value;
+    offlineMatch = document.getElementById('offlineMatchNum').value;
+    offlineTeamNum = document.getElementById('offlineRobotNum').value;
+    offlineScouter = document.getElementById('offlineScouterName').value;
 
-    qrData = JSON.stringify("115151151515150040038246weston");
+    //(cargo_1)(autoShotsMissed_2,3)(teleShotsMissed_4,5)(movedOffTarmac_6)
+    //(autoUpperHubAmount_7)(autoLowerHubAmount_8)(teleUpperHubAmount_9,10)
+    //(teleLowerHubAmount_11,12)(playedDefense_13)(attemptedClimb_14)
+    //(levelClimbed_15)(yellowCard_16)(redCard_17)
+    
+    //(cargo_1)
+    if (dataDictionary["startedWithCargo"] == false) {
+        qrData = "0";
+    } else {
+        qrData = "1";
+    }
+    //(autoShotsMissed_2,3)
+    if (dataDictionary["autoShotsMissed"].toString().length == 1) {
+        qrData = qrData + ("0" + dataDictionary["autoShotsMissed"].toString());
+    } else {
+        qrData = qrData + dataDictionary["autoShotsMissed"];
+    }
+    //(teleShotsMissed_4,5)
+    if (dataDictionary["teleShotsMissed"].toString().length == 1) {
+        qrData = qrData + ("0" + dataDictionary["teleShotsMissed"].toString());
+    } else {
+        qrData = qrData + dataDictionary["teleShotsMissed"];
+    }
+    //(movedOffTarmac_6)
+    if (dataDictionary["movedOffTarmac"] == false) {
+        qrData = qrData + "0";
+    } else {
+        qrData = qrData + "1";
+    }
+    //(autoUpperHubAmount_7)
+    qrData = qrData + dataDictionary["autoUpperHubAmount"];
+    //(autoLowerHubAmount_8)
+    qrData = qrData + dataDictionary["autoLowerHubAmount"];
+    //(teleUpperHubAmount_9,10)
+    if (dataDictionary["teleUpperHubAmount"].toString().length == 1) {
+        qrData = qrData + ("0" + (dataDictionary["teleUpperHubAmount"]).toString());
+    } else {
+        qrData = qrData + dataDictionary["teleUpperHubAmount"];
+    }
+    //(teleLowerHubAmount_11,12)
+    if (((dataDictionary["teleLowerHubAmount"]).toString()).length == 1) {
+        qrData = qrData + ("0" + (dataDictionary["teleLowerHubAmount"]).toString());
+    } else {
+        qrData = qrData + dataDictionary["teleLowerHubAmount"];
+    }
+    //(playedDefense_13)
+    if (dataDictionary['playedDefense'] == false){
+        qrData = qrData + "0";
+    } else {
+        qrData = qrData + "1";
+    }
+    //(attemptedClimb_14)
+    if (dataDictionary['attemptedClimb'] == false) {
+        qrData = qrData + "0";
+    } else {
+        qrData = qrData + "1";
+    }
+    //(levelClimbed_15)
+    if (dataDictionary['levelClimbed'] == "none") {
+        qrData = qrData + "0";
+    } else if (dataDictionary['levelClimbed'] == "low") {
+        qrData = qrData + "1";
+    } else if (dataDictionary['levelClimbed'] == "mid") {
+        qrData = qrData + "2";
+    } else if (dataDictionary['levelClimbed'] == "high") {
+        qrData = qrData + "3";
+    } else if(dataDictionary['levelClimbed'] == "traversal"){
+        qrData = qrData + "4";
+    } else {
+        qrData = qrData + "5";
+    }
+    //(yellowCard_16)
+    if (dataDictionary['yellowCard'] == false) {
+        qrData = qrData + "0";
+    } else {
+        qrData = qrData + "1";
+    }
+    //(redCard_17)
+    if (dataDictionary['redCard'] == false) {
+        qrData = qrData + "0";
+    } else {
+        qrData = qrData + "1";
+    }
+    //matchNumber_18,19
+    if (offlineMatch.toString().length == 1) {
+        qrData = qrData + ("0" + offlineMatch.toString());
+    } else {
+        qrData = qrData + offlineMatch;
+    }
+    //robotNumber_20,21,22,23
+    if (offlineTeamNum.toString().length == 1) {
+        qrData = qrData + ("000" + offlineTeamNum.toString());
+    } else if (offlineTeamNum.toString().length == 2) {
+        qrData = qrData + ("00" + offlineTeamNum.toString());
+    } else if (offlineTeamNum.toString().length == 3) {
+        qrData = qrData + ("0" + offlineTeamNum.toString());
+    } else {
+        qrData = qrData + offlineTeamNum
+    }
+    //scouterName_24 to end
+    qrData = qrData + offlineScouter;
+
     console.log(qrData);
 
     //Generate a qr code here some how lol

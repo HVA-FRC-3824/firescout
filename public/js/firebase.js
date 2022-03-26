@@ -309,30 +309,82 @@ function pushHeatArr(robotToScout, mNum, scoutName){
 
 //run from the console and paste in the QR data
 function pushQRCodeData(qrCodeData){
+  if (qrCodeData.slice(0,1) == 0){
+    startedWithCargo = false;
+  } else {
+    startedWithCargo = true;
+  }
+  if (qrCodeData.slice(5,6) == 0){
+    movedOffTarmac = false;
+  } else {
+    movedOffTarmac = true;
+  }
+  if (qrCodeData.slice(12,13) == 0){
+    playedDefense = false;
+  } else {
+    playedDefense = true;
+  }
+  if (qrCodeData.slice(13,14) == 0) {
+    attemptedClimb = false;
+  } else {
+    attemptedClimb = true;
+  }
+  if (qrCodeData.slice(14,15) == 0) {
+    climbLevel = "none"
+  } else if (qrCodeData.slice(14,15) == 1){
+    climbLevel = "low"
+  } else if (qrCodeData.slice(14,15) == 2){
+    climbLevel = "mid"
+  } else if (qrCodeData.slice(14,15) == 3){
+    climbLevel = "high"
+  } else if (qrCodeData.slice(14,15) == 4){
+    climbLevel = "traversal"
+  } else {
+    climbLevel = "fail"
+  }
+  if (qrCodeData.slice(15,16) == 0) {
+    yellowCard = false;
+  } else {
+    yellowCard = true;
+  }
+  if (qrCodeData.slice(16,17) == 0) {
+    redCard = false;
+  } else {
+    redCard = true;
+  }
   var qrDictionary = { //The object of all our data, this should be quite easy to push to firebase in this format
     "fieldStartPositionX": 0,
     "fieldStartPositionY": 0,
-    "startedWithCargo": qrCodeData.slice(0,1),
-    "autoShotsMissed": qrCodeData.slice(1,3),
-    "teleShotsMissed": qrCodeData.slice(3,5),
-    "movedOffTarmac": qrCodeData.slice(5,6),
-    "autoUpperHubAmount": qrCodeData.slice(6,7),
-    "autoLowerHubAmount": qrCodeData.slice(7,8),
-    "teleUpperHubAmount": qrCodeData.slice(8,10),
-    "teleLowerHubAmount": qrCodeData.slice(10,12),
-    "playedDefense": qrCodeData.slice(12,13),
-    "attemptedClimb": qrCodeData.slice(13,14),
-    "levelClimbed": qrCodeData.slice(14,15),
-    "yellowCard": qrCodeData.slice(15,16),
-    "redCard": qrCodeData.slice(16,17)
-}
+    "startedWithCargo": startedWithCargo,
+    "autoShotsMissed": parseInt(qrCodeData.slice(1,3)),
+    "teleShotsMissed": parseInt(qrCodeData.slice(3,5)),
+    "movedOffTarmac": movedOffTarmac,
+    "autoUpperHubAmount": parseInt(qrCodeData.slice(6,7)),
+    "autoLowerHubAmount": parseInt(qrCodeData.slice(7,8)),
+    "teleUpperHubAmount": parseInt(qrCodeData.slice(8,10)),
+    "teleLowerHubAmount": parseInt(qrCodeData.slice(10,12)),
+    "playedDefense": playedDefense,
+    "attemptedClimb": attemptedClimb,
+    "levelClimbed": climbLevel,
+    "yellowCard": yellowCard,
+    "redCard": redCard
+  };
 
-console.log(qrDictionary);
-//(cargo_1)(autoShotsMissed_2,3)(teleShotsMissed_4,5)(movedOffTarmac_6)
-//(autoUpperHubAmount_7)(autoLowerHubAmount_8)(teleUpperHubAmount_9,10)
-//(teleLowerHubAmount_11,12)(playedDefense_13)(attemptedClimb_14)
-//(levelClimbed_15)(yellowCard_16)(redCard_17)
+  console.log(qrDictionary);
+  var matchNumber = qrCodeData.slice(17,19);
+  var teamNumber = qrCodeData.slice(19,23);
+  var scouterName = qrCodeData.slice(23);
+  console.log(matchNumber);
+  console.log(teamNumber);
+  console.log(scouterName);
+  //(cargo_1)(autoShotsMissed_2,3)(teleShotsMissed_4,5)(movedOffTarmac_6)
+  //(autoUpperHubAmount_7)(autoLowerHubAmount_8)(teleUpperHubAmount_9,10)
+  //(teleLowerHubAmount_11,12)(playedDefense_13)(attemptedClimb_14)
+  //(levelClimbed_15)(yellowCard_16)(redCard_17)
 
+
+  var dataToDisplay = qrCodeData + ', ' + matchNumber + ', ' + teamNumber + ', ' + scouterName;
+  document.getElementById('codesDiv').insertAdjacentHTML('beforeend',"<p>" + dataToDisplay + "</p>");
 }
 
 /*

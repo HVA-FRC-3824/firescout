@@ -1,0 +1,50 @@
+body {
+    height: 1001vh;
+    background-image: linear-gradient(to right top, #75d8c7, #73dab7, #7cdba2, #8cda8a, #a1d871);
+}
+
+section {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#qr-reader {
+    width: 80vw !important;
+    margin-top: 20vh;
+    margin-left: auto;
+    margin-right: auto;
+    border:none !important;
+}
+
+#qr-reader button {
+    text-align: center;
+    height: 60px;
+    font-size: 16px;
+    font-family: "Montserrat";
+    font-weight: 400; 
+    border: 0;
+    background-color: rgba(28, 157, 218, 1);
+    border-radius: 4px;
+    color: #fff;
+    padding:10px;
+    margin: 40px !important;
+}
+
+#qr-reader__dashboard_section_fsr {
+    margin-bottom: 50px ;
+}
+
+#qr-reader a {
+    color:white;
+    background-color: rgba(28, 157, 218, 1);
+    border-radius: 4px;
+    text-decoration: none !important;
+    padding: 20px !important;
+}
+
+p{
+    text-align: center;
+}
+
+

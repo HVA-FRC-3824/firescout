@@ -25,6 +25,7 @@
 
     <script src="js/global.js"></script>
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/scanner.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +37,39 @@
 
 </head>
 <body>
-    <div id="qr-reader" style="width: 600px"></div>
+    <header id="navbar" class="navbar">
+        <div class="container">
+            <h2 class="logo" onclick="location.href = 'index.html'"><i class="fas fa-hat-cowboy-side cowboy"></i>Scoutin' FRC<i class='subtext'>By RoHAWKtics</i></h2>
+
+            <div class="nav-login-bars">
+                <nav id="navMenu">
+                    <a href="./schedule.html">Match Scouting</a>
+                    <a href="./pit.html">Pit Scouting</a>
+                    <a href="./analytics.html">Analytics</a>
+                    <a href="./preview.html">Preview</a>
+                </nav>
+                <a href="./login.html" class="login" id="loginButton"><i id="lilGuy" class="fas fa-user"></i> Login</a>
+                <button class="dropdown">
+                    <div class="bars"></div>
+                </button>
+            </div>
+        </div>
+    </header>
+    <nav class="nav-mobile" id="navMenuMobile">
+        <a href="./schedule.html">Match Scouting</a>
+        <a href="./pit.html">Pit Scouting</a>
+        <a href="./analytics.html">Analytics</a>
+        <a href="./preview.html">Preview</a>
+    </nav>
+
+    <section class="scanner">
+        <div id="qr-reader" style="width: 600px"></div>
+    </section>
+
+    <section class="codes">
+        <div id="codesDiv"></div>
+    </section>
+    
     <script>
         function onScanSuccess(decodedText, decodedResult) {
             console.log(`Code scanned = ${decodedText}`, decodedResult);
