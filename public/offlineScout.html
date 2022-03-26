@@ -39,7 +39,7 @@
             <button class="tablink" onclick="openPage('Auto')" id="auto">Auto</button>
             <button class="tablink" onclick="openPage('Teleop')" id="teleop"> Teleop </button>
             <button class="tablink" onclick="openPage('Endgame')" id="endgame"> Endgame </button>
-            <button class="nextMatch" onclick="nextMatch()"> QR Code </button>
+            <button class="nextMatch" onclick="openPage('Qrcode')" id="qrcodetab"> QR Code </button>
             <button class="tabExtra" id="space"></button>
         </div>
         <div class="navarrow"><img src="./pics/whiteArrow.png" class="arrow"></div>
@@ -173,9 +173,17 @@
                         <span class="slider"></span>
                     </label>
                 </div>
-            </div> 
-            <div id="qrcode">QR Code</div>
-            <button class="offlineResetBtn" onclick="if(confirm('Make sure to screenshot the entire QR Code first!')){location.href = 'offlineScout.html'}">Reset Page</button>
+            </div>
+        </div>
+
+        <div id="Qrcode" class="tabcontent">
+            <div class="qrcodeWrapper">
+                <div id="qrcode"></div>
+                <div class="buttonContainer">
+                    <button class="offlineGenBtn" onclick="nextMatch()">Generate</button>
+                    <button class="offlineResetBtn" onclick="if(confirm('Make sure to screenshot the entire QR Code first!')){location.href = 'offlineScout.html'}">Reset Page</button>
+                </div>
+            </div>
         </div>
     </div>
     </body>

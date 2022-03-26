@@ -45,7 +45,7 @@ h1 {
     -o-user-select: none;
 } 
 
-#wrapper{
+#wrapper {
     display:grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
@@ -73,6 +73,10 @@ h1 {
     transform: translate(-300vw, -9vw);
 }
 
+.Qrcode.is-active{
+    transform: translate(-400vw, -9vw);
+}
+
 .Pre {
     transform: translate(0vw);
 }
@@ -87,6 +91,10 @@ h1 {
 
 .Endgame {
     transform: translate(-300vw);
+}
+
+.Qrcode {
+    transform: translate(-400vw);
 }
 
 .tabcontent {
@@ -258,6 +266,19 @@ h1 {
 
 .preMatch.is-active {
     margin-top: 2.5vw;
+}
+
+/*===========================Offline Mode======================*/
+
+.offlineMode{
+    font-size: 4vw;
+    margin-top: 5vw;
+    grid-column: 2 / 4;
+    grid-row: 1 / 3;
+}
+
+.offlineMode input{
+    font-size: 2vw;
 }
 
 /*
@@ -646,36 +667,56 @@ Cause they are literally the same lmao
     height: 1.5em;
 }
 
-/*===========================Offline Mode======================*/
+/* 
+ ██████  ██████       ██████  ██████  ██████  ███████ 
+██    ██ ██   ██     ██      ██    ██ ██   ██ ██      
+██    ██ ██████      ██      ██    ██ ██   ██ █████   
+██ ▄▄ ██ ██   ██     ██      ██    ██ ██   ██ ██      
+ ██████  ██   ██      ██████  ██████  ██████  ███████ 
+    ▀▀
+*/
 
-.offlineMode{
-    font-size: 4vw;
-    margin-top: 5vw;
-    grid-column: 2 / 4;
+.tabcontent .qrcodeWrapper {
+    display: grid;
+    height: 100%;
+}
+
+.tabcontent .qrcodeWrapper #qrcode {
+    overflow-x: hidden;
+    margin-top: 50px;
     grid-row: 1 / 3;
+    grid-column: 1 / 3;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.offlineMode input{
-    font-size: 2vw;
-}
-
-#qrcode{
-    text-align: center;
-    width: fit-content;
+.tabcontent .qrcodeWrapper .buttonContainer {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 5px;
-    background-color: #858585;
-    padding:20px;
+    margin-top: 10vw;
+    margin-bottom: 50px;
 }
 
-.offlineResetBtn{
-    border-radius: 0;
-    background-color: #ff281d;
-    padding:1vw;
-    font-size: 2.3vw;
-    float:right;
+.tabcontent .qrcodeWrapper .buttonContainer .offlineGenBtn {
+    display: block;
+    width: 150px;
+    height: 60px;
+    font-size: 22px;
+    padding: 5px;
 }
+
+.tabcontent .qrcodeWrapper .buttonContainer .offlineResetBtn {
+    display: block;
+    width: 150px;
+    height: 60px;
+    font-size: 22px;
+    padding: 5px;
+}
+
+
+
 
 @media (prefers-color-scheme: dark){
     body, html{

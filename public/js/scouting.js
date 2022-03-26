@@ -110,75 +110,118 @@ function openPage(pageName) { //Runs when the nav bar buttons are pressed, the b
 
     // Changes the colors of the nav according to their visited status
     if (pageName == 'Pre'){
-        document.getElementById("defaultOpen").style.backgroundColor = currentButton ;
+        document.getElementById("defaultOpen").style.backgroundColor = currentButton;
         if (buttonTracker[1] == true) {
-            document.getElementById("auto").style.backgroundColor = pastButton ;
+            document.getElementById("auto").style.backgroundColor = pastButton;
         } else {
-            document.getElementById("auto").style.backgroundColor = futureButton ;
+            document.getElementById("auto").style.backgroundColor = futureButton;
         }
         if (buttonTracker[2] == true) {
-            document.getElementById("teleop").style.backgroundColor = pastButton ;
+            document.getElementById("teleop").style.backgroundColor = pastButton;
         } else {
             document.getElementById("teleop").style.backgroundColor = futureButton;
         }
         if (buttonTracker[3] == true) {
-            document.getElementById("endgame").style.backgroundColor = pastButton ;
+            document.getElementById("endgame").style.backgroundColor = pastButton;
         } else {
-            document.getElementById("endgame").style.backgroundColor = futureButton ;
+            document.getElementById("endgame").style.backgroundColor = futureButton;
+        }
+        if (buttonTracker[4] == true) {
+            document.getElementById("qrcodetab").style.backgroundColor = pastButton;
+        } else {
+            document.getElementById("qrcodetab").style.backgroundColor = futureButton;
         }
     } else if (pageName == "Auto"){
         buttonTracker[1] = true
-        document.getElementById("defaultOpen").style.backgroundColor = pastButton ;
+        document.getElementById("defaultOpen").style.backgroundColor = pastButton;
         if (buttonTracker[1] == true) {
-            document.getElementById("auto").style.backgroundColor = currentButton ;
+            document.getElementById("auto").style.backgroundColor = currentButton;
         } else {
-            document.getElementById("auto").style.backgroundColor = futureButton ;
+            document.getElementById("auto").style.backgroundColor = futureButton;
         }
         if (buttonTracker[2] == true) {
-            document.getElementById("teleop").style.backgroundColor = pastButton ;
+            document.getElementById("teleop").style.backgroundColor = pastButton;
         } else {
-            document.getElementById("teleop").style.backgroundColor = futureButton ;
+            document.getElementById("teleop").style.backgroundColor = futureButton;
         }
         if (buttonTracker[3] == true) {
-            document.getElementById("endgame").style.backgroundColor = pastButton ;
+            document.getElementById("endgame").style.backgroundColor = pastButton;
         } else {
-            document.getElementById("endgame").style.backgroundColor = futureButton ;
+            document.getElementById("endgame").style.backgroundColor = futureButton;
+        }
+        if (buttonTracker[4] == true) {
+            document.getElementById("qrcodetab").style.backgroundColor = pastButton;
+        } else {
+            document.getElementById("qrcodetab").style.backgroundColor = futureButton;
         }
     } else if (pageName == "Teleop"){
         buttonTracker[2] = true
-        document.getElementById("defaultOpen").style.backgroundColor = pastButton ;
+        document.getElementById("defaultOpen").style.backgroundColor = pastButton;
         if (buttonTracker[1] == true) {
-            document.getElementById("auto").style.backgroundColor = pastButton ;
+            document.getElementById("auto").style.backgroundColor = pastButton;
         } else {
-            document.getElementById("auto").style.backgroundColor = futureButton ;
+            document.getElementById("auto").style.backgroundColor = futureButton;
         }
         if (buttonTracker[2] == true) {
-            document.getElementById("teleop").style.backgroundColor = currentButton ;
+            document.getElementById("teleop").style.backgroundColor = currentButton;
         } else {
-            document.getElementById("teleop").style.backgroundColor = futureButton ;
+            document.getElementById("teleop").style.backgroundColor = futureButton;
         }
         if (buttonTracker[3] == true) {
-            document.getElementById("endgame").style.backgroundColor = pastButton ;
+            document.getElementById("endgame").style.backgroundColor = pastButton;
         } else {
-            document.getElementById("endgame").style.backgroundColor = futureButton ;
+            document.getElementById("endgame").style.backgroundColor = futureButton;
+        }
+        if (buttonTracker[4] == true) {
+            document.getElementById("qrcodetab").style.backgroundColor = pastButton;
+        } else {
+            document.getElementById("qrcodetab").style.backgroundColor = futureButton;
         }
     } else if (pageName == "Endgame"){
         buttonTracker[3] = true
-        document.getElementById("defaultOpen").style.backgroundColor = pastButton ;
+        document.getElementById("defaultOpen").style.backgroundColor = pastButton;
         if (buttonTracker[1] == true) {
-            document.getElementById("auto").style.backgroundColor = pastButton ;
+            document.getElementById("auto").style.backgroundColor = pastButton;
         } else {
-            document.getElementById("auto").style.backgroundColor = futureButton ;
+            document.getElementById("auto").style.backgroundColor = futureButton;
         }
         if (buttonTracker[2] == true) {
-            document.getElementById("teleop").style.backgroundColor = pastButton ;
+            document.getElementById("teleop").style.backgroundColor = pastButton;
         } else {
-            document.getElementById("teleop").style.backgroundColor = futureButton ;
+            document.getElementById("teleop").style.backgroundColor = futureButton;
         }
         if (buttonTracker[3] == true) {
-            document.getElementById("endgame").style.backgroundColor = currentButton ;
+            document.getElementById("endgame").style.backgroundColor = currentButton;
         } else {
-            document.getElementById("endgame").style.backgroundColor = futureButton ;
+            document.getElementById("endgame").style.backgroundColor = futureButton;
+        }
+        if (buttonTracker[4] == true) {
+            document.getElementById("qrcodetab").style.backgroundColor = pastButton;
+        } else {
+            document.getElementById("qrcodetab").style.backgroundColor = futureButton;
+        }
+    } else if (pageName == "Qrcode") {
+        buttonTracker[4] = true
+        document.getElementById("defaultOpen").style.backgroundColor = pastButton;
+        if (buttonTracker[1] == true) {
+            document.getElementById("auto").style.backgroundColor = pastButton;
+        } else {
+            document.getElementById("auto").style.backgroundColor = futureButton;
+        }
+        if (buttonTracker[2] == true) {
+            document.getElementById("teleop").style.backgroundColor = pastButton;
+        } else {
+            document.getElementById("teleop").style.backgroundColor = futureButton;
+        }
+        if (buttonTracker[3] == true) {
+            document.getElementById("endgame").style.backgroundColor = pastButton;
+        } else {
+            document.getElementById("endgame").style.backgroundColor = futureButton;
+        }
+        if (buttonTracker[4] == true) {
+            document.getElementById("qrcodetab").style.backgroundColor = currentButton;
+        } else {
+            document.getElementById("qrcodetab").style.backgroundColor = futureButton;
         }
     }
 }
@@ -694,6 +737,7 @@ function barSelect(currentBar){  //Changes the color of the climb level buttons 
 
 
 // = == = = = == = == = = = = == = == = = = == = = = =NEXT MATCH FUNCTION VERY IMPORANTN == = == == ==== = = == = = = = = = == = = =//
+
 function nextMatch(){
     if(offlineMode){
         generateQRCode();
@@ -724,8 +768,8 @@ function generateQRCode(){
     }
     var qrcode = new QRCode(document.getElementById("qrcode"), {
         text: qrData,
-        width: 512,
-        height: 512,
+        width: 256,
+        height: 256,
         colorDark : "#000000",
         colorLight : "#ffffff",
         correctLevel : QRCode.CorrectLevel.H
