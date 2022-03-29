@@ -382,10 +382,12 @@ function pushQRCodeData(qrCodeData){
   //(teleLowerHubAmount_11,12)(playedDefense_13)(attemptedClimb_14)
   //(levelClimbed_15)(yellowCard_16)(redCard_17)
 
-
-  var dataToDisplay = qrCodeData + ', ' + matchNumber + ', ' + teamNumber + ', ' + scouterName;
-  document.getElementById('codesDiv').insertAdjacentHTML('beforeend',"<p>" + dataToDisplay + "</p>");
 }
+
+function addPushItem(textToPush){
+  document.getElementById('codesDiv').insertAdjacentHTML('beforeend',"<div class='code'><p>" + textToPush + "</p><button onclick='pushQRCodeData(\"" + textToPush + "\")'>Push Data</button></div>");
+}
+
 
 /*
 ██████  ██ ████████     ███████  ██████  ██████  ██    ██ ████████ ██ ███    ██  ██████  

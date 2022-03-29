@@ -47,4 +47,28 @@ p{
     text-align: center;
 }
 
+.code{
+    margin: 25px;
+    padding: 30px;
+    background-color: #73dab7;
+    border-radius: 15px;
+}
+
+.code p{
+    width: fit-content;
+}
+
+.code button {
+    text-align: center;
+    height: 60px;
+    font-size: 16px;
+    font-family: "Montserrat";
+    font-weight: 400; 
+    border: 0;
+    background-color: rgba(28, 157, 218, 1);
+    border-radius: 4px;
+    color: #fff;
+    padding:10px;
+    margin: 40px !important;
+}
 
