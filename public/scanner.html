@@ -74,6 +74,7 @@
         function onScanSuccess(decodedText, decodedResult) {
             console.log(`Code scanned = ${decodedText}`, decodedResult);
             addPushItem(decodedText);
+            alert("success please move away from QR code");
             //this is where the raw text is console logged
         }
         var html5QrcodeScanner = new Html5QrcodeScanner(

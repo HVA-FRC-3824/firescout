@@ -243,6 +243,7 @@ function readData(path){
 }
 
 //Constantly reads data as it updates
+/*
 try {
   var score = firebase.database().ref('test/name');
   score.on('value', (snapshot) => {
@@ -252,6 +253,7 @@ try {
 } catch (e) {
   console.log(e);
 }
+*/
 
 /*
 ███    ███  █████  ████████  ██████ ██   ██     ██████  ██████  ███████ ██    ██ ██ ███████ ██     ██ 
@@ -371,8 +373,8 @@ function pushQRCodeData(qrCodeData){
   };
 
   console.log(qrDictionary);
-  var matchNumber = qrCodeData.slice(17,19);
-  var teamNumber = qrCodeData.slice(19,23);
+  var matchNumber = parseInt(qrCodeData.slice(17,19));
+  var teamNumber = parseInt(qrCodeData.slice(19,23));
   var scouterName = qrCodeData.slice(23);
   console.log(matchNumber);
   console.log(teamNumber);
@@ -382,10 +384,19 @@ function pushQRCodeData(qrCodeData){
   //(teleLowerHubAmount_11,12)(playedDefense_13)(attemptedClimb_14)
   //(levelClimbed_15)(yellowCard_16)(redCard_17)
 
+
+  firebase.database().ref('matchScouting/' + teamNumber + "/" + matchNumber + "/" + scouterName).set({
+    "data": qrDictionary
+  });
+
+  alert("success");
+
+  document.getElementById(qrCodeData).remove();
+
 }
 
 function addPushItem(textToPush){
-  document.getElementById('codesDiv').insertAdjacentHTML('beforeend',"<div class='code'><p>" + textToPush + "</p><button onclick='pushQRCodeData(\"" + textToPush + "\")'>Push Data</button></div>");
+  document.getElementById('codesDiv').insertAdjacentHTML('beforeend',"<div class='code' id='" + textToPush + "'><p>" + textToPush + "</p><button onclick='pushQRCodeData(\"" + textToPush + "\",\"" + textToPush + "\")'>Push Data</button></div>");
 }
 
 
