@@ -7,7 +7,7 @@ body {
     overflow-x: hidden;
 }
 
-hr{
+hr {
     border: 1px solid black;
 }
 
@@ -29,7 +29,7 @@ hr{
 
 .loginWarn .container {
     background-color: rgb( 255, 199, 94, 1);
-    display: inline-block;
+    display: none;
     position: fixed;
     bottom: 0;
     z-index: 100;
@@ -177,403 +177,23 @@ main .infoWheel .container .dataTable .innerData .dataCell{
 ██ ██   ████ ███████ ██  ██████  ██   ██    ██    ███████ 
 */
 
-main .teamSelectDiv {
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    font-size: 42px;
-    background-color: white;
-    padding: 10px;
-    border-radius: 15px;
-}
-
-main .teamSelectDiv .teamSelect {
-    border-radius: 15px;
-    font-size: 42px;
-}
-
-main .teamInsights .container {
-    text-align: center;
-    padding-bottom: 40px;
-    width: 400px;
-    margin-left: auto; 
-    margin-right: auto;
-}
-
-main .teamInsights .container h1 {
-    font-size: 28px;
-    padding: 25px 0px 10px 0px;
-}
-
-main .teamInsights .container td {
-    padding-bottom: 10px;
-}
-
-main .teamInsights .quickLook {
-    font-size: 20px;
-    width: 320px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
-    padding: 25px;
-    background-color: #0096ec;
-    display: grid;
-    border-radius: 15px;
-    box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
-}
-
-/*  
- ██████  ██████   █████  ██████  ██   ██ 
-██       ██   ██ ██   ██ ██   ██ ██   ██ 
-██   ███ ██████  ███████ ██████  ███████ 
-██    ██ ██   ██ ██   ██ ██      ██   ██ 
- ██████  ██   ██ ██   ██ ██      ██   ██ 
-*/
-
-main .graphs #blur.container {
-    -webkit-filter: blur(4px);
-    -moz-filter: blur(4px);
-    -o-filter: blur(4px);
-    -ms-filter: blur(4px);
-    filter: blur(0px);
-}
-
-main .graphs {
-    margin: 20px 20px 20px 20px;
-}
-
-main .graphs .container {
-    text-align: center;
-    border-radius: 10px;
-    width: 75vw;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px
-}
-
-main .graphs .container canvas {
-    margin-left: auto;
-    margin-right: auto;
+main .profile {
     width: 100%;
-    max-width: 800px;
+    padding: 4vw 4vw 25px 4vw;
 }
 
-main .graphs .container #selectors {
-    background-color: white;
+main .profile .container {
+    height: 1000px;
     border-radius: 15px;
-    padding: 10px;
-}
-
-main .graphs .container p {
-    display: inline-block;
-    cursor: pointer;
-    font-size: 32px;
-    padding: 30px;
-}
-
-main .graphs .container p:nth-of-type(1) {
-    float: left;
-}
-
-main .graphs .container p:nth-of-type(2) {
-    float: right;
-}
-
-
-main .graphs .container h3 {
-    padding: 10px;
-}
-
-main .graphs .container #selectors {
-    display: inline-block;
-    width: fit-content;
-}
-
-main .graphs .container .teamSelect {
-    width: 150px;
-    margin: 0px 10px;
-}
-
-main .graphs .container input {
-    font-size: 14px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 12px;
-}
-
-/*
-██████  ██ ████████     ███████  ██████  ██████  ██    ██ ████████     ██████   █████  ████████  █████  
-██   ██ ██    ██        ██      ██      ██    ██ ██    ██    ██        ██   ██ ██   ██    ██    ██   ██ 
-██████  ██    ██        ███████ ██      ██    ██ ██    ██    ██        ██   ██ ███████    ██    ███████ 
-██      ██    ██             ██ ██      ██    ██ ██    ██    ██        ██   ██ ██   ██    ██    ██   ██ 
-██      ██    ██        ███████  ██████  ██████   ██████     ██        ██████  ██   ██    ██    ██   ██ 
-*/
-
-main .pitData .container {
-    text-align: center;
-    padding: 30px 0px;
-    width: 400px;
-    margin-left: auto; 
-    margin-right: auto;
-}
-
-main .pitData .container h1 {
-    font-size:28px;
-    padding-bottom: 1px;
-}
-
-main .pitData .container .pitScoutData {
-    font-size: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:#0096ec;
-    box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
-    border-radius: 15px;
-    width:320px;
-    padding:25px;
-}
-
-main .pitData .container .pitScoutData .pitTable tr th {
-    padding-bottom: 10px;
-}
-
-main .pitData .container .pitScoutData .pitTable.noData {
-    display: none;
-}
-
-main .pitData .container .pitScoutData .noDataMessage {
-    display: none;
-}
-
-main .pitData .container .pitScoutData .noDataMessage.noData {
-    display: inline;
-    padding-top:120px;
-}
-
-/*
-██   ██ ███████  █████  ████████ ███    ███  █████  ██████  
-██   ██ ██      ██   ██    ██    ████  ████ ██   ██ ██   ██ 
-███████ █████   ███████    ██    ██ ████ ██ ███████ ██████  
-██   ██ ██      ██   ██    ██    ██  ██  ██ ██   ██ ██      
-██   ██ ███████ ██   ██    ██    ██      ██ ██   ██ ██   
-*/
-
-main .heatmap .container {
-    width: fit-content;
-    text-align: center;
-    padding: 30px 0px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-main .heatmap .container img {
+    background-color: #fff;
     box-shadow:
-        4.8px 5.2px 3.6px rgba(0, 0, 0, 0.07),
-        12.2px 13px 9.1px rgba(0, 0, 0, 0.048),
-        24.8px 26.6px 18.6px rgba(0, 0, 0, 0.039),
-        51.1px 54.8px 38.3px rgba(0, 0, 0, 0.031),
-        140px 150px 105px rgba(0, 0, 0, 0.022);
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid white;
-    border-radius: 15px;
-}
-
-main .heatmap .container #fieldHeatMap {
-    grid-row: 2 / 3;
-    grid-column: 1 / 5;
-    height: 227px;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-}
-
-main .heatmap .container .heatmap-canvas:first-of-type {
-    filter: hue-rotate(90deg);
-}
-
-main .heatmap .container #fieldIMG {
-    display: block;
-    width: 425px;
-    grid-row: 1 / 2;
-}
-
-main .heatmap .container h1 {
-    font-size: 28px;
-    padding: 10px 40px 10px 40px;
-    background-color: rgba(143, 143, 143, 0.418);
-    color:rgba(0, 0, 0, 0.418);
-}
-
-main .heatmap .container .is-selected {
-    background-color: white;
-    color: black;
-}
-
-main .heatmap .container #fullField {
-    grid-column: 1 / 2;
-    border-radius:20px 20px 0px 0px;
-}
-
-main .heatmap .container .checkBoxesDiv {
-    grid-row: 2 / 3; 
-    grid-column: 1 / 5;
-    margin:25px;
-    border-radius: 15px;
-    background-color: white;
-    padding: 15px;
-    width: fit-content;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-main .heatmap .container .toggle {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 62px;
-    height: 32px;
-    display: inline-block;
-    position: relative;
-    border-radius: 50px;
-    overflow: hidden;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    background-color: #707070;
-    transition: background-color ease 0.3s;
-}
-
-main .heatmap .container .toggle:before {
-    content: "on off";
-    display: block;
-    position: absolute;
-    z-index: 2;
-    width: 28px;
-    height: 28px;
-    background: #fff;
-    left: 2px;
-    top: 2px;
-    border-radius: 50%;
-    font: 10px/28px Helvetica;
-    text-transform: uppercase;
-    font-weight: bold;
-    text-indent: -22px;
-    word-spacing: 37px;
-    color: #fff;
-    text-shadow: -1px -1px rgba(0,0,0,0.15);
-    white-space: nowrap;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
-}
-
-main .heatmap .container .toggle:checked {
-    background-color: #4CD964;
-}
-
-main .heatmap .container .toggle:checked:before {
-    left: 32px;
-}
-
-
-#desktopHR{
-    display: none;
-}
-
-/*
-██████   █████  ██     ██     ██████   █████  ████████  █████  
-██   ██ ██   ██ ██     ██     ██   ██ ██   ██    ██    ██   ██ 
-██████  ███████ ██  █  ██     ██   ██ ███████    ██    ███████ 
-██   ██ ██   ██ ██ ███ ██     ██   ██ ██   ██    ██    ██   ██ 
-██   ██ ██   ██  ███ ███      ██████  ██   ██    ██    ██   ██ 
-*/
-
-main .rawData .container {
-    text-align: center;
-    margin:50px 0px 50px;
-}
-
-main .rawData .container h1 {
-    font-size: 28px;
-    margin-bottom: 16px;
-}
-
-main .rawData .container .theData{
-    padding:30px 10px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 20px;
-    background-color: #0096ec;
-    border-radius: 15px;
-    box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
-    width: 320px;
-}
-
-main .rawData .container .theData p {
-    padding-bottom: 10px;
-}
-
-/*
-████████ ██████   █████      ██████   █████  ████████  █████  
-   ██    ██   ██ ██   ██     ██   ██ ██   ██    ██    ██   ██ 
-   ██    ██████  ███████     ██   ██ ███████    ██    ███████ 
-   ██    ██   ██ ██   ██     ██   ██ ██   ██    ██    ██   ██ 
-   ██    ██████  ██   ██     ██████  ██   ██    ██    ██   ██
-*/
-
-main .TBAData .container{
-    text-align: center;
-    margin: 50px 0px 200px;
-}
-
-main .TBAData .container h1{
-    font-size: 28px;
-    margin-bottom: 16px;
-}
-
-main .TBAData .container .teamSelect{
-    font-size: 18px;
-}
-
-main .TBAData .container .teamsSchedule{
-    padding: 40px 50px;
-    margin: 40px 0 0 0;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 14px;
-    border-radius: 15px;
-    background-color: rgb(117, 216, 255);
-    box-shadow: 10px 10px 26px -5px rgba(0,0,0,0.83);
-    width: fit-content;
-}
-
-main .TBAData .container table{
-    margin-left: auto;
-    margin-right: auto;
-}
-
-main .TBAData .container td{
-    padding: 15px 5px;
-}
-
-main .TBAData .container .teamsSchedule #red{
-    color: red;
-}
-
-main .TBAData .container .teamsSchedule #blue{
-    color: blue;
-}
-
-main .pullMaster{
-    text-align: center;
-}
-
-main #pullMasterButton{
-    display: none;
-    font-size: 32px;
+        2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+        6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+        12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+        41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+        100px 100px 80px rgba(0, 0, 0, 0.07)
+    ;
 }
 
 /*
@@ -781,41 +401,7 @@ main #pullMasterButton{
 ██████  ███████ ███████ ██   ██    ██     ██████  ██          ███████ ██ ███████ ███████ 
 */
 
-@media all and (min-width: 1250px){
-
-    main .graphs{
-        width: 550px;
-        margin-top:20px;
-    }
-
-    main .graphs .container{
-        width: 550px;
-    }
-
-    main .heatmap .container{
-        width: 550px;
-    }
-
-    main .heatmap .container #fieldHeatMap{
-        height: 282px;
-    }
-
-    main .heatmap .container #tarmacHeatMap{
-        height: 290px;
-    }
-
-    main .heatmap .container #fieldIMG{
-        width: 550px;
-    }
-    
-    main .heatmap .container #tarmacIMG{
-        display: none;
-        height: 290px;
-        width: auto;
-        padding-left: 150px;
-        padding-right: 150px;
-    }
-
+@media all and (min-width: 1250px) {
     /*
     ██████  ███████ ███████ ██   ██ ████████  ██████  ██████      ██████   █████  ████████  █████  
     ██   ██ ██      ██      ██  ██     ██    ██    ██ ██   ██     ██   ██ ██   ██    ██    ██   ██ 
@@ -889,21 +475,4 @@ main #pullMasterButton{
         color: rgba(0,0,0,0.7);
         transform: perspective(1000px) translate3d(-172vw, -3.5vw, -100px);
     }
-
-    /*
-    ████████ ██████   █████      ██████   █████  ████████  █████      ██████  ███████ ███████ ██   ██ ████████  ██████  ██████  
-       ██    ██   ██ ██   ██     ██   ██ ██   ██    ██    ██   ██     ██   ██ ██      ██      ██  ██     ██    ██    ██ ██   ██ 
-       ██    ██████  ███████     ██   ██ ███████    ██    ███████     ██   ██ █████   ███████ █████      ██    ██    ██ ██████  
-       ██    ██   ██ ██   ██     ██   ██ ██   ██    ██    ██   ██     ██   ██ ██           ██ ██  ██     ██    ██    ██ ██      
-       ██    ██████  ██   ██     ██████  ██   ██    ██    ██   ██     ██████  ███████ ███████ ██   ██    ██     ██████  ██    
-    */
-
-    main .TBAData .container .teamsSchedule{
-        font-size: 28px;
-    }
-
-    main .TBAData .container .teamSelect{
-        font-size: 28px;
-    }
-
 }

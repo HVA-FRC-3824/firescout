@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Firescout</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="shortcut icon" type="image/jpg" href="pics/Logo-Small-Square.png"/>
+    
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.6.4/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/9.6.4/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.6.4/firebase-performance-compat.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
+
+    <script defer src="js/firebase.js"></script>
+    <script defer src="js/heatmap.js"></script>
+    <script defer src="js/data.js"></script>
+    <script src="js/global.js"></script>
+    <script defer src="js/analytics.js"></script>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" type="text/css" href="css/analytics-redesign.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/dbb5df409e.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+</head>
+
+<body>
+    <div class="bodyWrapper">
+    <header id="navbar" class="navbar">
+        <div class="container">
+            <h2 class="logo" onclick="location.href = 'index.html'"><i class="fas fa-hat-cowboy-side cowboy"></i>Scoutin FRC<i class='subtext'>By RoHAWKtics</i></h2>
+            <div class="nav-login-bars">
+                <nav id="navMenu">
+                    <a href="./schedule.html">Match Scouting</a>
+                    <a href="./pit.html">Pit Scouting</a>
+                    <a href="./analytics.html">Analytics</a>
+                    <a href="./preview.html">Preview</a>
+                </nav>
+                <a href="./login.html" class="login" id="loginButton"><i class="fas fa-user"></i> Login</a>
+                <button class="dropdown">
+                    <div class="bars"></div>
+                </button>
+            </div>
+        </div>
+    </header>
+    <nav class="nav-mobile" id="navMenuMobile">
+        <a href="./schedule.html">Match Scouting</a>
+        <a href="./pit.html">Pit Scouting</a>
+        <a href="./analytics.html">Analytics</a>
+        <a href="./preview.html">Preview</a>
+    </nav>
+    <section class="loginWarn" id="loginWarning">
+        <div class="container">
+            <h1>Analytics data only available for admins to conserve Firebase Database usage</h1>
+        </div>
+    </section>
+    <main>
+        <section class="infoWheel">
+            <div class="container unselectable">
+                <header>
+                    <p onclick="changeDataSlide('left')" class="unselectable">&lt;&nbsp;&nbsp;</p><p id="head" class="unselectable">CATT Score</p><p onclick="changeDataSlide('right')" class="unselectable">&nbsp;&nbsp;&gt;</p>
+                </header>
+                <arrows class="desktopArrows unselectable">
+                    <p id="left" onclick="changeDataSlide('left')" class="unselectable"><i class="fas fa-chevron-left"></i></p>
+                    <p id="right" onclick="changeDataSlide('right')" class="unselectable"><i class="fas fa-chevron-right"></i></p>
+                </arrows>
+                
+                <div id="table1" class="dataTable">
+                    <div class="innerData">
+                        <h1>CATT Score</h1>
+                        <p id="t1"> 9999</p>
+                        <p id="d1" class="dataCell">99</p>
+                        <p id="t2"> 9999</p>
+                        <p id="d2" class="dataCell">99</p>
+                        <p id="t3"> 9999</p>
+                        <p id="d3" class="dataCell">99</p>
+                        <p id="t4"> 9999</p>
+                        <p id="d4" class="dataCell">99</p>
+                        <p id="t5"> 9999</p>
+                        <p id="d5" class="dataCell">99</p>
+                        <p id="t6"> 9999</p>
+                        <p id="d6" class="dataCell">99</p>
+                    </div>
+                </div>
+                <div id="table2" class="dataTable">
+                    <div class="innerData">
+                        <h1>Climb Percent</h1>
+                        <p id="t1"> 9999</p>
+                        <p id="d1" class="dataCell">99</p>
+                        <p id="t2"> 9999</p>
+                        <p id="d2" class="dataCell">99</p>
+                        <p id="t3"> 9999</p>
+                        <p id="d3" class="dataCell">99</p>
+                        <p id="t4"> 9999</p>
+                        <p id="d4" class="dataCell">99</p>
+                        <p id="t5"> 9999</p>
+                        <p id="d5" class="dataCell">99</p>
+                        <p id="t6"> 9999</p>
+                        <p id="d6" class="dataCell">99</p>
+                    </div>
+                </div>
+                <div id="table3" class="dataTable">
+                    <div class="innerData">
+                        <h1>Average Score</h1>
+                        <p id="t1"> 9999</p>
+                        <p id="d1" class="dataCell">99</p>
+                        <p id="t2"> 9999</p>
+                        <p id="d2" class="dataCell">99</p>
+                        <p id="t3"> 9999</p>
+                        <p id="d3" class="dataCell">99</p>
+                        <p id="t4"> 9999</p>
+                        <p id="d4" class="dataCell">99</p>
+                        <p id="t5"> 9999</p>
+                        <p id="d5" class="dataCell">99</p>
+                        <p id="t6"> 9999</p>
+                        <p id="d6" class="dataCell">99</p>
+                    </div>
+                </div>
+                <div id="table4" class="dataTable">
+                    <div class="innerData">
+                        <h1>Auto Accuracy</h1>
+                        <p id="t1"> 9999</p>
+                        <p id="d1" class="dataCell">99</p>
+                        <p id="t2"> 9999</p>
+                        <p id="d2" class="dataCell">99</p>
+                        <p id="t3"> 9999</p>
+                        <p id="d3" class="dataCell">99</p>
+                        <p id="t4"> 9999</p>
+                        <p id="d4" class="dataCell">99</p>
+                        <p id="t5"> 9999</p>
+                        <p id="d5" class="dataCell">99</p>
+                        <p id="t6"> 9999</p>
+                        <p id="d6" class="dataCell">99</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </section>
+
+        <section class="profile">
+            <div class="container">
+                
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>
