@@ -81,7 +81,7 @@ function findTeamsMatches(teamNum){
 
 
 
-kidnap("/event/2022scan/teams/keys");
+kidnap("/event/2022tnkn/teams/keys");
 sortTeamsList();
-kidnap("/event/2022scan/matches");
+kidnap("/event/2022tnkn/matches");
 filterMatches();
