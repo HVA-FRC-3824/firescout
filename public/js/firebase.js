@@ -198,6 +198,7 @@ setTimeout(function(){
     if(document.getElementById('adminBody') != null){
       location.href('index.html');
     }
+    currUserCondensed = "Guest";
   }
 }, 2400)
 
@@ -282,10 +283,21 @@ function getAllTeamInfo(){
 //AND THE SCHEDULE PAGE
 
 function getScoutPosition(){
-  scoutPosition = readData("Users/" + firebase.auth().currentUser.uid + "/scoutPosition/data");
+  var scoutPosition = "default";
+  try {
+    scoutPosition = firebase.database().ref("Users/" + firebase.auth().currentUser.uid + "/scoutPosition/data").once('value').then((snapshot) => {
+      console.log(snapshot.val());
+      scoutPosition = snapshot.val();
+    });
+  } catch (error) {
+    
+  }
   setTimeout(() => {
-    console.log(dataRead);
-    document.getElementById(dataRead).style.fontWeight = "bold";
+    try {
+      document.getElementById(scoutPosition).style.fontWeight = "bold";
+    } catch (error) {
+      
+    }
   }, 1000);
 }
 

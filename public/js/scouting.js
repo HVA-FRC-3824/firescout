@@ -127,9 +127,17 @@ function openPage(pageName) { //Runs when the nav bar buttons are pressed, the b
             document.getElementById("endgame").style.backgroundColor = futureButton;
         }
         if (buttonTracker[4] == true) {
-            document.getElementById("qrcodetab").style.backgroundColor = pastButton;
+            try {
+                document.getElementById("qrcodetab").style.backgroundColor = pastButton;
+            } catch (error) {
+                
+            }
         } else {
-            document.getElementById("qrcodetab").style.backgroundColor = futureButton;
+            try {
+                document.getElementById("qrcodetab").style.backgroundColor = futureButton;
+            } catch (error) {
+                
+            }
         }
     } else if (pageName == "Auto"){
         buttonTracker[1] = true
@@ -150,9 +158,17 @@ function openPage(pageName) { //Runs when the nav bar buttons are pressed, the b
             document.getElementById("endgame").style.backgroundColor = futureButton;
         }
         if (buttonTracker[4] == true) {
-            document.getElementById("qrcodetab").style.backgroundColor = pastButton;
+            try {
+                document.getElementById("qrcodetab").style.backgroundColor = pastButton;
+            } catch (error) {
+                
+            }
         } else {
-            document.getElementById("qrcodetab").style.backgroundColor = futureButton;
+            try {
+                document.getElementById("qrcodetab").style.backgroundColor = futureButton;
+            } catch (error) {
+                
+            }
         }
     } else if (pageName == "Teleop"){
         buttonTracker[2] = true
@@ -173,9 +189,17 @@ function openPage(pageName) { //Runs when the nav bar buttons are pressed, the b
             document.getElementById("endgame").style.backgroundColor = futureButton;
         }
         if (buttonTracker[4] == true) {
-            document.getElementById("qrcodetab").style.backgroundColor = pastButton;
+            try {
+                document.getElementById("qrcodetab").style.backgroundColor = pastButton;
+            } catch (error) {
+                
+            }
         } else {
-            document.getElementById("qrcodetab").style.backgroundColor = futureButton;
+            try {
+                document.getElementById("qrcodetab").style.backgroundColor = futureButton;
+            } catch (error) {
+                
+            }
         }
     } else if (pageName == "Endgame"){
         buttonTracker[3] = true
@@ -196,9 +220,17 @@ function openPage(pageName) { //Runs when the nav bar buttons are pressed, the b
             document.getElementById("endgame").style.backgroundColor = futureButton;
         }
         if (buttonTracker[4] == true) {
-            document.getElementById("qrcodetab").style.backgroundColor = pastButton;
+            try {
+                document.getElementById("qrcodetab").style.backgroundColor = pastButton;
+            } catch (error) {
+                
+            }
         } else {
-            document.getElementById("qrcodetab").style.backgroundColor = futureButton;
+            try {
+                document.getElementById("qrcodetab").style.backgroundColor = futureButton;
+            } catch (error) {
+                
+            }
         }
     } else if (pageName == "Qrcode") {
         buttonTracker[4] = true
@@ -219,9 +251,17 @@ function openPage(pageName) { //Runs when the nav bar buttons are pressed, the b
             document.getElementById("endgame").style.backgroundColor = futureButton;
         }
         if (buttonTracker[4] == true) {
-            document.getElementById("qrcodetab").style.backgroundColor = currentButton;
+            try {
+                document.getElementById("qrcodetab").style.backgroundColor = currentButton;
+            } catch (error) {
+                
+            }
         } else {
-            document.getElementById("qrcodetab").style.backgroundColor = futureButton;
+            try {
+                document.getElementById("qrcodetab").style.backgroundColor = futureButton;
+            } catch (error) {
+                
+            }
         }
     }
 }
