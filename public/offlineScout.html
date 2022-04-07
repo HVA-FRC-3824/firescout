@@ -62,7 +62,7 @@
 
                 <div class="offlineMode">
                     <p>Offline Mode</p>
-                    <input id="offlineScouterName" type="text" placeholder="Name">
+                    <input id="offlineScouterName" type="text" placeholder="Name" maxlength="14">
                     <input id="offlineRobotNum" type="number" placeholder="Robot Number">
                     <input id="offlineMatchNum" type="number" placeholder="Match">
                 </div>
@@ -101,6 +101,7 @@
                     <a onclick="pickupCargo('auto'); togglePopup('auto')">Pickup Cargo</a>
                     <a onclick="launchedCargo(0, 'auto'); togglePopup('auto')">Miss</a>
                 </div>
+                <button class="undoButton" onclick="undoAction('auto')">Undo</button>
             </div>
         </div>
     
@@ -124,6 +125,7 @@
                     <a onclick="pickupCargo('teleop'); togglePopup('tele')">Pickup Cargo</a>
                     <a onclick="launchedCargo(0,'teleop'); togglePopup('tele')">Miss</a>
                 </div>
+                <button class="undoButton" onclick="undoAction('tele')">Undo</button>
             </div>
         </div>
     

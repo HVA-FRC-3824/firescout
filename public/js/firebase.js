@@ -282,8 +282,8 @@ function getAllTeamInfo(){
 */
 //AND THE SCHEDULE PAGE
 
+var scoutPosition = "default";
 function getScoutPosition(){
-  var scoutPosition = "default";
   try {
     scoutPosition = firebase.database().ref("Users/" + firebase.auth().currentUser.uid + "/scoutPosition/data").once('value').then((snapshot) => {
       console.log(snapshot.val());
