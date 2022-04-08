@@ -34,9 +34,14 @@ function startScouting(){
             console.log(intentionalErrorHere); //leave this uncommented, the error is intentional
         }
         try{
-            robotToScout = document.getElementById(dataRead).innerHTML;
-            localStorage.setItem('robotToScout', robotToScout);
-            location.href = 'scouting.html';
+            if(scoutPosition != "default"){
+                robotToScout = document.getElementById(scoutPosition).innerHTML;
+                localStorage.setItem('robotToScout', robotToScout);
+                location.href = 'scouting.html';
+            }else{
+                localStorage.setItem('robotToScout', "default");
+                location.href = 'scouting.html';
+            }
         }catch(e){
             alert("You do not have an assigned robot or you are not signed in");
         }
