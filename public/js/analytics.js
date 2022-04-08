@@ -551,3 +551,9 @@ function makeTeamSchedule(){
         document.getElementById("teamSchedule").insertAdjacentHTML('beforeend',"<tr><td>" + match.match_number + ":</td><td id='red'>" + match.alliances.red.team_keys[0].slice(3) + "</td>" + " <td id='red'>" + match.alliances.red.team_keys[1].slice(3) + " </td><td id='red'>" + match.alliances.red.team_keys[2].slice(3) + " </td><td>vs.</td><td id='blue'>" + match.alliances.blue.team_keys[0].slice(3) + "</td>" + " <td id='blue'>" + match.alliances.blue.team_keys[1].slice(3) + " </td><td id='blue'>" + match.alliances.blue.team_keys[2].slice(3) + " </td></tr>");
     });
 }
+
+// new design //
+
+/* function buttonClick(button) {
+
+} */

@@ -183,17 +183,197 @@ main .profile {
 }
 
 main .profile .container {
-    height: 1000px;
     border-radius: 15px;
     background-color: #fff;
+    padding: 40px;
     box-shadow:
         2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
         6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
         12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
         22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
         41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
-        100px 100px 80px rgba(0, 0, 0, 0.07)
-    ;
+        100px 100px 80px rgba(0, 0, 0, 0.07);
+}
+
+.profileControls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.profileControls #robotSelect {
+    height: 60px;
+    width: 270px;
+    font-size: 36px;
+    font-weight: 500;
+    padding-left: 10px;
+    font-family: sans-serif;
+    border-radius: 15px;
+    border: 2px solid rgba(0, 0, 0, 0.03);
+    box-shadow:
+        2.3px 2.3px 20.8px rgba(0, 0, 0, 0.06),
+        4.8px 4.8px 28.5px rgba(0, 0, 0, 0.043),
+        7.9px 7.9px 29.7px rgba(0, 0, 0, 0.036),
+        12.1px 12.1px 30px rgba(0, 0, 0, 0.03),
+        18.9px 18.9px 37.4px rgba(0, 0, 0, 0.024),
+        36px 36px 71px rgba(0, 0, 0, 0.017);
+}
+
+.profileControls .profileButtonContainer {
+    display: flex;
+    flex-direction: row;
+    width: 230px;
+    justify-content: space-between;
+}
+
+.profileControls .profileButtonContainer .buttonDiv {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border-radius: 15px;
+    transition: all 0.4s ease;
+    box-shadow:
+        2.3px 2.3px 20.8px rgba(0, 0, 0, 0.06),
+        4.8px 4.8px 28.5px rgba(0, 0, 0, 0.043),
+        7.9px 7.9px 29.7px rgba(0, 0, 0, 0.036),
+        12.1px 12.1px 30px rgba(0, 0, 0, 0.03),
+        18.9px 18.9px 37.4px rgba(0, 0, 0, 0.024),
+        36px 36px 71px rgba(0, 0, 0, 0.017);
+}
+
+.profileControls .profileButtonContainer .buttonDiv:hover {
+    cursor: pointer;
+    box-shadow:
+        2px 2px 18.8px rgba(0, 0, 0, 0.1),
+        4.1px 4.1px 27.3px rgba(0, 0, 0, 0.074),
+        6.4px 6.4px 29.6px rgba(0, 0, 0, 0.063),
+        9.5px 9.5px 29.5px rgba(0, 0, 0, 0.054),
+        13.7px 13.7px 30.9px rgba(0, 0, 0, 0.046),
+        20.3px 20.3px 39.8px rgba(0, 0, 0, 0.037),
+        36px 36px 71px rgba(0, 0, 0, 0.026);
+}
+
+.profileControls .profileButtonContainer .buttonDiv i {
+    position: relative;
+    top: calc(50% - 18px);
+    font-size: 36px;
+}
+
+.profile .container .profileInfoContainer {
+    width: 100%;
+    padding: 3em;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.profile .container .profileInfoContainer .quickLook {
+    width: 300px;
+    height: 400px;
+    border-radius: 15px;
+    text-align: center;
+    display: inline-block;
+    box-shadow:
+        2.3px 2.3px 20.8px rgba(0, 0, 0, 0.06),
+        4.8px 4.8px 28.5px rgba(0, 0, 0, 0.043),
+        7.9px 7.9px 29.7px rgba(0, 0, 0, 0.036),
+        12.1px 12.1px 30px rgba(0, 0, 0, 0.03),
+        18.9px 18.9px 37.4px rgba(0, 0, 0, 0.024),
+        36px 36px 71px rgba(0, 0, 0, 0.017);
+}
+
+.profile .container .profileInfoContainer .quickLook h1 {
+    padding: 1em;
+}
+
+.profile .container .profileInfoContainer .profileImage {
+    display: inline-block;
+    width: 400px;
+    height: 400px;
+    border-radius: 15px;
+    box-shadow:
+        2.3px 2.3px 20.8px rgba(0, 0, 0, 0.06),
+        4.8px 4.8px 28.5px rgba(0, 0, 0, 0.043),
+        7.9px 7.9px 29.7px rgba(0, 0, 0, 0.036),
+        12.1px 12.1px 30px rgba(0, 0, 0, 0.03),
+        18.9px 18.9px 37.4px rgba(0, 0, 0, 0.024),
+        36px 36px 71px rgba(0, 0, 0, 0.017);
+}
+
+.profile .container .profileInfoContainer .profileImage .noimageDisplay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.profile .container .profileGraphContainer {
+    width: 100%;
+    padding: 3em;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.profile .container .profileGraphContainer .graphContainer {
+    width: 550px;
+    height: 360px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow:
+        2.3px 2.3px 20.8px rgba(0, 0, 0, 0.06),
+        4.8px 4.8px 28.5px rgba(0, 0, 0, 0.043),
+        7.9px 7.9px 29.7px rgba(0, 0, 0, 0.036),
+        12.1px 12.1px 30px rgba(0, 0, 0, 0.03),
+        18.9px 18.9px 37.4px rgba(0, 0, 0, 0.024),
+        36px 36px 71px rgba(0, 0, 0, 0.017);
+}
+
+.profile .container .profileGraphContainer .heatmapContainer {
+    width: 550px;
+    height: 360px;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow:
+        2.3px 2.3px 20.8px rgba(0, 0, 0, 0.06),
+        4.8px 4.8px 28.5px rgba(0, 0, 0, 0.043),
+        7.9px 7.9px 29.7px rgba(0, 0, 0, 0.036),
+        12.1px 12.1px 30px rgba(0, 0, 0, 0.03),
+        18.9px 18.9px 37.4px rgba(0, 0, 0, 0.024),
+        36px 36px 71px rgba(0, 0, 0, 0.017);
+}
+
+/*  
+ █████  ██████  ██████  ██ ████████ ██  ██████  ███    ██  █████  ██          ██ ███    ██ ███████  ██████  
+██   ██ ██   ██ ██   ██ ██    ██    ██ ██    ██ ████   ██ ██   ██ ██          ██ ████   ██ ██      ██    ██ 
+███████ ██   ██ ██   ██ ██    ██    ██ ██    ██ ██ ██  ██ ███████ ██          ██ ██ ██  ██ █████   ██    ██ 
+██   ██ ██   ██ ██   ██ ██    ██    ██ ██    ██ ██  ██ ██ ██   ██ ██          ██ ██  ██ ██ ██      ██    ██ 
+██   ██ ██████  ██████  ██    ██    ██  ██████  ██   ████ ██   ██ ███████     ██ ██   ████ ██       ██████  
+*/
+
+main .additionalInfo {
+    width: 100%;
+    padding: 4vw 4vw 25px 4vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+main .additionalInfo .additional-sub-base {
+    border-radius: 15px;
+    background-color: #fff;
+    padding: 40px;
+    width: 30%;
+    text-align: center;
+    height: 600px;
+    box-shadow:
+        2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+        6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+        12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+        41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+        100px 100px 80px rgba(0, 0, 0, 0.07);
 }
 
 /*
