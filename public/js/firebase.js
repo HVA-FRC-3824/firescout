@@ -328,40 +328,40 @@ function pushQRCodeData(qrCodeData){
   } else {
     startedWithCargo = true;
   }
-  if (qrCodeData.slice(5,6) == 0){
+  if (qrCodeData.slice(4,5) == 0){
     movedOffTarmac = false;
   } else {
     movedOffTarmac = true;
   }
-  if (qrCodeData.slice(12,13) == 0){
+  if (qrCodeData.slice(11,12) == 0){
     playedDefense = false;
   } else {
     playedDefense = true;
   }
-  if (qrCodeData.slice(13,14) == 0) {
+  if (qrCodeData.slice(12,13) == 0) {
     attemptedClimb = false;
   } else {
     attemptedClimb = true;
   }
-  if (qrCodeData.slice(14,15) == 0) {
+  if (qrCodeData.slice(13,14) == 0) {
     climbLevel = "none"
-  } else if (qrCodeData.slice(14,15) == 1){
+  } else if (qrCodeData.slice(13,14) == 1){
     climbLevel = "low"
-  } else if (qrCodeData.slice(14,15) == 2){
+  } else if (qrCodeData.slice(13,14) == 2){
     climbLevel = "mid"
-  } else if (qrCodeData.slice(14,15) == 3){
+  } else if (qrCodeData.slice(13,14) == 3){
     climbLevel = "high"
-  } else if (qrCodeData.slice(14,15) == 4){
+  } else if (qrCodeData.slice(13,14) == 4){
     climbLevel = "traversal"
   } else {
     climbLevel = "fail"
   }
-  if (qrCodeData.slice(15,16) == 0) {
+  if (qrCodeData.slice(14,15) == 0) {
     yellowCard = false;
   } else {
     yellowCard = true;
   }
-  if (qrCodeData.slice(16,17) == 0) {
+  if (qrCodeData.slice(15,16) == 0) {
     redCard = false;
   } else {
     redCard = true;
@@ -370,13 +370,13 @@ function pushQRCodeData(qrCodeData){
     "fieldStartPositionX": 0,
     "fieldStartPositionY": 0,
     "startedWithCargo": startedWithCargo,
-    "autoShotsMissed": parseInt(qrCodeData.slice(1,3)),
-    "teleShotsMissed": parseInt(qrCodeData.slice(3,5)),
+    "autoShotsMissed": parseInt(qrCodeData.slice(1,2)),
+    "teleShotsMissed": parseInt(qrCodeData.slice(2,4)),
     "movedOffTarmac": movedOffTarmac,
-    "autoUpperHubAmount": parseInt(qrCodeData.slice(6,7)),
-    "autoLowerHubAmount": parseInt(qrCodeData.slice(7,8)),
-    "teleUpperHubAmount": parseInt(qrCodeData.slice(8,10)),
-    "teleLowerHubAmount": parseInt(qrCodeData.slice(10,12)),
+    "autoUpperHubAmount": parseInt(qrCodeData.slice(5,6)),
+    "autoLowerHubAmount": parseInt(qrCodeData.slice(6,7)),
+    "teleUpperHubAmount": parseInt(qrCodeData.slice(7,9)),
+    "teleLowerHubAmount": parseInt(qrCodeData.slice(9,11)),
     "playedDefense": playedDefense,
     "attemptedClimb": attemptedClimb,
     "levelClimbed": climbLevel,

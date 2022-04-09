@@ -800,59 +800,55 @@ function generateQRCode(){
     //(teleLowerHubAmount_11,12)(playedDefense_13)(attemptedClimb_14)
     //(levelClimbed_15)(yellowCard_16)(redCard_17)
     
-    //(cargo_1)
+    //(cargo_0,1)
     if (dataDictionary["startedWithCargo"] == false) {
         qrData = "0";
     } else {
         qrData = "1";
     }
-    //(autoShotsMissed_2,3)
-    if (dataDictionary["autoShotsMissed"].toString().length == 1) {
-        qrData = qrData + ("0" + dataDictionary["autoShotsMissed"].toString());
-    } else {
-        qrData = qrData + dataDictionary["autoShotsMissed"];
-    }
-    //(teleShotsMissed_4,5)
+    //(autoShotsMissed_1,2)
+    qrData = qrData + dataDictionary["autoShotsMissed"].toString();
+    //(teleShotsMissed_2,4)
     if (dataDictionary["teleShotsMissed"].toString().length == 1) {
         qrData = qrData + ("0" + dataDictionary["teleShotsMissed"].toString());
     } else {
         qrData = qrData + dataDictionary["teleShotsMissed"];
     }
-    //(movedOffTarmac_6)
+    //(movedOffTarmac_4,5)
     if (dataDictionary["movedOffTarmac"] == false) {
         qrData = qrData + "0";
     } else {
         qrData = qrData + "1";
     }
-    //(autoUpperHubAmount_7)
+    //(autoUpperHubAmount_5,6)
     qrData = qrData + dataDictionary["autoUpperHubAmount"];
-    //(autoLowerHubAmount_8)
+    //(autoLowerHubAmount_6,7)
     qrData = qrData + dataDictionary["autoLowerHubAmount"];
-    //(teleUpperHubAmount_9,10)
+    //(teleUpperHubAmount_7,9)
     if (dataDictionary["teleUpperHubAmount"].toString().length == 1) {
         qrData = qrData + ("0" + (dataDictionary["teleUpperHubAmount"]).toString());
     } else {
         qrData = qrData + dataDictionary["teleUpperHubAmount"];
     }
-    //(teleLowerHubAmount_11,12)
+    //(teleLowerHubAmount_9,11)
     if (((dataDictionary["teleLowerHubAmount"]).toString()).length == 1) {
         qrData = qrData + ("0" + (dataDictionary["teleLowerHubAmount"]).toString());
     } else {
         qrData = qrData + dataDictionary["teleLowerHubAmount"];
     }
-    //(playedDefense_13)
+    //(playedDefense_11,12)
     if (dataDictionary['playedDefense'] == false){
         qrData = qrData + "0";
     } else {
         qrData = qrData + "1";
     }
-    //(attemptedClimb_14)
+    //(attemptedClimb_12,13)
     if (dataDictionary['attemptedClimb'] == false) {
         qrData = qrData + "0";
     } else {
         qrData = qrData + "1";
     }
-    //(levelClimbed_15)
+    //(levelClimbed_13,14)
     if (dataDictionary['levelClimbed'] == "none") {
         qrData = qrData + "0";
     } else if (dataDictionary['levelClimbed'] == "low") {
@@ -866,25 +862,27 @@ function generateQRCode(){
     } else {
         qrData = qrData + "5";
     }
-    //(yellowCard_16)
+    //(yellowCard_14,15)
     if (dataDictionary['yellowCard'] == false) {
         qrData = qrData + "0";
     } else {
         qrData = qrData + "1";
     }
-    //(redCard_17)
+    //(redCard_15,16)
     if (dataDictionary['redCard'] == false) {
         qrData = qrData + "0";
     } else {
         qrData = qrData + "1";
     }
-    //matchNumber_18,19
+    //matchNumber_16,19
     if (offlineMatch.toString().length == 1) {
+        qrData = qrData + ("00" + offlineMatch.toString());
+    } else if(offlineMatch.toString().length == 2) {
         qrData = qrData + ("0" + offlineMatch.toString());
-    } else {
+    }else {
         qrData = qrData + offlineMatch;
     }
-    //robotNumber_20,21,22,23
+    //robotNumber_19,23
     if (offlineTeamNum.toString().length == 1) {
         qrData = qrData + ("000" + offlineTeamNum.toString());
     } else if (offlineTeamNum.toString().length == 2) {
