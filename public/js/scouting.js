@@ -330,18 +330,24 @@ function updateTeamToScout(){
     localStorage.setItem("scoutPosition", document.getElementById("robotPositionDropdown").value);
     if (localStorage.getItem("scoutPosition") != null) {
         //set the selector to the local storage value
-        document.getElementById("robotPositionDropdown").value = "";
+        document.getElementById("robotPositionDropdown").value = localStorage.getItem("scoutPosition");
     }
 
-    robotToScout = filteredJames[matchNum - 1].alliances.(scoutPosition.slice(0,scoutPosition.length - 1)).teamKeys;
-        if (robotToScout[i] == scoutPosition.slice(scoutPosition.length - 1))
-        console.log(scoutPosition);      
-
-
-
+    scoutPosition = localStorage.getItem("scoutPosition");
+    scoutColor = scoutPosition.slice(0,scoutPosition.length - 1);
+    scoutPositionNumber = scoutPosition.slice(scoutPosition.length - 1);
+    if(scoutColor == 'red'){
+        robotToScout = filteredJames[matchNum - 1].alliances.red.team_keys[scoutPositionNumber - 1].slice(3);
+    }else{
+        robotToScout = filteredJames[matchNum - 1].alliances.blue.team_keys[scoutPositionNumber - 1].slice(3);
+    }
+   
     document.querySelector('#teamNum').innerHTML = "<i id='lilGuy' class='fas fa-user'></i> " + robotToScout;
+    document.querySelector('#robotToScout').innerHTML = robotToScout;
 }
 
+//On page load
+updateTeamToScout();
 
 /*
  █████  ██    ██ ████████  ██████       █████  ███    ██ ██████      ████████ ███████ ██      ███████ 
