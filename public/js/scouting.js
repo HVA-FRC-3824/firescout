@@ -277,9 +277,8 @@ openPage("Pre"); //Starts the page by openeing the pre match page
 */
 
 currentUser = localStorage.getItem("username");
-matchNum = localStorage.getItem("matchNum")
-robotToScout = localStorage.getItem("robotToScout");  //Gets the robot you are scouting from local storage
-document.querySelector('#teamNum').innerHTML = "<i id='lilGuy' class='fas fa-user'></i> " + robotToScout;
+matchNum = localStorage.getItem("matchNum");
+
 
 try {
     document.querySelector('#teamNumber').innerHTML = robotToScout;
@@ -325,6 +324,22 @@ function getStartPosition(event){
     //console.log(xStartRel, yStartRel);
     startPosIcon.style.display = "inline-block";
     startPosIcon.style.transform = "translate(" + (xStartRel - startPosIcon.clientWidth/2) + "px," + (yStartRel - startPosIcon.clientHeight/2) + "px)"
+}
+
+function updateTeamToScout(){
+    localStorage.setItem("scoutPosition", document.getElementById("robotPositionDropdown").value);
+    if (localStorage.getItem("scoutPosition") != null) {
+        //set the selector to the local storage value
+        document.getElementById("robotPositionDropdown").value = "";
+    }
+
+    robotToScout = filteredJames[matchNum - 1].alliances.(scoutPosition.slice(0,scoutPosition.length - 1)).teamKeys;
+        if (robotToScout[i] == scoutPosition.slice(scoutPosition.length - 1))
+        console.log(scoutPosition);      
+
+
+
+    document.querySelector('#teamNum').innerHTML = "<i id='lilGuy' class='fas fa-user'></i> " + robotToScout;
 }
 
 
