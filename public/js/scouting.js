@@ -328,10 +328,6 @@ function getStartPosition(event){
 
 function updateTeamToScout(){
     localStorage.setItem("scoutPosition", document.getElementById("robotPositionDropdown").value);
-    if (localStorage.getItem("scoutPosition") != null) {
-        //set the selector to the local storage value
-        document.getElementById("robotPositionDropdown").value = localStorage.getItem("scoutPosition");
-    }
 
     scoutPosition = localStorage.getItem("scoutPosition");
     scoutColor = scoutPosition.slice(0,scoutPosition.length - 1);
@@ -347,7 +343,12 @@ function updateTeamToScout(){
 }
 
 //On page load
+if (localStorage.getItem("scoutPosition") != null) {
+    //set the selector to the local storage value
+    document.getElementById("robotPositionDropdown").value = localStorage.getItem("scoutPosition");
+}
 updateTeamToScout();
+// :)
 
 /*
  █████  ██    ██ ████████  ██████       █████  ███    ██ ██████      ████████ ███████ ██      ███████ 
