@@ -31,7 +31,9 @@ var pitDictionary = {
     "goalLevel": '',
     "driverExp": '',
     "pitScouter": localStorage.getItem("username"),
-    "imageFileType": ''
+    "imageFileType": '',
+    "autoCargo": '',
+    "autoGoal": ''
 }
 
 var keys = Object.keys(pitDictionary);
@@ -60,7 +62,10 @@ function setPitData() {
     pitDictionary["intakeLevel"] = document.querySelector('input[name="intakeSelect"]:checked').value;
     pitDictionary["goalLevel"] = document.querySelector('input[name="goalSelect"]:checked').value;
     pitDictionary["driverExp"] = document.querySelector('input[name="expSelect"]:checked').value;
-
+    pitDictionary["autoCargo"] = document.getElementById("autoCargoInput").value;
+    pitDictionary["autoGoal"] = document.querySelector('input[name="autoGoalSelect"]:checked').value;
+    pitDictionary["autoStart"] = document.querySelector('input[name="startSelect"]:checked').value;
+    
     submitPitData();
 }
 
@@ -78,6 +83,10 @@ function submitPitData() {
 
     if (!(document.getElementById('climbAbilitySwitch').checked)) {
         pitDictionary["climbTime"] = 'N/A'
+    }
+
+    if (!(document.getElementById('autoAbilitySwitch').checked)) {
+        pitDictionary["autoCargoInput"] = 'N/A'
     }
 
     if (isNaN(teamNumber) || (teamNumber > 8898 || teamNumber <= 0)) {
@@ -149,6 +158,9 @@ function dropdown(id) {
             dropdownElement = document.getElementById('cargoInfo');
             break;
         case 4:
+            dropdownElement = document.getElementById('autoInfo');
+            break;
+        case 5:
             dropdownElement = document.getElementById('misc');
             break;
         default:
@@ -165,19 +177,35 @@ function dropdown(id) {
      ██ ██ ███ ██ ██    ██    ██      ██   ██ 
 ███████  ███ ███  ██    ██     ██████ ██   ██ 
 */
-var tracker = 0;
+var climbTracker = 0;
+var autoTracker = 0;
 
-function toggleGrey() {
-    document.getElementById('climbSpecifics').classList.toggle('canClimb');
+function toggleGrey(switchType) {
+    if (switchType == 0) {
+        document.getElementById('climbSpecifics').classList.toggle('canClimb');
 
-    if (tracker == 0) {
-        tracker = 1;
-        return;
-    } else if (tracker == 1) {
-        tracker = 0;
-        document.getElementById("climbTime").value = '';
-        document.getElementById("barSelect50").checked = true;
-        return;
+        if (climbTracker == 0) {
+            climbTracker = 1;
+            return;
+        } else if (climbTracker == 1) {
+            climbTracker = 0;
+            document.getElementById("climbTime").value = '';
+            document.getElementById("barSelect50").checked = true;
+            return;
+        }
+    } else if (switchType == 1) {
+        document.getElementById('autoSpecifics').classList.toggle('canAuto');
+
+        if (autoTracker == 0) {
+            autoTracker = 1;
+            return;
+        } else if (autoTracker == 1) {
+            autoTracker = 0;
+            document.getElementById("autoCargoInput").value = '';
+            document.getElementById("autoGoalSelect50").checked = true;
+            document.getElementById("startSelect50").checked = true;
+            return;
+        }
     }
 }
 

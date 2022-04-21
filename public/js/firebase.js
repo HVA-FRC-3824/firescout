@@ -655,7 +655,7 @@ function generateCATTScores(){ //TODO rename this function everywhere so it is m
 function generateAllTheThings(){
   generateCATTScores();
   setTimeout(() => {
-    generateFieldHeatmap();
+    // generateFieldHeatmap();
     setTimeout(() => {
       displayDataWheel();
     }, 250);
@@ -667,6 +667,7 @@ function displayAllTheThings(){
   var selectedTeam = Number(document.getElementById('teamNum').value);
   try {
     displayPitData(selectedTeam);
+    console.log("display Pit")
   } catch (error) {
     
   }
@@ -676,17 +677,17 @@ function displayAllTheThings(){
     
   }
   try {
-    displayRawData(selectedTeam); 
+    //displayRawData(selectedTeam); 
   } catch (error) {
     
   }
   try {
-    setFieldHeatData(selectedTeam);
+    //setFieldHeatData(selectedTeam);
   } catch (error) {
     
   }
   try {
-    findTeamsMatches(selectedTeam);
+    //findTeamsMatches(selectedTeam);
   } catch (error) {
     
   }

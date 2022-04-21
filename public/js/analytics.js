@@ -208,28 +208,27 @@ function generateGraph(robotsArr){
                 currentRobotScouters++;
                 switch (robotData[currentRobot][match][name]['data']['levelClimbed']) {
                     case 'traversal':
-                      climbPoints = 15;
-                      break;
+                        climbPoints = 15;
+                        break;
                     case 'high':
-                      climbPoints = 10;
-                      break;
+                        climbPoints = 10;
+                        break;
                     case 'middle':
-                      climbPoints = 6;
-                      break;
+                        climbPoints = 6;
+                        break;
                     case 'low':
-                      climbPoints = 4;
-                      break;
+                        climbPoints = 4;
+                        break;
                     default:
-                      climbPoints = 0;
-                      break;
-                  }
-                  currentRobotScore = 
-                  (robotData[currentRobot][match][name]['data']['autoUpperHubAmount'] * 4) + 
-                  (robotData[currentRobot][match][name]['data']['autoLowerHubAmount'] * 2) +
-                  (robotData[currentRobot][match][name]['data']['teleUpperHubAmount'] * 2) +
-                  (robotData[currentRobot][match][name]['data']['teleLowerHubAmount']) +
-                  climbPoints;
-
+                        climbPoints = 0;
+                        break;
+                    }
+                    currentRobotScore = 
+                    (robotData[currentRobot][match][name]['data']['autoUpperHubAmount'] * 4) + 
+                    (robotData[currentRobot][match][name]['data']['autoLowerHubAmount'] * 2) +
+                    (robotData[currentRobot][match][name]['data']['teleUpperHubAmount'] * 2) +
+                    (robotData[currentRobot][match][name]['data']['teleLowerHubAmount']) +
+                    climbPoints;
             });
             //console.log((Math.round(currentRobotScore/currentRobotScouters)));
             currentScoresArr[match] = (Math.round(currentRobotScore/currentRobotScouters));
@@ -270,7 +269,7 @@ function generateGraph(robotsArr){
     } catch (error) {
         console.log("no chart to kill");
     }
-    const myChart = new Chart("myChart", {
+    const myChart = new Chart("graphCanvas", {
         type: "line",
         data: {
           labels: xValues,
@@ -283,8 +282,8 @@ function generateGraph(robotsArr){
 }
 
 function regenChart() {
-    document.getElementById('myChart').remove();
-    document.getElementById('chartWrapper').insertAdjacentHTML('beforeend',"<canvas id='myChart'></canvas>");
+    document.getElementById('graphCanvas').remove();
+    document.getElementById('chartWrapper').insertAdjacentHTML('beforeend',"<canvas id='graphCanvas'></canvas>");
 }
 
 //=========================================================================HEATMAP=========================================================================
@@ -323,7 +322,7 @@ function generateFieldHeatmap(){
         maxOpacity: .5,
         minOpacity: 0,
         blur: .75
-      };
+    };
       // create heatmap with configuration
     heatmapInstanceFieldShots = h337.create(fieldConfig);
     heatmapInstanceFieldPickup = h337.create(fieldConfig);
@@ -502,6 +501,7 @@ function displayPitData(selectedRobot) {
     });
 
     if (dataPresent == true) {
+        console.log("testing display")
         document.getElementById('pitWeight').innerHTML = robotWeight + " lbs.";
         document.getElementById('pitLang').innerHTML = robotLang;
         document.getElementById('pitWidth').innerHTML = width + " in.";
@@ -518,7 +518,6 @@ function displayPitData(selectedRobot) {
     } else {
         document.getElementById('pitTable').classList.add('noData');
         document.getElementById('noData').classList.add('noData');
-
         pullPitImage(selectedRobot, fileType);
     }
 }
@@ -536,7 +535,7 @@ function populateTeams(){
     for(i=0; i < sortedJames.length; i++){
         //console.log(sortedJames[i]);
         document.getElementById("teamNum").insertAdjacentHTML('beforeend',"<option>" + sortedJames[i] + "</option>");
-        document.getElementById("tbaTeamNum").insertAdjacentHTML('beforeend',"<option>" + sortedJames[i] + "</option>");
+        //document.getElementById("tbaTeamNum").insertAdjacentHTML('beforeend',"<option>" + sortedJames[i] + "</option>");
     }
 }
 

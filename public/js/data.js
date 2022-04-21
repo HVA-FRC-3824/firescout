@@ -34,9 +34,9 @@ function filterMatches(){
         }
     });
     filteredJames.forEach(j => {
-        j.key = parseInt(j.key.slice(11));
+        j.match_number = parseInt(j.match_number);
     });
-    filteredJames.sort((a, b) => (a.key > b.key) ? 1 : -1);
+    filteredJames.sort((a, b) => (a.match_number > b.match_number) ? 1 : -1);
     //console.log(filteredJames);
 }
 

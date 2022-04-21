@@ -10,17 +10,17 @@
     
     <script src="https://kit.fontawesome.com/dbb5df409e.js" crossorigin="anonymous"></script>
     <!-- update the version number as needed -->
-    <script defer src="/__/firebase/9.6.4/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/9.6.10/firebase-app-compat.js"></script>
     <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/9.6.4/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/9.6.4/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/9.6.4/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/9.6.4/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/9.6.4/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/9.6.4/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/9.6.4/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/9.6.4/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/9.6.4/firebase-performance-compat.js"></script>
+    <script defer src="/__/firebase/9.6.10/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.6.10/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.6.10/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.6.10/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.6.10/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.6.10/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.6.10/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.6.10/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.6.10/firebase-performance-compat.js"></script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
@@ -111,7 +111,7 @@
                     <p id="climbAbility">Climb Ability:</p>
                     <div>
                         <div class="climbAbilitySwitch">
-                            <input id="climbAbilitySwitch" name="climbSwitchName" type="checkbox" onclick="toggleGrey()">
+                            <input id="climbAbilitySwitch" name="climbSwitchName" type="checkbox" onclick="toggleGrey(0)">
                             <label for="climbSwitchName"></label>
                         </div>
                     </div>
@@ -184,8 +184,60 @@
                 </section>
             </div>
 
-            <div class="window" id="misc">
+            <div class="window" id="autoInfo">
                 <div class="title" onclick="dropdown(4)">
+                    <h2>Auto</h2>
+                    <i class="fas fa-angle-down"></i>
+                </div>
+                <section>
+                    <div class="autoAbilityContainer">
+                        <p id="autoAbilityLabel">Auto:</p>
+                        <div>
+                            <div class="autoAbilitySwitch">
+                                <input id="autoAbilitySwitch" name="autoSwitchName" type="checkbox" onclick="toggleGrey(1)">
+                                <label for="autoSwitchName"></label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="autoSpecifics" id="autoSpecifics">
+                        <div class="cargoAmountContainer">
+                            <p>Cargo Amount:</p>
+                            <input id="autoCargoInput" rows="1" type="text" max="4"></input>
+                        </div>
+
+                        <p>Goal:</p>
+                        <div class="container-slider" id="goalSelector">
+                            <input type="radio" class="radio__input" value="N/A" name="autoGoalSelect" id="autoGoalSelect1">
+                            <label for="autoGoalSelect1" class="radio__label label1">None</label>
+                            <input type="radio" class="radio__input" value="Lower" name="autoGoalSelect" id="autoGoalSelect2">
+                            <label for="autoGoalSelect2" class="radio__label label2">Lower</label>
+                            <input type="radio" class="radio__input" value="Upper" name="autoGoalSelect" id="autoGoalSelect3">
+                            <label for="autoGoalSelect3" class="radio__label label3">Upper</label>
+                            <input type="radio" class="radio__input" value="Both" name="autoGoalSelect" id="autoGoalSelect4">
+                            <label for="autoGoalSelect4" class="radio__label label3">Both</label>
+                            <input type="radio" class="radio__input" value="N/A" name="autoGoalSelect" id="autoGoalSelect50"  checked="checked">
+                            <label for="autoGoalSelect50" class="radio__label label50">nothing</label>
+                        </div>
+                        <p>Starts:</p>
+                        <div class="container-slider" id="startSelector">
+                            <input type="radio" class="radio__input" value="Left" name="startSelect" id="startSelect1">
+                            <label for="startSelect1" class="radio__label label1">Left</label>
+                            <input type="radio" class="radio__input" value="Center" name="startSelect" id="startSelect2">
+                            <label for="startSelect2" class="radio__label label2">Center</label>
+                            <input type="radio" class="radio__input" value="Right" name="startSelect" id="startSelect3">
+                            <label for="startSelect3" class="radio__label label3">Right</label>
+                            <input type="radio" class="radio__input" value="Both" name="startSelect" id="startSelect4">
+                            <label for="startSelect4" class="radio__label label4">Any</label>
+                            <input type="radio" class="radio__input" value="N/A" name="startSelect" id="startSelect50"  checked="checked">
+                            <label for="startSelect50" class="radio__label label50">nothing</label>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="window" id="misc">
+                <div class="title" onclick="dropdown(5)">
                     <h2>Miscellaneous</h2>
                     <i class="fas fa-angle-down"></i>
                 </div>

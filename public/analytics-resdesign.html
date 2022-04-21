@@ -41,7 +41,7 @@
 
 </head>
 
-<body>
+<body>n  
     <div class="bodyWrapper">
     <header id="navbar" class="navbar">
         <div class="container">
@@ -157,22 +157,15 @@
         <section class="profile">
             <div class="container">
                 <div class="profileControls">
-                    <select name="bots" id="robotSelect">
-                        <option value="test">3824</option>
-                        <option value="test">3824</option>
-                        <option value="test">3824</option>
-                        <option value="test">3824</option>
-                        <option value="test">3824</option>
-                        <option value="test">3824</option>
-                    </select>
+                    <select id="teamNum"></select>
                     <div class="profileButtonContainer">
-                        <div class="buttonDiv upload">
+                        <div class="buttonDiv calculate" id="genButton" onclick="generateAllTheThings()">
                             <i class="fas fa-calculator"></i>
                         </div>
-                        <div class="buttonDiv calculate">
+                        <div class="buttonDiv refresh" onclick="displayAllTheThings();">
                             <i class="fas fa-sync"></i>
                         </div>
-                        <div class="buttonDiv refresh">
+                        <div class="buttonDiv download" id="pullMasterButton" onclick="pullAllMatchScouting(); getHeatData(); getPitData();">
                             <i class="fas fa-download"></i>
                         </div>
                     </div>
@@ -180,18 +173,93 @@
                 <div class="profileInfoContainer">
                     <div class="quickLook">
                         <h1>Quick Look</h1>
-                        <div class="quickInfoGrid">
+                        <div class="quickInfoTable">
+                            <table>
+                                <tr>
+                                    <td class="left-col">CATT Score:</td>
+                                    <td id="quickCATTScore" class="right-col">99</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-col">Climb Percent:</td>
+                                    <td id="quickClimbPercent" class="right-col">99</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-col">Average Score:</td>
+                                    <td id="quickAvgScore" class="right-col">99</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-col">Tele Accuracy:</td>
+                                    <td id="quickTeleAcc" class="right-col">99</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-col">Auto Accuracy:</td>
+                                    <td id="quickAutoAcc" class="right-col">99</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                     <div class="profileImage">
                         <div class="noimageDisplay">
-                            <p>No Image Available</p>
+                            <p><i class="fas fa-images"></i> No Image Available</p>
                         </div>
                         <div class="imageContainer"></div>
                     </div>
+                    <div class="pitData">
+                        <h1>Pit Data</h1>
+                        <div class="pitDataContainer">
+                            <table id="pitTable" class="pitTable">
+                                <tr>
+                                    <td class="left-col">Weight</td>
+                                    <td id="pitWeight" class="right-col">125 lbs.</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-col">Language</td>
+                                    <td id="pitLang" class="right-col">Java</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-col">Drive</td>
+                                    <td id="pitDriveTrain" class="right-col">West Coast</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-col">Width</td>
+                                    <td id="pitWidth"  class="right-col">129 in.</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-col">Height</td>
+                                    <td id="pitHeight" class="right-col">119 in.</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-col">Climber</td>
+                                    <td id="pitClimb" class="right-col">Yes</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-col">Time</td>
+                                    <td id="pitTime" class="right-col">21 sec.</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-col">Bar</td>
+                                    <td id="pitClimbLevel" class="right-col">Traversal</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-col">Chamber</td>
+                                    <td id="pitChamber" class="right-col">None</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-col">Goal</td>
+                                    <td id="pitGoalLevel" class="right-col">Neither</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-col">Driver Exp.</td>
+                                    <td id="pitExpLevel" class="right-col">Neither</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
                 <div class="profileGraphContainer">
-                    <div class="graphContainer"></div>
+                    <div class="graphContainer">
+                        <canvas id="graphCanvas"></canvas>
+                    </div>
                     <div class="heatmapContainer"></div>
                 </div>
             </div>
@@ -204,9 +272,11 @@
             <div class="additional-sub-base scheduleDataContainer">
                 <h1>Schedule</h1>
             </div>
+            <!--
             <div class="additional-sub-base pitDataContainer">
                 <h1>Pit Data</h1>
-            </div>
+            </div> 
+            -->
         </section>
     </main>
 </div>

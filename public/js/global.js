@@ -5,7 +5,6 @@ function navDropdown() {
     } else {
         x.style.overflow = "visible";
     }
-
 }
 
 window.onload = function() {
