@@ -44,7 +44,7 @@ var telePickupArrY = [];
 var currentCargo = 0;
 
 //bot number
-var robotToScout = -3824;
+var robotToScout = 9999;
 
 //Match number
 var matchNum = -1;

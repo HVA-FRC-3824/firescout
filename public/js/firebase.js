@@ -199,6 +199,7 @@ setTimeout(function(){
       location.href('index.html');
     }
     currUserCondensed = "Guest";
+    localStorage.setItem("username", "Guest User");
   }
 }, 2400)
 
