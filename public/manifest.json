@@ -1,0 +1,17 @@
+{
+    "name": "HVA Rohawktics Scouting",
+    "short_name": "Firescout",
+    "theme_color": "#ff22cc",
+    "background_color": "#74fff0",
+    "display": "standalone",
+    "start_url": "/",
+    "description": "Scouting App for HVA Rohawktiks",
+    "orientation": "any",
+    "icons": [
+        {
+            "src": "pics/Logo-Small-Square.png",
+            "sizes": "500x500",
+            "type": "image/png"
+        }
+    ]
+}
